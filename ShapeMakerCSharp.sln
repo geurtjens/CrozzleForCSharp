@@ -5,6 +5,17 @@ VisualStudioVersion = 25.0.1706.6
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShapeMakerCSharp", "ShapeMakerCSharp\ShapeMakerCSharp.csproj", "{F1586B4B-CBFF-4538-B767-0DB4E77EB466}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShapeMakerCSharpTests", "ShapeMakerCSharpTests\ShapeMakerCSharpTests.csproj", "{A1AC0CA8-A9E8-47BF-86B7-A42C7C340CFB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{06D4DBC2-6ED2-4DEE-B408-FDCAAEB661F8}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShapeMakerCSharpCmd", "ShapeMakerCSharpCmd\ShapeMakerCSharpCmd.csproj", "{AB41C219-17D0-423E-9246-45DB832BADF4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrozzleInterfaces", "CrozzleInterfaces\CrozzleInterfaces.csproj", "{461EAF31-AAB2-40B9-91CD-4A1730B23094}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +26,18 @@ Global
 		{F1586B4B-CBFF-4538-B767-0DB4E77EB466}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F1586B4B-CBFF-4538-B767-0DB4E77EB466}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F1586B4B-CBFF-4538-B767-0DB4E77EB466}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1AC0CA8-A9E8-47BF-86B7-A42C7C340CFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1AC0CA8-A9E8-47BF-86B7-A42C7C340CFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1AC0CA8-A9E8-47BF-86B7-A42C7C340CFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1AC0CA8-A9E8-47BF-86B7-A42C7C340CFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB41C219-17D0-423E-9246-45DB832BADF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB41C219-17D0-423E-9246-45DB832BADF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB41C219-17D0-423E-9246-45DB832BADF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB41C219-17D0-423E-9246-45DB832BADF4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{461EAF31-AAB2-40B9-91CD-4A1730B23094}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{461EAF31-AAB2-40B9-91CD-4A1730B23094}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{461EAF31-AAB2-40B9-91CD-4A1730B23094}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{461EAF31-AAB2-40B9-91CD-4A1730B23094}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

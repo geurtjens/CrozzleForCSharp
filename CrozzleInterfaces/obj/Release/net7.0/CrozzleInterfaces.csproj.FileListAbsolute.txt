@@ -1,0 +1,12 @@
+/Users/michaelgeurtjens/Developer/ShapeMakerCSharp/CrozzleInterfaces/bin/Release/net7.0/CrozzleInterfaces.deps.json
+/Users/michaelgeurtjens/Developer/ShapeMakerCSharp/CrozzleInterfaces/bin/Release/net7.0/CrozzleInterfaces.dll
+/Users/michaelgeurtjens/Developer/ShapeMakerCSharp/CrozzleInterfaces/bin/Release/net7.0/CrozzleInterfaces.pdb
+/Users/michaelgeurtjens/Developer/ShapeMakerCSharp/CrozzleInterfaces/obj/Release/net7.0/CrozzleInterfaces.csproj.AssemblyReference.cache
+/Users/michaelgeurtjens/Developer/ShapeMakerCSharp/CrozzleInterfaces/obj/Release/net7.0/CrozzleInterfaces.GeneratedMSBuildEditorConfig.editorconfig
+/Users/michaelgeurtjens/Developer/ShapeMakerCSharp/CrozzleInterfaces/obj/Release/net7.0/CrozzleInterfaces.AssemblyInfoInputs.cache
+/Users/michaelgeurtjens/Developer/ShapeMakerCSharp/CrozzleInterfaces/obj/Release/net7.0/CrozzleInterfaces.AssemblyInfo.cs
+/Users/michaelgeurtjens/Developer/ShapeMakerCSharp/CrozzleInterfaces/obj/Release/net7.0/CrozzleInterfaces.csproj.CoreCompileInputs.cache
+/Users/michaelgeurtjens/Developer/ShapeMakerCSharp/CrozzleInterfaces/obj/Release/net7.0/CrozzleInterfaces.dll
+/Users/michaelgeurtjens/Developer/ShapeMakerCSharp/CrozzleInterfaces/obj/Release/net7.0/refint/CrozzleInterfaces.dll
+/Users/michaelgeurtjens/Developer/ShapeMakerCSharp/CrozzleInterfaces/obj/Release/net7.0/CrozzleInterfaces.pdb
+/Users/michaelgeurtjens/Developer/ShapeMakerCSharp/CrozzleInterfaces/obj/Release/net7.0/ref/CrozzleInterfaces.dll
