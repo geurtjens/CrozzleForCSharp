@@ -22,6 +22,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test_ShapeMergerCSharp", "T
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BranchAndBoundCSharp", "BranchAndBoundCSharp\BranchAndBoundCSharp.csproj", "{AA72F04B-2D0A-4233-8D93-E072BF31F1BF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test_BranchAndBound", "Test_BranchAndBound\Test_BranchAndBound.csproj", "{695889DA-7907-4FE2-8FC2-49889F97BAE4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -56,6 +58,10 @@ Global
 		{AA72F04B-2D0A-4233-8D93-E072BF31F1BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AA72F04B-2D0A-4233-8D93-E072BF31F1BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AA72F04B-2D0A-4233-8D93-E072BF31F1BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{695889DA-7907-4FE2-8FC2-49889F97BAE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{695889DA-7907-4FE2-8FC2-49889F97BAE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{695889DA-7907-4FE2-8FC2-49889F97BAE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{695889DA-7907-4FE2-8FC2-49889F97BAE4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

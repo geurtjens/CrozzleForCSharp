@@ -89,7 +89,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private PlacementList ToPlacements()
+        private List<PlacementModel> ToPlacements()
         {
             switch (this.type)
             {
@@ -104,13 +104,13 @@ namespace ShapeMakerCSharp
                 case RectangleType.topRight:
                     return ToPlacementsFromTopRight();
                 default:
-                    return new PlacementList();
+                    return new List<PlacementModel>();
             }
         }
 
 
         /// converts `bottomLeft` rectangles to placements
-        private PlacementList ToPlacementsFromBottomLeft()
+        private List<PlacementModel> ToPlacementsFromBottomLeft()
         {
             var maxLeft = topLetterPos + 1;
             var maxUp = (int)(Math.Max(leftLetterPos, rightLetterPos));
@@ -143,7 +143,7 @@ namespace ShapeMakerCSharp
                 z: false,
                 l: rightLength);
 
-            var placements = new PlacementList { topPlacement, bottomPlacement, leftPlacement, rightPlacement };
+            var placements = new List<PlacementModel> { topPlacement, bottomPlacement, leftPlacement, rightPlacement };
 
             //placements.sort { $0.w< $1.w }
 
@@ -152,7 +152,7 @@ namespace ShapeMakerCSharp
 
 
         /// Converts `rectangles` to placements
-        private PlacementList ToPlacementsFromRectangle()
+        private List<PlacementModel> ToPlacementsFromRectangle()
         {
             var maxLeft = (int)(Math.Max(this.topLetterPos, this.bottomLetterPos));
             var maxUp = (int)(Math.Max(leftLetterPos, rightLetterPos));
@@ -185,7 +185,7 @@ namespace ShapeMakerCSharp
                 z: false,
                 l: rightLength);
 
-            var placements = new PlacementList { topPlacement, bottomPlacement, leftPlacement, rightPlacement };
+            var placements = new List<PlacementModel> { topPlacement, bottomPlacement, leftPlacement, rightPlacement };
 
             // placements.sort { $0.w < $1.w }
 
@@ -194,7 +194,7 @@ namespace ShapeMakerCSharp
 
 
         /// converts `topLeft` rectangles to placements
-        private PlacementList ToPlacementsFromTopLeft()
+        private List<PlacementModel> ToPlacementsFromTopLeft()
         {
             var maxLeft = bottomLetterPos;
             var maxUp = rightLetterPos + 1;
@@ -228,7 +228,7 @@ namespace ShapeMakerCSharp
                 z: false,
                 l: rightLength);
 
-            var placements = new PlacementList { topPlacement, bottomPlacement, leftPlacement, rightPlacement };
+            var placements = new List<PlacementModel> { topPlacement, bottomPlacement, leftPlacement, rightPlacement };
 
             //placements.sort { $0.w < $1.w }
 
@@ -237,7 +237,7 @@ namespace ShapeMakerCSharp
 
 
         /// converts `topRight` rectangles to placements
-        private PlacementList ToPlacementsFromTopRight()
+        private List<PlacementModel> ToPlacementsFromTopRight()
         {
             var maxLeft = (int)(Math.Max(topLetterPos, bottomLetterPos));
             var maxUp = leftLetterPos + 1;
@@ -270,7 +270,7 @@ namespace ShapeMakerCSharp
                 z: false,
                 l: rightLength);
 
-            var placements = new PlacementList { topPlacement, bottomPlacement, leftPlacement, rightPlacement };
+            var placements = new List<PlacementModel> { topPlacement, bottomPlacement, leftPlacement, rightPlacement };
 
             //placements.sort { $0.w < $1.w }
 

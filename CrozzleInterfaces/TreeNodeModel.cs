@@ -5,7 +5,7 @@ namespace CrozzleInterfaces
     {
         public readonly ShapeModel parentShape;
 
-        public readonly ShapeList childShapes;
+        public readonly List<ShapeModel> childShapes;
 
         public ShapeModel bestDescendant;
         //public var scoreMax: Int
@@ -17,7 +17,7 @@ namespace CrozzleInterfaces
 
         public bool isValid;
 
-        public TreeNodeModel(in ShapeModel parentShape, in ShapeList childShapes, in ShapeModel bestDescendant, int siblingCount, int shapesCreated)
+        public TreeNodeModel(in ShapeModel parentShape, in List<ShapeModel> childShapes, in ShapeModel bestDescendant, int siblingCount, int shapesCreated)
         {
             this.parentShape = parentShape;
             this.childShapes = childShapes;

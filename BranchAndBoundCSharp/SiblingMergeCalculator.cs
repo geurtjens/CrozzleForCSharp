@@ -55,11 +55,11 @@ namespace BranchAndBoundCSharp
         //}
 
 
-        public static ShapeList GetAllMatchingShapes(
+        public static List<ShapeModel> GetAllMatchingShapes(
             WordIndexModelV2 wordIndex,
             in ShapeModel sourceShape,
             int sourceShapeId,
-            in ShapeList searchShapes,
+            in List<ShapeModel> searchShapes,
             in WordList words,
             in MinScoreList scoresMin,
             int widthMax,
@@ -67,7 +67,7 @@ namespace BranchAndBoundCSharp
         {
             var bestShape = sourceShape;
             var newShapes = MergeCalculatorV2.ExecuteDifferentShapesSync(
-                sourceShapes: new ShapeList { sourceShape },
+                sourceShapes: new List<ShapeModel> { sourceShape },
                 searchShapes: searchShapes,
                 searchWordIndex: wordIndex,
                 sourceMax: 1,

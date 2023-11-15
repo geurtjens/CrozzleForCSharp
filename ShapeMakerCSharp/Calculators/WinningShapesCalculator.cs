@@ -5,13 +5,13 @@ namespace ShapeMakerCSharp
 {
     public class WinningShapesCalculator
     {
-        public static ShapeList execute(int gameId, in WordList words)
+        public static List<ShapeModel> execute(int gameId, in WordList words)
         {
             var unsorted = execute2(gameId, words);
-            return unsorted.SortAndSetHistory();
+            return ShapeList.SortAndSetHistory(unsorted);
         }
 
-        private static ShapeList execute2(int gameId, in WordList words)
+        private static List<ShapeModel> execute2(int gameId, in WordList words)
         {
             var end = words.Reversed();
             var len = words.Lengths();
@@ -226,11 +226,11 @@ namespace ShapeMakerCSharp
                 case 9605:
                     return Shapes_9605(words: words, end: end, len: len, letterIndex: letterIndex);
                 default:
-                    return new ShapeList();
+                    return new List<ShapeModel>();
             }
         }
 
-        private static ShapeList Shapes_8612(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_8612(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
             var edges = EdgeCalculator.Execute(
                 words: words,
@@ -284,7 +284,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        //private static ShapeList Shapes_8702(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        //private static List<ShapeModel> Shapes_8702(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         //{
         //    var pacman3x3_BottomRight = PacmanCalculator.BottomRight3x3(
         //        letterIndex: letterIndex,
@@ -356,7 +356,7 @@ namespace ShapeMakerCSharp
         //}
 
 
-        //private static ShapeList Shapes_8703(
+        //private static List<ShapeModel> Shapes_8703(
         //    in List<string> words,
         //    in List<string> end,
         //    in List<int> len,
@@ -431,7 +431,7 @@ namespace ShapeMakerCSharp
         //}
 
 
-        private static ShapeList Shapes_8704(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_8704(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
             var c2x3 = ClusterCalculator.C2x3(
                 letterIndex: letterIndex,
@@ -502,7 +502,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_8705(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_8705(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
             var c2x2 = ClusterCalculator.C2x2(
                 letterIndex: letterIndex,
@@ -580,7 +580,7 @@ namespace ShapeMakerCSharp
             return shapes;
         }
 
-        private static ShapeList Shapes_8710(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_8710(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
             var pacman3x3_TopLeft = PacmanCalculator.TopLeft3x3(
                 letterIndex: letterIndex,
@@ -669,7 +669,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_8711(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_8711(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
             var c2x2 = ClusterCalculator.C2x2(
                 letterIndex: letterIndex,
@@ -768,7 +768,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_8712(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_8712(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
             var c2x2 = ClusterCalculator.C2x2(
                 letterIndex: letterIndex,
@@ -857,7 +857,7 @@ namespace ShapeMakerCSharp
             return shapes;
         }
 
-        private static ShapeList Shapes_8802(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_8802(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
             var c2x2 = ClusterCalculator.C2x2(
                 letterIndex: letterIndex,
@@ -936,7 +936,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_8803(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_8803(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
             var pacman3x3_TopRight = PacmanCalculator.TopRight3x3(
                 letterIndex: letterIndex,
@@ -1013,7 +1013,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_8804(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_8804(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
 
             var c2x2 = ClusterCalculator.C2x2(
@@ -1065,7 +1065,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_8805(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_8805(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
 
             var c2x2 = ClusterCalculator.C2x2(
@@ -1119,7 +1119,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_8806(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_8806(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
 
             var c2x2 = ClusterCalculator.C2x2(
@@ -1175,7 +1175,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_8807(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_8807(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
 
             var edges = EdgeCalculator.Execute(
@@ -1222,7 +1222,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_8808(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_8808(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
 
             var c2x2 = ClusterCalculator.C2x2(
@@ -1301,7 +1301,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_8809(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_8809(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
 
             var c2x2 = ClusterCalculator.C2x2(
@@ -1382,7 +1382,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_8810(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_8810(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
 
             var c2x2 = ClusterCalculator.C2x2(
@@ -1430,7 +1430,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_8811(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_8811(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
 
             var c2x2 = ClusterCalculator.C2x2(
@@ -1532,7 +1532,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_8812(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_8812(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
 
             var pacman3x3_TopRight = PacmanCalculator.TopRight3x3(
@@ -1622,7 +1622,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_8902(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_8902(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
 
             var c2x3 = ClusterCalculator.C2x3(
@@ -1690,7 +1690,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_8903(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_8903(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
 
             var edges = EdgeCalculator.Execute(
@@ -1728,7 +1728,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_8904(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_8904(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
 
             var c2x3 = ClusterCalculator.C2x3(
@@ -1786,7 +1786,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_8905(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_8905(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
 
             var c2x3 = ClusterCalculator.C2x3(
@@ -1864,7 +1864,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_8906(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_8906(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
 
             var c2x2 = ClusterCalculator.C2x2(
@@ -1922,7 +1922,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_8907(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_8907(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
 
             var pacman3x3_BottomRight = PacmanCalculator.BottomRight3x3(
@@ -2001,7 +2001,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_8908(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_8908(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
 
             var c2x3 = ClusterCalculator.C2x3(
@@ -2060,7 +2060,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_8909(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_8909(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
 
             var c2x3 = ClusterCalculator.C2x3(
@@ -2140,7 +2140,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_8910(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_8910(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
 
             var c3x4 = ClusterCalculator.C3x4(
@@ -2209,7 +2209,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_8911(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_8911(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
 
             var pacman3x3_BottomRight = PacmanCalculator.BottomRight3x3(
@@ -2258,7 +2258,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_8912(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_8912(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
 
             var c2x2 = ClusterCalculator.C2x2(
@@ -2349,7 +2349,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9001(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9001(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
 
             var edges = EdgeCalculator.Execute(
@@ -2397,7 +2397,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9002(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9002(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
 
             var edges = EdgeCalculator.Execute(
@@ -2440,7 +2440,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9003(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9003(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
 
             var edges = EdgeCalculator.Execute(
@@ -2489,7 +2489,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9004(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9004(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
 
             var c2x2 = ClusterCalculator.C2x2(
@@ -2547,7 +2547,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9005(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9005(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
 
             var c2x2 = ClusterCalculator.C2x2(
@@ -2616,7 +2616,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9006(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9006(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
 
             var c2x2 = ClusterCalculator.C2x2(
@@ -2708,7 +2708,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9007(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9007(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
 
             var c2x3 = ClusterCalculator.C2x3(
@@ -2789,7 +2789,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9008(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9008(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
 
             var edges = EdgeCalculator.Execute(
@@ -2868,7 +2868,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9009(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9009(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
 
             var c2x2 = ClusterCalculator.C2x2(
@@ -2949,7 +2949,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9010(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9010(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
 
             var c2x3 = ClusterCalculator.C2x3(
@@ -3020,7 +3020,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9011(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9011(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
 
             var c2x3 = ClusterCalculator.C2x3(
@@ -3089,7 +3089,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9012(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9012(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
             var c2x2 = ClusterCalculator.C2x2(
                 letterIndex: letterIndex,
@@ -3149,7 +3149,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9101(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9101(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
             var c2x2 = ClusterCalculator.C2x2(
                 letterIndex: letterIndex,
@@ -3202,7 +3202,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9102(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9102(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
             var c2x3 = ClusterCalculator.C2x3(
                 letterIndex: letterIndex,
@@ -3256,7 +3256,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9103(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9103(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
             var c2x2 = ClusterCalculator.C2x2(
                 letterIndex: letterIndex,
@@ -3317,7 +3317,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9104(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9104(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
             var c2x4 = ClusterCalculator.C2x4(
                 letterIndex: letterIndex,
@@ -3369,7 +3369,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9105(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9105(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
             var c2x4 = ClusterCalculator.C2x4(
                 letterIndex: letterIndex,
@@ -3431,7 +3431,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9106(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9106(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
             var edges = EdgeCalculator.Execute(
                 words: words,
@@ -3464,7 +3464,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9107(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9107(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
             var c2x3 = ClusterCalculator.C2x3(
                 letterIndex: letterIndex,
@@ -3534,7 +3534,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9108(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9108(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
             var c2x3 = ClusterCalculator.C2x3(
                 letterIndex: letterIndex,
@@ -3595,7 +3595,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9109(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9109(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
             var edges = EdgeCalculator.Execute(
                 words: words,
@@ -3668,7 +3668,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9110(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9110(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
             var c2x2 = ClusterCalculator.C2x2(
                 letterIndex: letterIndex,
@@ -3719,7 +3719,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9111(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9111(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
             var edges = EdgeCalculator.Execute(
                 words: words,
@@ -3762,7 +3762,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9112(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9112(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
             var c2x2 = ClusterCalculator.C2x2(
                 letterIndex: letterIndex,
@@ -3804,7 +3804,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9201(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9201(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
             var edges = EdgeCalculator.Execute(
                 words: words,
@@ -3846,7 +3846,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9202(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9202(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
             var edges = EdgeCalculator.Execute(
                 words: words,
@@ -3888,7 +3888,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9203(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9203(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
             var c2x4 = ClusterCalculator.C2x4(
                 letterIndex: letterIndex,
@@ -3935,7 +3935,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9204(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9204(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
 
             var edges = EdgeCalculator.Execute(
@@ -3976,7 +3976,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9206(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9206(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
 
             var c2x3 = ClusterCalculator.C2x3(
@@ -4045,7 +4045,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9207(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9207(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
 
             var edges = EdgeCalculator.Execute(
@@ -4094,7 +4094,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9208(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9208(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
 
             var edges = EdgeCalculator.Execute(
@@ -4154,7 +4154,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9209(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9209(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
             var pacman3x3_BottomRight = PacmanCalculator.BottomRight3x3(
                 letterIndex: letterIndex,
@@ -4207,7 +4207,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9210(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9210(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
 
             var c2x3 = ClusterCalculator.C2x3(
@@ -4275,7 +4275,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9211(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9211(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
 
             var c2x2 = ClusterCalculator.C2x2(
@@ -4344,7 +4344,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9212(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9212(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
 
             var c2x2 = ClusterCalculator.C2x2(
@@ -4414,7 +4414,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9301(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9301(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
 
             var edges = EdgeCalculator.Execute(
@@ -4474,7 +4474,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9302(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9302(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
 
             var edges = EdgeCalculator.Execute(
@@ -4511,7 +4511,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9303(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9303(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
 
             var c2x2 = ClusterCalculator.C2x2(
@@ -4601,7 +4601,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9304(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9304(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
 
             var c2x2 = ClusterCalculator.C2x2(
@@ -4690,7 +4690,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9305(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9305(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
 
             var c2x3 = ClusterCalculator.C2x3(
@@ -4749,7 +4749,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9306(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9306(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
 
             var edges = EdgeCalculator.Execute(
@@ -4809,7 +4809,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9307(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9307(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
 
             var edges = EdgeCalculator.Execute(
@@ -4867,7 +4867,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9308(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9308(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
 
             var c2x2 = ClusterCalculator.C2x2(
@@ -4925,7 +4925,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9309(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9309(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
 
             var c2x2 = ClusterCalculator.C2x2(
@@ -4994,7 +4994,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9310(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9310(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
 
             var edges = EdgeCalculator.Execute(
@@ -5042,7 +5042,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9311(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9311(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
 
             var edges = EdgeCalculator.Execute(
@@ -5112,7 +5112,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9312(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9312(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
 
             var c2x3 = ClusterCalculator.C2x3(
@@ -5160,7 +5160,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9401(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9401(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
 
             var edges = EdgeCalculator.Execute(
@@ -5199,7 +5199,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9402(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9402(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
 
             var c2x3 = ClusterCalculator.C2x3(
@@ -5289,7 +5289,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9403(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9403(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
 
             var edges = EdgeCalculator.Execute(
@@ -5369,7 +5369,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9404(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9404(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
 
             var edges = EdgeCalculator.Execute(
@@ -5440,7 +5440,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9406(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9406(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
 
             var edges = EdgeCalculator.Execute(
@@ -5511,7 +5511,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9407(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9407(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
 
             var edges = EdgeCalculator.Execute(
@@ -5595,7 +5595,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9408(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9408(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
 
             var c2x2 = ClusterCalculator.C2x2(
@@ -5664,7 +5664,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9409(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9409(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
 
             var edges = EdgeCalculator.Execute(
@@ -5734,7 +5734,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9410(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9410(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
 
             var pacman3x3_BottomRight = PacmanCalculator.BottomRight3x3(
@@ -5783,7 +5783,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9411(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9411(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
 
             var c2x4 = ClusterCalculator.C2x4(
@@ -5842,7 +5842,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9412(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9412(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
 
             var c2x2 = ClusterCalculator.C2x2(
@@ -5932,7 +5932,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9501(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9501(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
 
             var c2x6 = ClusterCalculator.C2x6(
@@ -6012,7 +6012,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9502(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9502(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
 
             var edges = EdgeCalculator.Execute(
@@ -6082,7 +6082,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9503(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9503(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
 
             var c2x2 = ClusterCalculator.C2x2(
@@ -6163,7 +6163,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9504(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9504(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
 
             var c2x2 = ClusterCalculator.C2x2(
@@ -6262,7 +6262,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9505(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9505(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
             var c2x3 = ClusterCalculator.C2x3(
                 letterIndex: letterIndex,
@@ -6344,7 +6344,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9506(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9506(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
             var c2x2 = ClusterCalculator.C2x2(
                 letterIndex: letterIndex,
@@ -6433,7 +6433,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9507(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9507(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
             var c2x2 = ClusterCalculator.C2x2(
                 letterIndex: letterIndex,
@@ -6484,7 +6484,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9508(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9508(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
             var c2x2 = ClusterCalculator.C2x2(
                 letterIndex: letterIndex,
@@ -6545,7 +6545,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9509(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9509(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
             var c2x2 = ClusterCalculator.C2x2(
                 letterIndex: letterIndex,
@@ -6606,7 +6606,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9510(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9510(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
             var edges = EdgeCalculator.Execute(
                 words: words,
@@ -6678,7 +6678,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9511(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9511(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
             var pacman3x3_BottomRight = PacmanCalculator.BottomRight3x3(
                 letterIndex: letterIndex,
@@ -6766,7 +6766,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9512(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9512(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
             var c2x2 = ClusterCalculator.C2x2(
                 letterIndex: letterIndex,
@@ -6818,7 +6818,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9601(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9601(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
             var c2x2 = ClusterCalculator.C2x2(
                 letterIndex: letterIndex,
@@ -6869,7 +6869,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9602(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9602(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
             var c2x2 = ClusterCalculator.C2x2(
                 letterIndex: letterIndex,
@@ -6929,7 +6929,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9603(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9603(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
             var edges = EdgeCalculator.Execute(
                 words: words,
@@ -6970,7 +6970,7 @@ namespace ShapeMakerCSharp
             return shapes;
         }
 
-        private static ShapeList Shapes_9604(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9604(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
             var c2x2 = ClusterCalculator.C2x2(
                 letterIndex: letterIndex,
@@ -7030,7 +7030,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private static ShapeList Shapes_9605(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
+        private static List<ShapeModel> Shapes_9605(in WordList words, in WordList end, in List<int> len, LetterIndexModel letterIndex)
         {
             var edges = EdgeCalculator.Execute(
                 words: words,

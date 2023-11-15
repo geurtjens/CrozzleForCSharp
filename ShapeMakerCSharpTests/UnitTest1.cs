@@ -55,7 +55,7 @@ public class UnitTest1
     [Fact]
     public void Test2()
     {
-        var placements = new PlacementList {
+        var placements = new List<PlacementModel> {
             new PlacementModel(w: 23, x: 2, y: 2, z: true, l: 5),
             new PlacementModel(w: 9, x: 0, y: 3, z: true, l: 4),
             new PlacementModel(w: 8, x: 1, y: 4, z: true, l: 6),

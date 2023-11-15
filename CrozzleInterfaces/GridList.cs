@@ -65,7 +65,7 @@ namespace CrozzleInterfaces
             return shape;
         }
 
-        private PlacementList fromTextToPlacements(WordList words)
+        private List<PlacementModel> fromTextToPlacements(WordList words)
         {
             var placements = fromTextToPlacementsHorizontal(words: words);
 
@@ -78,9 +78,9 @@ namespace CrozzleInterfaces
 
 
 
-        private PlacementList fromTextToPlacementsHorizontal(WordList words)
+        private List<PlacementModel> fromTextToPlacementsHorizontal(WordList words)
         {
-            var result = new PlacementList();
+            var result = new List<PlacementModel>();
 
             if (this.Count == 0)
             {
@@ -123,7 +123,7 @@ namespace CrozzleInterfaces
                             {
                                 Console.WriteLine($"{word} not found in wordlist");
                                 // It is invalid as we cannot find this word
-                                return new PlacementList();
+                                return new List<PlacementModel>();
                             }
                             else
                             {
@@ -140,7 +140,7 @@ namespace CrozzleInterfaces
                         else if (current == '.')
                         {
                             // this is invalid as a word cannot end in a space
-                            return new PlacementList();
+                            return new List<PlacementModel>();
                         }
                     }
                 }
@@ -151,9 +151,9 @@ namespace CrozzleInterfaces
         }
 
 
-        private PlacementList fromTextToPlacementsVertical(WordList words)
+        private List<PlacementModel> fromTextToPlacementsVertical(WordList words)
         {
-            var result = new PlacementList();
+            var result = new List<PlacementModel>();
 
             int height = this.Count;
             if (height == 0)
@@ -197,7 +197,7 @@ namespace CrozzleInterfaces
                             {
                                 Console.WriteLine($"{word} not found in wordlist");
                                 // It is invalid as we cannot find this word
-                                return new PlacementList();
+                                return new List<PlacementModel>();
                             }
                             else
                             {
@@ -215,7 +215,7 @@ namespace CrozzleInterfaces
                         else if (current == '.')
                         {
                             // this is invalid as a word cannot end in a space
-                            return new PlacementList();
+                            return new List<PlacementModel>();
                         }
                     }
                 }

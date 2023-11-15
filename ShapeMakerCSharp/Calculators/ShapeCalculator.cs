@@ -10,10 +10,10 @@ namespace ShapeMakerCSharp
 {
     public class ShapeCalculator
     {
-        public static ShapeList CombineShapes(List<List<ShapeModel>> listOfShapeList)
+        public static List<ShapeModel> CombineShapes(in List<List<ShapeModel>> listOfShapeLists)
         {
-            var result = new ShapeList();
-            foreach (var item in listOfShapeList)
+            var result = new List<ShapeModel>();
+            foreach (var item in listOfShapeLists)
             {
                 result.AddRange(item);
             }

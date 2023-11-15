@@ -26,17 +26,17 @@ namespace ShapeMakerCSharp
             int winningScore = WinningWordList.findHighScore(gameId);
 
             /// Returns `searchShapes` which have `mergeHistories`
-            ShapeList searchShapes = WinningShapesCalculator.execute(gameId, words);
+            List<ShapeModel> searchShapes = WinningShapesCalculator.execute(gameId, words);
 
-            ShapeList winningShapes = WinningGameCalculator.execute(gameId, words);
+            List<ShapeModel> winningShapes = WinningGameCalculator.execute(gameId, words);
 
 
-            winningShapes.setMergeHistories(searchShapes);
+            ShapeList.setMergeHistories(winningShapes, searchShapes);
 
             
             //let winningShapeIds = ShapeCalculator.getLastMergeHistoryShapeId(shapes: winningShapes)
 
-            var startingShapes = new ShapeList();
+            var startingShapes = new List<ShapeModel>();
         
             if (rootWidth > 0)
             {

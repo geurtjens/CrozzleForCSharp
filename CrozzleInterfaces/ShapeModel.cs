@@ -8,36 +8,36 @@ namespace CrozzleInterfaces
 		public readonly byte width;
 		public readonly byte height;
 		public readonly ushort score;
-		public readonly PlacementList placements;
+		public readonly List<PlacementModel> placements;
         public readonly string wordSequence;
 
         public List<int> history;
         public bool isValid;
 
-		public ShapeModel(ushort score, byte width, byte height, in PlacementList placements)
+		public ShapeModel(ushort score, byte width, byte height, in List<PlacementModel> placements)
 		{
             this.isValid = true;
             this.score = score;
             this.history = new List<int>();
 
 
-            var sortedPlacements = placements.SortByWord();
+            var sortedPlacements = PlacementList.SortByWord(placements);
 
-            if (sortedPlacements.ShouldBeFlipped())
+            if (PlacementList.ShouldBeFlipped(sortedPlacements))
             {
                 // We are flipping the shape as it makes GetWordSequence for all shapes same orientation
-                var flippedPlacements = sortedPlacements.Flip();
+                var flippedPlacements = PlacementList.Flip(sortedPlacements);
 
                 this.width = height;
                 this.height = width;
                 this.placements = flippedPlacements;
-                this.wordSequence = flippedPlacements.GetWordSequence();
+                this.wordSequence = PlacementList.GetWordSequence(flippedPlacements);
             }
             else {
                 this.width = width;
                 this.height = height;
                 this.placements = sortedPlacements;
-                this.wordSequence = sortedPlacements.GetWordSequence();
+                this.wordSequence = PlacementList.GetWordSequence(sortedPlacements);
             }            
 		}
 
@@ -151,7 +151,7 @@ namespace CrozzleInterfaces
         /// rotate a shape and return a rotated shape which means width becomes height and all placements are rearranged
         public ShapeModel Flip()
         {
-            var placements = new PlacementList();
+            var placements = new List<PlacementModel>();
 
             foreach (var p in this.placements)
             {
@@ -241,9 +241,9 @@ namespace CrozzleInterfaces
             return result;
         }
 
-        public WordIdSet GetWordIds()
+        public HashSet<int> GetWordIds()
         {
-            return (WordIdSet) this.placements.GetWords();
+            return PlacementList.GetWords(this.placements);
         }
     }
 }

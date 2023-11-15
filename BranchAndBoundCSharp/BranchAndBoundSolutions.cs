@@ -35,7 +35,7 @@ namespace BranchAndBoundCSharp
         public void allShapesThatCanBeSolvedWithoutGuides()
         {
 
-            GameIdList depth1_width1 = new GameIdList { 8703, 8802, 8808, 9104, 9212, 9306, 9406 };
+            GameIdList depth1_width1 = new GameIdList { 8802, 8808, 9104, 9212, 9306, 9406 };
             GameIdList depth2_width1 = new GameIdList { 8612, 8809, 9002, 9109, 9201, 9211, 9303, 9310, 9312 };
             GameIdList depth3_width1 = new GameIdList { 8705, 8712, 8811, 9007, 9008, 9103, 9110, 9111, 9206, 9302,
                                                         9308, 9309, 9404, 9502 };
@@ -275,7 +275,7 @@ namespace BranchAndBoundCSharp
         public static void allShapesThatCanBeSolved()
         {
 
-            GameIdList depth1_width1 = new GameIdList { 8703, 8802, 8808, 9104, 9212, 9306, 9406 };
+            GameIdList depth1_width1 = new GameIdList { 8802, 8808, 9104, 9212, 9306, 9406 };
             GameIdList depth2_width1 = new GameIdList { 8612, 8809, 9002, 9109, 9201, 9211, 9303, 9310, 9312 };
             GameIdList depth3_width1 = new GameIdList { 8705, 8712, 8811, 9007, 9008, 9103, 9110, 9111, 9206, 9302, 9308, 9309, 9404, 9502 };
             GameIdList depth1_width2 = new GameIdList { 8710, 9311 };

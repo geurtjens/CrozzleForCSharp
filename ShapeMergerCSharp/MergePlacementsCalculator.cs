@@ -12,16 +12,16 @@ namespace ShapeMergerCSharp
         /// <param name="sourcePlacements"></param>
         /// <param name="searchPlacements"></param>
         /// <returns></returns>
-        public static PlacementList Execute(
-            in PlacementList sourcePlacements,
-            in PlacementList searchPlacements)
+        public static List<PlacementModel> Execute(
+            in List<PlacementModel> sourcePlacements,
+            in List<PlacementModel> searchPlacements)
         {
             // First we find the common placement
             Tuple<int, int> commonWordPositions = FindFirstCommonPosition(sourcePlacements, searchPlacements);
 
             if (commonWordPositions.Item1 == -1)
             {
-                return new PlacementList();
+                return new List<PlacementModel>();
             }
 
             int commonSourceId = commonWordPositions.Item1;
@@ -45,9 +45,9 @@ namespace ShapeMergerCSharp
         /// <param name="commonSearchId">Position in `searchPlacements` that has a common word</param>
         /// <param name="flip">Does this common word have an opposite orientation, like one is horizontal and other is vertical</param>
         /// <returns></returns>
-        public static PlacementList Execute(
-            PlacementList sourcePlacements,
-            PlacementList searchPlacements,
+        public static List<PlacementModel> Execute(
+            List<PlacementModel> sourcePlacements,
+            List<PlacementModel> searchPlacements,
             int commonSourceId,
             int commonSearchId,
             bool flip)
@@ -88,18 +88,18 @@ namespace ShapeMergerCSharp
         }
 
 
-        public static HashSet<int> FindCommonWords(in PlacementList sourcePlacements, in PlacementList searchPlacements)
+        public static HashSet<int> FindCommonWords(in List<PlacementModel> sourcePlacements, in List<PlacementModel> searchPlacements)
         {
-            var sourceWords = sourcePlacements.GetWords();
-            var searchWords = searchPlacements.GetWords();
+            var sourceWords = PlacementList.GetWords(sourcePlacements);
+            var searchWords = PlacementList.GetWords(searchPlacements);
             var excludedWords = sourceWords.Intersect(searchWords).ToHashSet();
             return excludedWords;
         }
         
 
         private static Tuple<int,int> FindFirstCommonPosition(
-            in PlacementList sourcePlacements,
-            in PlacementList searchPlacements)
+            in List<PlacementModel> sourcePlacements,
+            in List<PlacementModel> searchPlacements)
         {
             // First we find the common placement
             for (int i = 0; i < sourcePlacements.Count; i++)
@@ -118,12 +118,12 @@ namespace ShapeMergerCSharp
 
 
         /// change where we are placing each word, adjusting them so two placements can fall together in the one grid
-        private static PlacementList ApplyOffsets(
-            in PlacementList placements,
+        private static List<PlacementModel> ApplyOffsets(
+            in List<PlacementModel> placements,
             int xOffset,
             int yOffset)
         {
-            var newPlacements = new PlacementList();
+            var newPlacements = new List<PlacementModel>();
             foreach (var j in placements)
             {
                 var newPlacement = new PlacementModel(
@@ -137,13 +137,13 @@ namespace ShapeMergerCSharp
             return newPlacements;
         }
 
-        private static PlacementList ApplyOffsetsForSearch(
-            in PlacementList placements,
+        private static List<PlacementModel> ApplyOffsetsForSearch(
+            in List<PlacementModel> placements,
             int xOffset,
             int yOffset,
             in HashSet<int> excludedWords)
         {
-            var newPlacements = new PlacementList();
+            var newPlacements = new List<PlacementModel>();
             foreach (var j in placements)
             {
                 if (excludedWords.Contains(j.w) == false)
@@ -163,13 +163,13 @@ namespace ShapeMergerCSharp
 
 
 
-        private static PlacementList ApplyOffsetsForSearchWithFlip(
-            in PlacementList placements,
+        private static List<PlacementModel> ApplyOffsetsForSearchWithFlip(
+            in List<PlacementModel> placements,
             int xOffset,
             int yOffset,
             HashSet<int> excludedWords)
         {
-            var newPlacements = new PlacementList();
+            var newPlacements = new List<PlacementModel>();
             foreach (var j in placements)
             {
                 if (excludedWords.Contains(j.w) == false)

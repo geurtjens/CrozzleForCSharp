@@ -1,12 +1,12 @@
 ﻿using System;
 namespace CrozzleInterfaces
 {
-	public class ShapeListList : List<ShapeList>
+	public class ShapeListList
 	{
-        public ShapeList CombineShapes()
+        public List<ShapeModel> CombineShapes(in List<List<ShapeModel>> shapesList)
         {
-            var result = new ShapeList();
-            foreach (var item in this)
+            var result = new List<ShapeModel>();
+            foreach (var item in shapesList)
             {
                 result.AddRange(item);
             }

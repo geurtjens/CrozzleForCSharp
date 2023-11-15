@@ -7,8 +7,8 @@ namespace ShapeMergerCSharp
     public class StartingTreeNodeCalculator
     {
         public static TreeNodeList Execute(
-            in ShapeList startingShapes,
-            in ShapeList searchShapes,
+            in List<ShapeModel> startingShapes,
+            in List<ShapeModel> searchShapes,
             in WordList words,
             in MinScoreList scoresMin,
             int widthMax,
@@ -23,7 +23,7 @@ namespace ShapeMergerCSharp
             {
 
                 var childShapes = MergeCalculatorV2.ExecuteDifferentShapesAsync(
-                    sourceShapes: new ShapeList { startingShapes[startingShapeId]},
+                    sourceShapes: new List<ShapeModel> { startingShapes[startingShapeId]},
                     searchShapes: searchShapes,
                     searchWordIndex: searchWordIndex,
                     sourceMax: 1,
@@ -33,7 +33,7 @@ namespace ShapeMergerCSharp
                     widthMax: widthMax,
                     heightMax: heightMax);
 
-                childShapes = (ShapeList)childShapes.RemoveDuplicates().OrderBy(e=> e.score).ToList();
+                childShapes = ShapeList.RemoveDuplicates(childShapes).OrderBy(e=> e.score).ToList();
                 
                 var treeNode = new TreeNodeModel(
                     parentShape: startingShapes[startingShapeId],

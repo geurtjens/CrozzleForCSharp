@@ -11,19 +11,16 @@ namespace CrozzleInterfaces
 
         public MinScoreList()
         {
-            // If we are not being specific then lets assume 40 shapes
-            // and all of them have no specific min score
-            this.AddRange(new MinScoreList {
-                0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                0, 0, 0, 0, 0, 0, 0, 0, 0, 0 });
+
         }
 
         public MinScoreList(int gameId)
         {
             switch (gameId)
             {
+                case 0:
+                    this.AddRange(new MinScoreList { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 });
+                    break;
                 case 8612:
                     this.AddRange(new MinScoreList { 0, 0, 22, 36, 52, 94, 130, 158, 148, 198, 224, 258, 284, 350, 368, 394, 440, 456, 474, 510, 524, 542, 568, 650, 668, 694, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 });
                     break;

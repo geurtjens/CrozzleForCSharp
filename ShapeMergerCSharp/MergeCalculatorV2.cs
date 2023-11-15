@@ -9,8 +9,8 @@ namespace ShapeMergerCSharp
 
 
         // Execute same shape requires that we avoid repeats and so we go through each one
-        public static ShapeList ExecuteSameShapeAsync(
-            in ShapeList shapes,
+        public static List<ShapeModel> ExecuteSameShapeAsync(
+            in List<ShapeModel> shapes,
             in WordIndexModelV2 wordIndex,
             int sourceMax,
             int searchMax,
@@ -133,12 +133,12 @@ namespace ShapeMergerCSharp
 
 
 
-            return new ShapeList(new List<ShapeList> { a0, a1, a2, a3, a4, a5, a6, a7, a8, a9 });
+            return new List<List<ShapeModel>> { a0, a1, a2, a3, a4, a5, a6, a7, a8, a9 }.SelectMany(e => e).ToList();
         }
 
-        public static ShapeList ExecuteDifferentShapesAsync(
-            in ShapeList sourceShapes,
-            in ShapeList searchShapes,
+        public static List<ShapeModel> ExecuteDifferentShapesAsync(
+            in List<ShapeModel> sourceShapes,
+            in List<ShapeModel> searchShapes,
             in WordIndexModelV2 searchWordIndex,
             int sourceMax,
             int searchMax,
@@ -279,7 +279,7 @@ namespace ShapeMergerCSharp
                  widthMax: widthMax,
                  heightMax: heightMax);
 
-            return new ShapeList(new List<ShapeList> { a0, a1, a2, a3, a4, a5, a6, a7, a8, a9 });
+            return new List<List<ShapeModel>> { a0, a1, a2, a3, a4, a5, a6, a7, a8, a9 }.SelectMany(e => e).ToList();
         }
 
 
@@ -294,9 +294,9 @@ namespace ShapeMergerCSharp
         }
 
 
-        public static ShapeList ExecuteSameShapeOneAsync(
+        public static List<ShapeModel> ExecuteSameShapeOneAsync(
         int zeroToNine,
-        in ShapeList sourceShapes,
+        in List<ShapeModel> sourceShapes,
         in WordIndexModelV2 wordIndex,
         int sourceMax,
         int searchMax,
@@ -306,7 +306,7 @@ namespace ShapeMergerCSharp
         int heightMax)
 
         {
-            var result = new ShapeList();
+            var result = new List<ShapeModel>();
 
             // The difference is that each cpu works on 0,10,20 .. or 1, 11, 21 and so we divide the task
             for (int sourceShapeId = zeroToNine; sourceShapeId < sourceMax; sourceShapeId = sourceShapeId + 10)
@@ -331,10 +331,10 @@ namespace ShapeMergerCSharp
         }
 
 
-        public static ShapeList ExecuteDifferentShapesAsyncOne(
+        public static List<ShapeModel> ExecuteDifferentShapesAsyncOne(
                 int zeroToNine,
-                in ShapeList sourceShapes,
-                in ShapeList searchShapes,
+                in List<ShapeModel> sourceShapes,
+                in List<ShapeModel> searchShapes,
                 in WordIndexModelV2 wordIndex,
                 int sourceMax,
                 int searchMax,
@@ -343,7 +343,7 @@ namespace ShapeMergerCSharp
                 int widthMax,
                 int heightMax)
         {
-            var result = new ShapeList();
+            var result = new List<ShapeModel>();
 
 
             for (int sourceShapeId = zeroToNine; sourceShapeId < sourceMax; sourceShapeId = sourceShapeId + 10)
@@ -367,8 +367,8 @@ namespace ShapeMergerCSharp
 
 
         // NonAsync version of merging shapes together.  So it runs on only one core.
-        public static ShapeList ExecuteSameShapeSync(
-            in ShapeList sourceShapes,
+        public static List<ShapeModel> ExecuteSameShapeSync(
+            in List<ShapeModel> sourceShapes,
                 in WordIndexModelV2 searchWordIndex,
                 int searchMax,
                 WordList words,
@@ -376,7 +376,7 @@ namespace ShapeMergerCSharp
                 int widthMax,
                 int heightMax)
         {
-            var result = new ShapeList();
+            var result = new List<ShapeModel>();
 
 
             for (int sourceShapeId = 0; sourceShapeId < sourceShapes.Count; sourceShapeId++)
@@ -398,9 +398,9 @@ namespace ShapeMergerCSharp
         }
 
 
-        public static ShapeList ExecuteDifferentShapesSync(
-    in ShapeList sourceShapes,
-        in ShapeList searchShapes,
+        public static List<ShapeModel> ExecuteDifferentShapesSync(
+    in List<ShapeModel> sourceShapes,
+        in List<ShapeModel> searchShapes,
         in WordIndexModelV2 searchWordIndex,
         int sourceMax,
         int searchMax,
@@ -409,7 +409,7 @@ namespace ShapeMergerCSharp
         int widthMax,
         int heightMax)
         {
-            var result = new ShapeList();
+            var result = new List<ShapeModel>();
 
             for (int sourceShapeId = 0; sourceShapeId < sourceMax; sourceShapeId++)
             {
@@ -434,10 +434,10 @@ namespace ShapeMergerCSharp
 
 
 
-        public static ShapeList ExecuteSameShapeOnce(
+        public static List<ShapeModel> ExecuteSameShapeOnce(
             int sourceShapeId,
             in ShapeModel sourceShape,
-            in ShapeList searchShapes,
+            in List<ShapeModel> searchShapes,
             in WordIndexModelV2 wordIndex,
             int searchMax,
             in WordList words,
@@ -459,7 +459,7 @@ namespace ShapeMergerCSharp
                                                      searchShapes: searchShapes);
 
 
-            var shapeList = GetShapesFromInstructions(
+            List<ShapeModel> shapes = GetShapesFromInstructions(
                 instructions: instructions,
                 sourceShape: sourceShape,
                 searchShapes: searchShapes,
@@ -470,14 +470,14 @@ namespace ShapeMergerCSharp
 
 
 
-            return shapeList;
+            return shapes;
         }
 
 
-        public static ShapeList ExecuteDifferentShapesOne(
+        public static List<ShapeModel> ExecuteDifferentShapesOne(
             in ShapeModel sourceShape,
             int sourceShapeId,
-            in ShapeList searchShapes,
+            in List<ShapeModel> searchShapes,
             WordIndexModelV2 searchWordIndex,
             int searchMax,
             WordList words,
@@ -507,7 +507,7 @@ namespace ShapeMergerCSharp
 
 
 
-            var shapeList = GetShapesFromInstructions(
+            List<ShapeModel> shapes = GetShapesFromInstructions(
                 instructions: instructions,
                 sourceShape: sourceShape,
                 searchShapes: searchShapes,
@@ -517,20 +517,20 @@ namespace ShapeMergerCSharp
                 heightMax: heightMax);
 
 
-            return shapeList;
+            return shapes;
         }
 
 
-        public static ShapeList GetShapesFromInstructions(
+        public static List<ShapeModel> GetShapesFromInstructions(
             in List<MergeInstructionModel> instructions,
             in ShapeModel sourceShape,
-            in ShapeList searchShapes,
+            in List<ShapeModel> searchShapes,
             in WordList words,
             in MinScoreList scoresMin,
             int widthMax,
             int heightMax)
         {
-            var shapeList = new ShapeList();
+            List<ShapeModel> shapes = new List<ShapeModel>();
 
 
             foreach (var instruction in instructions)
@@ -567,8 +567,8 @@ namespace ShapeMergerCSharp
                     if (potentialPlacements.Count > 0)
                     {
 
-                        var potentialWidth = potentialPlacements.width();
-                        var potentialHeight = potentialPlacements.height();
+                        var potentialWidth = PlacementList.width(potentialPlacements);
+                        var potentialHeight = PlacementList.height(potentialPlacements);
 
                         if ((calcWidth == potentialWidth && calcHeight == potentialHeight) || (calcWidth == potentialHeight && calcHeight == potentialWidth)) { }
                         else
@@ -592,7 +592,7 @@ namespace ShapeMergerCSharp
                             Console.WriteLine("// searchShape\n");
                             Console.WriteLine($"/*\n{searchShape.ToTextDebug(words: words)})\n*/");
                             Console.WriteLine("// result\n");
-                            Console.WriteLine($"/*\n{new ShapeModel(0, (byte)potentialPlacements.width(), (byte)potentialPlacements.height(), potentialPlacements).ToTextDebug(words: words)}\n*/");
+                            Console.WriteLine($"/*\n{new ShapeModel(0, (byte)PlacementList.width(potentialPlacements), (byte)PlacementList.height(potentialPlacements), potentialPlacements).ToTextDebug(words: words)}\n*/");
                             Console.WriteLine($"potentialWH::({potentialWidth},{potentialHeight}), calcWH:({calcWidth}, {calcHeight})");
 
 
@@ -633,7 +633,7 @@ namespace ShapeMergerCSharp
                                 {
 
                                     validShape.history = ShapeModel.createMergeHistory(sourceShapeHistory: sourceShape.history, searchShapeHistory: searchShape.history);
-                                    shapeList.Add(validShape);
+                                    shapes.Add(validShape);
                                 }
                             }
                         }
@@ -644,7 +644,7 @@ namespace ShapeMergerCSharp
                     }
                 }
             }
-            return shapeList;
+            return shapes;
         }
 
 
@@ -684,8 +684,8 @@ namespace ShapeMergerCSharp
                 if (potentialPlacements.Count > 0)
                 {
 
-                    var potentialWidth = potentialPlacements.width();
-                    var potentialHeight = potentialPlacements.height();
+                    var potentialWidth = PlacementList.width(potentialPlacements);
+                    var potentialHeight = PlacementList.height(potentialPlacements);
 
                     if ((calcWidth == potentialWidth && calcHeight == potentialHeight) || (calcWidth == potentialHeight && calcHeight == potentialWidth)) { }
                     else
@@ -709,7 +709,7 @@ namespace ShapeMergerCSharp
                         Console.WriteLine("// searchShape\n");
                         Console.WriteLine($"/*\n{searchShape.ToTextDebug(words: words)}\n*/");
                         Console.WriteLine("// result\n");
-                        Console.WriteLine($"/*\n{new ShapeModel(0, (byte)potentialPlacements.width(), (byte)potentialPlacements.height(), potentialPlacements).ToTextDebug(words: words)}\n*/");
+                        Console.WriteLine($"/*\n{new ShapeModel(0, (byte)PlacementList.width(potentialPlacements), (byte)PlacementList.height(potentialPlacements), potentialPlacements).ToTextDebug(words: words)}\n*/");
                         Console.WriteLine($"potentialWH::({potentialWidth},{potentialHeight}), calcWH:({calcWidth}, {calcHeight})");
 
 

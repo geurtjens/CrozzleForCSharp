@@ -15,7 +15,7 @@ namespace ShapeMergerCSharp
 
         /// convert the shape to a valid shape or return null.  We might preprocess a shape but not yet know its valid so we use this to make sure
         public static ShapeModel? ToValidShape(
-            in PlacementList placements,
+            in List<PlacementModel> placements,
             int width,
             int height,
             in WordList words)

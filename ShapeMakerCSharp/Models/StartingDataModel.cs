@@ -5,11 +5,11 @@ namespace ShapeMakerCSharp
 {
 	public readonly record struct StartingDataModel
 	{
-		public readonly ShapeList searchShapes;
+		public readonly List<ShapeModel> searchShapes;
 
-		public readonly ShapeList winningShapes;
+		public readonly List<ShapeModel> winningShapes;
 
-        public readonly ShapeList startingShapes;
+        public readonly List<ShapeModel> startingShapes;
 
         public readonly WordList words;
 
@@ -23,9 +23,9 @@ namespace ShapeMakerCSharp
 
 
 		public StartingDataModel(
-			in ShapeList searchShapes,
-			in ShapeList winningShapes,
-			in ShapeList startingShapes,
+			in List<ShapeModel> searchShapes,
+			in List<ShapeModel> winningShapes,
+			in List<ShapeModel> startingShapes,
 			in WordList words,
 			in MinScoreList scoresMin,
 			int maxWidth,

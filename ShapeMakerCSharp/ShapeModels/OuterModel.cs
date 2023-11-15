@@ -170,7 +170,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private PlacementList ToPlacements()
+        private List<PlacementModel> ToPlacements()
         {
             int interlockWidth = (int)wordsVertical.Count;
             int maxUp = 1;
@@ -187,7 +187,7 @@ namespace ShapeMakerCSharp
 
             int maxLeft = maxLeftCalculate();
 
-            var placements = new PlacementList();
+            var placements = new List<PlacementModel>();
             for (int i = 0; i < wordsHorizontal.Count; i++)
             {
                 var pattern = patternHorizontal[i];

@@ -139,7 +139,7 @@ namespace BranchAndBoundCSharp
                 rootWidth: 0, // Meaning give us all of them
                 useGuidedScores: false);
 
-            ShapeList winningShapes = startingDataModel.startingShapes;
+            List<ShapeModel> winningShapes = startingDataModel.startingShapes;
 
             for (int i = 0; i < winningShapes.Count; i++)
             {

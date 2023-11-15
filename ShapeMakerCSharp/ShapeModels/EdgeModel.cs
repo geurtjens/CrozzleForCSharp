@@ -49,7 +49,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        private PlacementList ToPlacements()
+        private List<PlacementModel> ToPlacements()
         {
 
             var horizontal = new PlacementModel(
@@ -66,7 +66,7 @@ namespace ShapeMakerCSharp
                 z: false,
                 l: verticalLength
             );
-            return new PlacementList { horizontal, vertical };
+            return new List<PlacementModel> { horizontal, vertical };
         }
     }
 }

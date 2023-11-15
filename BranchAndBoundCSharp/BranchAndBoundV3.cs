@@ -10,7 +10,7 @@ namespace BranchAndBoundCSharp;
 public class BranchAndBoundV3
 {
 
-    public static Tuple<int, ShapeList, WordIndexModelV2, TreeNodeList, MinScoreList, int, int>
+    public static Tuple<int, List<ShapeModel>, WordIndexModelV2, TreeNodeList, MinScoreList, int, int>
         GetStartingData(int gameId, WordList words, int rootWidth, bool useGuidedScores)
     {
         GameModel game = GameList.FindGame(gameId);
@@ -42,7 +42,7 @@ public class BranchAndBoundV3
 
 
 
-        return new Tuple<int, ShapeList, WordIndexModelV2, TreeNodeList, MinScoreList, int, int>(
+        return new Tuple<int, List<ShapeModel>, WordIndexModelV2, TreeNodeList, MinScoreList, int, int>(
             winningScore, startingDataModel.searchShapes, wordIndex, startingTreeNodes, startingDataModel.scoresMin, widthMax, heightMax);
     }
 
@@ -250,7 +250,7 @@ public class BranchAndBoundV3
         return bestShape;
     }
 
-    public static ShapeList ExecuteLeaf(
+    public static List<ShapeModel> ExecuteLeaf(
         int gameId,
         in WordList words,
         int lookaheadDepth,
@@ -259,7 +259,7 @@ public class BranchAndBoundV3
         int rootWidth,
         int winningScore,
         bool useGuidedScores,
-        in ShapeList searchShapes,
+        in List<ShapeModel> searchShapes,
         in WordIndexModelV2 wordIndex,
         int widthMax,
         int heightMax,
@@ -300,15 +300,15 @@ public class BranchAndBoundV3
             }
             else
             {
-                var childShapes = new ShapeList();
+                List<ShapeModel> childShapes = new List<ShapeModel>();
                 foreach (var treeNode in previousNodes)
                 {
                     childShapes.AddRange(treeNode.childShapes);
                 }
 
-                childShapes.RemoveDuplicates();
+                childShapes = ShapeList.RemoveDuplicates(childShapes);
 
-                var bestShapes = new ShapeList();
+                var bestShapes = new List<ShapeModel>();
 
                 for (var childShapeId = 0; childShapeId < childShapes.Count && bestShapes.Count < beamWidth; childShapeId++)
                 {
@@ -347,8 +347,8 @@ public class BranchAndBoundV3
 
             if (treeNodes.Count > 0)
             {
-                var bestShapes = (ShapeList)treeNodes.Select(treeNode => treeNode.parentShape).ToList();
-                bestShapes = bestShapes.RemoveDuplicates();
+                var bestShapes = treeNodes.Select(treeNode => treeNode.parentShape).ToList();
+                bestShapes = ShapeList.RemoveDuplicates(bestShapes);
 
                 foreach (var shape in bestShapes)
                 {
@@ -368,14 +368,14 @@ public class BranchAndBoundV3
             }
         }
 
-        return new ShapeList();
+        return new List<ShapeModel>();
     }
 
     public static Tuple<TreeNodeList, int> ExecuteLookaheadAndBeamAsync(
         int lookaheadDepth,
         int beamWidth,
         in TreeNodeList treeNodes,
-        in ShapeList searchShapes,
+        in List<ShapeModel> searchShapes,
         in WordList words,
         int widthMax,
         int heightMax,
@@ -408,7 +408,7 @@ public class BranchAndBoundV3
 
     public static TreeNodeList ExecuteTreeNode(
         in TreeNodeModel treeNode,
-        in ShapeList searchShapes,
+        in List<ShapeModel> searchShapes,
         in WordList words,
         int widthMax,
         int heightMax,
@@ -417,14 +417,14 @@ public class BranchAndBoundV3
     {
         var result = new TreeNodeList();
 
-        var leafShapesAddedToBecomeSiblings = treeNode.childShapes.getLastMergeHistoryShapeId();
-        var wordDifferenceBetweenParentAndSibling = treeNode.childShapes.getWordDifferences(treeNode.parentShape);
+        var leafShapesAddedToBecomeSiblings = ShapeList.getLastMergeHistoryShapeId(treeNode.childShapes);
+        var wordDifferenceBetweenParentAndSibling = ShapeList.getWordDifferences(treeNode.childShapes, treeNode.parentShape);
 
         var processedQueue = new HashSet<string>();
 
         for (var siblingId = 0; siblingId < leafShapesAddedToBecomeSiblings.Count; siblingId++)
         {
-            var resultForShape = new ShapeList();
+            var resultForShape = new List<ShapeModel>();
 
             var sourceShapeId = leafShapesAddedToBecomeSiblings[siblingId];
             var sourceShape = treeNode.childShapes[siblingId];
@@ -494,14 +494,14 @@ public class BranchAndBoundV3
         return result;
     }
 
-    public static ShapeList GetLeafShapes(
+    public static List<ShapeModel> GetLeafShapes(
 
         in WordIndexModelV2 wordIndex,
         in IntList siblingWords,
         in IntList shapesToExclude,
         in ShapeModel sourceShape,
         int sourceShapeId,
-        in ShapeList searchShapes,
+        in List<ShapeModel> searchShapes,
         in WordList words,
         in MinScoreList scoresMin,
         int widthMax,
@@ -518,7 +518,7 @@ public class BranchAndBoundV3
     public static TreeNodeList ExecuteAsync(
         int zeroToNine,
         in TreeNodeList treeNodes,
-        in ShapeList searchShapes,
+        in List<ShapeModel> searchShapes,
         in WordList words,
         int widthMax,
         int heightMax,
@@ -546,7 +546,7 @@ public class BranchAndBoundV3
 
     public static TreeNodeList ExecuteLevelInParallelAsync(
         in TreeNodeList treeNodes,
-        in ShapeList searchShapes,
+        in List<ShapeModel> searchShapes,
         in WordList words,
         int widthMax,
         int heightMax,
@@ -576,7 +576,7 @@ public class BranchAndBoundV3
     public static Tuple<ShapeModel, int> GetMaxScoreOfTreeNodeAsync(
         int lookaheadDepth,
         in TreeNodeModel treeNode,
-        in ShapeList searchShapes,
+        in List<ShapeModel> searchShapes,
         in WordList words,
         int widthMax,
         int heightMax,
@@ -615,7 +615,7 @@ public class BranchAndBoundV3
 
     public static TreeNodeList ExecuteAll(
     in TreeNodeList treeNodes,
-    in ShapeList searchShapes,
+    in List<ShapeModel> searchShapes,
     in WordList words,
     int widthMax,
     int heightMax,

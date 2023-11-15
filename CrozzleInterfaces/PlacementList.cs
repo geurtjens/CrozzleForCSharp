@@ -3,12 +3,13 @@ using CrozzleInterfaces;
 
 namespace CrozzleInterfaces
 {
-	public class PlacementList : List<PlacementModel>
+	public class PlacementList
 	{
-		public PlacementList Flip()
+
+		public static List<PlacementModel> Flip(in List<PlacementModel> placements)
 		{
-            var flippedPlacements = new PlacementList();
-            foreach (var p in this)
+            var flippedPlacements = new List<PlacementModel>();
+            foreach (var p in placements)
             {
                 flippedPlacements.Add(new PlacementModel(p.w, p.y, p.x, !p.z, p.l));
             }
@@ -16,29 +17,32 @@ namespace CrozzleInterfaces
         }
 
 
-        public HashSet<int> GetWords()
+        public static HashSet<int> GetWords(in List<PlacementModel> placements)
         {
             var result = new HashSet<int>();
-            foreach(var p in this)
+            foreach(var p in placements)
             {
                 result.Add(p.w);
             }
             return result;
         }
 
-        public PlacementList SortByWord()
+
+        public static List<PlacementModel> SortByWord(in List<PlacementModel> placements)
         {
-            return (PlacementList)this.OrderBy(o => o.w).ToList();
+            return placements.OrderBy(o => o.w).ToList();
         }
 
-        public bool ShouldBeFlipped()
+
+        public static bool ShouldBeFlipped(in List<PlacementModel> placements)
         {
-            return (this[0].z == false);
+            return (placements[0].z == false);
         }
 
-        public string GetWordSequence()
+
+        public static string GetWordSequence(in List<PlacementModel> placements)
         {
-            int wordCount = this.Count;
+            int wordCount = placements.Count;
 
             var result = "";
             for (int i = 0; i < wordCount; i++)
@@ -48,18 +52,18 @@ namespace CrozzleInterfaces
                 {
                     result += ",";
                 }
-                result += $"{this[i].w},";
+                result += $"{placements[i].w},";
             }
 
             for (int i = 0; i < wordCount; i++)
             {
-                result += $"{this[i].x},";
+                result += $"{placements[i].x},";
             }
 
             for (int i = 0; i < wordCount; i++)
             {
 
-                result += $"{this[i].y}";
+                result += $"{placements[i].y}";
             }
 
             for (int i = 0; i < wordCount; i++)
@@ -68,7 +72,7 @@ namespace CrozzleInterfaces
                 {
                     result += ",";
                 }
-                if (this[i].z == true)
+                if (placements[i].z == true)
                 {
                     result += "1";
                 }
@@ -80,11 +84,12 @@ namespace CrozzleInterfaces
             return result;
         }
 
+
         /// calculates `width` from `placements`
-        public int width()
+        public static int width(in List<PlacementModel> placements)
         {
             var maxWidth = 0;
-            foreach (PlacementModel placement in this)
+            foreach (PlacementModel placement in placements)
             {
                 if (placement.z)
                 {
@@ -107,11 +112,10 @@ namespace CrozzleInterfaces
         }
 
 
-        /// calculates `height` from `placements`
-        public int height()
+        public static int height(in List<PlacementModel> placements)
         {
             var maxHeight = 0;
-            foreach (PlacementModel placement in this)
+            foreach (PlacementModel placement in placements)
             {
                 if (placement.z == false) {
                     var end = (int)(placement.y + placement.l);
@@ -131,4 +135,3 @@ namespace CrozzleInterfaces
         }
     }
 }
-

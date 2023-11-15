@@ -128,7 +128,7 @@ namespace ShapeMakerCSharp
             return new ShapeModel(score, width, height, ToPlacements());
         }
 
-        private PlacementList ToPlacements()
+        private List<PlacementModel> ToPlacements()
         {
             switch (pacmanType)
             {
@@ -139,12 +139,12 @@ namespace ShapeMakerCSharp
                 case PacmanType.topLeft:
                     return topLeftPlacements();
                 default:
-                    return new PlacementList();
+                    return new List<PlacementModel>();
             }
         }
 
 
-        private PlacementList bottomRightPlacements()
+        private List<PlacementModel> bottomRightPlacements()
         {
             var interlockWidth = (byte)(this.wordsVertical.Count);
             var interlockHeight = (byte)(this.wordsHorizontal.Count);
@@ -179,7 +179,7 @@ namespace ShapeMakerCSharp
             var y4 = (byte)(maxUp - interlockWidth);
             var y5 = (byte)(maxUp - lengthsVertical[2] - 1);
 
-            var placements = new PlacementList {
+            var placements = new List<PlacementModel> {
                 new PlacementModel(w: (byte)wordsHorizontal[0], x: x0, y: y0, z: true, l: lengthsHorizontal[0]),
                 new PlacementModel(w: (byte)wordsHorizontal[1], x: x1, y: y1, z: true, l: lengthsHorizontal[1]),
                 new PlacementModel(w: (byte)wordsHorizontal[2], x: x2, y: y2, z: true, l: lengthsHorizontal[2]),
@@ -192,7 +192,7 @@ namespace ShapeMakerCSharp
             return placements;
         }
 
-        private PlacementList topLeftPlacements()
+        private List<PlacementModel> topLeftPlacements()
         {
             var interlockWidth = (byte)wordsVertical.Count;
             var interlockHeight = (byte)wordsHorizontal.Count;
@@ -229,7 +229,7 @@ namespace ShapeMakerCSharp
             var y4 = (byte)0;
             var y5 = (byte)maxUp;
 
-            var placements = new PlacementList {
+            var placements = new List<PlacementModel> {
                 new PlacementModel(w: (byte)wordsHorizontal[0], x: x0, y: y0, z: true, l: lengthsHorizontal[0]),
                 new PlacementModel(w: (byte)wordsHorizontal[1], x: x1, y: y1, z: true, l: lengthsHorizontal[1]),
                 new PlacementModel(w: (byte)wordsHorizontal[2], x: x2, y: y2, z: true, l: lengthsHorizontal[2]),
@@ -242,7 +242,7 @@ namespace ShapeMakerCSharp
             return placements;
         }
 
-        private PlacementList topRightPlacements()
+        private List<PlacementModel> topRightPlacements()
         {
             var interlockWidth = (byte)wordsVertical.Count;
             var interlockHeight = (byte)wordsHorizontal.Count;
@@ -280,7 +280,7 @@ namespace ShapeMakerCSharp
             var y4 = (byte)0;
             var y5 = (byte)(maxUp + 1);
 
-            var placements = new PlacementList {
+            var placements = new List<PlacementModel> {
                 new PlacementModel(w: (byte)wordsHorizontal[0], x: x0, y: y0, z: true, l: lengthsHorizontal[0]),
                 new PlacementModel(w: (byte)wordsHorizontal[1], x: x1, y: y1, z: true, l: lengthsHorizontal[1]),
                 new PlacementModel(w: (byte)wordsHorizontal[2], x: x2, y: y2, z: true, l: lengthsHorizontal[2]),

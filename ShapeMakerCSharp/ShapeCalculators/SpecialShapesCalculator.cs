@@ -18,7 +18,7 @@ namespace ShapeMakerCSharp
             var hl = h.LengthsInBytes();
             var vl = v.LengthsInBytes();
 
-            var placements = new PlacementList {
+            var placements = new List<PlacementModel> {
                 new PlacementModel(w: hid[0], x: 3, y: 3, z: true, l: hl[0]),
                 new PlacementModel(w: hid[1], x: 4, y: 4, z: true, l: hl[1]),
                 new PlacementModel(w: hid[2], x: 0, y: 5, z: true, l: hl[2]),
@@ -46,7 +46,7 @@ namespace ShapeMakerCSharp
             var hl = h.LengthsInBytes();
             var vl = v.LengthsInBytes();
 
-            var placements = new PlacementList {
+            var placements = new List<PlacementModel> {
                 new PlacementModel(w: hid[0], x: 4, y: 2, z: true, l: hl[0]),
                 new PlacementModel(w: hid[1], x: 3, y: 3, z: true, l: hl[1]),
                 new PlacementModel(w: hid[2], x: 5, y: 4, z: true, l: hl[2]),
@@ -73,7 +73,7 @@ namespace ShapeMakerCSharp
             var hl = h.LengthsInBytes();
             var vl = v.LengthsInBytes();
 
-            var placements = new PlacementList {
+            var placements = new List<PlacementModel> {
                 new PlacementModel(w: hid[0], x: 0, y: 5, z: true, l: hl[0]),
                 new PlacementModel(w: hid[1], x: 1, y: 6, z: true, l: hl[1]),
                 new PlacementModel(w: hid[2], x: 0, y: 7, z: true, l: hl[2]),
@@ -100,7 +100,7 @@ namespace ShapeMakerCSharp
             var hl = h.LengthsInBytes();
             var vl = v.LengthsInBytes();
 
-            var placements = new PlacementList {
+            var placements = new List<PlacementModel> {
                 new PlacementModel(w: hid[0], x: 0, y: 3, z: true, l: hl[0]),
                 new PlacementModel(w: hid[1], x: 5, y: 4, z: true, l: hl[1]),
                 new PlacementModel(w: hid[2], x: 4, y: 5, z: true, l: hl[2]),
@@ -128,7 +128,7 @@ namespace ShapeMakerCSharp
             var hl = h.LengthsInBytes();
             var vl = v.LengthsInBytes();
 
-            var placements = new PlacementList {
+            var placements = new List<PlacementModel> {
                 new PlacementModel(w: hid[0], x: 2, y: 2, z: true, l: hl[0]),
                 new PlacementModel(w: hid[1], x: 0, y: 3, z: true, l: hl[1]),
                 new PlacementModel(w: hid[2], x: 2, y: 4, z: true, l: hl[2]),
@@ -156,7 +156,7 @@ namespace ShapeMakerCSharp
             var hl = h.LengthsInBytes();
             var vl = v.LengthsInBytes();
 
-            var placements = new PlacementList {
+            var placements = new List<PlacementModel> {
                 new PlacementModel(w: hid[0], x: 2, y: 3, z: true, l: hl[0]),
                 new PlacementModel(w: hid[1], x: 1, y: 4, z: true, l: hl[1]),
                 new PlacementModel(w: hid[2], x: 0, y: 5, z: true, l: hl[2]),
@@ -185,7 +185,7 @@ namespace ShapeMakerCSharp
             var hl = h.LengthsInBytes();
             var vl = v.LengthsInBytes();
 
-            var placements = new PlacementList {
+            var placements = new List<PlacementModel> {
                 new PlacementModel(w: hid[0], x: 0, y: 6, z: true, l: hl[0]),
                 new PlacementModel(w: hid[1], x: 6, y: 7, z: true, l: hl[1]),
                 new PlacementModel(w: hid[2], x: 4, y: 8, z: true, l: hl[2]),
@@ -214,7 +214,7 @@ namespace ShapeMakerCSharp
             var hl = h.LengthsInBytes();
             var vl = v.LengthsInBytes();
 
-            var placements = new PlacementList {
+            var placements = new List<PlacementModel> {
                 new PlacementModel(w: hid[0], x: 2, y: 3, z: true, l: hl[0]),
                 new PlacementModel(w: hid[1], x: 0, y: 4, z: true, l: hl[1]),
                 new PlacementModel(w: hid[2], x: 2, y: 5, z: true, l: hl[2]),
@@ -243,7 +243,7 @@ namespace ShapeMakerCSharp
             var hl = h.LengthsInBytes();
             var vl = v.LengthsInBytes();
 
-            var placements = new PlacementList {
+            var placements = new List<PlacementModel> {
                 new PlacementModel(w: hid[0], x: 1, y: 2, z: true, l: hl[0]),
                 new PlacementModel(w: hid[1], x: 3, y: 3, z: true, l: hl[1]),
                 new PlacementModel(w: hid[2], x: 3, y: 4, z: true, l: hl[2]),
@@ -271,7 +271,7 @@ namespace ShapeMakerCSharp
             var hl = h.LengthsInBytes();
             var vl = v.LengthsInBytes();
 
-            var placements = new PlacementList {
+            var placements = new List<PlacementModel> {
                 new PlacementModel(w: hid[0], x: 1, y: 2, z: true, l: hl[0]),
                 new PlacementModel(w: hid[1], x: 3, y: 3, z: true, l: hl[1]),
                 new PlacementModel(w: hid[2], x: 0, y: 4, z: true, l: hl[2]),
@@ -298,7 +298,7 @@ namespace ShapeMakerCSharp
             var hl = h.LengthsInBytes();
             var vl = v.LengthsInBytes();
 
-            var placements = new PlacementList {
+            var placements = new List<PlacementModel> {
                 new PlacementModel(w: hid[0], x: 4, y: 5, z: true, l: hl[0]),
                 new PlacementModel(w: hid[1], x: 5, y: 6, z: true, l: hl[1]),
                 new PlacementModel(w: hid[2], x: 0, y: 7, z: true, l: hl[2]),

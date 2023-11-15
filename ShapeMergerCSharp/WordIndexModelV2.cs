@@ -226,7 +226,7 @@ namespace ShapeMergerCSharp
 
 
 
-        public WordIndexModelV2(in ShapeList shapes, int wordCount)
+        public WordIndexModelV2(in List<ShapeModel> shapes, int wordCount)
         {
             var indexTemp = new List<List<int>>();
             for (int i = 0; i < wordCount; i++)
