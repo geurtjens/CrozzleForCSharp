@@ -3,7 +3,7 @@ using CrozzleInterfaces;
 
 namespace ShapeMakerCSharp
 {
-    public readonly record struct OuterModel : IShapeModel
+    public readonly record struct OuterModel
     {
         public readonly List<int> wordsHorizontal;
         public readonly List<int> wordsVertical;
@@ -18,65 +18,6 @@ namespace ShapeMakerCSharp
         public readonly ushort score;
         public readonly byte width;
         public readonly byte height;
-
-
-
-
-        private int maxLeftCalculate()
-        {
-
-            int maxLeft = 0;
-
-            for (int i = 0; i < this.wordsHorizontal.Count; i++)
-            {
-                int length = (int)lengthsHorizontal[i] - (int)wordsVertical.Count;
-
-                if (patternHorizontal[i] == ClusterPosition.leading && length > maxLeft)
-                {
-                    maxLeft = length;
-                }
-            }
-            return maxLeft;
-        }
-
-        private int widthCalculation(
-            List<int> words,
-            List<ClusterPosition> patterns,
-            int wordCountOther,
-            List<byte> len)
-        {
-
-            int maxLeft = 0;
-            int maxRight = 0;
-            for (int i = 0; i < words.Count; i++)
-            {
-                int length = (int)len[i] - wordCountOther;
-                var pattern = patterns[i];
-
-                switch (pattern)
-                {
-                    case ClusterPosition.leading:
-                        if (length > maxLeft)
-                        {
-                            maxLeft = length;
-                        }
-                        break;
-                    case ClusterPosition.trailing:
-                        if (length > maxRight)
-                        {
-                            maxRight = length;
-                        }
-                        break;
-                    case ClusterPosition.middle:
-                        break;
-                    case ClusterPosition.outer:
-                        break; // THIS IS NOT GOING TO WORK
-                }
-            }
-            int width = maxLeft + maxRight + wordCountOther + 2;
-            return width;
-        }
-
 
         public OuterModel(
             in List<int> wordsHorizontal,
@@ -107,9 +48,6 @@ namespace ShapeMakerCSharp
             }
 
             // lets find the outer
-
-
-
             this.lengthsHorizontal = _lengthsHorizontal;
             this.lengthsVertical = _lengthsVertical;
 
@@ -142,7 +80,6 @@ namespace ShapeMakerCSharp
 
             this.score = (ushort)score;
 
-
             int _height = _lengthsVertical[outerLocation] + 2;
             if (outerPos[0] == -1)
             {
@@ -169,31 +106,76 @@ namespace ShapeMakerCSharp
             }
         }
 
+
         public ShapeModel ToShape()
         {
-            var placements = ToPlacements().OrderBy(o => o.w).ToList();
-
-            var shape = new ShapeModel(score, width, height, placements);
-
-            if (shape.placements[0].z == false)
-            {
-                return ShapeCalculator.Flip(shape);
-            }
-            else
-            {
-                return shape;
-            }
+            return new ShapeModel(score, width, height, ToPlacements());
         }
 
 
-        public List<PlacementModel> ToPlacements()
+        private int maxLeftCalculate()
         {
 
-            int interlockWidth = (int)this.wordsVertical.Count;
+            int maxLeft = 0;
+
+            for (int i = 0; i < wordsHorizontal.Count; i++)
+            {
+                int length = lengthsHorizontal[i] - wordsVertical.Count;
+
+                if (patternHorizontal[i] == ClusterPosition.leading && length > maxLeft)
+                {
+                    maxLeft = length;
+                }
+            }
+            return maxLeft;
+        }
 
 
+        private int widthCalculation(
+            List<int> words,
+            List<ClusterPosition> patterns,
+            int wordCountOther,
+            List<byte> len)
+        {
+            int maxLeft = 0;
+            int maxRight = 0;
+
+            for (int i = 0; i < words.Count; i++)
+            {
+                int length = (int)len[i] - wordCountOther;
+                var pattern = patterns[i];
+
+                switch (pattern)
+                {
+                    case ClusterPosition.leading:
+                        if (length > maxLeft)
+                        {
+                            maxLeft = length;
+                        }
+                        break;
+                    case ClusterPosition.trailing:
+                        if (length > maxRight)
+                        {
+                            maxRight = length;
+                        }
+                        break;
+                    case ClusterPosition.middle:
+                        break;
+                    case ClusterPosition.outer:
+                        break; // THIS IS NOT GOING TO WORK
+                }
+            }
+            int width = maxLeft + maxRight + wordCountOther + 2;
+            return width;
+        }
+
+
+        private PlacementList ToPlacements()
+        {
+            int interlockWidth = (int)wordsVertical.Count;
             int maxUp = 1;
-            foreach (var item in this.outerPos)
+
+            foreach (var item in outerPos)
             {
                 if (item != -1)
                 {
@@ -205,11 +187,11 @@ namespace ShapeMakerCSharp
 
             int maxLeft = maxLeftCalculate();
 
-            var placements = new List<PlacementModel>();
+            var placements = new PlacementList();
             for (int i = 0; i < wordsHorizontal.Count; i++)
             {
                 var pattern = patternHorizontal[i];
-                int length = (int)lengthsHorizontal[i] - interlockWidth;
+                int length = lengthsHorizontal[i] - interlockWidth;
                 int y = maxUp + i + 1;
                 int wordId = wordsHorizontal[i];
                 if (pattern == ClusterPosition.leading)
@@ -225,19 +207,17 @@ namespace ShapeMakerCSharp
             }
 
             // the outer is the one at the top and the middle is the one starting at maxUp
-
             int outerLocation = 0;
-            //var middleLocation = 1
-            if (this.outerPos[0] == -1)
+            
+            if (outerPos[0] == -1)
             {
                 outerLocation = 1;
-                //middleLocation = 0
             }
 
-            int w0 = (byte)this.wordsVertical[0];
-            int w1 = (byte)this.wordsVertical[1];
-            int len0 = (byte)this.lengthsVertical[0];
-            int len1 = (byte)this.lengthsVertical[1];
+            int w0 = (byte)wordsVertical[0];
+            int w1 = (byte)wordsVertical[1];
+            int len0 = (byte)lengthsVertical[0];
+            int len1 = (byte)lengthsVertical[1];
 
             if (outerLocation == 0)
             {
@@ -256,7 +236,6 @@ namespace ShapeMakerCSharp
                 placements.Add(outerPlacement);
             }
 
-            //placements.sort { $0.w < $1.w }
             return placements;
         }
 

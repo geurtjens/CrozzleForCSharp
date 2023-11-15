@@ -46,14 +46,14 @@ namespace ShapeMakerCSharp
         }
 
         public static List<ShapeModel> Execute(
-            in List<string> words,
+            in WordList words,
             int scoreMin,
             int widthMax,
             int heightMax)
         {
             var letterIndex = new LetterIndexModel(words);
-            var end = WordCalculator.Reverse(words);
-            var len = WordCalculator.Lengths(words);
+            var end = words.Reversed();
+            var len = words.Lengths();
 
             var c2x3 = C2x3(letterIndex, words, end, len, scoreMin, widthMax, heightMax);
             var c2x4 = C2x4(letterIndex, words, end, len, scoreMin, widthMax, heightMax);
@@ -176,7 +176,6 @@ namespace ShapeMakerCSharp
                                                     var left3Words = letterIndex.find(words[_middle1][2]);
                                                     foreach (var left3 in left3Words)
                                                     {
-
                                                         if (left3.end == 1 && //end[left3.id][1] == words[_middle1][2] &&
                                                             len[left3.id] >= interlockWidth &&
                                                             end[left3.id][0] == words[_outer2][outer2Pos + 2] &&
@@ -185,8 +184,7 @@ namespace ShapeMakerCSharp
                                                             left3.id != left1.id &&
                                                             left3.id != _middle1)
                                                         {
-
-                                                            var cluster = new OuterModel(
+                                                            var outer = new OuterModel(
                                                                 new List<int> { left1.id, right2.id, left3.id },
                                                                 new List<int> { _middle1, _outer2 },
                                                                 new List<ClusterPosition> { ClusterPosition.leading, ClusterPosition.trailing, ClusterPosition.leading },
@@ -196,9 +194,9 @@ namespace ShapeMakerCSharp
                                                                 len,
                                                                 new List<int> { -1, outer2Pos });
 
-                                                            if (cluster.isValid(scoreMin, widthMax, heightMax))
+                                                            if (outer.isValid(scoreMin, widthMax, heightMax))
                                                             {
-                                                                result.Add(cluster.ToShape());
+                                                                result.Add(outer.ToShape());
                                                             }
                                                         }
                                                     }

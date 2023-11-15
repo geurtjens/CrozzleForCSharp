@@ -47,16 +47,16 @@ namespace ShapeMakerCSharp
 
 
         public static List<ShapeModel> Execute(
-            in List<string> words,
+            in WordList words,
             int scoreMin,
             int widthMax,
             int heightMax) {
 
-            var len = WordCalculator.Lengths(words);
+            var len = words.Lengths();
 
             var letterIndex = new LetterIndexModel(words);
 
-            var end = WordCalculator.Reverse(words);
+            var end = words.Reversed();
 
 
             var topRight3x3 = TopRight3x3(letterIndex, words, end, len, scoreMin, widthMax, heightMax);
@@ -85,7 +85,6 @@ namespace ShapeMakerCSharp
         int widthMax,
         int heightMax)
     {
-
         int interlockWidth = 3;
         int interlockHeight = 3;
         /*
@@ -105,37 +104,26 @@ namespace ShapeMakerCSharp
 
         for (int _left1 = 0; _left1 < wordCount; _left1++)
         {
-
             if (len[_left1] >= interlockWidth)
             {
-
-                //print("left1:\(words[_left1]), interlock: \(end[_left1][1])")
                 var down1Words = letterIndex.find(end[_left1][1]);
                 foreach (var down1 in down1Words)
                 {
-
                     if (down1.start == 0 && //words[_down1][0] == end[_left1][1])
                         len[down1.id] >= interlockHeight &&
                         down1.id != _left1)
                     {
-
-                        //print("down1:\(words[down1.id])")
-                        //print("left1:\(words[_left1]), interlock: \(end[_left1][0])")
                         var up2Words = letterIndex.find(end[_left1][0]);
                         foreach (var up2 in up2Words)
                         {
-
                             if (up2.end == 2 && //end[_up2][2] == end[_left1][0])
                                 len[up2.id] >= interlockHeight &&
                                 up2.id != down1.id &&
                                 up2.id != _left1)
                             {
-
-                                //print("up2:\(words[up2.id]), interlock: \(end[up2.id][1])")
                                 var right2Words = letterIndex.find(end[up2.id][1]);
                                 foreach (var right2 in right2Words)
                                 {
-
                                     if (right2.start == 1 && //words[_right2][1] == end[_up2][1])
                                         len[right2.id] >= interlockWidth &&
                                         words[right2.id][0] == words[down1.id][1] &&
@@ -143,12 +131,9 @@ namespace ShapeMakerCSharp
                                         right2.id != down1.id &&
                                         right2.id != _left1)
                                     {
-
-                                        //print("right2:\(words[right2.id]), interlock: \(words[right2.id][2])")
                                         var down3Words = letterIndex.find(words[right2.id][2]);
                                         foreach (var down3 in down3Words)
                                         {
-
                                             if (down3.start == 0 && //words[_down3][0] == words[_right2][2]
                                                 len[down3.id] >= interlockHeight &&
                                                 down3.id != right2.id &&
@@ -156,12 +141,9 @@ namespace ShapeMakerCSharp
                                                 down3.id != down1.id &&
                                                 down3.id != _left1)
                                             {
-
-                                                //print("down3:\(words[down3.id]), interlock: \(words[down3.id][1])")
                                                 var left3Words = letterIndex.find(words[down3.id][1]);
                                                 foreach (var left3 in left3Words)
                                                 {
-
                                                     if (left3.end == 0 && //end[_left3][0] == words[_down3][1]
                                                         len[left3.id] >= interlockWidth &&
                                                         end[left3.id][1] == end[up2.id][0] &&
@@ -172,9 +154,6 @@ namespace ShapeMakerCSharp
                                                         left3.id != right2.id &&
                                                         left3.id != _left1)
                                                     {
-
-                                                        //print("left3:\(words[left3.id])")
-
                                                         var pacman = new PacmanModel(
                                                             PacmanType.topRight,
                                                             new List<int> { _left1, right2.id, left3.id},
@@ -183,9 +162,10 @@ namespace ShapeMakerCSharp
                                                             new List<ClusterPosition> { ClusterPosition.trailing, ClusterPosition.leading, ClusterPosition.trailing},
                                                             words, end, len);
 
-                                                    if (pacman.isValid(scoreMin, widthMax, heightMax))
-                                                    {
-                                                        result.Add(pacman.ToShape());
+                                                        if (pacman.isValid(scoreMin, widthMax, heightMax))
+                                                        {
+                                                            result.Add(pacman.ToShape());
+                                                        }
                                                     }
                                                 }
                                             }
@@ -198,9 +178,8 @@ namespace ShapeMakerCSharp
                 }
             }
         }
+        return result;
     }
-    return result;
-}
 
 public static List<ShapeModel> BottomRight3x3(
     in LetterIndexModel letterIndex,

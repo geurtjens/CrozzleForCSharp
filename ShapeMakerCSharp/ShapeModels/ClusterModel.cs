@@ -3,7 +3,7 @@ using CrozzleInterfaces;
 
 namespace ShapeMakerCSharp
 {
-    public readonly record struct ClusterModel : IShapeModel
+    public readonly record struct ClusterModel
     {
         public readonly List<int> wordsHorizontal;
         public readonly List<int> wordsVertical;
@@ -72,23 +72,8 @@ namespace ShapeMakerCSharp
 
         public ShapeModel ToShape()
         {
-            var placements = ToPlacements().OrderBy(o => o.w).ToList();
-
-            var shape = new ShapeModel(score, width, height, placements);
-
-            if (shape.placements[0].z == false)
-            {
-                return ShapeCalculator.Flip(shape);
-            }
-            else
-            {
-                return shape;
-            }
+            return new ShapeModel(score, width, height, ToPlacements());
         }
-
-
-
-
 
 
         public bool isValid(int scoreMin, int widthMax, int heightMax)
@@ -108,15 +93,15 @@ namespace ShapeMakerCSharp
         }
 
 
-        public byte widthCalculation(
+        private byte widthCalculation(
             in List<int> words,
             in List<ClusterPosition> patterns,
             int wordCountOther,
             in List<byte> len)
         {
-
             int maxLeft = 0;
             int maxRight = 0;
+
             for (int i = 0; i < words.Count; i++)
             {
                 int length = (int)len[i] - wordCountOther;
@@ -181,7 +166,7 @@ namespace ShapeMakerCSharp
         }
 
 
-        public List<PlacementModel> ToPlacements()
+        private PlacementList ToPlacements()
         {
             var interlockWidth = wordsVertical.Count;
             var interlockHeight = wordsHorizontal.Count;
@@ -189,7 +174,7 @@ namespace ShapeMakerCSharp
             var maxLeft = maxLeftCalculate();
             var maxUp = maxUpCalculate();
 
-            var placements = new List<PlacementModel>();
+            var placements = new PlacementList();
 
             for (int i = 0; i < wordsHorizontal.Count; i++)
             {
@@ -229,10 +214,6 @@ namespace ShapeMakerCSharp
             //placements.sort { $0.w < $1.w}
             return placements;
         }
-
-
-
-
 
     }
 }

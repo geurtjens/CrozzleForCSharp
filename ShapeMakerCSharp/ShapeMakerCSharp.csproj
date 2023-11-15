@@ -12,7 +12,6 @@
     <None Remove="..\.editorconfig" />
     <None Remove="ShapeCalculators\" />
     <None Remove="ShapeModels\" />
-    <None Remove="Interfaces\" />
     <None Remove="Calculators\" />
   </ItemGroup>
   <ItemGroup>
@@ -20,7 +19,6 @@
     <Folder Include="Enums\" />
     <Folder Include="ShapeCalculators\" />
     <Folder Include="ShapeModels\" />
-    <Folder Include="Interfaces\" />
     <Folder Include="Calculators\" />
   </ItemGroup>
   <ItemGroup>

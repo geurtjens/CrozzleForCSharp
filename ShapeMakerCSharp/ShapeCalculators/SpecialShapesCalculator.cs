@@ -7,18 +7,18 @@ namespace ShapeMakerCSharp
 	public class SpecialShapesCalculator
 	{
         // These shape values come from /Users/michaelgeurtjens/Downloads/CrozzleDataFromWinningGames/*.json
-        public static List<ShapeModel> C8703(in List<String> words)
+        public static List<ShapeModel> C8703(in WordList words)
         {
-            var h = new List<string> { "JIFFY", "LATE", "ALWAYS" };
-            var v = new List<string> { "DAILY", "FAST", "OFT", "YEAR" };
+            var h = new WordList { "JIFFY", "LATE", "ALWAYS" };
+            var v = new WordList { "DAILY", "FAST", "OFT", "YEAR" };
 
-            var hid = WordCalculator.ExtractPositions(ofWords: h, from: words);
-            var vid = WordCalculator.ExtractPositions(ofWords: v, from: words);
+            var hid = h.ExtractPositions(words);
+            var vid = v.ExtractPositions(words);
 
-            var hl = WordCalculator.LengthsInBytes(words: h);
-            var vl = WordCalculator.LengthsInBytes(words: v);
+            var hl = h.LengthsInBytes();
+            var vl = v.LengthsInBytes();
 
-            var placements = new List<PlacementModel> {
+            var placements = new PlacementList {
                 new PlacementModel(w: hid[0], x: 3, y: 3, z: true, l: hl[0]),
                 new PlacementModel(w: hid[1], x: 4, y: 4, z: true, l: hl[1]),
                 new PlacementModel(w: hid[2], x: 0, y: 5, z: true, l: hl[2]),
@@ -35,18 +35,18 @@ namespace ShapeMakerCSharp
         }
 
 
-        public static List<ShapeModel> C8805(in List<String> words)
+        public static List<ShapeModel> C8805(in WordList words)
         {
-            var h = new List<string> { "WOOL", "MEAT", "TANK", "HARVEST" };
-            var v = new List<string> { "EWE", "OATS", "ROTATION" };
+            var h = new WordList { "WOOL", "MEAT", "TANK", "HARVEST" };
+            var v = new WordList { "EWE", "OATS", "ROTATION" };
 
-            var hid = WordCalculator.ExtractPositions(ofWords: h, from: words);
-            var vid = WordCalculator.ExtractPositions(ofWords: v, from: words);
+            var hid = h.ExtractPositions(words);
+            var vid = v.ExtractPositions(words);
 
-            var hl = WordCalculator.LengthsInBytes(words: h);
-            var vl = WordCalculator.LengthsInBytes(words: v);
+            var hl = h.LengthsInBytes();
+            var vl = v.LengthsInBytes();
 
-            var placements = new List<PlacementModel> {
+            var placements = new PlacementList {
                 new PlacementModel(w: hid[0], x: 4, y: 2, z: true, l: hl[0]),
                 new PlacementModel(w: hid[1], x: 3, y: 3, z: true, l: hl[1]),
                 new PlacementModel(w: hid[2], x: 5, y: 4, z: true, l: hl[2]),
@@ -62,18 +62,18 @@ namespace ShapeMakerCSharp
             return new List<ShapeModel> { shape };
         }
 
-        public static List<ShapeModel> C9002a(in List<String> words)
+        public static List<ShapeModel> C9002a(in WordList words)
         {
-            var h = new List<string> { "NEPTUNE", "MARS", "JUNO" };
-            var v = new List<string> { "REMUS", "PAN", "TROY", "URANUS" };
+            var h = new WordList { "NEPTUNE", "MARS", "JUNO" };
+            var v = new WordList { "REMUS", "PAN", "TROY", "URANUS" };
 
-            var hid = WordCalculator.ExtractPositions(ofWords: h, from: words);
-            var vid = WordCalculator.ExtractPositions(ofWords: v, from: words);
+            var hid = h.ExtractPositions(words);
+            var vid = v.ExtractPositions(words);
 
-            var hl = WordCalculator.LengthsInBytes(words: h);
-            var vl = WordCalculator.LengthsInBytes(words: v);
+            var hl = h.LengthsInBytes();
+            var vl = v.LengthsInBytes();
 
-            var placements = new List<PlacementModel> {
+            var placements = new PlacementList {
                 new PlacementModel(w: hid[0], x: 0, y: 5, z: true, l: hl[0]),
                 new PlacementModel(w: hid[1], x: 1, y: 6, z: true, l: hl[1]),
                 new PlacementModel(w: hid[2], x: 0, y: 7, z: true, l: hl[2]),
@@ -89,18 +89,18 @@ namespace ShapeMakerCSharp
             return new List<ShapeModel> { shape };
         }
 
-        public static List<ShapeModel> C9002b(in List<String> words)
+        public static List<ShapeModel> C9002b(in WordList words)
         {
-            var h = new List<string> { "OLYMPUS", "ROMULUS", "JANUS", "SATYR" };
-            var v = new List<string> { "URANUS", "JASON", "MUSES", "MEDUSA" };
+            var h = new WordList { "OLYMPUS", "ROMULUS", "JANUS", "SATYR" };
+            var v = new WordList { "URANUS", "JASON", "MUSES", "MEDUSA" };
 
-            var hid = WordCalculator.ExtractPositions(ofWords: h, from: words);
-            var vid = WordCalculator.ExtractPositions(ofWords: v, from: words);
+            var hid = h.ExtractPositions(words);
+            var vid = v.ExtractPositions(words);
 
-            var hl = WordCalculator.LengthsInBytes(words: h);
-            var vl = WordCalculator.LengthsInBytes(words: v);
+            var hl = h.LengthsInBytes();
+            var vl = v.LengthsInBytes();
 
-            var placements = new List<PlacementModel> {
+            var placements = new PlacementList {
                 new PlacementModel(w: hid[0], x: 0, y: 3, z: true, l: hl[0]),
                 new PlacementModel(w: hid[1], x: 5, y: 4, z: true, l: hl[1]),
                 new PlacementModel(w: hid[2], x: 4, y: 5, z: true, l: hl[2]),
@@ -117,18 +117,18 @@ namespace ShapeMakerCSharp
             return new List<ShapeModel> { shape };
         }
 
-        public static List<ShapeModel> C9101(in List<String> words)
+        public static List<ShapeModel> C9101(in WordList words)
         {
-            var h = new List<string> { "BAT", "AMUSEMENT", "SUN", "HAT" };
-            var v = new List<string> { "BUSH", "CASUAL", "TENT" };
+            var h = new WordList { "BAT", "AMUSEMENT", "SUN", "HAT" };
+            var v = new WordList { "BUSH", "CASUAL", "TENT" };
 
-            var hid = WordCalculator.ExtractPositions(ofWords: h, from: words);
-            var vid = WordCalculator.ExtractPositions(ofWords: v, from: words);
+            var hid = h.ExtractPositions(words);
+            var vid = v.ExtractPositions(words);
 
-            var hl = WordCalculator.LengthsInBytes(words: h);
-            var vl = WordCalculator.LengthsInBytes(words: v);
+            var hl = h.LengthsInBytes();
+            var vl = v.LengthsInBytes();
 
-            var placements = new List<PlacementModel> {
+            var placements = new PlacementList {
                 new PlacementModel(w: hid[0], x: 2, y: 2, z: true, l: hl[0]),
                 new PlacementModel(w: hid[1], x: 0, y: 3, z: true, l: hl[1]),
                 new PlacementModel(w: hid[2], x: 2, y: 4, z: true, l: hl[2]),
@@ -145,18 +145,18 @@ namespace ShapeMakerCSharp
         }
 
 
-        public static List<ShapeModel> C9102(in List<String> words)
+        public static List<ShapeModel> C9102(in WordList words)
         {
-            var h = new List<string> { "SPEED", "DOT", "CANON", "TYPE" };
-            var v = new List<string> { "DATA", "SONY", "LAPTOP", "NEC" };
+            var h = new WordList { "SPEED", "DOT", "CANON", "TYPE" };
+            var v = new WordList { "DATA", "SONY", "LAPTOP", "NEC" };
 
-            var hid = WordCalculator.ExtractPositions(ofWords: h, from: words);
-            var vid = WordCalculator.ExtractPositions(ofWords: v, from: words);
+            var hid = h.ExtractPositions(words);
+            var vid = v.ExtractPositions(words);
 
-            var hl = WordCalculator.LengthsInBytes(words: h);
-            var vl = WordCalculator.LengthsInBytes(words: v);
+            var hl = h.LengthsInBytes();
+            var vl = v.LengthsInBytes();
 
-            var placements = new List<PlacementModel> {
+            var placements = new PlacementList {
                 new PlacementModel(w: hid[0], x: 2, y: 3, z: true, l: hl[0]),
                 new PlacementModel(w: hid[1], x: 1, y: 4, z: true, l: hl[1]),
                 new PlacementModel(w: hid[2], x: 0, y: 5, z: true, l: hl[2]),
@@ -174,18 +174,18 @@ namespace ShapeMakerCSharp
         }
 
 
-        public static List<ShapeModel> C9109(in List<String> words)
+        public static List<ShapeModel> C9109(in WordList words)
         {
-            var h = new List<string> { "COPYPAPER", "ANSWER", "POST", "TELLER", "ORDER" };
-            var v = new List<string> { "PASTE", "ENTER", "BUZZERS" };
+            var h = new WordList { "COPYPAPER", "ANSWER", "POST", "TELLER", "ORDER" };
+            var v = new WordList { "PASTE", "ENTER", "BUZZERS" };
 
-            var hid = WordCalculator.ExtractPositions(ofWords: h, from: words);
-            var vid = WordCalculator.ExtractPositions(ofWords: v, from: words);
+            var hid = h.ExtractPositions(words);
+            var vid = v.ExtractPositions(words);
 
-            var hl = WordCalculator.LengthsInBytes(words: h);
-            var vl = WordCalculator.LengthsInBytes(words: v);
+            var hl = h.LengthsInBytes();
+            var vl = v.LengthsInBytes();
 
-            var placements = new List<PlacementModel> {
+            var placements = new PlacementList {
                 new PlacementModel(w: hid[0], x: 0, y: 6, z: true, l: hl[0]),
                 new PlacementModel(w: hid[1], x: 6, y: 7, z: true, l: hl[1]),
                 new PlacementModel(w: hid[2], x: 4, y: 8, z: true, l: hl[2]),
@@ -203,18 +203,18 @@ namespace ShapeMakerCSharp
         }
 
 
-        public static List<ShapeModel> C9204(in List<String> words)
+        public static List<ShapeModel> C9204(in WordList words)
         {
-            var h = new List<string> { "RITUAL", "SAUCERS", "BEANS" };
-            var v = new List<string> { "SHRUB", "ICED", "TEA", "URN", "ASSAM" };
+            var h = new WordList { "RITUAL", "SAUCERS", "BEANS" };
+            var v = new WordList { "SHRUB", "ICED", "TEA", "URN", "ASSAM" };
 
-            var hid = WordCalculator.ExtractPositions(ofWords: h, from: words);
-            var vid = WordCalculator.ExtractPositions(ofWords: v, from: words);
+            var hid = h.ExtractPositions(words);
+            var vid = v.ExtractPositions(words);
 
-            var hl = WordCalculator.LengthsInBytes(words: h);
-            var vl = WordCalculator.LengthsInBytes(words: v);
+            var hl = h.LengthsInBytes();
+            var vl = v.LengthsInBytes();
 
-            var placements = new List<PlacementModel> {
+            var placements = new PlacementList {
                 new PlacementModel(w: hid[0], x: 2, y: 3, z: true, l: hl[0]),
                 new PlacementModel(w: hid[1], x: 0, y: 4, z: true, l: hl[1]),
                 new PlacementModel(w: hid[2], x: 2, y: 5, z: true, l: hl[2]),
@@ -232,18 +232,18 @@ namespace ShapeMakerCSharp
         }
 
 
-        public static List<ShapeModel> C9209(in List<String> words)
+        public static List<ShapeModel> C9209(in WordList words)
         {
-            var h = new List<string> { "ALAMO", "CORPS", "TNT", "DIVISIONS" };
-            var v = new List<string> { "ACTION", "MONS", "FORTIFY" };
+            var h = new WordList { "ALAMO", "CORPS", "TNT", "DIVISIONS" };
+            var v = new WordList { "ACTION", "MONS", "FORTIFY" };
 
-            var hid = WordCalculator.ExtractPositions(ofWords: h, from: words);
-            var vid = WordCalculator.ExtractPositions(ofWords: v, from: words);
+            var hid = h.ExtractPositions(words);
+            var vid = v.ExtractPositions(words);
 
-            var hl = WordCalculator.LengthsInBytes(words: h);
-            var vl = WordCalculator.LengthsInBytes(words: v);
+            var hl = h.LengthsInBytes();
+            var vl = v.LengthsInBytes();
 
-            var placements = new List<PlacementModel> {
+            var placements = new PlacementList {
                 new PlacementModel(w: hid[0], x: 1, y: 2, z: true, l: hl[0]),
                 new PlacementModel(w: hid[1], x: 3, y: 3, z: true, l: hl[1]),
                 new PlacementModel(w: hid[2], x: 3, y: 4, z: true, l: hl[2]),
@@ -260,18 +260,18 @@ namespace ShapeMakerCSharp
         }
 
 
-        public static List<ShapeModel> C9407(in List<String> words)
+        public static List<ShapeModel> C9407(in WordList words)
         {
-            var h = new List<string> { "INUIT", "SCOTT", "WINTER" };
-            var v = new List<string> { "GUST", "ICE", "STORM" };
+            var h = new WordList { "INUIT", "SCOTT", "WINTER" };
+            var v = new WordList { "GUST", "ICE", "STORM" };
 
-            var hid = WordCalculator.ExtractPositions(ofWords: h, from: words);
-            var vid = WordCalculator.ExtractPositions(ofWords: v, from: words);
+            var hid = h.ExtractPositions(words);
+            var vid = v.ExtractPositions(words);
+            
+            var hl = h.LengthsInBytes();
+            var vl = v.LengthsInBytes();
 
-            var hl = WordCalculator.LengthsInBytes(words: h);
-            var vl = WordCalculator.LengthsInBytes(words: v);
-
-            var placements = new List<PlacementModel> {
+            var placements = new PlacementList {
                 new PlacementModel(w: hid[0], x: 1, y: 2, z: true, l: hl[0]),
                 new PlacementModel(w: hid[1], x: 3, y: 3, z: true, l: hl[1]),
                 new PlacementModel(w: hid[2], x: 0, y: 4, z: true, l: hl[2]),
@@ -286,19 +286,19 @@ namespace ShapeMakerCSharp
             return new List<ShapeModel> { shape };
         }
 
-        public static List<ShapeModel> C9605(in List<String> words)
+        public static List<ShapeModel> C9605(in WordList words)
         {
-            var h = new List<string> { "BAR", "TESTIMONY", "TREASON", "SURTAX", "FALSE" };
-            var v = new List<string> { "ASSIZES", "SUE", "TESTATOR", "RENT" };
+            var h = new WordList { "BAR", "TESTIMONY", "TREASON", "SURTAX", "FALSE" };
+            var v = new WordList { "ASSIZES", "SUE", "TESTATOR", "RENT" };
 
 
-            var hid = WordCalculator.ExtractPositions(ofWords: h, from: words);
-            var vid = WordCalculator.ExtractPositions(ofWords: v, from: words);
+            var hid = h.ExtractPositions(words);
+            var vid = v.ExtractPositions(words);
 
-            var hl = WordCalculator.LengthsInBytes(words: h);
-            var vl = WordCalculator.LengthsInBytes(words: v);
+            var hl = h.LengthsInBytes();
+            var vl = v.LengthsInBytes();
 
-            var placements = new List<PlacementModel> {
+            var placements = new PlacementList {
                 new PlacementModel(w: hid[0], x: 4, y: 5, z: true, l: hl[0]),
                 new PlacementModel(w: hid[1], x: 5, y: 6, z: true, l: hl[1]),
                 new PlacementModel(w: hid[2], x: 0, y: 7, z: true, l: hl[2]),

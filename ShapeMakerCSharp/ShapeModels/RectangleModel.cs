@@ -5,7 +5,7 @@ using ShapeMakerCSharp;
 
 namespace ShapeMakerCSharp
 {
-    public readonly record struct RectangleModel : IShapeModel
+    public readonly record struct RectangleModel
     {
 
         /// score awarded for this shape by the rules of crozzle
@@ -85,21 +85,11 @@ namespace ShapeMakerCSharp
 
         public ShapeModel ToShape()
         {
-            var placements = ToPlacements().OrderBy(o => o.w).ToList();
-
-            var shape = new ShapeModel(score, width, height, placements);
-            if (shape.placements[0].z == false)
-            {
-                return ShapeCalculator.Flip(shape);
-            }
-            else
-            {
-                return shape;
-            }
+            return new ShapeModel(score, width, height, ToPlacements());
         }
 
 
-        public List<PlacementModel> ToPlacements()
+        private PlacementList ToPlacements()
         {
             switch (this.type)
             {
@@ -114,13 +104,13 @@ namespace ShapeMakerCSharp
                 case RectangleType.topRight:
                     return ToPlacementsFromTopRight();
                 default:
-                    return new List<PlacementModel>();
+                    return new PlacementList();
             }
         }
 
 
         /// converts `bottomLeft` rectangles to placements
-        public List<PlacementModel> ToPlacementsFromBottomLeft()
+        private PlacementList ToPlacementsFromBottomLeft()
         {
             var maxLeft = topLetterPos + 1;
             var maxUp = (int)(Math.Max(leftLetterPos, rightLetterPos));
@@ -153,7 +143,7 @@ namespace ShapeMakerCSharp
                 z: false,
                 l: rightLength);
 
-            var placements = new List<PlacementModel> { topPlacement, bottomPlacement, leftPlacement, rightPlacement };
+            var placements = new PlacementList { topPlacement, bottomPlacement, leftPlacement, rightPlacement };
 
             //placements.sort { $0.w< $1.w }
 
@@ -162,7 +152,7 @@ namespace ShapeMakerCSharp
 
 
         /// Converts `rectangles` to placements
-        private List<PlacementModel> ToPlacementsFromRectangle()
+        private PlacementList ToPlacementsFromRectangle()
         {
             var maxLeft = (int)(Math.Max(this.topLetterPos, this.bottomLetterPos));
             var maxUp = (int)(Math.Max(leftLetterPos, rightLetterPos));
@@ -195,7 +185,7 @@ namespace ShapeMakerCSharp
                 z: false,
                 l: rightLength);
 
-            var placements = new List<PlacementModel> { topPlacement, bottomPlacement, leftPlacement, rightPlacement };
+            var placements = new PlacementList { topPlacement, bottomPlacement, leftPlacement, rightPlacement };
 
             // placements.sort { $0.w < $1.w }
 
@@ -204,7 +194,7 @@ namespace ShapeMakerCSharp
 
 
         /// converts `topLeft` rectangles to placements
-        private List<PlacementModel> ToPlacementsFromTopLeft()
+        private PlacementList ToPlacementsFromTopLeft()
         {
             var maxLeft = bottomLetterPos;
             var maxUp = rightLetterPos + 1;
@@ -238,7 +228,7 @@ namespace ShapeMakerCSharp
                 z: false,
                 l: rightLength);
 
-            var placements = new List<PlacementModel> { topPlacement, bottomPlacement, leftPlacement, rightPlacement };
+            var placements = new PlacementList { topPlacement, bottomPlacement, leftPlacement, rightPlacement };
 
             //placements.sort { $0.w < $1.w }
 
@@ -247,7 +237,7 @@ namespace ShapeMakerCSharp
 
 
         /// converts `topRight` rectangles to placements
-        private List<PlacementModel> ToPlacementsFromTopRight()
+        private PlacementList ToPlacementsFromTopRight()
         {
             var maxLeft = (int)(Math.Max(topLetterPos, bottomLetterPos));
             var maxUp = leftLetterPos + 1;
@@ -280,7 +270,7 @@ namespace ShapeMakerCSharp
                 z: false,
                 l: rightLength);
 
-            var placements = new List<PlacementModel> { topPlacement, bottomPlacement, leftPlacement, rightPlacement };
+            var placements = new PlacementList { topPlacement, bottomPlacement, leftPlacement, rightPlacement };
 
             //placements.sort { $0.w < $1.w }
 

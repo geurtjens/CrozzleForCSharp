@@ -1,23 +1,29 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using CrozzleInterfaces;
 using ShapeMakerCSharp;
+
+
+
 
 
 var watch = System.Diagnostics.Stopwatch.StartNew();
 
-Console.WriteLine("Shape Calculator");
+Console.WriteLine("Calculating Shapes, please wait!");
 
-var gameList = new GameList();
+var games = GameList.Games();
 Console.WriteLine("C#");
-Console.WriteLine("Winning Words");
-Console.WriteLine("GameId, Winning Words, Words, Growth");
+Console.WriteLine("Game, WinningWordShapes, AllWordShapes, growth, scoreSum, widthSum, heightSum");
 
 var winningWordShapesCount = 0;
 var wordShapesCount = 0;
 var totalScoreSum = 0;
 var totalWidthSum = 0;
 var totalHeightSum = 0;
-foreach (var game in gameList.games)
+
+
+foreach (var gameId in games)
 {
+    var game = GameList.FindGame(gameId);
     //if (game.gameId == 9209)
     //{
     var scoreSum = 0;
@@ -48,23 +54,28 @@ foreach (var game in gameList.games)
 watch.Stop();
 
 Console.WriteLine($"produced {winningWordShapesCount} winning word shapes and {wordShapesCount} all words shapes in {watch.ElapsedMilliseconds} ms, scoreSum {totalScoreSum}, widthSum {totalWidthSum}, heightSum {totalHeightSum}");
+Console.WriteLine($"completed in {watch.ElapsedMilliseconds} ms");
 
 
-
+var gameList = new List<GameModel>();
+foreach(var gameId in games)
+{
+    gameList.Add(GameList.FindGame(gameId));
+}
 
 var totalShapes = 0;
 
-totalShapes += RectangleCalculatorV2.ExecuteAllSerial(gameList.games, 0, true);
+totalShapes += RectangleCalculatorV2.ExecuteAllSerial(gameList, 0, true);
 
-totalShapes += RectangleCalculator.ExecuteAllSerial(gameList.games, 0, true);
+totalShapes += RectangleCalculator.ExecuteAllSerial(gameList, 0, true);
 
-totalShapes += EdgeCalculator.ExecuteAllSerial(gameList.games, 0, true);
+totalShapes += EdgeCalculator.ExecuteAllSerial(gameList, 0, true);
 
-totalShapes += ClusterCalculator.ExecuteAllSerial(gameList.games, 0, true);
+totalShapes += ClusterCalculator.ExecuteAllSerial(gameList, 0, true);
 
-totalShapes += PacmanCalculator.ExecuteAllSerial(gameList.games, 0, true);
+totalShapes += PacmanCalculator.ExecuteAllSerial(gameList, 0, true);
 
-totalShapes += OuterCalculator.ExecuteAllSerial(gameList.games, 0, true);
+totalShapes += OuterCalculator.ExecuteAllSerial(gameList, 0, true);
 
 
 
@@ -73,7 +84,7 @@ totalShapes += OuterCalculator.ExecuteAllSerial(gameList.games, 0, true);
 
 
 Console.WriteLine("WinningWords");
-foreach(var game in gameList.games)
+foreach(var game in gameList)
 {
     var winningWordShapes = WinningShapesCalculator.execute(game.gameId, game.winningWords);
     var wordShapes = WinningShapesCalculator.execute(game.gameId, game.words);

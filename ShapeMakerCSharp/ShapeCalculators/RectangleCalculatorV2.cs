@@ -95,7 +95,7 @@ namespace ShapeMakerCSharp
         public static List<RectangleModel> Square(
             int interlockWidth,
             in LetterIndexModel letterIndex,
-            in List<string> words,
+            in WordList words,
             in List<int> lengths,
             int scoreMin,
             int widthMax,
@@ -202,7 +202,7 @@ namespace ShapeMakerCSharp
             int interlockWidth,
             int interlockHeight,
             in LetterIndexModel letterIndex,
-            in List<string> words,
+            in WordList words,
             in List<int> lengths,
             int scoreMin,
             int widthMax,
@@ -315,7 +315,7 @@ namespace ShapeMakerCSharp
             int interlockWidth,
             int interlockHeight,
             in LetterIndexModel letterIndex,
-            in List<string> words,
+            in WordList words,
             in List<int> lengths,
             int scoreMin,
             int widthMax,
@@ -428,7 +428,7 @@ namespace ShapeMakerCSharp
         public static List<RectangleModel> TopLeftSquare(
             int interlockWidth,
             in LetterIndexModel letterIndex,
-            in List<string> words,
+            in WordList words,
             in List<int> lengths,
             int scoreMin,
             int widthMax,
@@ -538,7 +538,7 @@ namespace ShapeMakerCSharp
             int interlockWidth,
             int interlockHeight,
             in LetterIndexModel letterIndex,
-            in List<string> words,
+            in WordList words,
             in List<int> lengths,
             int scoreMin,
             int widthMax,
@@ -652,7 +652,7 @@ namespace ShapeMakerCSharp
         public static List<RectangleModel> BottomRightSquare(
             int interlockWidth,
             in LetterIndexModel letterIndex,
-            in List<string> words,
+            in WordList words,
             in List<int> lengths,
             int scoreMin,
             int widthMax,
@@ -763,7 +763,7 @@ namespace ShapeMakerCSharp
         public static List<RectangleModel> TopRightSquare(
             int interlockWidth,
             in LetterIndexModel letterIndex,
-            in List<string> words,
+            in WordList words,
             in List<int> lengths,
             int scoreMin,
             int widthMax,
@@ -778,7 +778,7 @@ namespace ShapeMakerCSharp
             int interlockWidth,
             int interlockHeight,
             in LetterIndexModel letterIndex,
-            in List<string> words,
+            in WordList words,
             in List<int> lengths,
             int scoreMin,
             int widthMax,
@@ -795,7 +795,7 @@ namespace ShapeMakerCSharp
             int interlockWidth,
             int interlockHeight,
             in LetterIndexModel letterIndex,
-            in List<string> words,
+            in WordList words,
             in List<int> lengths,
             int scoreMin,
             int widthMax,
@@ -913,7 +913,7 @@ namespace ShapeMakerCSharp
             int interlockWidth,
             int interlockHeight,
             in LetterIndexModel letterIndex,
-            in List<string> words,
+            in WordList words,
             in List<int> lengths,
             int scoreMin,
             int widthMax,
@@ -1024,13 +1024,13 @@ namespace ShapeMakerCSharp
         }
 
         public static List<RectangleModel> Execute(
-            in List<string> words,
+            in WordList words,
             int scoreMin,
             int widthMax,
             int heightMax)
         {
 
-            var lengths = WordCalculator.Lengths(words);
+            var lengths = words.Lengths();
             var letterIndex = new LetterIndexModel(words);
 
 

@@ -3,7 +3,7 @@ using CrozzleInterfaces;
 
 namespace ShapeMakerCSharp
 {
-    public readonly record struct EdgeModel : IShapeModel
+    public readonly record struct EdgeModel
     {
 
         public readonly byte horizontalWordId;
@@ -45,22 +45,11 @@ namespace ShapeMakerCSharp
 
         public ShapeModel ToShape()
         {
-            var placements = ToPlacements().OrderBy(o => o.w).ToList();
-
-            var shape = new ShapeModel(score, width, height, placements);
-
-            if (shape.placements[0].z == false)
-            {
-                return ShapeCalculator.Flip(shape);
-            }
-            else
-            {
-                return shape;
-            }
+            return new ShapeModel(score, width, height, ToPlacements());
         }
 
 
-        public List<PlacementModel> ToPlacements()
+        private PlacementList ToPlacements()
         {
 
             var horizontal = new PlacementModel(
@@ -77,7 +66,7 @@ namespace ShapeMakerCSharp
                 z: false,
                 l: verticalLength
             );
-            return new List<PlacementModel> { horizontal, vertical };
+            return new PlacementList { horizontal, vertical };
         }
     }
 }

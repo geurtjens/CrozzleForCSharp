@@ -1,3 +1,4 @@
+/Users/michaelgeurtjens/Developer/ShapeMakerCSharp/ShapeMakerCSharpTests/bin/Release/net7.0/CoverletSourceRootsMapping
 /Users/michaelgeurtjens/Developer/ShapeMakerCSharp/ShapeMakerCSharpTests/bin/Release/net7.0/xunit.runner.visualstudio.dotnetcore.testadapter.dll
 /Users/michaelgeurtjens/Developer/ShapeMakerCSharp/ShapeMakerCSharpTests/bin/Release/net7.0/xunit.runner.reporters.netcoreapp10.dll
 /Users/michaelgeurtjens/Developer/ShapeMakerCSharp/ShapeMakerCSharpTests/bin/Release/net7.0/xunit.runner.utility.netcoreapp10.dll
@@ -85,6 +86,10 @@
 /Users/michaelgeurtjens/Developer/ShapeMakerCSharp/ShapeMakerCSharpTests/bin/Release/net7.0/zh-Hant/Microsoft.TestPlatform.CommunicationUtilities.resources.dll
 /Users/michaelgeurtjens/Developer/ShapeMakerCSharp/ShapeMakerCSharpTests/bin/Release/net7.0/zh-Hant/Microsoft.TestPlatform.CrossPlatEngine.resources.dll
 /Users/michaelgeurtjens/Developer/ShapeMakerCSharp/ShapeMakerCSharpTests/bin/Release/net7.0/zh-Hant/Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+/Users/michaelgeurtjens/Developer/ShapeMakerCSharp/ShapeMakerCSharpTests/bin/Release/net7.0/CrozzleInterfaces.dll
+/Users/michaelgeurtjens/Developer/ShapeMakerCSharp/ShapeMakerCSharpTests/bin/Release/net7.0/ShapeMakerCSharp.dll
+/Users/michaelgeurtjens/Developer/ShapeMakerCSharp/ShapeMakerCSharpTests/bin/Release/net7.0/ShapeMakerCSharp.pdb
+/Users/michaelgeurtjens/Developer/ShapeMakerCSharp/ShapeMakerCSharpTests/bin/Release/net7.0/CrozzleInterfaces.pdb
 /Users/michaelgeurtjens/Developer/ShapeMakerCSharp/ShapeMakerCSharpTests/obj/Release/net7.0/ShapeMakerCSharpTests.csproj.AssemblyReference.cache
 /Users/michaelgeurtjens/Developer/ShapeMakerCSharp/ShapeMakerCSharpTests/obj/Release/net7.0/ShapeMakerCSharpTests.GeneratedMSBuildEditorConfig.editorconfig
 /Users/michaelgeurtjens/Developer/ShapeMakerCSharp/ShapeMakerCSharpTests/obj/Release/net7.0/ShapeMakerCSharpTests.AssemblyInfoInputs.cache

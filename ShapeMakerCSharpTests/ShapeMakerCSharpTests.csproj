@@ -22,4 +22,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ShapeMakerCSharp\ShapeMakerCSharp.csproj" />
+    <ProjectReference Include="..\CrozzleInterfaces\CrozzleInterfaces.csproj" />
+  </ItemGroup>
 </Project>
