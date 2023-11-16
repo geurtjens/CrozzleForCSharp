@@ -6,17 +6,17 @@ namespace ShapeMergerCSharp
 {
     public class StartingTreeNodeCalculator
     {
-        public static TreeNodeList Execute(
+        public static List<TreeNodeModel> Execute(
             in List<ShapeModel> startingShapes,
             in List<ShapeModel> searchShapes,
-            in WordList words,
-            in MinScoreList scoresMin,
+            in List<string> words,
+            in List<int> scoresMin,
             int widthMax,
             int heightMax,
             in WordIndexModelV2 searchWordIndex)
         {
 
-            var treeNodes = new TreeNodeList();
+            var treeNodes = new List<TreeNodeModel>();
 
 
             for (int startingShapeId = 0; startingShapeId < startingShapes.Count; startingShapeId++)

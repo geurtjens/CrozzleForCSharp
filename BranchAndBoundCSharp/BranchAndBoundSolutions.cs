@@ -7,8 +7,8 @@ namespace BranchAndBoundCSharp
 {
     public class BranchAndBoundSolutions
     {
-        public static GameIdList executeGamesWinningWords(
-            GameIdList gameIds,
+        public static List<int> executeGamesWinningWords(
+            List<int> gameIds,
             int lookaheadDepth,
             int beamWidth,
             int maxDepth,
@@ -19,8 +19,8 @@ namespace BranchAndBoundCSharp
         }
 
 
-        public static GameIdList executeGamesAllWords(
-            GameIdList gameIds,
+        public static List<int> executeGamesAllWords(
+            List<int> gameIds,
             int lookaheadDepth,
             int beamWidth,
             int maxDepth,
@@ -35,78 +35,78 @@ namespace BranchAndBoundCSharp
         public void allShapesThatCanBeSolvedWithoutGuides()
         {
 
-            GameIdList depth1_width1 = new GameIdList { 8802, 8808, 9104, 9212, 9306, 9406 };
-            GameIdList depth2_width1 = new GameIdList { 8612, 8809, 9002, 9109, 9201, 9211, 9303, 9310, 9312 };
-            GameIdList depth3_width1 = new GameIdList { 8705, 8712, 8811, 9007, 9008, 9103, 9110, 9111, 9206, 9302,
+            List<int> depth1_width1 = new List<int> { 8802, 8808, 9104, 9212, 9306, 9406 };
+            List<int> depth2_width1 = new List<int> { 8612, 8809, 9002, 9109, 9201, 9211, 9303, 9310, 9312 };
+            List<int> depth3_width1 = new List<int> { 8705, 8712, 8811, 9007, 9008, 9103, 9110, 9111, 9206, 9302,
                                                         9308, 9309, 9404, 9502 };
-            GameIdList depth1_width2 = new GameIdList { 8710, 9311 };
-            GameIdList depth2_width2 = new GameIdList { 8702, 8704, 8910, 9105, 9207, 9210 };
-            GameIdList depth3_width2 = new GameIdList { 8812, 8903, 8910, 9006, 9204, 9304, 9402, 9508 };
-            GameIdList depth1_width3 = new GameIdList { 9412 };
-            GameIdList depth2_width3 = new GameIdList { 8911, 9004, 9408 };
-            GameIdList depth3_width3 = new GameIdList { 9009, 9407 };
-            GameIdList depth2_width4 = new GameIdList { 8912 };
-            GameIdList depth3_width4 = new GameIdList { 8810, 9003 };
-            GameIdList depth1_width5 = new GameIdList { 8711 };
-            GameIdList depth2_width5 = new GameIdList { 9409 };
-            GameIdList depth3_width5 = new GameIdList { 9005, 9512 };
-            GameIdList depth2_width6 = new GameIdList { 9511 };
-            GameIdList depth3_width6 = new GameIdList { 8907 };
-            GameIdList depth2_width7 = new GameIdList { 9208 };
-            GameIdList depth3_width7 = new GameIdList { 9106 };
-            GameIdList depth1_width8 = new GameIdList { 9108 };
-            GameIdList depth2_width8 = new GameIdList { 9411 };
-            GameIdList depth3_width9 = new GameIdList { 9307 };
-            GameIdList depth2_width10 = new GameIdList { 9401 };
-            GameIdList depth3_width10 = new GameIdList { 9506, 9604 };
-            GameIdList depth3_width11 = new GameIdList { 8807, 8902, 9202, 9501 };
-            GameIdList depth2_width13 = new GameIdList { 9410 };
+            List<int> depth1_width2 = new List<int> { 8710, 9311 };
+            List<int> depth2_width2 = new List<int> { 8702, 8704, 8910, 9105, 9207, 9210 };
+            List<int> depth3_width2 = new List<int> { 8812, 8903, 8910, 9006, 9204, 9304, 9402, 9508 };
+            List<int> depth1_width3 = new List<int> { 9412 };
+            List<int> depth2_width3 = new List<int> { 8911, 9004, 9408 };
+            List<int> depth3_width3 = new List<int> { 9009, 9407 };
+            List<int> depth2_width4 = new List<int> { 8912 };
+            List<int> depth3_width4 = new List<int> { 8810, 9003 };
+            List<int> depth1_width5 = new List<int> { 8711 };
+            List<int> depth2_width5 = new List<int> { 9409 };
+            List<int> depth3_width5 = new List<int> { 9005, 9512 };
+            List<int> depth2_width6 = new List<int> { 9511 };
+            List<int> depth3_width6 = new List<int> { 8907 };
+            List<int> depth2_width7 = new List<int> { 9208 };
+            List<int> depth3_width7 = new List<int> { 9106 };
+            List<int> depth1_width8 = new List<int> { 9108 };
+            List<int> depth2_width8 = new List<int> { 9411 };
+            List<int> depth3_width9 = new List<int> { 9307 };
+            List<int> depth2_width10 = new List<int> { 9401 };
+            List<int> depth3_width10 = new List<int> { 9506, 9604 };
+            List<int> depth3_width11 = new List<int> { 8807, 8902, 9202, 9501 };
+            List<int> depth2_width13 = new List<int> { 9410 };
 
 
 
-            GameIdList depth1_width17 = new GameIdList { 9510 };
-            GameIdList depth3_width18 = new GameIdList { 9001, 9011 };
-            GameIdList depth3_width19 = new GameIdList { 9601, 9605 };
-            GameIdList depth3_width21 = new GameIdList { 8908 };
-            GameIdList depth3_width22 = new GameIdList { 9012 };
-            GameIdList depth1_width27 = new GameIdList { 9503 };
-            GameIdList depth2_width36 = new GameIdList { 8906 };
-            GameIdList depth3_width36 = new GameIdList { 9102 };
-            GameIdList depth2_width37 = new GameIdList { 9301 };
+            List<int> depth1_width17 = new List<int> { 9510 };
+            List<int> depth3_width18 = new List<int> { 9001, 9011 };
+            List<int> depth3_width19 = new List<int> { 9601, 9605 };
+            List<int> depth3_width21 = new List<int> { 8908 };
+            List<int> depth3_width22 = new List<int> { 9012 };
+            List<int> depth1_width27 = new List<int> { 9503 };
+            List<int> depth2_width36 = new List<int> { 8906 };
+            List<int> depth3_width36 = new List<int> { 9102 };
+            List<int> depth2_width37 = new List<int> { 9301 };
 
 
-            GameIdList depth3_width66 = new GameIdList { 9403 };
+            List<int> depth3_width66 = new List<int> { 9403 };
 
 
-            GameIdList depth3_width98 = new GameIdList { 8909 };
+            List<int> depth3_width98 = new List<int> { 8909 };
 
-            //GameIdList depth3_width74 = new GameIdList {9203 }; // only works with guided
-            GameIdList depth3_width107 = new GameIdList { 9203 };
-
-
-            //GameIdList depth3_width49 = new GameIdList {9603 }; // only works with guided
-            GameIdList depth3_width124 = new GameIdList { 9603 };
-            //GameIdList depth3_width14 = new GameIdList {9010 }; // only works with guided maxWidth of 100 failed
-            //GameIdList depth3_width16 = new GameIdList {9209 }; // only works with guided
-            GameIdList depth3_width153 = new GameIdList { 9010, 9209 };
+            //List<int> depth3_width74 = new List<int> {9203 }; // only works with guided
+            List<int> depth3_width107 = new List<int> { 9203 };
 
 
+            //List<int> depth3_width49 = new List<int> {9603 }; // only works with guided
+            List<int> depth3_width124 = new List<int> { 9603 };
+            //List<int> depth3_width14 = new List<int> {9010 }; // only works with guided maxWidth of 100 failed
+            //List<int> depth3_width16 = new List<int> {9209 }; // only works with guided
+            List<int> depth3_width153 = new List<int> { 9010, 9209 };
 
-            GameIdList depth3_width193 = new GameIdList { 8905 };
-            GameIdList depth4_width7 = new GameIdList { 9101 };
-            GameIdList depth4_width8 = new GameIdList { 9509 };
-            GameIdList depth4_width23 = new GameIdList { 9107 };
-            GameIdList depth4_width35 = new GameIdList { 9112 };
-            GameIdList depth4_width68 = new GameIdList { 8805 };
-            //GameIdList depth4_width82 = new GameIdList {8904] // only works with guided, last one to solve
-            GameIdList depth4_width140 = new GameIdList { 8904 };
 
-            //let depth3_width454 = new GameIdList {9507]
+
+            List<int> depth3_width193 = new List<int> { 8905 };
+            List<int> depth4_width7 = new List<int> { 9101 };
+            List<int> depth4_width8 = new List<int> { 9509 };
+            List<int> depth4_width23 = new List<int> { 9107 };
+            List<int> depth4_width35 = new List<int> { 9112 };
+            List<int> depth4_width68 = new List<int> { 8805 };
+            //List<int> depth4_width82 = new List<int> {8904] // only works with guided, last one to solve
+            List<int> depth4_width140 = new List<int> { 8904 };
+
+            //let depth3_width454 = new List<int> {9507]
 
             //var overallStart = DateTimeCalculator.now();
 
 
-            var solved = new GameIdList();
+            var solved = new List<int>();
 
             solved.AddRange(executeGamesWinningWords(gameIds: depth1_width1, lookaheadDepth: 1, beamWidth: 1, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
             solved.AddRange(executeGamesWinningWords(gameIds: depth2_width1, lookaheadDepth: 2, beamWidth: 1, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
@@ -161,7 +161,7 @@ namespace BranchAndBoundCSharp
 
 
             solved.AddRange(executeGamesWinningWords(
-                gameIds: new GameIdList { 8803 },
+                gameIds: new List<int> { 8803 },
                 lookaheadDepth: 3,
                 beamWidth: 28,
                 maxDepth: 30,
@@ -170,7 +170,7 @@ namespace BranchAndBoundCSharp
 
             // Start from winningWords[2]
             solved.AddRange(executeGamesWinningWords(
-                gameIds: new GameIdList { 8804 },
+                gameIds: new List<int> { 8804 },
                 lookaheadDepth: 3,
                 beamWidth: 4,
                 maxDepth: 30,
@@ -179,7 +179,7 @@ namespace BranchAndBoundCSharp
 
             // Start from winningWords[8]
             solved.AddRange(executeGamesWinningWords(
-                gameIds: new GameIdList { 8806 },
+                gameIds: new List<int> { 8806 },
                 lookaheadDepth: 3,
                 beamWidth: 77,
                 maxDepth: 30,
@@ -188,7 +188,7 @@ namespace BranchAndBoundCSharp
 
             // Start from winningWords[5]
             solved.AddRange(executeGamesWinningWords(
-                gameIds: new GameIdList { 9305 },
+                gameIds: new List<int> { 9305 },
                 lookaheadDepth: 3,
                 beamWidth: 40,
                 maxDepth: 30,
@@ -197,7 +197,7 @@ namespace BranchAndBoundCSharp
 
             // Start from winningWords[3]
             solved.AddRange(executeGamesWinningWords(
-                gameIds: new GameIdList { 9504 },
+                gameIds: new List<int> { 9504 },
                 lookaheadDepth: 3,
                 beamWidth: 87,
                 maxDepth: 30,
@@ -206,7 +206,7 @@ namespace BranchAndBoundCSharp
 
             // Start from winningWords[6]
             solved.AddRange(executeGamesWinningWords(
-                gameIds: new GameIdList { 9505 },
+                gameIds: new List<int> { 9505 },
                 lookaheadDepth: 3,
                 beamWidth: 51,
                 maxDepth: 30,
@@ -215,7 +215,7 @@ namespace BranchAndBoundCSharp
 
             // Start from winningWords[6]
             solved.AddRange(executeGamesWinningWords(
-                gameIds: new GameIdList { 9507 },
+                gameIds: new List<int> { 9507 },
                 lookaheadDepth: 3,
                 beamWidth: 87,
                 maxDepth: 30,
@@ -224,7 +224,7 @@ namespace BranchAndBoundCSharp
 
             // Start from winningWords[1]
             solved.AddRange(executeGamesWinningWords(
-                gameIds: new GameIdList { 9602 },
+                gameIds: new List<int> { 9602 },
                 lookaheadDepth: 3,
                 beamWidth: 22,
                 maxDepth: 30,
@@ -241,8 +241,8 @@ namespace BranchAndBoundCSharp
             }
             Console.WriteLine();
 
-            GameIdList gameList = GameList.Games();
-            var missing = new GameIdList();
+            List<int> gameList = GameList.Games();
+            var missing = new List<int>();
 
             for (int i = 0; i < gameList.Count; i++)
             {
@@ -275,60 +275,60 @@ namespace BranchAndBoundCSharp
         public static void allShapesThatCanBeSolved()
         {
 
-            GameIdList depth1_width1 = new GameIdList { 8802, 8808, 9104, 9212, 9306, 9406 };
-            GameIdList depth2_width1 = new GameIdList { 8612, 8809, 9002, 9109, 9201, 9211, 9303, 9310, 9312 };
-            GameIdList depth3_width1 = new GameIdList { 8705, 8712, 8811, 9007, 9008, 9103, 9110, 9111, 9206, 9302, 9308, 9309, 9404, 9502 };
-            GameIdList depth1_width2 = new GameIdList { 8710, 9311 };
-            GameIdList depth2_width2 = new GameIdList { 8702, 8704, 8910, 9105, 9207, 9210 };
-            GameIdList depth3_width2 = new GameIdList { 8812, 8903, 8910, 9006, 9204, 9304, 9402, 9508 };
-            GameIdList depth1_width3 = new GameIdList { 9412 };
-            GameIdList depth2_width3 = new GameIdList { 8911, 9004, 9408 };
-            GameIdList depth3_width3 = new GameIdList { 9009, 9407 };
-            GameIdList depth2_width4 = new GameIdList { 8912 };
-            GameIdList depth3_width4 = new GameIdList { 8810, 9003 };
-            GameIdList depth1_width5 = new GameIdList { 8711 };
-            GameIdList depth2_width5 = new GameIdList { 9409 };
-            GameIdList depth3_width5 = new GameIdList { 9005, 9512 };
-            GameIdList depth2_width6 = new GameIdList { 9511 };
-            GameIdList depth3_width6 = new GameIdList { 8907 };
-            GameIdList depth2_width7 = new GameIdList { 9208 };
-            GameIdList depth3_width7 = new GameIdList { 9106 };
-            GameIdList depth1_width8 = new GameIdList { 9108 };
-            GameIdList depth2_width8 = new GameIdList { 9411 };
-            GameIdList depth3_width9 = new GameIdList { 9307 };
-            GameIdList depth2_width10 = new GameIdList { 9401 };
-            GameIdList depth3_width10 = new GameIdList { 9506, 9604 };
-            GameIdList depth3_width11 = new GameIdList { 8807, 8902, 9202, 9501 };
-            GameIdList depth2_width13 = new GameIdList { 9410 };
-            GameIdList depth3_width14 = new GameIdList { 9010 };
-            GameIdList depth3_width16 = new GameIdList { 9209 };
-            GameIdList depth1_width17 = new GameIdList { 9510 };
-            GameIdList depth3_width18 = new GameIdList { 9001, 9011 };
-            GameIdList depth3_width19 = new GameIdList { 9601, 9605 };
-            GameIdList depth3_width21 = new GameIdList { 8908 };
-            GameIdList depth3_width22 = new GameIdList { 9012 };
-            GameIdList depth1_width27 = new GameIdList { 9503 };
-            GameIdList depth2_width36 = new GameIdList { 8906 };
-            GameIdList depth3_width36 = new GameIdList { 9102 };
-            GameIdList depth2_width37 = new GameIdList { 9301 };
-            GameIdList depth3_width49 = new GameIdList { 9603 };
-            GameIdList depth3_width66 = new GameIdList { 9403 };
-            GameIdList depth3_width74 = new GameIdList { 9203 };
-            GameIdList depth3_width98 = new GameIdList { 8909 };
-            GameIdList depth3_width193 = new GameIdList { 8905 };
-            GameIdList depth4_width7 = new GameIdList { 9101 };
-            GameIdList depth4_width8 = new GameIdList { 9509 };
-            GameIdList depth4_width23 = new GameIdList { 9107 };
-            GameIdList depth4_width35 = new GameIdList { 9112 };
-            GameIdList depth4_width68 = new GameIdList { 8805 };
-            GameIdList depth4_width82 = new GameIdList { 8904 };
+            List<int> depth1_width1 = new List<int> { 8802, 8808, 9104, 9212, 9306, 9406 };
+            List<int> depth2_width1 = new List<int> { 8612, 8809, 9002, 9109, 9201, 9211, 9303, 9310, 9312 };
+            List<int> depth3_width1 = new List<int> { 8705, 8712, 8811, 9007, 9008, 9103, 9110, 9111, 9206, 9302, 9308, 9309, 9404, 9502 };
+            List<int> depth1_width2 = new List<int> { 8710, 9311 };
+            List<int> depth2_width2 = new List<int> { 8702, 8704, 8910, 9105, 9207, 9210 };
+            List<int> depth3_width2 = new List<int> { 8812, 8903, 8910, 9006, 9204, 9304, 9402, 9508 };
+            List<int> depth1_width3 = new List<int> { 9412 };
+            List<int> depth2_width3 = new List<int> { 8911, 9004, 9408 };
+            List<int> depth3_width3 = new List<int> { 9009, 9407 };
+            List<int> depth2_width4 = new List<int> { 8912 };
+            List<int> depth3_width4 = new List<int> { 8810, 9003 };
+            List<int> depth1_width5 = new List<int> { 8711 };
+            List<int> depth2_width5 = new List<int> { 9409 };
+            List<int> depth3_width5 = new List<int> { 9005, 9512 };
+            List<int> depth2_width6 = new List<int> { 9511 };
+            List<int> depth3_width6 = new List<int> { 8907 };
+            List<int> depth2_width7 = new List<int> { 9208 };
+            List<int> depth3_width7 = new List<int> { 9106 };
+            List<int> depth1_width8 = new List<int> { 9108 };
+            List<int> depth2_width8 = new List<int> { 9411 };
+            List<int> depth3_width9 = new List<int> { 9307 };
+            List<int> depth2_width10 = new List<int> { 9401 };
+            List<int> depth3_width10 = new List<int> { 9506, 9604 };
+            List<int> depth3_width11 = new List<int> { 8807, 8902, 9202, 9501 };
+            List<int> depth2_width13 = new List<int> { 9410 };
+            List<int> depth3_width14 = new List<int> { 9010 };
+            List<int> depth3_width16 = new List<int> { 9209 };
+            List<int> depth1_width17 = new List<int> { 9510 };
+            List<int> depth3_width18 = new List<int> { 9001, 9011 };
+            List<int> depth3_width19 = new List<int> { 9601, 9605 };
+            List<int> depth3_width21 = new List<int> { 8908 };
+            List<int> depth3_width22 = new List<int> { 9012 };
+            List<int> depth1_width27 = new List<int> { 9503 };
+            List<int> depth2_width36 = new List<int> { 8906 };
+            List<int> depth3_width36 = new List<int> { 9102 };
+            List<int> depth2_width37 = new List<int> { 9301 };
+            List<int> depth3_width49 = new List<int> { 9603 };
+            List<int> depth3_width66 = new List<int> { 9403 };
+            List<int> depth3_width74 = new List<int> { 9203 };
+            List<int> depth3_width98 = new List<int> { 8909 };
+            List<int> depth3_width193 = new List<int> { 8905 };
+            List<int> depth4_width7 = new List<int> { 9101 };
+            List<int> depth4_width8 = new List<int> { 9509 };
+            List<int> depth4_width23 = new List<int> { 9107 };
+            List<int> depth4_width35 = new List<int> { 9112 };
+            List<int> depth4_width68 = new List<int> { 8805 };
+            List<int> depth4_width82 = new List<int> { 8904 };
 
-            //GameIdList depth3_width454 = new GameIdList {9507 };
+            //List<int> depth3_width454 = new List<int> {9507 };
 
             // var  overallStart = DateTimeCalculator.now()
 
 
-            GameIdList solved = new GameIdList();
+            List<int> solved = new List<int>();
 
             solved.AddRange(executeGamesWinningWords(gameIds: depth1_width1, lookaheadDepth: 1, beamWidth: 1, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
             solved.AddRange(executeGamesWinningWords(gameIds: depth2_width1, lookaheadDepth: 2, beamWidth: 1, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
@@ -381,7 +381,7 @@ namespace BranchAndBoundCSharp
 
 
             solved.AddRange(executeGamesWinningWords(
-                gameIds: new GameIdList { 8803 },
+                gameIds: new List<int> { 8803 },
                 lookaheadDepth: 3,
                 beamWidth: 28,
                 maxDepth: 30,
@@ -390,7 +390,7 @@ namespace BranchAndBoundCSharp
 
             // Start from winningWords[2 };
             solved.AddRange(executeGamesWinningWords(
-                gameIds: new GameIdList { 8804 },
+                gameIds: new List<int> { 8804 },
                 lookaheadDepth: 3,
                 beamWidth: 4,
                 maxDepth: 30,
@@ -399,7 +399,7 @@ namespace BranchAndBoundCSharp
 
             // Start from winningWords[8 };
             solved.AddRange(executeGamesWinningWords(
-                gameIds: new GameIdList { 8806 },
+                gameIds: new List<int> { 8806 },
                 lookaheadDepth: 3,
                 beamWidth: 77,
                 maxDepth: 30,
@@ -408,7 +408,7 @@ namespace BranchAndBoundCSharp
 
             // Start from winningWords[5 };
             solved.AddRange(executeGamesWinningWords(
-                gameIds: new GameIdList { 9305 },
+                gameIds: new List<int> { 9305 },
                 lookaheadDepth: 3,
                 beamWidth: 40,
                 maxDepth: 30,
@@ -417,7 +417,7 @@ namespace BranchAndBoundCSharp
 
             // Start from winningWords[3 };
             solved.AddRange(executeGamesWinningWords(
-                gameIds: new GameIdList { 9504 },
+                gameIds: new List<int> { 9504 },
                 lookaheadDepth: 3,
                 beamWidth: 87,
                 maxDepth: 30,
@@ -426,7 +426,7 @@ namespace BranchAndBoundCSharp
 
             // Start from winningWords[6 };
             solved.AddRange(executeGamesWinningWords(
-                gameIds: new GameIdList { 9505 },
+                gameIds: new List<int> { 9505 },
                 lookaheadDepth: 3,
                 beamWidth: 51,
                 maxDepth: 30,
@@ -435,7 +435,7 @@ namespace BranchAndBoundCSharp
 
             // Start from winningWords[6 };
             solved.AddRange(executeGamesWinningWords(
-                gameIds: new GameIdList { 9507 },
+                gameIds: new List<int> { 9507 },
                 lookaheadDepth: 3,
                 beamWidth: 87,
                 maxDepth: 30,
@@ -444,7 +444,7 @@ namespace BranchAndBoundCSharp
 
             // Start from winningWords[1 };
             solved.AddRange(executeGamesWinningWords(
-                gameIds: new GameIdList { 9602 },
+                gameIds: new List<int> { 9602 },
                 lookaheadDepth: 3,
                 beamWidth: 22,
                 maxDepth: 30,
@@ -460,8 +460,8 @@ namespace BranchAndBoundCSharp
             }
             Console.WriteLine();
 
-            GameIdList gameList = GameList.Games();
-            var missing = new GameIdList();
+            List<int> gameList = GameList.Games();
+            var missing = new List<int>();
 
             for (int i = 0; i < gameList.Count; i++)
             {
@@ -482,21 +482,21 @@ namespace BranchAndBoundCSharp
 
         public static void AllShapesThatCanBeSolvedWithAllWords()
         {
-            GameIdList depth1_width1 = new GameIdList { 8703 };
-            GameIdList depth1_width25 = new GameIdList { 8802, 9306 };
-            GameIdList depth1_width43 = new GameIdList { 9212 };
-            GameIdList depth1_width75 = new GameIdList { 8710 };
+            List<int> depth1_width1 = new List<int> { 8703 };
+            List<int> depth1_width25 = new List<int> { 8802, 9306 };
+            List<int> depth1_width43 = new List<int> { 9212 };
+            List<int> depth1_width75 = new List<int> { 8710 };
 
-            GameIdList depth2_width1 = new GameIdList { 9002, 9109, 9312 };
-            GameIdList depth2_width50 = new GameIdList { 8612, 8702, 8704, 8809, 8910, 8912, 9104, 9105, 9108, 9207, 9310, 9311, 9412 };
-            GameIdList depth2_width75 = new GameIdList { 8808, 9210 };
-            GameIdList depth2_width87 = new GameIdList { 9303 };
+            List<int> depth2_width1 = new List<int> { 9002, 9109, 9312 };
+            List<int> depth2_width50 = new List<int> { 8612, 8702, 8704, 8809, 8910, 8912, 9104, 9105, 9108, 9207, 9310, 9311, 9412 };
+            List<int> depth2_width75 = new List<int> { 8808, 9210 };
+            List<int> depth2_width87 = new List<int> { 9303 };
 
-            GameIdList depth3_width1 = new GameIdList { 8712, 9007, 9008 };
-            GameIdList depth3_width25 = new GameIdList { 8705, 8811, 9103, 9308 };
-            GameIdList depth3_width37 = new GameIdList { 8711 };
+            List<int> depth3_width1 = new List<int> { 8712, 9007, 9008 };
+            List<int> depth3_width25 = new List<int> { 8705, 8811, 9103, 9308 };
+            List<int> depth3_width37 = new List<int> { 8711 };
 
-            GameIdList solvedGames = new GameIdList
+            List<int> solvedGames = new List<int>
                 {
                     8703, 8802, 9306, 9212, 8710, 9002, 9109, 9312, 8612, 8702,
                     8704, 8809, 8910, 8912, 9104, 9105, 9108, 9207, 9310, 9311,
@@ -506,7 +506,7 @@ namespace BranchAndBoundCSharp
 
             //var overallStart = DateTimeCalculator.Now();
 
-            GameIdList solved = new GameIdList();
+            List<int> solved = new List<int>();
 
             solved.AddRange(executeGamesAllWords(depth1_width1, 1, 1, 30, 1, false));
             solved.AddRange(executeGamesAllWords(depth1_width25, 1, 25, 30, 1, false));
@@ -523,7 +523,7 @@ namespace BranchAndBoundCSharp
             solved.AddRange(executeGamesAllWords(depth3_width37, 3, 37, 30, 1, false));
 
             var gameIds = GameList.Games();
-            var missing = new GameIdList();
+            var missing = new List<int>();
             foreach (var gameId in gameIds)
             {
                 if (!solved.Contains(gameId))

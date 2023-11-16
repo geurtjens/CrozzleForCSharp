@@ -14,8 +14,8 @@ namespace ShapeMergerCSharp
             in WordIndexModelV2 wordIndex,
             int sourceMax,
             int searchMax,
-            in WordList words,
-            in MinScoreList scoresMin,
+            in List<string> words,
+            in List<int> scoresMin,
             int widthMax,
             int heightMax)
         {
@@ -142,8 +142,8 @@ namespace ShapeMergerCSharp
             in WordIndexModelV2 searchWordIndex,
             int sourceMax,
             int searchMax,
-            WordList words,
-            MinScoreList scoresMin,
+            List<string> words,
+            List<int> scoresMin,
             int widthMax,
             int heightMax)
         {
@@ -300,8 +300,8 @@ namespace ShapeMergerCSharp
         in WordIndexModelV2 wordIndex,
         int sourceMax,
         int searchMax,
-        WordList words,
-        MinScoreList scoresMin,
+        List<string> words,
+        List<int> scoresMin,
         int widthMax,
         int heightMax)
 
@@ -338,8 +338,8 @@ namespace ShapeMergerCSharp
                 in WordIndexModelV2 wordIndex,
                 int sourceMax,
                 int searchMax,
-                WordList words,
-                MinScoreList scoresMin,
+                List<string> words,
+                List<int> scoresMin,
                 int widthMax,
                 int heightMax)
         {
@@ -371,8 +371,8 @@ namespace ShapeMergerCSharp
             in List<ShapeModel> sourceShapes,
                 in WordIndexModelV2 searchWordIndex,
                 int searchMax,
-                WordList words,
-                MinScoreList scoresMin,
+                List<string> words,
+                List<int> scoresMin,
                 int widthMax,
                 int heightMax)
         {
@@ -404,8 +404,8 @@ namespace ShapeMergerCSharp
         in WordIndexModelV2 searchWordIndex,
         int sourceMax,
         int searchMax,
-        in WordList words,
-        in MinScoreList scoresMin,
+        in List<string> words,
+        in List<int> scoresMin,
         int widthMax,
         int heightMax)
         {
@@ -440,8 +440,8 @@ namespace ShapeMergerCSharp
             in List<ShapeModel> searchShapes,
             in WordIndexModelV2 wordIndex,
             int searchMax,
-            in WordList words,
-            in MinScoreList scoresMin,
+            in List<string> words,
+            in List<int> scoresMin,
             int widthMax,
             int heightMax)
         {
@@ -480,8 +480,8 @@ namespace ShapeMergerCSharp
             in List<ShapeModel> searchShapes,
             WordIndexModelV2 searchWordIndex,
             int searchMax,
-            WordList words,
-            MinScoreList scoresMin,
+            List<string> words,
+            List<int> scoresMin,
             int widthMax,
             int heightMax)
         {
@@ -525,8 +525,8 @@ namespace ShapeMergerCSharp
             in List<MergeInstructionModel> instructions,
             in ShapeModel sourceShape,
             in List<ShapeModel> searchShapes,
-            in WordList words,
-            in MinScoreList scoresMin,
+            in List<string> words,
+            in List<int> scoresMin,
             int widthMax,
             int heightMax)
         {
@@ -651,10 +651,10 @@ namespace ShapeMergerCSharp
         public static ShapeModel? mergeTwoShapes(
             in ShapeModel sourceShape,
             in ShapeModel searchShape,
-            in WordList words,
+            in List<string> words,
             int widthMax,
             int heightMax,
-            in MinScoreList scoresMin)
+            in List<int> scoresMin)
         {
             var matchesModel = WordIndexModelV2.GetMatches(sourceShape: sourceShape, searchShape: searchShape);
 

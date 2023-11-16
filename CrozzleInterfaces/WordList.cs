@@ -1,9 +1,9 @@
 ﻿using System;
 namespace CrozzleInterfaces
 {
-	public class WordList : List<string>
+	public class WordList
 	{
-        public static List<int> Lengths(List<string> words)
+        public static List<int> Lengths(in List<string> words)
         {
             var result = new List<int>();
 
@@ -14,44 +14,35 @@ namespace CrozzleInterfaces
             return result;
         }
 
-        // If we do this before other processing we can save all the time of making individual "." + word + "." 
-        public WordList WordsWithBlocks()
+        // If we do words before other processing we can save all the time of making individual "." + word + "." 
+        public static List<string> WordsWithBlocks(in List<string> words)
         {
-            var result = new WordList();
-            foreach(string word in this)
+            var result = new List<string>();
+            foreach(string word in words)
             {
                 result.Add("." + word + ".");
             }
             return result;
         }
 
-        public List<byte> LengthsInBytes()
+        public static List<byte> LengthsInBytes(in List<string> words)
         {
             var result = new List<byte>();
 
-            foreach (var word in this)
+            foreach (var word in words)
             {
                 result.Add((byte)word.Length);
             }
             return result;
         }
 
-        public List<int> Lengths()
+        
+
+        public static List<string> Reversed(in List<string> words)
         {
-            var result = new List<int>();
+            var result = new List<string>();
 
-            foreach (var word in this)
-            {
-                result.Add((int)word.Length);
-            }
-            return result;
-        }
-
-        public WordList Reversed()
-        {
-            var result = new WordList();
-
-            foreach (var word in this)
+            foreach (var word in words)
             {
                 var item = "";
                 for (int letterPos = word.Length; letterPos > 0; letterPos--)
@@ -64,11 +55,11 @@ namespace CrozzleInterfaces
         }
 
         /// We have a list of words that we want the wordId for
-        public int extractWordId(in string search)
+        public static int extractWordId(in List<string> words,in string search)
         {
-            for (int i = 0; i < this.Count; i++)
+            for (int i = 0; i < words.Count; i++)
             {
-                if (this[i] == search)
+                if (words[i] == search)
                 {
                     return i;
                 }
@@ -77,20 +68,20 @@ namespace CrozzleInterfaces
         }
 
 
-        public List<byte> ExtractPositions(in List<string> ofWords)
+        public static List<byte> ExtractPositions(in List<string> words, in List<string> searchFor)
         {
             var result = new List<byte>();
             var notFound = new List<String>();
-            foreach (var word in ofWords)
+            foreach (var searchWord in searchFor)
             {
-                var wordId = extractWordId(search: word);
+                var wordId = extractWordId(words, searchWord);
                 if (wordId >= 0)
                 {
                     result.Add((byte)wordId);
                 }
                 else
                 {
-                    notFound.Add(word);
+                    notFound.Add(searchWord);
                 }
             }
 

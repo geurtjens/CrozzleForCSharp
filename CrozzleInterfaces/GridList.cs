@@ -53,7 +53,7 @@ namespace CrozzleInterfaces
         }
 
 
-        public ShapeModel ToShape(WordList words)
+        public ShapeModel ToShape(List<string> words)
         {
             var placements = fromTextToPlacements(words: words);
 
@@ -65,7 +65,7 @@ namespace CrozzleInterfaces
             return shape;
         }
 
-        private List<PlacementModel> fromTextToPlacements(WordList words)
+        private List<PlacementModel> fromTextToPlacements(List<string> words)
         {
             var placements = fromTextToPlacementsHorizontal(words: words);
 
@@ -78,7 +78,7 @@ namespace CrozzleInterfaces
 
 
 
-        private List<PlacementModel> fromTextToPlacementsHorizontal(WordList words)
+        private List<PlacementModel> fromTextToPlacementsHorizontal(List<string> words)
         {
             var result = new List<PlacementModel>();
 
@@ -118,10 +118,10 @@ namespace CrozzleInterfaces
                         else if (current == '.')
                         {
                             // We have finished the word
-                            int wordId = words.extractWordId(search: word);
+                            int wordId = WordList.extractWordId(words, word);
                             if (wordId == -1)
                             {
-                                Console.WriteLine($"{word} not found in wordlist");
+                                Console.WriteLine($"{word} not found in List<string>");
                                 // It is invalid as we cannot find this word
                                 return new List<PlacementModel>();
                             }
@@ -151,7 +151,7 @@ namespace CrozzleInterfaces
         }
 
 
-        private List<PlacementModel> fromTextToPlacementsVertical(WordList words)
+        private List<PlacementModel> fromTextToPlacementsVertical(List<string> words)
         {
             var result = new List<PlacementModel>();
 
@@ -192,10 +192,10 @@ namespace CrozzleInterfaces
                         else if (current == '.')
                         {
                             // We have finished the word
-                            int wordId = words.extractWordId(search: word);
+                            int wordId = WordList.extractWordId(words, word);
                             if (wordId == -1)
                             {
-                                Console.WriteLine($"{word} not found in wordlist");
+                                Console.WriteLine($"{word} not found in List<string>");
                                 // It is invalid as we cannot find this word
                                 return new List<PlacementModel>();
                             }

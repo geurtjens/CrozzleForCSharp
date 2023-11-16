@@ -7,17 +7,17 @@ namespace BranchAndBoundCSharp
     public class OptimizeBranchAndBound
     {
 
-        public static Tuple<GameIdList, IntList> optimizeWithStartingWords(
+        public static Tuple<List<int>, List<int>> optimizeWithStartingWords(
         int gameId,
-        in WordList words,
+        in List<string> words,
         int lookaheadDepth,
         int beamWidth,
         int maxDepth,
         bool useGuidedScores)
         {
-            IntList beamWidthResults = new IntList();
+            List<int> beamWidthResults = new List<int>();
 
-            GameIdList startingWords = findValidStartingWords(
+            List<int> startingWords = findValidStartingWords(
                 gameId,
                 words,
                 lookaheadDepth,
@@ -48,7 +48,7 @@ namespace BranchAndBoundCSharp
                 Console.WriteLine($"Starting word {startingWords[i]} has beam width of {beamWidthResults[i]}");
             }
 
-            return new Tuple<GameIdList, IntList>(startingWords, beamWidthResults);
+            return new Tuple<List<int>, List<int>>(startingWords, beamWidthResults);
         }
 
 
@@ -61,8 +61,8 @@ namespace BranchAndBoundCSharp
             int lowerWidth = minimumBeamWidth;
             int upperWidth = maximumBeamWidth;
 
-            GameIdList lowerWidthShouldFail = BranchAndBoundV3.ExecuteGamesAllWords(
-                new GameIdList { gameId },
+            List<int> lowerWidthShouldFail = BranchAndBoundV3.ExecuteGamesAllWords(
+                new List<int> { gameId },
                 lookaheadDepth, lowerWidth, maxDepth, rootWidth, useGuidedScores);
 
             if (lowerWidthShouldFail.Count > 0)
@@ -72,8 +72,8 @@ namespace BranchAndBoundCSharp
             }
             else
             {
-                GameIdList upperWidthShouldSucceed = BranchAndBoundV3.ExecuteGamesAllWords(
-                    new GameIdList { gameId },
+                List<int> upperWidthShouldSucceed = BranchAndBoundV3.ExecuteGamesAllWords(
+                    new List<int> { gameId },
                     lookaheadDepth, upperWidth, maxDepth, rootWidth, useGuidedScores);
 
                 if (upperWidthShouldSucceed.Count == 0)
@@ -88,8 +88,8 @@ namespace BranchAndBoundCSharp
                         currentWidth = (int)((double)(lowerWidth + upperWidth + 0.5) / 2.0);
                         Console.WriteLine($"Game: {gameId}, Lower: {lowerWidth}, Upper: {upperWidth}, Current Width: {currentWidth}");
 
-                        GameIdList winnersForCurrent = BranchAndBoundV3.ExecuteGamesAllWords(
-                            new GameIdList { gameId },
+                        List<int> winnersForCurrent = BranchAndBoundV3.ExecuteGamesAllWords(
+                            new List<int> { gameId },
                             lookaheadDepth, currentWidth, maxDepth, rootWidth, useGuidedScores);
 
                         if (winnersForCurrent.Count == 0)
@@ -123,15 +123,15 @@ namespace BranchAndBoundCSharp
         /// <param name="beamWidth"></param>
         /// <param name="maxDepth"></param>
         /// <returns></returns>
-        public static GameIdList findValidStartingWords(
+        public static List<int> findValidStartingWords(
             int gameId,
-            WordList words,
+            List<string> words,
             int lookaheadDepth,
             int beamWidth,
             int maxDepth,
             bool useGuidedScores)
         {
-            GameIdList result = new GameIdList();
+            List<int> result = new List<int>();
 
             StartingDataModel startingDataModel = StartingDataCalculator.Execute(
                 gameId :gameId,
@@ -145,8 +145,8 @@ namespace BranchAndBoundCSharp
             {
                 int startingShape = i * -1;
 
-                GameIdList winning = BranchAndBoundV3.ExecuteGamesWinningWords(
-                    new GameIdList { gameId },
+                List<int> winning = BranchAndBoundV3.ExecuteGamesWinningWords(
+                    new List<int> { gameId },
                     lookaheadDepth,
                     beamWidth,
                     maxDepth,
@@ -163,7 +163,7 @@ namespace BranchAndBoundCSharp
         }
 
         public static List<List<int>> OptimizeBeamWidthAsync(
-                GameIdList games, int lookaheadDepth, int maxDepth,
+                List<int> games, int lookaheadDepth, int maxDepth,
                 int minimumBeamWidth, int maximumBeamWidth, int rootWidth, bool useGuidedScores)
         {
             int lowerWidth = 0;
@@ -176,15 +176,15 @@ namespace BranchAndBoundCSharp
                 result.Add(new List<int>());
             }
 
-            GameIdList failures = new GameIdList();
+            List<int> failures = new List<int>();
 
             foreach (int gameId in games)
             {
                 lowerWidth = minimumBeamWidth;
                 upperWidth = maximumBeamWidth;
 
-                GameIdList lowerWidthShouldFail = BranchAndBoundV3.ExecuteGamesWinningWords(
-                    new GameIdList { gameId },
+                List<int> lowerWidthShouldFail = BranchAndBoundV3.ExecuteGamesWinningWords(
+                    new List<int> { gameId },
                     lookaheadDepth, lowerWidth, maxDepth, rootWidth, useGuidedScores);
 
                 if (lowerWidthShouldFail.Count > 0)
@@ -194,8 +194,8 @@ namespace BranchAndBoundCSharp
                 }
                 else
                 {
-                    GameIdList upperWidthShouldSucceed = BranchAndBoundV3.ExecuteGamesWinningWords(
-                        new GameIdList { gameId },
+                    List<int> upperWidthShouldSucceed = BranchAndBoundV3.ExecuteGamesWinningWords(
+                        new List<int> { gameId },
                         lookaheadDepth, upperWidth, maxDepth, rootWidth, useGuidedScores);
 
                     if (upperWidthShouldSucceed.Count == 0)
@@ -210,8 +210,8 @@ namespace BranchAndBoundCSharp
                             currentWidth = (int)((double)(lowerWidth + upperWidth + 0.5) / 2.0);
                             Console.WriteLine($"Game: {gameId}, Lower: {lowerWidth}, Upper: {upperWidth}, Current Width: {currentWidth}");
 
-                            GameIdList winnersForCurrent = BranchAndBoundV3.ExecuteGamesWinningWords(
-                                new GameIdList { gameId },
+                            List<int> winnersForCurrent = BranchAndBoundV3.ExecuteGamesWinningWords(
+                                new List<int> { gameId },
                                 lookaheadDepth, currentWidth, maxDepth, rootWidth, useGuidedScores);
 
                             if (winnersForCurrent.Count == 0)
@@ -268,8 +268,8 @@ namespace BranchAndBoundCSharp
             int lowerWidth = minimumBeamWidth;
             int upperWidth = maximumBeamWidth;
 
-            GameIdList lowerWidthShouldFail = BranchAndBoundV3.ExecuteGamesWinningWords(
-                new GameIdList { gameId },
+            List<int> lowerWidthShouldFail = BranchAndBoundV3.ExecuteGamesWinningWords(
+                new List<int> { gameId },
                 lookaheadDepth, lowerWidth, maxDepth, rootWidth, useGuidedScores);
 
             if (lowerWidthShouldFail.Count > 0)
@@ -279,8 +279,8 @@ namespace BranchAndBoundCSharp
             }
             else
             {
-                GameIdList upperWidthShouldSucceed = BranchAndBoundV3.ExecuteGamesWinningWords(
-                    new GameIdList { gameId },
+                List<int> upperWidthShouldSucceed = BranchAndBoundV3.ExecuteGamesWinningWords(
+                    new List<int> { gameId },
                     lookaheadDepth,
                     upperWidth,
                     maxDepth,
@@ -299,8 +299,8 @@ namespace BranchAndBoundCSharp
                         currentWidth = (int)((double)(lowerWidth + upperWidth + 0.5) / 2.0);
                         Console.WriteLine($"Game: {gameId}, Lower: {lowerWidth}, Upper: {upperWidth}, Current Width: {currentWidth}");
 
-                        GameIdList winnersForCurrent = BranchAndBoundV3.ExecuteGamesWinningWords(
-                            new GameIdList { gameId },
+                        List<int> winnersForCurrent = BranchAndBoundV3.ExecuteGamesWinningWords(
+                            new List<int> { gameId },
                             lookaheadDepth, lowerWidth, maxDepth, rootWidth, useGuidedScores);
 
                         if (winnersForCurrent.Count == 0)

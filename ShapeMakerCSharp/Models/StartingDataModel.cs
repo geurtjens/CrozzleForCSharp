@@ -11,9 +11,9 @@ namespace ShapeMakerCSharp
 
         public readonly List<ShapeModel> startingShapes;
 
-        public readonly WordList words;
+        public readonly List<string> words;
 
-        public readonly MinScoreList scoresMin;
+        public readonly List<int> scoresMin;
 
         public readonly int maxWidth;
 
@@ -26,8 +26,8 @@ namespace ShapeMakerCSharp
 			in List<ShapeModel> searchShapes,
 			in List<ShapeModel> winningShapes,
 			in List<ShapeModel> startingShapes,
-			in WordList words,
-			in MinScoreList scoresMin,
+			in List<string> words,
+			in List<int> scoresMin,
 			int maxWidth,
 			int maxHeight,
 			int winningScore

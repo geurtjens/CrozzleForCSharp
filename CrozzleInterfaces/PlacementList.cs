@@ -17,9 +17,9 @@ namespace CrozzleInterfaces
         }
 
 
-        public static HashSet<int> GetWords(in List<PlacementModel> placements)
+        public static List<int> GetWords(in List<PlacementModel> placements)
         {
-            var result = new HashSet<int>();
+            var result = new List<int>();
             foreach(var p in placements)
             {
                 result.Add(p.w);
@@ -47,11 +47,6 @@ namespace CrozzleInterfaces
             var result = "";
             for (int i = 0; i < wordCount; i++)
             {
-
-                if (result != "")
-                {
-                    result += ",";
-                }
                 result += $"{placements[i].w},";
             }
 
@@ -63,15 +58,12 @@ namespace CrozzleInterfaces
             for (int i = 0; i < wordCount; i++)
             {
 
-                result += $"{placements[i].y}";
+                result += $"{placements[i].y},";
             }
 
             for (int i = 0; i < wordCount; i++)
             {
-                if (result != "")
-                {
-                    result += ",";
-                }
+                
                 if (placements[i].z == true)
                 {
                     result += "1";

@@ -18,7 +18,7 @@ namespace ShapeMergerCSharp
             in List<PlacementModel> placements,
             int width,
             int height,
-            in WordList words)
+            in List<string> words)
         {
             var (score, grid) = getScoreAndText(placements: placements, width: width, height: height, words: words);
 
@@ -63,7 +63,7 @@ namespace ShapeMergerCSharp
             in List<PlacementModel> placements,
             int width,
             int height,
-            WordList words)
+            List<string> words)
         {
 
             const char SPACE = ' '; // 32;

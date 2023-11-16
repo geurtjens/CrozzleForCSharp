@@ -1009,13 +1009,13 @@ namespace ShapeMakerCSharp
         }
 
         public static List<ShapeModel> Execute(
-            in WordList words,
+            in List<string> words,
             int scoreMin,
             int widthMax,
             int heightMax)
         {
 
-            var lengths = words.Lengths();
+            var lengths = WordList.Lengths(words);
             var letterIndex = new LetterIndexModel(words);
 
 

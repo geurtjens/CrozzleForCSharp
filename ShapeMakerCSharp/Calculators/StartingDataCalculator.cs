@@ -16,7 +16,7 @@ namespace ShapeMakerCSharp
         /// - Returns: lots of data used by the calculation
         public static StartingDataModel Execute(
             int gameId,
-            in WordList words,
+            in List<string> words,
             int rootWidth,
             bool useGuidedScores) //async -> (Int,[[Int]],[ShapeModel], WordIndexModelV2, [TreeNodeModel], [Int], Int, Int)
         {
@@ -67,9 +67,9 @@ namespace ShapeMakerCSharp
 
      
 
-            var scoresMin = new MinScoreList(gameId);
+            var scoresMin = MinScoreList.Execute(gameId);
             if (useGuidedScores == false) {
-                scoresMin = new MinScoreList();
+                scoresMin = MinScoreList.Execute(0);
             }
 
             StartingDataModel result = new StartingDataModel(searchShapes, winningShapes, startingShapes, words, scoresMin, widthMax, heightMax, winningScore);

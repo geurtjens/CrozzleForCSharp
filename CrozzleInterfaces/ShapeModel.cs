@@ -164,7 +164,7 @@ namespace CrozzleInterfaces
 
         
 
-        public String ToTextDebug(in WordList words)
+        public String ToTextDebug(in List<string> words)
         {
             int score = 0;
 
@@ -241,9 +241,14 @@ namespace CrozzleInterfaces
             return result;
         }
 
-        public HashSet<int> GetWordIds()
+        public List<int> GetWordIds()
         {
             return PlacementList.GetWords(this.placements);
+        }
+
+        public HashSet<int> GetHashSetWordIds()
+        {
+            return new HashSet<int>(PlacementList.GetWords(this.placements));
         }
     }
 }

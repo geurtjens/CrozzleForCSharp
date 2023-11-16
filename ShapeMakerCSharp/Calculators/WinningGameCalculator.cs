@@ -6,7 +6,7 @@ namespace ShapeMakerCSharp.Calculators
     public class WinningGameCalculator
     {
 
-        public static List<ShapeModel> execute(int gameId, WordList words)
+        public static List<ShapeModel> execute(int gameId, List<string> words)
         {
             var grids = findWinningGame(gameId);
 

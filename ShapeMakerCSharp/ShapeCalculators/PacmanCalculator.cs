@@ -47,16 +47,16 @@ namespace ShapeMakerCSharp
 
 
         public static List<ShapeModel> Execute(
-            in WordList words,
+            in List<string> words,
             int scoreMin,
             int widthMax,
             int heightMax) {
 
-            var len = words.Lengths();
+            var len = WordList.Lengths(words);
 
             var letterIndex = new LetterIndexModel(words);
 
-            var end = words.Reversed();
+            var end = WordList.Reversed(words);
 
 
             var topRight3x3 = TopRight3x3(letterIndex, words, end, len, scoreMin, widthMax, heightMax);

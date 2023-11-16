@@ -60,8 +60,8 @@ namespace BranchAndBoundCSharp
             in ShapeModel sourceShape,
             int sourceShapeId,
             in List<ShapeModel> searchShapes,
-            in WordList words,
-            in MinScoreList scoresMin,
+            in List<string> words,
+            in List<int> scoresMin,
             int widthMax,
             int heightMax)
         {

@@ -11,8 +11,8 @@ namespace CrozzleInterfaces
         public readonly ushort winningScore;
 
         public readonly GridList winningGame;
-        public readonly WordList winningWords;
-        public readonly WordList words;
+        public readonly List<string> winningWords;
+        public readonly List<string> words;
 
 
         public GameModel(
@@ -20,8 +20,8 @@ namespace CrozzleInterfaces
             ushort winningScore,
             byte widthMax,
             byte heightMax,
-            in WordList winningWords,
-            in WordList words,
+            in List<string> winningWords,
+            in List<string> words,
             in GridList winningGame)
         {
             this.gameId = gameId;

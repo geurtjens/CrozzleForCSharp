@@ -23,11 +23,11 @@ namespace CrozzleInterfaces
         {
             var result = new List<HashSet<int>>();
 
-            HashSet<int> parentWords = parentShape.GetWordIds();
+            HashSet<int> parentWords = parentShape.GetHashSetWordIds();
         
             for (int siblingId = 0; siblingId < shapes.Count; siblingId++)
             {
-                HashSet<int> siblingWords = shapes[siblingId].GetWordIds();
+                HashSet<int> siblingWords = shapes[siblingId].GetHashSetWordIds();
 
 
                 HashSet<int> missingWords = WordIdList.findExtraWords(parentWords, siblingWords);
@@ -118,9 +118,9 @@ namespace CrozzleInterfaces
         /// Assuming that all shapes have at least one shapeId in their mergeHistory, lets get the last one from each shape
         /// - Parameter shapes: ShapeModel that definitely has their mergeHistory set
         /// - Returns: An array of shapeIds that was the last shapeId added to make up each shape
-        public static IntList getLastMergeHistoryShapeId(in List<ShapeModel> shapes)
+        public static List<int> getLastMergeHistoryShapeId(in List<ShapeModel> shapes)
         {
-            var result = new IntList();
+            var result = new List<int>();
             for (int shapeId = 0; shapeId < shapes.Count; shapeId++)
             {
                 result.Add(shapes[shapeId].history.Last());
