@@ -10,7 +10,7 @@ namespace CrozzleInterfaces
         public readonly byte heightMax;
         public readonly ushort winningScore;
 
-        public readonly GridList winningGame;
+        public readonly List<string> winningGame;
         public readonly List<string> winningWords;
         public readonly List<string> words;
 
@@ -22,7 +22,7 @@ namespace CrozzleInterfaces
             byte heightMax,
             in List<string> winningWords,
             in List<string> words,
-            in GridList winningGame)
+            in List<string> winningGame)
         {
             this.gameId = gameId;
             this.winningScore = winningScore;

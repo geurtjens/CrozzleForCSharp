@@ -16,13 +16,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrozzleInterfaces", "Crozzl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShapeMergerCSharp", "ShapeMergerCSharp\ShapeMergerCSharp.csproj", "{23A70860-293B-421D-B4C3-7A0332125DEC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test_ShapeMergerCSharp", "Test_ShapeMergerCSharp\Test_ShapeMergerCSharp.csproj", "{DAABD769-8BFE-420F-89CB-6A6F87232A7D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShapeMerger_Tests", "Test_ShapeMergerCSharp\ShapeMerger_Tests.csproj", "{DAABD769-8BFE-420F-89CB-6A6F87232A7D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BranchAndBoundCSharp", "BranchAndBoundCSharp\BranchAndBoundCSharp.csproj", "{AA72F04B-2D0A-4233-8D93-E072BF31F1BF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test_BranchAndBound", "Test_BranchAndBound\Test_BranchAndBound.csproj", "{695889DA-7907-4FE2-8FC2-49889F97BAE4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BranchAndBound_Tests", "Test_BranchAndBound\BranchAndBound_Tests.csproj", "{695889DA-7907-4FE2-8FC2-49889F97BAE4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test_ShapeMaker", "Test_ShapeMaker\Test_ShapeMaker.csproj", "{9A8D9E8E-A0CC-4A1B-BE69-982E69425D9F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShapeMaker_Tests", "Test_ShapeMaker\ShapeMaker_Tests.csproj", "{9A8D9E8E-A0CC-4A1B-BE69-982E69425D9F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrozzleInterface_Tests", "CrozzleInterface_Tests\CrozzleInterface_Tests.csproj", "{C4151EDD-1BDF-41F1-9904-1FBBC5057F15}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -62,6 +64,10 @@ Global
 		{9A8D9E8E-A0CC-4A1B-BE69-982E69425D9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9A8D9E8E-A0CC-4A1B-BE69-982E69425D9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9A8D9E8E-A0CC-4A1B-BE69-982E69425D9F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4151EDD-1BDF-41F1-9904-1FBBC5057F15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4151EDD-1BDF-41F1-9904-1FBBC5057F15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4151EDD-1BDF-41F1-9904-1FBBC5057F15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4151EDD-1BDF-41F1-9904-1FBBC5057F15}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

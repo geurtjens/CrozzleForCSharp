@@ -8,7 +8,7 @@ namespace CrozzleInterfaces
 
         public static List<TreeNodeModel> sortByBestDescendant(in List<TreeNodeModel> treeNodes)
         {
-            return treeNodes.OrderBy(e => e.bestDescendant.score).ThenBy(e => e.bestDescendant.width * e.bestDescendant.height).ToList();
+            return treeNodes.OrderByDescending(e => e.bestDescendant.score).ThenBy(e => e.bestDescendant.placements.Count).ThenBy(e => e.bestDescendant.width * e.bestDescendant.height).ToList();
         }
 
         public static List<TreeNodeModel> applyBeamWidth(in List<TreeNodeModel> treeNodes, int beamWidth)
@@ -83,7 +83,7 @@ namespace CrozzleInterfaces
 
         public static List<TreeNodeModel> SortWithWordSequence(in List<TreeNodeModel> treeNodes)
         {
-            return (List<TreeNodeModel>)treeNodes.OrderBy(e => e.parentShape.score).ThenBy(e => e.parentShape.placements.Count).ThenBy(e => e.parentShape.width * e.parentShape.height).ThenBy(e => e.parentShape.wordSequence).ToList();
+            return treeNodes.OrderByDescending(e => e.parentShape.score).ThenBy(e => e.parentShape.placements.Count).ThenBy(e => e.parentShape.width * e.parentShape.height).ThenBy(e => e.parentShape.wordSequence).ToList();
         }
 
         public static List<TreeNodeModel> RemoveDuplicates(in List<TreeNodeModel> treeNodes)

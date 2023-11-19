@@ -3,7 +3,7 @@ using CrozzleInterfaces;
 using ShapeMakerCSharp;
 using ShapeMakerCSharp.Calculators;
 
-namespace Test_ShapeMaker;
+namespace ShapeMaker_Tests;
 
 public class StartingDataCalculator_Tests
 {

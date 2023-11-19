@@ -33,7 +33,7 @@ namespace ShapeMergerCSharp
                     widthMax: widthMax,
                     heightMax: heightMax);
 
-                childShapes = ShapeList.RemoveDuplicates(childShapes).OrderBy(e=> e.score).ToList();
+                childShapes = ShapeList.RemoveDuplicates(childShapes).OrderByDescending(e=> e.score).ToList();
                 
                 var treeNode = new TreeNodeModel(
                     parentShape: startingShapes[startingShapeId],

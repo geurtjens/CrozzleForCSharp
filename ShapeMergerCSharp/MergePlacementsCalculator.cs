@@ -17,19 +17,14 @@ namespace ShapeMergerCSharp
             in List<PlacementModel> searchPlacements)
         {
             // First we find the common placement
-            Tuple<int, int> commonWordPositions = FindFirstCommonPosition(sourcePlacements, searchPlacements);
+            var (commonSourceId, commonSearchId) = FindFirstCommonPosition(sourcePlacements, searchPlacements);
 
-            if (commonWordPositions.Item1 == -1)
+            if (commonSourceId == -1)
             {
                 return new List<PlacementModel>();
             }
 
-            int commonSourceId = commonWordPositions.Item1;
-            int commonSearchId = commonWordPositions.Item2;
-
             bool flip = sourcePlacements[commonSourceId].z != searchPlacements[commonSearchId].z;
-
-            
 
             // So we know the common word and we have flipped to same orientation
             return Execute(sourcePlacements, searchPlacements, commonSourceId, commonSearchId, flip);
@@ -143,7 +138,7 @@ namespace ShapeMergerCSharp
             int yOffset,
             in HashSet<int> excludedWords)
         {
-            var newPlacements = new List<PlacementModel>();
+            var result = new List<PlacementModel>();
             foreach (var j in placements)
             {
                 if (excludedWords.Contains(j.w) == false)
@@ -154,10 +149,10 @@ namespace ShapeMergerCSharp
                     y: (byte)(int)(j.y + yOffset),
                     z: j.z,
                     l: j.l);
-                    newPlacements.Add(newPlacement);
+                    result.Add(newPlacement);
                 }
             }
-            return newPlacements;
+            return result;
         }
 
 
@@ -169,26 +164,26 @@ namespace ShapeMergerCSharp
             int yOffset,
             HashSet<int> excludedWords)
         {
-            var newPlacements = new List<PlacementModel>();
+            var result = new List<PlacementModel>();
             foreach (var j in placements)
             {
                 if (excludedWords.Contains(j.w) == false)
                 {
                     var newPlacement = new PlacementModel(
                     w: j.w,
-                    x: (byte)(int)(j.y + yOffset),
-                    y: (byte)(int)(j.x + xOffset),
+                    x: (byte)(int)(j.y + xOffset),
+                    y: (byte)(int)(j.x + yOffset),
                     z: !j.z,
                     l: j.l);
-                    newPlacements.Add(newPlacement);
+                    result.Add(newPlacement);
                 }
             }
-            return newPlacements;
+            return result;
         }
 
 
         /// The offset depends on if the shape is flipped or will be merged in the same original direction.
-        private static Tuple<byte, byte, byte, byte> CalculateOffsets(
+        public static Tuple<byte, byte, byte, byte> CalculateOffsets(
             int xSource,
             int ySource,
             int xSearch,
@@ -198,6 +193,7 @@ namespace ShapeMergerCSharp
 
             if (flip)
             {
+                // Assume we will flip search
                 int xSearchTemp = xSearch;
                 xSearch = ySearch;
                 ySearch = xSearchTemp;

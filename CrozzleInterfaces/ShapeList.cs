@@ -95,14 +95,14 @@ namespace CrozzleInterfaces
 
         public static List<ShapeModel> SortToFindDuplicates(in List<ShapeModel> shapes)
         {
-            return (shapes.OrderBy(e => e.score).ThenByDescending(e => e.placements.Count).ThenByDescending(e => e.width * e.height).ThenBy(e => e.wordSequence).ToList());
+            return (shapes.OrderByDescending(e => e.score).ThenBy(e => e.placements.Count).ThenBy(e => e.width * e.height).ThenBy(e => e.wordSequence).ToList());
 
         }
 
 
         public static List<ShapeModel> SortAndSetHistory(in List<ShapeModel> shapes)
         {
-            var result = shapes.OrderBy(e => e.score).ThenByDescending(e => e.placements.Count).ThenByDescending(e => e.width * e.height).ThenBy(e => e.wordSequence).ToList();
+            var result = shapes.OrderByDescending(e => e.score).ThenBy(e => e.placements.Count).ThenBy(e => e.width * e.height).ThenBy(e => e.wordSequence).ToList();
 
             for (int i = 0; i < (int)shapes.Count; i++)
             {

@@ -196,7 +196,7 @@ public class BranchAndBoundV3
 
     public static ShapeModel ExecuteGame(
         int gameId,
-        List<string> words,
+        in List<string> words,
         int lookaheadDepth,
         int beamWidth,
         int maxDepth,

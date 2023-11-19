@@ -78,7 +78,7 @@ namespace CrozzleInterfaces
 
 
         /// calculates `width` from `placements`
-        public static int width(in List<PlacementModel> placements)
+        public static byte width(in List<PlacementModel> placements)
         {
             var maxWidth = 0;
             foreach (PlacementModel placement in placements)
@@ -100,11 +100,11 @@ namespace CrozzleInterfaces
                     }
                 }
             }
-            return (int)(maxWidth + 2);
+            return (byte)(maxWidth + 2);
         }
 
 
-        public static int height(in List<PlacementModel> placements)
+        public static byte height(in List<PlacementModel> placements)
         {
             var maxHeight = 0;
             foreach (PlacementModel placement in placements)
@@ -123,7 +123,7 @@ namespace CrozzleInterfaces
                 }
                 }
             }
-            return (int)(maxHeight + 2);
+            return (byte)(maxHeight + 2);
         }
     }
 }

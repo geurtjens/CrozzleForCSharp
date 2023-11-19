@@ -14,22 +14,22 @@ namespace ShapeMakerCSharp.Calculators
 
             foreach(var grid in grids)
             {
-                var shape = grid.ToShape(words);
+                var shape = GridList.ToShape(grid, words);
                 result.Add(shape);
             }
             return result;
         }
 
 
-        public static List<GridList> findWinningGame(int gameId)
+        public static List<List<string>> findWinningGame(int gameId)
         {
             switch (gameId)
             {
                 case 8612:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         " .  . ",
                         ".NUTS.",
                         " A  I ",
@@ -40,7 +40,7 @@ namespace ShapeMakerCSharp.Calculators
                         " T    ",
                         " H    ",
                         " .    "
-                    },new GridList {
+                    },new List<string> {
                         "      . .  ",
                         ".NAZARETH. ",
                         "      V O  ",
@@ -48,7 +48,7 @@ namespace ShapeMakerCSharp.Calculators
                         "      . L  ",
                         "        Y  ",
                         "        .  "
-                    },new GridList {
+                    },new List<string> {
                         "   . ",
                         "   H ",
                         "   O ",
@@ -56,7 +56,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   L ",
                         ".JOY.",
                         "   . "
-                    },new GridList {
+                    },new List<string> {
                         "     .    ",
                         "    .JOY. ",
                         "     E  S ",
@@ -64,7 +64,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     L  A ",
                         "     Y  R ",
                         "     .  . "
-                    },new GridList {
+                    },new List<string> {
                         "   . .  ",
                         "   H M  ",
                         "   A E  ",
@@ -75,7 +75,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   U    ",
                         "   T    ",
                         "   .    "
-                    },new GridList {
+                    },new List<string> {
                         "  . .  ",
                         " .HYMN.",
                         "  A E  ",
@@ -86,7 +86,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  U    ",
                         "  T    ",
                         "  .    "
-                    },new GridList {
+                    },new List<string> {
                         "  .   ",
                         "  T   ",
                         "  U   ",
@@ -95,7 +95,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  E   ",
                         ".HYMN.",
                         "  .   "
-                    },new GridList {
+                    },new List<string> {
                         "  .     ",
                         "  S     ",
                         "  A     ",
@@ -103,7 +103,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  C     ",
                         "  E     ",
                         "  .     "
-                    },new GridList {
+                    },new List<string> {
                         " .  . ",
                         ".TOYS.",
                         " O  A ",
@@ -111,7 +111,7 @@ namespace ShapeMakerCSharp.Calculators
                         " S  C ",
                         ".TREE.",
                         " .  . "
-                    },new GridList {
+                    },new List<string> {
                         "   .  ",
                         "   F  ",
                         "   A  ",
@@ -120,20 +120,20 @@ namespace ShapeMakerCSharp.Calculators
                         "   L  ",
                         ".TOYS.",
                         "   .  "
-                    },new GridList {
+                    },new List<string> {
                         "    . ",
                         "    I ",
                         "    N ",
                         ".HYMN.",
                         "    . "
-                    },new GridList {
+                    },new List<string> {
                         "    .   ",
                         "    P   ",
                         "    O   ",
                         "    R   ",
                         ".TURKEY.",
                         "    .   "
-                    },new GridList {
+                    },new List<string> {
                         "    .   ",
                         "    W   ",
                         "    H   ",
@@ -141,7 +141,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    T   ",
                         "    E   ",
                         "    .   "
-                    },new GridList {
+                    },new List<string> {
                         "    . ",
                         ".SNOW.",
                         "    H ",
@@ -149,7 +149,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    T ",
                         "    E ",
                         "    . "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         "     C ",
                         "     A ",
@@ -161,9 +161,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 8704:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "  .  .  ",
                         "  F  P  ",
                         ".HOMER. ",
@@ -171,7 +171,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".STANZA.",
                         "  .  E  ",
                         "     .  "
-                    },new GridList {
+                    },new List<string> {
                         " .      ",
                         ".STANZA.",
                         " L      ",
@@ -181,7 +181,7 @@ namespace ShapeMakerCSharp.Calculators
                         " O      ",
                         " R      ",
                         " .      "
-                    },new GridList {
+                    },new List<string> {
                         "       . ",
                         "       H ",
                         "    .  A ",
@@ -191,7 +191,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    T  . ",
                         "    T    ",
                         "    .    "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         "     S ",
                         " .   L ",
@@ -201,7 +201,7 @@ namespace ShapeMakerCSharp.Calculators
                         " L   O ",
                         " E   R ",
                         " .   . "
-                    },new GridList {
+                    },new List<string> {
                         "   ..    ",
                         "  .DONNE.",
                         ".HOOD.   ",
@@ -209,7 +209,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   L.    ",
                         "   E     ",
                         "   .     "
-                    },new GridList {
+                    },new List<string> {
                         "  .    ",
                         "  S    ",
                         "  C .  ",
@@ -218,7 +218,7 @@ namespace ShapeMakerCSharp.Calculators
                         " .TEXT.",
                         "  . E  ",
                         "    .  "
-                    },new GridList {
+                    },new List<string> {
                         "    .   ",
                         " .  M   ",
                         " H  I   ",
@@ -227,7 +227,7 @@ namespace ShapeMakerCSharp.Calculators
                         " E  O   ",
                         " .DONNE.",
                         "    .   "
-                    },new GridList {
+                    },new List<string> {
                         "    .  ",
                         " .LAMB.",
                         " H  I  ",
@@ -236,21 +236,21 @@ namespace ShapeMakerCSharp.Calculators
                         " E  O  ",
                         " .  N  ",
                         "    .  "
-                    },new GridList {
+                    },new List<string> {
                         " .    ",
                         ".HYMN.",
                         " O    ",
                         " O    ",
                         " D    ",
                         " .    "
-                    },new GridList {
+                    },new List<string> {
                         "     . . ",
                         ".BRIDGES.",
                         "     R C ",
                         "     A A ",
                         "   .HYMN.",
                         "     . . "
-                    },new GridList {
+                    },new List<string> {
                         " .     ",
                         " B     ",
                         ".RHYME.",
@@ -260,7 +260,7 @@ namespace ShapeMakerCSharp.Calculators
                         " E     ",
                         " S     ",
                         " .     "
-                    },new GridList {
+                    },new List<string> {
                         "   .   ",
                         "   E   ",
                         "   L   ",
@@ -268,7 +268,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   G   ",
                         ".RHYME.",
                         "   .   "
-                    },new GridList {
+                    },new List<string> {
                         " .     ",
                         " P     ",
                         " O     ",
@@ -279,9 +279,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 8705:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "     .    ",
                         "    .E    ",
                         "   .PANSY.",
@@ -289,14 +289,14 @@ namespace ShapeMakerCSharp.Calculators
                         "   .STALK.",
                         " .PATH.   ",
                         "    ..    "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         "     L ",
                         "     I ",
                         "     L ",
                         ".PANSY.",
                         "     . "
-                    },new GridList {
+                    },new List<string> {
                         "    .     ",
                         "    S     ",
                         "    T.    ",
@@ -306,7 +306,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     P    ",
                         "     Y    ",
                         "     .    "
-                    },new GridList {
+                    },new List<string> {
                         "     .    ",
                         "     P    ",
                         "   .MOWER.",
@@ -315,7 +315,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".PEONY.   ",
                         "   L .    ",
                         "   .      "
-                    },new GridList {
+                    },new List<string> {
                         "     .       ",
                         "     G       ",
                         "     R.      ",
@@ -324,7 +324,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    .SWEEP.  ",
                         "     .N      ",
                         "      .      "
-                    },new GridList {
+                    },new List<string> {
                         "      .  ",
                         "    . B  ",
                         ".ALYSSUM.",
@@ -332,13 +332,13 @@ namespace ShapeMakerCSharp.Calculators
                         ".SWEEP.  ",
                         "    M    ",
                         "    .    "
-                    },new GridList {
+                    },new List<string> {
                         "   .     ",
                         "   M     ",
                         "   A     ",
                         ".ALYSSUM.",
                         "   .     "
-                    },new GridList {
+                    },new List<string> {
                         "  .    ",
                         "  E .  ",
                         ".PANSY.",
@@ -348,14 +348,14 @@ namespace ShapeMakerCSharp.Calculators
                         "  . I  ",
                         "    A  ",
                         "    .  "
-                    },new GridList {
+                    },new List<string> {
                         " . .    ",
                         ".POT.   ",
                         " A R    ",
                         " L I    ",
                         ".MIMOSA.",
                         " . .    "
-                    },new GridList {
+                    },new List<string> {
                         "  .  ",
                         "  S  ",
                         "  A  ",
@@ -364,7 +364,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".DIG.",
                         "  A  ",
                         "  .  "
-                    },new GridList {
+                    },new List<string> {
                         " .     ",
                         " T     ",
                         " A     ",
@@ -375,9 +375,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 8710:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "    . ",
                         " .  C ",
                         " S  A ",
@@ -388,7 +388,7 @@ namespace ShapeMakerCSharp.Calculators
                         " O  . ",
                         " W    ",
                         " .    "
-                    },new GridList {
+                    },new List<string> {
                         "      .   ",
                         "     .T   ",
                         ".GROUSE.  ",
@@ -399,7 +399,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     O    ",
                         "     W    ",
                         "     .    "
-                    },new GridList {
+                    },new List<string> {
                         "      .    ",
                         "      S    ",
                         "      W    ",
@@ -410,7 +410,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    .OWLET.",
                         "     C..   ",
                         "     .     "
-                    },new GridList {
+                    },new List<string> {
                         "  .   ",
                         ".ROC. ",
                         "  W C ",
@@ -418,7 +418,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  E A ",
                         " .TIT.",
                         "  . . "
-                    },new GridList {
+                    },new List<string> {
                         "      .    ",
                         "      R    ",
                         "  .   O    ",
@@ -428,7 +428,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  K   E    ",
                         "  .SPARROW.",
                         "      .    "
-                    },new GridList {
+                    },new List<string> {
                         "    .     ",
                         "   .A     ",
                         "  .TURKEY.",
@@ -438,7 +438,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   I      ",
                         "   T      ",
                         "   .      "
-                    },new GridList {
+                    },new List<string> {
                         "      . ",
                         "  .   S ",
                         "  A   K ",
@@ -448,7 +448,7 @@ namespace ShapeMakerCSharp.Calculators
                         "      R ",
                         "      K ",
                         "      . "
-                    },new GridList {
+                    },new List<string> {
                         "      . ",
                         "  .IBIS.",
                         "  A   K ",
@@ -458,7 +458,7 @@ namespace ShapeMakerCSharp.Calculators
                         "      R ",
                         "      K ",
                         "      . "
-                    },new GridList {
+                    },new List<string> {
                         "    . .    ",
                         "    E R    ",
                         "   .GROUSE.",
@@ -468,7 +468,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    . E    ",
                         "      R    ",
                         "      .    "
-                    },new GridList {
+                    },new List<string> {
                         " .   .   ",
                         ".SNIPE.  ",
                         " H   G   ",
@@ -476,40 +476,40 @@ namespace ShapeMakerCSharp.Calculators
                         " G   E   ",
                         " .TOMTIT.",
                         "     .   "
-                    },new GridList {
+                    },new List<string> {
                         "   . ",
                         ".TUI.",
                         "   B ",
                         "   I ",
                         "   S ",
                         "   . "
-                    },new GridList {
+                    },new List<string> {
                         " .   ",
                         ".TUI.",
                         " E   ",
                         " A   ",
                         " L   ",
                         " .   "
-                    },new GridList {
+                    },new List<string> {
                         "  .  ",
                         "  E  ",
                         "  M  ",
                         ".TUI.",
                         "  .  "
-                    },new GridList {
+                    },new List<string> {
                         " .   ",
                         " H   ",
                         ".EMU.",
                         " N   ",
                         " .   "
-                    },new GridList {
+                    },new List<string> {
                         "    . ",
                         "    S ",
                         "    H ",
                         ".MYNA.",
                         "    G ",
                         "    . "
-                    },new GridList {
+                    },new List<string> {
                         "   . ",
                         "   M ",
                         ".JAY.",
@@ -521,9 +521,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 8711:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "   .   ",
                         "   C   ",
                         "   O   ",
@@ -537,14 +537,14 @@ namespace ShapeMakerCSharp.Calculators
                         "  N .  ",
                         "  Y    ",
                         "  .    "
-                    },new GridList {
+                    },new List<string> {
                         "       . ",
                         "       D ",
                         ".ZOFFANY.",
                         "       C ",
                         "       K ",
                         "       . "
-                    },new GridList {
+                    },new List<string> {
                         "  . .  ",
                         ".AZURE.",
                         "  O O  ",
@@ -554,7 +554,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  N .  ",
                         "  Y    ",
                         "  .    "
-                    },new GridList {
+                    },new List<string> {
                         "    .     ",
                         "    E     ",
                         "    B     ",
@@ -563,7 +563,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".RUBY.    ",
                         "  E .     ",
                         "  .       "
-                    },new GridList {
+                    },new List<string> {
                         "    .   ",
                         "   .H   ",
                         "  .RUBY.",
@@ -573,7 +573,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   N    ",
                         "   S    ",
                         "   .    "
-                    },new GridList {
+                    },new List<string> {
                         "  .  .  ",
                         "  B  S  ",
                         "  L  A  ",
@@ -581,7 +581,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  E  D  ",
                         "  .BAY. ",
                         "     .  "
-                    },new GridList {
+                    },new List<string> {
                         "   .   ",
                         " . R   ",
                         ".BLUE. ",
@@ -590,7 +590,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".SANDY.",
                         " H S   ",
                         " . .   "
-                    },new GridList {
+                    },new List<string> {
                         " .    ",
                         " R    ",
                         " O    ",
@@ -598,7 +598,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".GREY.",
                         " E    ",
                         " .    "
-                    },new GridList {
+                    },new List<string> {
                         "    .    ",
                         "   .G    ",
                         "  .SOOTY.",
@@ -607,7 +607,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   I.    ",
                         "   A     ",
                         "   .     "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         "     R ",
                         "     U ",
@@ -617,7 +617,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  Y  . ",
                         "  A    ",
                         "  .    "
-                    },new GridList {
+                    },new List<string> {
                         "  .    ",
                         "  G .  ",
                         ".SOOTY.",
@@ -625,7 +625,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".PAINT.",
                         "  . E  ",
                         "    .  "
-                    },new GridList {
+                    },new List<string> {
                         "   .     ",
                         "   U     ",
                         "   M .   ",
@@ -633,7 +633,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   E E   ",
                         "  .RUDDY.",
                         "   . .   "
-                    },new GridList {
+                    },new List<string> {
                         " .   ",
                         " S   ",
                         " E   ",
@@ -641,26 +641,26 @@ namespace ShapeMakerCSharp.Calculators
                         " I   ",
                         ".ART.",
                         " .   "
-                    },new GridList {
+                    },new List<string> {
                         " .     ",
                         " T     ",
                         " U     ",
                         " B     ",
                         ".EBONY.",
                         " .     "
-                    },new GridList {
+                    },new List<string> {
                         " .    ",
                         ".TUBE.",
                         " A    ",
                         " N    ",
                         " .    "
-                    },new GridList {
+                    },new List<string> {
                         "   . ",
                         "   T ",
                         "   A ",
                         ".DUN.",
                         "   . "
-                    },new GridList {
+                    },new List<string> {
                         " .   ",
                         " J   ",
                         " A   ",
@@ -672,9 +672,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 8712:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "    .  ",
                         "    T  ",
                         "  . U  ",
@@ -686,7 +686,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   S   ",
                         "   T   ",
                         "   .   "
-                    },new GridList {
+                    },new List<string> {
                         "   .    ",
                         "   J    ",
                         "   E    ",
@@ -698,7 +698,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    E   ",
                         "    Y   ",
                         "    .   "
-                    },new GridList {
+                    },new List<string> {
                         "   .    ",
                         "   R .  ",
                         " .TOYS. ",
@@ -708,7 +708,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   . T  ",
                         "     S  ",
                         "     .  "
-                    },new GridList {
+                    },new List<string> {
                         "      . ",
                         "      P ",
                         "      A ",
@@ -720,7 +720,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  E   . ",
                         "  S     ",
                         "  .     "
-                    },new GridList {
+                    },new List<string> {
                         " .    ",
                         " D .  ",
                         " A J  ",
@@ -729,7 +729,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".SALT.",
                         " . Y  ",
                         "   .  "
-                    },new GridList {
+                    },new List<string> {
                         "    .     ",
                         "    S     ",
                         "    A     ",
@@ -741,7 +741,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  E       ",
                         "  Y       ",
                         "  .       "
-                    },new GridList {
+                    },new List<string> {
                         "      . ",
                         "  .   P ",
                         " .SUGAR.",
@@ -752,7 +752,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  .   T ",
                         "      S ",
                         "      . "
-                    },new GridList {
+                    },new List<string> {
                         "         .   ",
                         "       . B   ",
                         "      .PLUMS.",
@@ -760,7 +760,7 @@ namespace ShapeMakerCSharp.Calculators
                         "       R H   ",
                         ".PRESENTS.   ",
                         "       .     "
-                    },new GridList {
+                    },new List<string> {
                         "    .   ",
                         "  . E   ",
                         " .SUGAR.",
@@ -769,7 +769,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  C .   ",
                         "  E     ",
                         "  .     "
-                    },new GridList {
+                    },new List<string> {
                         "      . ",
                         ".WISHES.",
                         "      P ",
@@ -777,7 +777,7 @@ namespace ShapeMakerCSharp.Calculators
                         "      C ",
                         "      E ",
                         "      . "
-                    },new GridList {
+                    },new List<string> {
                         " .      ",
                         " W      ",
                         " I      ",
@@ -789,9 +789,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 8802:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "  . .  ",
                         "  S B  ",
                         "  P L  ",
@@ -800,7 +800,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  T E  ",
                         "  .ART.",
                         "    .  "
-                    },new GridList {
+                    },new List<string> {
                         "    .   ",
                         "    C   ",
                         "    A   ",
@@ -810,7 +810,7 @@ namespace ShapeMakerCSharp.Calculators
                         " R  I   ",
                         ".TENNIS.",
                         " .  .   "
-                    },new GridList {
+                    },new List<string> {
                         "    .      ",
                         "   .M      ",
                         "  .CAPTAIN.",
@@ -818,7 +818,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  .PHYSICS.",
                         ".BOYS.     ",
                         "   ..      "
-                    },new GridList {
+                    },new List<string> {
                         "     .    ",
                         "     S    ",
                         "     P    ",
@@ -827,7 +827,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".QUIET.   ",
                         "    N.    ",
                         "    .     "
-                    },new GridList {
+                    },new List<string> {
                         "     .    ",
                         "     P    ",
                         "   .CLASS.",
@@ -837,7 +837,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   E      ",
                         "   T      ",
                         "   .      "
-                    },new GridList {
+                    },new List<string> {
                         " .     ",
                         " L     ",
                         " I     ",
@@ -845,7 +845,7 @@ namespace ShapeMakerCSharp.Calculators
                         " E     ",
                         ".SPORT.",
                         " .     "
-                    },new GridList {
+                    },new List<string> {
                         "    .  ",
                         "    L  ",
                         "  . I  ",
@@ -856,14 +856,14 @@ namespace ShapeMakerCSharp.Calculators
                         "  O    ",
                         "  N    ",
                         "  .    "
-                    },new GridList {
+                    },new List<string> {
                         " .     ",
                         " S     ",
                         " U     ",
                         " M     ",
                         ".STUDY.",
                         " .     "
-                    },new GridList {
+                    },new List<string> {
                         "   .     ",
                         ".TERM.   ",
                         "   O C   ",
@@ -871,7 +871,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  .LINES.",
                         "   . E   ",
                         "     .   "
-                    },new GridList {
+                    },new List<string> {
                         " .    ",
                         " T    ",
                         " A    ",
@@ -880,7 +880,7 @@ namespace ShapeMakerCSharp.Calculators
                         " E    ",
                         ".SUMS.",
                         " .    "
-                    },new GridList {
+                    },new List<string> {
                         "      . ",
                         "      I ",
                         ".CRAYON.",
@@ -891,9 +891,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 8803:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "  .       ",
                         "  Q .     ",
                         ".SUEZ.    ",
@@ -903,7 +903,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  . C     ",
                         "    H     ",
                         "    .     "
-                    },new GridList {
+                    },new List<string> {
                         "    .     ",
                         "    T     ",
                         "    O     ",
@@ -915,14 +915,14 @@ namespace ShapeMakerCSharp.Calculators
                         "    .L    ",
                         "     O    ",
                         "     .    "
-                    },new GridList {
+                    },new List<string> {
                         "    .  ",
                         ".TOKYO.",
                         "    O  ",
                         "    R  ",
                         "    K  ",
                         "    .  "
-                    },new GridList {
+                    },new List<string> {
                         "     . .   ",
                         "     B L   ",
                         "    .OSAKA.",
@@ -930,7 +930,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".TORONTO.  ",
                         "     . S   ",
                         "       .   "
-                    },new GridList {
+                    },new List<string> {
                         "   . . ",
                         "   L C ",
                         ".OSAKA.",
@@ -938,14 +938,14 @@ namespace ShapeMakerCSharp.Calculators
                         "   O R ",
                         " .OSLO.",
                         "   . . "
-                    },new GridList {
+                    },new List<string> {
                         "   .  ",
                         ".YORK.",
                         "   O  ",
                         "   M  ",
                         "   E  ",
                         "   .  "
-                    },new GridList {
+                    },new List<string> {
                         "      . ",
                         "      O ",
                         "      M ",
@@ -953,7 +953,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".ZURICH.",
                         "      A ",
                         "      . "
-                    },new GridList {
+                    },new List<string> {
                         "  .     ",
                         ".BOGOTA.",
                         "  M     ",
@@ -961,7 +961,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  H     ",
                         "  A     ",
                         "  .     "
-                    },new GridList {
+                    },new List<string> {
                         "     .  ",
                         ".BOGOTA.",
                         "     O  ",
@@ -970,7 +970,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     D  ",
                         "     O  ",
                         "     .  "
-                    },new GridList {
+                    },new List<string> {
                         "  .     ",
                         "  T     ",
                         "  O     ",
@@ -982,7 +982,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    R   ",
                         "    T   ",
                         "    .   "
-                    },new GridList {
+                    },new List<string> {
                         "  . .     ",
                         "  D B     ",
                         "  E O     ",
@@ -992,21 +992,21 @@ namespace ShapeMakerCSharp.Calculators
                         "  .SYDNEY.",
                         "   K.     ",
                         "   .      "
-                    },new GridList {
+                    },new List<string> {
                         "  .      ",
                         ".HOBART. ",
                         "  M    A ",
                         " .SYDNEY.",
                         "  K    R ",
                         "  .    . "
-                    },new GridList {
+                    },new List<string> {
                         "     .   ",
                         ".HOBART. ",
                         "     E A ",
                         " .SYDNEY.",
                         "     O R ",
                         "     . . "
-                    },new GridList {
+                    },new List<string> {
                         "    . ",
                         "    C ",
                         "    O ",
@@ -1018,9 +1018,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 8804:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         " . .   ",
                         ".HUM.  ",
                         " Y A   ",
@@ -1030,7 +1030,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   K   ",
                         "   A   ",
                         "   .   "
-                    },new GridList {
+                    },new List<string> {
                         "   . . ",
                         "   M V ",
                         "   A I ",
@@ -1040,48 +1040,48 @@ namespace ShapeMakerCSharp.Calculators
                         "   K . ",
                         "   A   ",
                         "   .   "
-                    },new GridList {
+                    },new List<string> {
                         "  .   ",
                         "  K   ",
                         "  E   ",
                         ".HYMN.",
                         "  .   "
-                    },new GridList {
+                    },new List<string> {
                         "    . ",
                         "    S ",
                         "    I ",
                         "    G ",
                         ".HYMN.",
                         "    . "
-                    },new GridList {
+                    },new List<string> {
                         " .    ",
                         ".SONG.",
                         " I    ",
                         " G    ",
                         " N    ",
                         " .    "
-                    },new GridList {
+                    },new List<string> {
                         "   .    ",
                         ".SONG.  ",
                         "   O T  ",
                         "  .TRIO.",
                         "   E E  ",
                         "   . .  "
-                    },new GridList {
+                    },new List<string> {
                         "    .   ",
                         "   .D   ",
                         "  .TUNE.",
                         ".TRIO.  ",
                         "   E.   ",
                         "   .    "
-                    },new GridList {
+                    },new List<string> {
                         "  . .   ",
                         "  D R   ",
                         ".TUNE.  ",
                         "  O S   ",
                         "  .STOP.",
                         "    .   "
-                    },new GridList {
+                    },new List<string> {
                         "  . .   ",
                         "  R H   ",
                         "  E.A   ",
@@ -1090,14 +1090,14 @@ namespace ShapeMakerCSharp.Calculators
                         "  .N.   ",
                         "   E    ",
                         "   .    "
-                    },new GridList {
+                    },new List<string> {
                         "   . . ",
                         "  .HIT.",
                         "   A I ",
                         ".STRUM.",
                         "   P E ",
                         "   . . "
-                    },new GridList {
+                    },new List<string> {
                         "    .  ",
                         "  . T  ",
                         " .STOP.",
@@ -1105,7 +1105,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".MUTE. ",
                         "  R .  ",
                         "  .    "
-                    },new GridList {
+                    },new List<string> {
                         "       . ",
                         "       B ",
                         ".MAZURKA.",
@@ -1113,7 +1113,7 @@ namespace ShapeMakerCSharp.Calculators
                         "       S ",
                         "       O ",
                         "       . "
-                    },new GridList {
+                    },new List<string> {
                         "    .    ",
                         "    S    ",
                         "   .C    ",
@@ -1122,7 +1122,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  .TEMPO.",
                         "   E.    ",
                         "   .     "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         "   . H ",
                         ".BASSO.",
@@ -1131,7 +1131,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   R . ",
                         "   E   ",
                         "   .   "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         "   . F ",
                         ".TEMPO.",
@@ -1140,14 +1140,14 @@ namespace ShapeMakerCSharp.Calculators
                         "   C E ",
                         "   H . ",
                         "   .   "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         "     E ",
                         "     C ",
                         ".MARCH.",
                         "     O ",
                         "     . "
-                    },new GridList {
+                    },new List<string> {
                         " .   ",
                         " V   ",
                         " I   ",
@@ -1155,7 +1155,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".LOW.",
                         " A   ",
                         " .   "
-                    },new GridList {
+                    },new List<string> {
                         "    . ",
                         "    L ",
                         "    O ",
@@ -1166,9 +1166,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 8805:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "  . .     ",
                         "  W G     ",
                         " .HARVEST.",
@@ -1178,7 +1178,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  . N     ",
                         "    G     ",
                         "    .     "
-                    },new GridList {
+                    },new List<string> {
                         "     . .   ",
                         "     E.R   ",
                         "    .WOOL. ",
@@ -1189,7 +1189,7 @@ namespace ShapeMakerCSharp.Calculators
                         "       O   ",
                         "       N   ",
                         "       .   "
-                    },new GridList {
+                    },new List<string> {
                         "        .   ",
                         "       .B   ",
                         "      .SILO.",
@@ -1197,7 +1197,7 @@ namespace ShapeMakerCSharp.Calculators
                         "       I.   ",
                         "       L    ",
                         "       .    "
-                    },new GridList {
+                    },new List<string> {
                         "    .    ",
                         "    W    ",
                         "    H    ",
@@ -1206,7 +1206,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".ROOT.   ",
                         "   W.    ",
                         "   .     "
-                    },new GridList {
+                    },new List<string> {
                         " .   . ",
                         ".STRAW.",
                         " E   H ",
@@ -1214,14 +1214,14 @@ namespace ShapeMakerCSharp.Calculators
                         " D   A ",
                         " .ROOT.",
                         "     . "
-                    },new GridList {
+                    },new List<string> {
                         "  .    ",
                         "  C    ",
                         "  A    ",
                         "  R    ",
                         ".STRAW.",
                         "  .    "
-                    },new GridList {
+                    },new List<string> {
                         "    .  ",
                         "    G  ",
                         "    R  ",
@@ -1231,47 +1231,47 @@ namespace ShapeMakerCSharp.Calculators
                         " W  N  ",
                         " .PIG. ",
                         "    .  "
-                    },new GridList {
+                    },new List<string> {
                         "    . ",
                         "    H ",
                         ".SILO.",
                         "    E ",
                         "    . "
-                    },new GridList {
+                    },new List<string> {
                         "    . ",
                         ".SOIL.",
                         "    A ",
                         "    M ",
                         "    B ",
                         "    . "
-                    },new GridList {
+                    },new List<string> {
                         " .   ",
                         " R   ",
                         " A   ",
                         " K   ",
                         ".EWE.",
                         " .   "
-                    },new GridList {
+                    },new List<string> {
                         " .   ",
                         ".RYE.",
                         " A   ",
                         " K   ",
                         " E   ",
                         " .   "
-                    },new GridList {
+                    },new List<string> {
                         "  .  ",
                         "  H  ",
                         "  A  ",
                         ".RYE.",
                         "  .  "
-                    },new GridList {
+                    },new List<string> {
                         "    .  ",
                         ".STOCK.",
                         "    A  ",
                         "    R  ",
                         "    T  ",
                         "    .  "
-                    },new GridList {
+                    },new List<string> {
                         " .    ",
                         ".STUD.",
                         " T    ",
@@ -1279,21 +1279,21 @@ namespace ShapeMakerCSharp.Calculators
                         " C    ",
                         " K    ",
                         " .    "
-                    },new GridList {
+                    },new List<string> {
                         "   .  ",
                         "   S  ",
                         "   E  ",
                         ".SHED.",
                         "   D  ",
                         "   .  "
-                    },new GridList {
+                    },new List<string> {
                         " .     ",
                         ".SHEEP.",
                         " H     ",
                         " E     ",
                         " D     ",
                         " .     "
-                    },new GridList {
+                    },new List<string> {
                         " .     ",
                         " S     ",
                         " H     ",
@@ -1306,9 +1306,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 8806:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         " .    ",
                         " S .  ",
                         " T.B  ",
@@ -1319,7 +1319,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  E   ",
                         "  R   ",
                         "  .   "
-                    },new GridList {
+                    },new List<string> {
                         "   .  ",
                         "   A  ",
                         "  .H  ",
@@ -1328,7 +1328,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  O.  ",
                         "  Y   ",
                         "  .   "
-                    },new GridList {
+                    },new List<string> {
                         "    .   ",
                         "   .P   ",
                         "  .MOOR.",
@@ -1336,14 +1336,14 @@ namespace ShapeMakerCSharp.Calculators
                         "  .STAY.",
                         "   T.   ",
                         "   .    "
-                    },new GridList {
+                    },new List<string> {
                         "   . ",
                         "   B ",
                         "   U ",
                         "   O ",
                         ".PLY.",
                         "   . "
-                    },new GridList {
+                    },new List<string> {
                         "    .     ",
                         "    H     ",
                         "  .YAW.   ",
@@ -1352,7 +1352,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  G E     ",
                         "  . R     ",
                         "    .     "
-                    },new GridList {
+                    },new List<string> {
                         "    .     ",
                         "    H     ",
                         "    A .   ",
@@ -1361,14 +1361,14 @@ namespace ShapeMakerCSharp.Calculators
                         "    E E   ",
                         "  .PROW.  ",
                         "    . .   "
-                    },new GridList {
+                    },new List<string> {
                         "   .       ",
                         "  .F       ",
                         " .BOWSPRIT.",
                         ".LOG.      ",
                         "  X.       ",
                         "  .        "
-                    },new GridList {
+                    },new List<string> {
                         "        . ",
                         "        W ",
                         "        A ",
@@ -1376,21 +1376,21 @@ namespace ShapeMakerCSharp.Calculators
                         "        C ",
                         "        H ",
                         "        . "
-                    },new GridList {
+                    },new List<string> {
                         "   . ",
                         "   M ",
                         "   A ",
                         "   S ",
                         ".SET.",
                         "   . "
-                    },new GridList {
+                    },new List<string> {
                         " .   ",
                         ".SET.",
                         " H   ",
                         " I   ",
                         " P   ",
                         " .   "
-                    },new GridList {
+                    },new List<string> {
                         "    .   ",
                         "  .DORY.",
                         "  P A   ",
@@ -1398,26 +1398,26 @@ namespace ShapeMakerCSharp.Calculators
                         "  R .   ",
                         "  T     ",
                         "  .     "
-                    },new GridList {
+                    },new List<string> {
                         "    . ",
                         "    D ",
                         "    O ",
                         "    R ",
                         ".QUAY.",
                         "    . "
-                    },new GridList {
+                    },new List<string> {
                         "   .  ",
                         ".QUAY.",
                         "   F  ",
                         "   T  ",
                         "   .  "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         "     A ",
                         "     F ",
                         ".YACHT.",
                         "     . "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         ".JETTY.",
                         "     A ",
@@ -1425,21 +1425,21 @@ namespace ShapeMakerCSharp.Calculators
                         "     H ",
                         "     T ",
                         "     . "
-                    },new GridList {
+                    },new List<string> {
                         " .     ",
                         ".JETTY.",
                         " U     ",
                         " N     ",
                         " K     ",
                         " .     "
-                    },new GridList {
+                    },new List<string> {
                         "      . ",
                         "      J ",
                         "      U ",
                         ".ASTERN.",
                         "      K ",
                         "      . "
-                    },new GridList {
+                    },new List<string> {
                         "   . .   ",
                         ".TRANSOM.",
                         "   S A   ",
@@ -1448,7 +1448,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   R .   ",
                         "   N     ",
                         "   .     "
-                    },new GridList {
+                    },new List<string> {
                         " .       ",
                         ".TRANSOM.",
                         " A       ",
@@ -1460,9 +1460,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 8807:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "    .     ",
                         "   .C     ",
                         ".LIZA.    ",
@@ -1470,14 +1470,14 @@ namespace ShapeMakerCSharp.Calculators
                         ".ALAN.    ",
                         "   .E     ",
                         "    .     "
-                    },new GridList {
+                    },new List<string> {
                         "  . . ",
                         ".ALDA.",
                         "  I L ",
                         " .ZSA.",
                         "  A N ",
                         "  . . "
-                    },new GridList {
+                    },new List<string> {
                         "    . .   ",
                         "    D T   ",
                         "    U A   ",
@@ -1487,14 +1487,14 @@ namespace ShapeMakerCSharp.Calculators
                         "    A R   ",
                         "    Y .   ",
                         "    .     "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         "     F ",
                         "     A ",
                         ".WOODY.",
                         "     E ",
                         "     . "
-                    },new GridList {
+                    },new List<string> {
                         "    . ",
                         "    D ",
                         "    U ",
@@ -1504,13 +1504,13 @@ namespace ShapeMakerCSharp.Calculators
                         "    A ",
                         ".TONY.",
                         "    . "
-                    },new GridList {
+                    },new List<string> {
                         " .      ",
                         ".TAYLOR.",
                         " O      ",
                         " M      ",
                         " .      "
-                    },new GridList {
+                    },new List<string> {
                         " .    ",
                         " S    ",
                         ".TONY.",
@@ -1518,7 +1518,7 @@ namespace ShapeMakerCSharp.Calculators
                         " V    ",
                         " E    ",
                         " .    "
-                    },new GridList {
+                    },new List<string> {
                         "    .    ",
                         "    N.   ",
                         "   .OMAR.",
@@ -1526,27 +1526,27 @@ namespace ShapeMakerCSharp.Calculators
                         "   .AL.  ",
                         "    K.   ",
                         "    .    "
-                    },new GridList {
+                    },new List<string> {
                         " .     ",
                         " J     ",
                         " O     ",
                         " H     ",
                         ".NOVAK.",
                         " .     "
-                    },new GridList {
+                    },new List<string> {
                         "    . ",
                         ".OMAR.",
                         "    O ",
                         "    D ",
                         "    . "
-                    },new GridList {
+                    },new List<string> {
                         "   . ",
                         ".ROD.",
                         "   E ",
                         "   A ",
                         "   N ",
                         "   . "
-                    },new GridList {
+                    },new List<string> {
                         "      . ",
                         "      F ",
                         "      I ",
@@ -1559,14 +1559,14 @@ namespace ShapeMakerCSharp.Calculators
                         "  I     ",
                         "  N     ",
                         "  .     "
-                    },new GridList {
+                    },new List<string> {
                         "    . . ",
                         "    B R ",
                         "  .JUDY.",
                         "    R A ",
                         ".DUSTIN.",
                         "    . . "
-                    },new GridList {
+                    },new List<string> {
                         "    .   ",
                         ".MURPHY.",
                         "    E   ",
@@ -1574,13 +1574,13 @@ namespace ShapeMakerCSharp.Calculators
                         "    E   ",
                         "    R   ",
                         "    .   "
-                    },new GridList {
+                    },new List<string> {
                         "   .   ",
                         ".PETER.",
                         "   A   ",
                         "   B   ",
                         "   .   "
-                    },new GridList {
+                    },new List<string> {
                         " .   ",
                         " T   ",
                         " A   ",
@@ -1591,9 +1591,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 8808:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "   .    ",
                         "   R    ",
                         "   E .  ",
@@ -1606,7 +1606,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    G   ",
                         "    O   ",
                         "    .   "
-                    },new GridList {
+                    },new List<string> {
                         "   .     ",
                         "   R     ",
                         "   E .   ",
@@ -1616,7 +1616,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   L D   ",
                         "   T A   ",
                         "   . .   "
-                    },new GridList {
+                    },new List<string> {
                         " . .     ",
                         ".RENAULT.",
                         " O O     ",
@@ -1624,7 +1624,7 @@ namespace ShapeMakerCSharp.Calculators
                         " L A     ",
                         ".SEDAN.  ",
                         " . .     "
-                    },new GridList {
+                    },new List<string> {
                         "    .     ",
                         "    T     ",
                         "    E     ",
@@ -1636,28 +1636,28 @@ namespace ShapeMakerCSharp.Calculators
                         "    .A    ",
                         "     B    ",
                         "     .    "
-                    },new GridList {
+                    },new List<string> {
                         " .       ",
                         " C       ",
                         " O       ",
                         " L       ",
                         ".TELSTAR.",
                         " .       "
-                    },new GridList {
+                    },new List<string> {
                         "  .    ",
                         "  A    ",
                         ".SUPRA.",
                         "  D    ",
                         "  I    ",
                         "  .    "
-                    },new GridList {
+                    },new List<string> {
                         "  .    ",
                         "  C    ",
                         ".ROCKY.",
                         "  L    ",
                         "  T    ",
                         "  .    "
-                    },new GridList {
+                    },new List<string> {
                         "     .   ",
                         "     C   ",
                         "     A   ",
@@ -1667,7 +1667,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  L  .   ",
                         "  T      ",
                         "  .      "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         "     R ",
                         "     O ",
@@ -1675,7 +1675,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     E ",
                         ".TURBO.",
                         "     . "
-                    },new GridList {
+                    },new List<string> {
                         " .       ",
                         " V       ",
                         " O       ",
@@ -1685,7 +1685,7 @@ namespace ShapeMakerCSharp.Calculators
                         " X  N    ",
                         " .SUZUKI.",
                         "    .    "
-                    },new GridList {
+                    },new List<string> {
                         " .  ",
                         ".VW.",
                         " O  ",
@@ -1694,18 +1694,18 @@ namespace ShapeMakerCSharp.Calculators
                         " E  ",
                         " X  ",
                         " .  "
-                    },new GridList {
+                    },new List<string> {
                         "  . ",
                         "  B ",
                         "  M ",
                         ".VW.",
                         "  . "
-                    },new GridList {
+                    },new List<string> {
                         "  .  ",
                         ".BMW.",
                         "  G  ",
                         "  .  "
-                    },new GridList {
+                    },new List<string> {
                         "  .     ",
                         "  L  .  ",
                         ".TARAGO.",
@@ -1718,9 +1718,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 8809:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "   .   ",
                         "   G   ",
                         "   O   ",
@@ -1733,7 +1733,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".ROLLS.",
                         " K A   ",
                         " . .   "
-                    },new GridList {
+                    },new List<string> {
                         "   .   ",
                         "   G   ",
                         "   O   ",
@@ -1748,7 +1748,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   . E ",
                         "     Y ",
                         "     . "
-                    },new GridList {
+                    },new List<string> {
                         "      . ",
                         "      P ",
                         "      A ",
@@ -1758,7 +1758,7 @@ namespace ShapeMakerCSharp.Calculators
                         "      E ",
                         ".TURKEY.",
                         "      . "
-                    },new GridList {
+                    },new List<string> {
                         "      .    ",
                         "    . G    ",
                         "   .TURKEY.",
@@ -1766,7 +1766,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    R V    ",
                         ".PASTRY.   ",
                         "    . .    "
-                    },new GridList {
+                    },new List<string> {
                         "   .    ",
                         "   G .  ",
                         ".TURKEY.",
@@ -1774,7 +1774,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  .VEAL.",
                         "   Y M  ",
                         "   . .  "
-                    },new GridList {
+                    },new List<string> {
                         "     .      ",
                         "     S      ",
                         "   .STEAK.  ",
@@ -1784,7 +1784,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".GORGONZOLA.",
                         "   . N      ",
                         "     .      "
-                    },new GridList {
+                    },new List<string> {
                         "   .       ",
                         "   M       ",
                         "   I       ",
@@ -1795,7 +1795,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    A      ",
                         "    K      ",
                         "    .      "
-                    },new GridList {
+                    },new List<string> {
                         " . .  ",
                         ".LAMB.",
                         " O I  ",
@@ -1803,7 +1803,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".NUTS.",
                         " . S  ",
                         "   .  "
-                    },new GridList {
+                    },new List<string> {
                         "     .  ",
                         "     D  ",
                         "  .SOUP.",
@@ -1815,7 +1815,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  O     ",
                         "  N     ",
                         "  .     "
-                    },new GridList {
+                    },new List<string> {
                         "     .      ",
                         "     S      ",
                         "     T      ",
@@ -1826,33 +1826,33 @@ namespace ShapeMakerCSharp.Calculators
                         " G   N      ",
                         ".SAGO.      ",
                         " .          "
-                    },new GridList {
+                    },new List<string> {
                         "    . ",
                         "    M ",
                         "    I ",
                         "    L ",
                         ".PORK.",
                         "    . "
-                    },new GridList {
+                    },new List<string> {
                         " .    ",
                         ".MEAT.",
                         " I    ",
                         " L    ",
                         " K    ",
                         " .    "
-                    },new GridList {
+                    },new List<string> {
                         "    . ",
                         ".MEAT.",
                         "    E ",
                         "    A ",
                         "    . "
-                    },new GridList {
+                    },new List<string> {
                         "  .   ",
                         "  P   ",
                         "  I   ",
                         ".MEAT.",
                         "  .   "
-                    },new GridList {
+                    },new List<string> {
                         "  .    ",
                         ".SPICE.",
                         "  I    ",
@@ -1863,16 +1863,16 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 8810:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "    .  ",
                         ".ORCZY.",
                         "    O  ",
                         "    L  ",
                         "    A  ",
                         "    .  "
-                    },new GridList {
+                    },new List<string> {
                         "  .    ",
                         "  R  . ",
                         "  O  H ",
@@ -1881,7 +1881,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  E  R ",
                         ".ORCZY.",
                         "  .  . "
-                    },new GridList {
+                    },new List<string> {
                         "    .    ",
                         "    R    ",
                         "    O    ",
@@ -1891,7 +1891,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  .ORCZY.",
                         "   E.    ",
                         "   .     "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         "   . R ",
                         "   H O ",
@@ -1900,7 +1900,7 @@ namespace ShapeMakerCSharp.Calculators
                         " .POPE.",
                         "   . R ",
                         "     . "
-                    },new GridList {
+                    },new List<string> {
                         "    . ",
                         ".SHAW.",
                         "    A ",
@@ -1908,7 +1908,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    G ",
                         "    H ",
                         "    . "
-                    },new GridList {
+                    },new List<string> {
                         " .    ",
                         " G    ",
                         " A    ",
@@ -1917,21 +1917,21 @@ namespace ShapeMakerCSharp.Calculators
                         " I    ",
                         " N    ",
                         " .    "
-                    },new GridList {
+                    },new List<string> {
                         " .     ",
                         ".PEPYS.",
                         " O     ",
                         " P     ",
                         " E     ",
                         " .     "
-                    },new GridList {
+                    },new List<string> {
                         "   . .  ",
                         "   K G  ",
                         ".HEYER. ",
                         "   N E  ",
                         " .PEPYS.",
                         "   . .  "
-                    },new GridList {
+                    },new List<string> {
                         " .    ",
                         ".GLYN.",
                         " A    ",
@@ -1940,7 +1940,7 @@ namespace ShapeMakerCSharp.Calculators
                         " I    ",
                         " N    ",
                         " .    "
-                    },new GridList {
+                    },new List<string> {
                         "  .      ",
                         ".CHEYNEY.",
                         "  E      ",
@@ -1948,7 +1948,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  R      ",
                         "  Y      ",
                         "  .      "
-                    },new GridList {
+                    },new List<string> {
                         "   .    ",
                         "   C    ",
                         "   H    ",
@@ -1958,7 +1958,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  .EDEN.",
                         "   Y  D ",
                         "   .  . "
-                    },new GridList {
+                    },new List<string> {
                         "   .   ",
                         " . H   ",
                         " S A   ",
@@ -1966,7 +1966,7 @@ namespace ShapeMakerCSharp.Calculators
                         " N D   ",
                         ".DOYLE.",
                         " . .   "
-                    },new GridList {
+                    },new List<string> {
                         "   . ",
                         "   C ",
                         "   H ",
@@ -1976,7 +1976,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   E ",
                         ".HAY.",
                         "   . "
-                    },new GridList {
+                    },new List<string> {
                         " .      ",
                         " D      ",
                         " U      ",
@@ -1984,7 +1984,7 @@ namespace ShapeMakerCSharp.Calculators
                         " A      ",
                         ".SAYERS.",
                         " .      "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         "     J ",
                         "     A ",
@@ -1998,9 +1998,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 8811:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "   . .   ",
                         "   F.P   ",
                         ".MAIZE.  ",
@@ -2012,14 +2012,14 @@ namespace ShapeMakerCSharp.Calculators
                         "    N    ",
                         "    I    ",
                         "    .    "
-                    },new GridList {
+                    },new List<string> {
                         "   . .    ",
                         "  .PAPAYA.",
                         "   E E    ",
                         ".GUAVA.   ",
                         "   . R    ",
                         "     .    "
-                    },new GridList {
+                    },new List<string> {
                         " .   ",
                         " P   ",
                         " A   ",
@@ -2028,7 +2028,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".YAM.",
                         " A   ",
                         " .   "
-                    },new GridList {
+                    },new List<string> {
                         "     .     ",
                         "     C     ",
                         ".ZUCCHINI. ",
@@ -2039,7 +2039,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     .   R ",
                         "         Y ",
                         "         . "
-                    },new GridList {
+                    },new List<string> {
                         "    . .   ",
                         "    O L   ",
                         ".CHERRY.  ",
@@ -2048,7 +2048,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    G E   ",
                         "  .CELERY.",
                         "    . .   "
-                    },new GridList {
+                    },new List<string> {
                         "       . ",
                         "       C ",
                         "       E ",
@@ -2057,7 +2057,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    O  R ",
                         ".PARSLEY.",
                         "    .  . "
-                    },new GridList {
+                    },new List<string> {
                         " .     ",
                         ".MAIZE.",
                         " A     ",
@@ -2065,7 +2065,7 @@ namespace ShapeMakerCSharp.Calculators
                         " G     ",
                         " O     ",
                         " .     "
-                    },new GridList {
+                    },new List<string> {
                         " .      ",
                         " P      ",
                         " E    . ",
@@ -2074,7 +2074,7 @@ namespace ShapeMakerCSharp.Calculators
                         " N    G ",
                         " .MANGO.",
                         "      . "
-                    },new GridList {
+                    },new List<string> {
                         "     .      ",
                         "     P      ",
                         "     L.     ",
@@ -2083,21 +2083,21 @@ namespace ShapeMakerCSharp.Calculators
                         "     .G     ",
                         "      O     ",
                         "      .     "
-                    },new GridList {
+                    },new List<string> {
                         " .   .  ",
                         ".POTATO.",
                         " L   A  ",
                         " U   R  ",
                         ".MARROW.",
                         " .   .  "
-                    },new GridList {
+                    },new List<string> {
                         "   .    ",
                         "   D    ",
                         "   A    ",
                         ".CITRUS.",
                         "   E    ",
                         "   .    "
-                    },new GridList {
+                    },new List<string> {
                         "    .   ",
                         ".MARROW.",
                         "    A   ",
@@ -2106,7 +2106,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    I   ",
                         "    N   ",
                         "    .   "
-                    },new GridList {
+                    },new List<string> {
                         " .   ",
                         " R   ",
                         " A   ",
@@ -2120,9 +2120,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 8812:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "   . .   ",
                         " .AZALEA.",
                         "   I E   ",
@@ -2131,7 +2131,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   I .   ",
                         "   A     ",
                         "   .     "
-                    },new GridList {
+                    },new List<string> {
                         "   .    ",
                         " . Z    ",
                         " W I    ",
@@ -2141,7 +2141,7 @@ namespace ShapeMakerCSharp.Calculators
                         " L A    ",
                         " E .    ",
                         " .      "
-                    },new GridList {
+                    },new List<string> {
                         "      . ",
                         "  .ALOW.",
                         "  V   A ",
@@ -2150,7 +2150,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  E   L ",
                         "  .   E ",
                         "      . "
-                    },new GridList {
+                    },new List<string> {
                         "  .     ",
                         "  V .   ",
                         ".VIOLET.",
@@ -2159,7 +2159,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  . U   ",
                         "    S   ",
                         "    .   "
-                    },new GridList {
+                    },new List<string> {
                         "    .    ",
                         "    L    ",
                         "   .O    ",
@@ -2169,28 +2169,28 @@ namespace ShapeMakerCSharp.Calculators
                         "   C.D   ",
                         "   K .   ",
                         "   .     "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         ".TUBER.",
                         "     O ",
                         "     S ",
                         "     E ",
                         "     . "
-                    },new GridList {
+                    },new List<string> {
                         " .   ",
                         " R   ",
                         " O   ",
                         ".SOW.",
                         " E   ",
                         " .   "
-                    },new GridList {
+                    },new List<string> {
                         "   . ",
                         "   L ",
                         "   A ",
                         ".SOW.",
                         "   N ",
                         "   . "
-                    },new GridList {
+                    },new List<string> {
                         "   .     ",
                         " . P     ",
                         ".LILY.   ",
@@ -2198,7 +2198,7 @@ namespace ShapeMakerCSharp.Calculators
                         " W N     ",
                         ".NATIVES.",
                         " . .     "
-                    },new GridList {
+                    },new List<string> {
                         "    .    ",
                         "   .M    ",
                         "  .PANSY.",
@@ -2207,7 +2207,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   N     ",
                         "   T     ",
                         "   .     "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         "     P ",
                         "     O ",
@@ -2216,13 +2216,13 @@ namespace ShapeMakerCSharp.Calculators
                         ".PANSY.",
                         "  Y  . ",
                         "  .    "
-                    },new GridList {
+                    },new List<string> {
                         " .   ",
                         " P   ",
                         " O   ",
                         ".TAP.",
                         " .   "
-                    },new GridList {
+                    },new List<string> {
                         "  .    ",
                         "  M .  ",
                         ".PANSY.",
@@ -2231,7 +2231,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    D  ",
                         "    E  ",
                         "    .  "
-                    },new GridList {
+                    },new List<string> {
                         "   .  ",
                         "   S  ",
                         "   T  ",
@@ -2244,9 +2244,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 8902:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "     . ",
                         "     R ",
                         "     E ",
@@ -2260,7 +2260,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   R S ",
                         "   S . ",
                         "   .   "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         "     R ",
                         "     E ",
@@ -2274,19 +2274,19 @@ namespace ShapeMakerCSharp.Calculators
                         ".WORDS.",
                         "   S . ",
                         "   .   "
-                    },new GridList {
+                    },new List<string> {
                         " .     ",
                         " P     ",
                         " E     ",
                         ".WORDS.",
                         " .     "
-                    },new GridList {
+                    },new List<string> {
                         "    . ",
                         ".TRIP.",
                         "    E ",
                         "    W ",
                         "    . "
-                    },new GridList {
+                    },new List<string> {
                         "    . .   ",
                         "    P P   ",
                         "    O.O   ",
@@ -2295,7 +2295,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    .I.   ",
                         "     P    ",
                         "     .    "
-                    },new GridList {
+                    },new List<string> {
                         "   .   ",
                         "   P . ",
                         "  .OLD.",
@@ -2303,7 +2303,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".TRYST.",
                         "   . E ",
                         "     . "
-                    },new GridList {
+                    },new List<string> {
                         "   .   ",
                         "   G   ",
                         ".TRUST.",
@@ -2312,7 +2312,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   T   ",
                         "   S   ",
                         "   .   "
-                    },new GridList {
+                    },new List<string> {
                         " .     ",
                         ".TAXI. ",
                         " O   G ",
@@ -2320,39 +2320,39 @@ namespace ShapeMakerCSharp.Calculators
                         " S   F ",
                         ".TRUST.",
                         " .   . "
-                    },new GridList {
+                    },new List<string> {
                         "   .  ",
                         "   M  ",
                         "   I  ",
                         ".TAXI.",
                         "   .  "
-                    },new GridList {
+                    },new List<string> {
                         "   .  ",
                         ".HYMN.",
                         "   I  ",
                         "   X  ",
                         "   .  "
-                    },new GridList {
+                    },new List<string> {
                         "   . ",
                         "   H ",
                         ".JOY.",
                         "   M ",
                         "   N ",
                         "   . "
-                    },new GridList {
+                    },new List<string> {
                         "    . ",
                         "    W ",
                         "    I ",
                         ".HYMN.",
                         "    . "
-                    },new GridList {
+                    },new List<string> {
                         " .   ",
                         ".WIN.",
                         " I   ",
                         " N   ",
                         " E   ",
                         " .   "
-                    },new GridList {
+                    },new List<string> {
                         "    .    ",
                         "    R    ",
                         "    O    ",
@@ -2362,7 +2362,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  F .    ",
                         "  T      ",
                         "  .      "
-                    },new GridList {
+                    },new List<string> {
                         "   . .   ",
                         "   G U   ",
                         "  .ROSES.",
@@ -2375,9 +2375,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 8903:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         " .      ",
                         " T      ",
                         " A      ",
@@ -2388,7 +2388,7 @@ namespace ShapeMakerCSharp.Calculators
                         " I      ",
                         " A      ",
                         " .      "
-                    },new GridList {
+                    },new List<string> {
                         "    .  .   ",
                         "    Y  G   ",
                         "    E  U   ",
@@ -2397,7 +2397,7 @@ namespace ShapeMakerCSharp.Calculators
                         " .TANZANIA.",
                         "    .  A   ",
                         "       .   "
-                    },new GridList {
+                    },new List<string> {
                         "  .  .    ",
                         ".ITALY.   ",
                         "  O  E    ",
@@ -2405,7 +2405,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  O  E    ",
                         "  .  N    ",
                         "     .    "
-                    },new GridList {
+                    },new List<string> {
                         "      . .     ",
                         "      G H     ",
                         "     .URUGUAY.",
@@ -2415,7 +2415,7 @@ namespace ShapeMakerCSharp.Calculators
                         "      A R     ",
                         "      . Y     ",
                         "        .     "
-                    },new GridList {
+                    },new List<string> {
                         "       . ",
                         "       S ",
                         ".URUGUAY.",
@@ -2423,7 +2423,7 @@ namespace ShapeMakerCSharp.Calculators
                         "       I ",
                         "       A ",
                         "       . "
-                    },new GridList {
+                    },new List<string> {
                         "      . .     ",
                         "      G H     ",
                         "      U U     ",
@@ -2433,14 +2433,14 @@ namespace ShapeMakerCSharp.Calculators
                         "      A R     ",
                         "      .CYPRUS.",
                         "        .     "
-                    },new GridList {
+                    },new List<string> {
                         "     .   ",
                         "     C   ",
                         ".URUGUAY.",
                         "     B   ",
                         "     A   ",
                         "     .   "
-                    },new GridList {
+                    },new List<string> {
                         "     .  ",
                         "   . B  ",
                         ".CYPRUS.",
@@ -2448,7 +2448,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   R M  ",
                         " .SUDAN.",
                         "   . .  "
-                    },new GridList {
+                    },new List<string> {
                         " .        ",
                         ".TANZANIA.",
                         " U        ",
@@ -2457,7 +2457,7 @@ namespace ShapeMakerCSharp.Calculators
                         " E        ",
                         " Y        ",
                         " .        "
-                    },new GridList {
+                    },new List<string> {
                         "      . ",
                         "      K ",
                         "      E ",
@@ -2465,7 +2465,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".TURKEY.",
                         "      A ",
                         "      . "
-                    },new GridList {
+                    },new List<string> {
                         "    .  ",
                         "    T  ",
                         "    U  ",
@@ -2474,7 +2474,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    E  ",
                         "    Y  ",
                         "    .  "
-                    },new GridList {
+                    },new List<string> {
                         " .     ",
                         " B     ",
                         " E     ",
@@ -2483,7 +2483,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".ZAIRE.",
                         " E     ",
                         " .     "
-                    },new GridList {
+                    },new List<string> {
                         "     .  ",
                         "     N  ",
                         ".ZAMBIA.",
@@ -2496,9 +2496,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 8904:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         " .      ",
                         ".ZIGZAG.",
                         " I      ",
@@ -2507,7 +2507,7 @@ namespace ShapeMakerCSharp.Calculators
                         " E      ",
                         " R      ",
                         " .      "
-                    },new GridList {
+                    },new List<string> {
                         "      .     ",
                         "     .P     ",
                         "    .WALLET.",
@@ -2515,7 +2515,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    .STAGE. ",
                         "  .CITY.    ",
                         "     ..     "
-                    },new GridList {
+                    },new List<string> {
                         "     .  ",
                         "     W  ",
                         "     A  ",
@@ -2524,7 +2524,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     E  ",
                         ".TAHITI.",
                         "     .  "
-                    },new GridList {
+                    },new List<string> {
                         "    . ",
                         ".EAST.",
                         "    A ",
@@ -2533,7 +2533,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    T ",
                         "    I ",
                         "    . "
-                    },new GridList {
+                    },new List<string> {
                         " .    ",
                         ".CITY.",
                         " A    ",
@@ -2541,7 +2541,7 @@ namespace ShapeMakerCSharp.Calculators
                         " D    ",
                         " S    ",
                         " .    "
-                    },new GridList {
+                    },new List<string> {
                         " .   ",
                         " C   ",
                         " A   ",
@@ -2549,7 +2549,7 @@ namespace ShapeMakerCSharp.Calculators
                         " D   ",
                         ".SUN.",
                         " .   "
-                    },new GridList {
+                    },new List<string> {
                         "     .  ",
                         "     M  ",
                         "    .O  ",
@@ -2557,7 +2557,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   .SEA.",
                         ".RELAY. ",
                         "    ..  "
-                    },new GridList {
+                    },new List<string> {
                         "  .    ",
                         ".MONEY.",
                         "  R    ",
@@ -2566,13 +2566,13 @@ namespace ShapeMakerCSharp.Calculators
                         "  N    ",
                         "  T    ",
                         "  .    "
-                    },new GridList {
+                    },new List<string> {
                         "   .   ",
                         "   A   ",
                         "   I   ",
                         ".CARDS.",
                         "   .   "
-                    },new GridList {
+                    },new List<string> {
                         "   .    ",
                         "   O    ",
                         " . R    ",
@@ -2581,7 +2581,7 @@ namespace ShapeMakerCSharp.Calculators
                         " I N    ",
                         " .ITALY.",
                         "   .    "
-                    },new GridList {
+                    },new List<string> {
                         "   . ",
                         "   I ",
                         "   T ",
@@ -2589,14 +2589,14 @@ namespace ShapeMakerCSharp.Calculators
                         "   L ",
                         ".FLY.",
                         "   . "
-                    },new GridList {
+                    },new List<string> {
                         "  .   ",
                         ".KEYS.",
                         "  A   ",
                         "  S   ",
                         "  T   ",
                         "  .   "
-                    },new GridList {
+                    },new List<string> {
                         "   .  ",
                         "   J  ",
                         "   O  ",
@@ -2606,7 +2606,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   E  ",
                         ".KEYS.",
                         "   .  "
-                    },new GridList {
+                    },new List<string> {
                         "   . .   ",
                         ".PORTS.  ",
                         "   O A   ",
@@ -2614,7 +2614,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   T D   ",
                         "   E .   ",
                         "   .     "
-                    },new GridList {
+                    },new List<string> {
                         "   .     ",
                         "   R     ",
                         " . O     ",
@@ -2627,9 +2627,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 8905:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "   . .  ",
                         "   S C  ",
                         "   H R  ",
@@ -2638,7 +2638,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   A H  ",
                         ".FIZZ.  ",
                         "   .    "
-                    },new GridList {
+                    },new List<string> {
                         "      .     ",
                         "      P     ",
                         "      O     ",
@@ -2649,7 +2649,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    .CRUSH. ",
                         ".WHISKY.    ",
                         "     ..     "
-                    },new GridList {
+                    },new List<string> {
                         "  .     ",
                         "  S     ",
                         "  C  .  ",
@@ -2658,7 +2658,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  C  C  ",
                         ".WHISKY.",
                         "  .  .  "
-                    },new GridList {
+                    },new List<string> {
                         "   .       ",
                         "   B       ",
                         " .PORPHYRY.",
@@ -2667,7 +2667,7 @@ namespace ShapeMakerCSharp.Calculators
                         " L E       ",
                         " A .       ",
                         " .         "
-                    },new GridList {
+                    },new List<string> {
                         "    .  ",
                         "    B  ",
                         "  . O  ",
@@ -2676,7 +2676,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  L E  ",
                         ".BAR.  ",
                         "  .    "
-                    },new GridList {
+                    },new List<string> {
                         "  .   ",
                         ".ASTI.",
                         "  C   ",
@@ -2685,33 +2685,33 @@ namespace ShapeMakerCSharp.Calculators
                         "  C   ",
                         "  H   ",
                         "  .   "
-                    },new GridList {
+                    },new List<string> {
                         "    . ",
                         "    A ",
                         "    S ",
                         ".PORT.",
                         "    I ",
                         "    . "
-                    },new GridList {
+                    },new List<string> {
                         " .    ",
                         " N    ",
                         " I    ",
                         ".PORT.",
                         " .    "
-                    },new GridList {
+                    },new List<string> {
                         "   .  ",
                         ".WINE.",
                         "   I  ",
                         "   P  ",
                         "   .  "
-                    },new GridList {
+                    },new List<string> {
                         " .     ",
                         ".WATER.",
                         " I     ",
                         " N     ",
                         " E     ",
                         " .     "
-                    },new GridList {
+                    },new List<string> {
                         "   . .   ",
                         "   M W   ",
                         "   I A   ",
@@ -2719,7 +2719,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   K E   ",
                         "   .GROG.",
                         "     .   "
-                    },new GridList {
+                    },new List<string> {
                         " .     ",
                         ".SPLIT.",
                         " P     ",
@@ -2728,7 +2728,7 @@ namespace ShapeMakerCSharp.Calculators
                         " I     ",
                         " T     ",
                         " .     "
-                    },new GridList {
+                    },new List<string> {
                         " .     ",
                         " S     ",
                         " P     ",
@@ -2739,7 +2739,7 @@ namespace ShapeMakerCSharp.Calculators
                         " .K.   ",
                         "  E    ",
                         "  .    "
-                    },new GridList {
+                    },new List<string> {
                         "  .  ",
                         "  T  ",
                         "  O  ",
@@ -2747,14 +2747,14 @@ namespace ShapeMakerCSharp.Calculators
                         "  D  ",
                         ".RYE.",
                         "  .  "
-                    },new GridList {
+                    },new List<string> {
                         "   . ",
                         ".RUM.",
                         "   I ",
                         "   L ",
                         "   K ",
                         "   . "
-                    },new GridList {
+                    },new List<string> {
                         "    . ",
                         "    M ",
                         ".COKE.",
@@ -2766,9 +2766,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 8906:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "  . .   ",
                         "  M C   ",
                         "  E O   ",
@@ -2781,7 +2781,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   A    ",
                         "   C    ",
                         "   .    "
-                    },new GridList {
+                    },new List<string> {
                         " . .   ",
                         " M C   ",
                         ".EPOCH.",
@@ -2790,7 +2790,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".OZONE.",
                         " R S   ",
                         " . .   "
-                    },new GridList {
+                    },new List<string> {
                         "   . . ",
                         "   C P ",
                         ".EPOCH.",
@@ -2799,7 +2799,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".OZONE.",
                         "   S . ",
                         "   .   "
-                    },new GridList {
+                    },new List<string> {
                         "   .    ",
                         "   C    ",
                         "   O    ",
@@ -2807,7 +2807,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   E    ",
                         ".METEOR.",
                         "   .    "
-                    },new GridList {
+                    },new List<string> {
                         "      .    ",
                         "      M    ",
                         "     .O    ",
@@ -2818,7 +2818,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     E     ",
                         "     R     ",
                         "     .     "
-                    },new GridList {
+                    },new List<string> {
                         "   . .    ",
                         "  .SYZYGY.",
                         "   A E    ",
@@ -2827,19 +2827,19 @@ namespace ShapeMakerCSharp.Calculators
                         "   R T    ",
                         "   N H    ",
                         "   . .    "
-                    },new GridList {
+                    },new List<string> {
                         "  .     ",
                         "  D     ",
                         "  A     ",
                         ".SYZYGY.",
                         "  .     "
-                    },new GridList {
+                    },new List<string> {
                         "    .   ",
                         "    S   ",
                         "    K   ",
                         ".SYZYGY.",
                         "    .   "
-                    },new GridList {
+                    },new List<string> {
                         "  .    ",
                         "  C    ",
                         "  R    ",
@@ -2848,27 +2848,27 @@ namespace ShapeMakerCSharp.Calculators
                         "  E    ",
                         ".ARIES.",
                         "  .    "
-                    },new GridList {
+                    },new List<string> {
                         " .     ",
                         ".ARIES.",
                         " R     ",
                         " C     ",
                         " .     "
-                    },new GridList {
+                    },new List<string> {
                         "      . ",
                         ".SYZYGY.",
                         "      E ",
                         "      A ",
                         "      R ",
                         "      . "
-                    },new GridList {
+                    },new List<string> {
                         " .   ",
                         ".SKY.",
                         " T   ",
                         " A   ",
                         " R   ",
                         " .   "
-                    },new GridList {
+                    },new List<string> {
                         " .     ",
                         " L     ",
                         " I     ",
@@ -2876,14 +2876,14 @@ namespace ShapeMakerCSharp.Calculators
                         " H     ",
                         ".TITAN.",
                         " .     "
-                    },new GridList {
+                    },new List<string> {
                         " .    ",
                         " T    ",
                         " I    ",
                         ".MOON.",
                         " E    ",
                         " .    "
-                    },new GridList {
+                    },new List<string> {
                         " .   ",
                         " A   ",
                         " R   ",
@@ -2891,7 +2891,7 @@ namespace ShapeMakerCSharp.Calculators
                         " E   ",
                         ".SUN.",
                         " .   "
-                    },new GridList {
+                    },new List<string> {
                         "  .  ",
                         ".SUN.",
                         "  R  ",
@@ -2900,14 +2900,14 @@ namespace ShapeMakerCSharp.Calculators
                         "  U  ",
                         "  S  ",
                         "  .  "
-                    },new GridList {
+                    },new List<string> {
                         "      . ",
                         "      U ",
                         "      R ",
                         ".URANUS.",
                         "      A ",
                         "      . "
-                    },new GridList {
+                    },new List<string> {
                         "  .    ",
                         ".CLOUD.",
                         "  I    ",
@@ -2920,9 +2920,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 8907:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "      .    ",
                         "      Q    ",
                         "    . U    ",
@@ -2933,7 +2933,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".EASEL.    ",
                         "    .E     ",
                         "     .     "
-                    },new GridList {
+                    },new List<string> {
                         "    .   ",
                         ".PUZZLE.",
                         "    I   ",
@@ -2942,7 +2942,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    E   ",
                         "    R   ",
                         "    .   "
-                    },new GridList {
+                    },new List<string> {
                         "      .     ",
                         "      N     ",
                         "    .QUARTZ.",
@@ -2950,7 +2950,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".SCRAPS.    ",
                         "    T .     ",
                         "    .       "
-                    },new GridList {
+                    },new List<string> {
                         "  . .  ",
                         ".BRUSH.",
                         "  O C  ",
@@ -2959,7 +2959,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    P  ",
                         "    S  ",
                         "    .  "
-                    },new GridList {
+                    },new List<string> {
                         "   .    ",
                         "   Q    ",
                         "   U  . ",
@@ -2969,14 +2969,14 @@ namespace ShapeMakerCSharp.Calculators
                         ".PUZZLE.",
                         "   .  L ",
                         "      . "
-                    },new GridList {
+                    },new List<string> {
                         "       .    ",
                         "     .BRUSH.",
                         "     B O    ",
                         ".PLYWOOD.   ",
                         "     W .    ",
                         "     .      "
-                    },new GridList {
+                    },new List<string> {
                         "   .   ",
                         "   P   ",
                         "   L.  ",
@@ -2986,14 +2986,14 @@ namespace ShapeMakerCSharp.Calculators
                         "   O.  ",
                         "   D   ",
                         "   .   "
-                    },new GridList {
+                    },new List<string> {
                         " .    ",
                         " L    ",
                         " A    ",
                         ".TOYS.",
                         " H    ",
                         " .    "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         ".TOOLS.",
                         "     H ",
@@ -3001,7 +3001,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     P ",
                         "     E ",
                         "     . "
-                    },new GridList {
+                    },new List<string> {
                         " .     ",
                         " P     ",
                         " A     ",
@@ -3009,20 +3009,20 @@ namespace ShapeMakerCSharp.Calculators
                         " N     ",
                         ".TOOLS.",
                         " .     "
-                    },new GridList {
+                    },new List<string> {
                         "   .   ",
                         "   W   ",
                         ".TOOLS.",
                         "   O   ",
                         "   L   ",
                         "   .   "
-                    },new GridList {
+                    },new List<string> {
                         "    . ",
                         "    A ",
                         "    W ",
                         ".WOOL.",
                         "    . "
-                    },new GridList {
+                    },new List<string> {
                         "  .  ",
                         ".AWL.",
                         "  H  ",
@@ -3031,7 +3031,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  L  ",
                         "  S  ",
                         "  .  "
-                    },new GridList {
+                    },new List<string> {
                         "     .  ",
                         "   . C  ",
                         ".WHEELS.",
@@ -3040,7 +3040,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   E N  ",
                         "   L .  ",
                         "   .    "
-                    },new GridList {
+                    },new List<string> {
                         " .   ",
                         " C   ",
                         " L   ",
@@ -3048,20 +3048,20 @@ namespace ShapeMakerCSharp.Calculators
                         " W   ",
                         ".NET.",
                         " .   "
-                    },new GridList {
+                    },new List<string> {
                         "   . ",
                         "   N ",
                         "   E ",
                         ".CUT.",
                         "   . "
-                    },new GridList {
+                    },new List<string> {
                         "    .   ",
                         "    S   ",
                         ".ZIPPER.",
                         "    I   ",
                         "    N   ",
                         "    .   "
-                    },new GridList {
+                    },new List<string> {
                         "      . ",
                         "      D ",
                         ".ZIPPER.",
@@ -3073,9 +3073,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 8908:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "    .   ",
                         " .SNOW. ",
                         "    L F ",
@@ -3086,7 +3086,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    C E ",
                         "    S . ",
                         "    .   "
-                    },new GridList {
+                    },new List<string> {
                         "    .    ",
                         "    R    ",
                         "    E .  ",
@@ -3099,7 +3099,7 @@ namespace ShapeMakerCSharp.Calculators
                         "      C  ",
                         "      S  ",
                         "      .  "
-                    },new GridList {
+                    },new List<string> {
                         "    .      ",
                         "    L.     ",
                         " .SKIS.    ",
@@ -3107,14 +3107,14 @@ namespace ShapeMakerCSharp.Calculators
                         ".WHITE.    ",
                         "    .D     ",
                         "     .     "
-                    },new GridList {
+                    },new List<string> {
                         "    . ",
                         ".PASS.",
                         "    K ",
                         "    I ",
                         "    S ",
                         "    . "
-                    },new GridList {
+                    },new List<string> {
                         "   .  ",
                         "   G  ",
                         "   L  ",
@@ -3123,7 +3123,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   E  ",
                         ".PASS.",
                         "   .  "
-                    },new GridList {
+                    },new List<string> {
                         "   . .  ",
                         "  .GEAR.",
                         "   L L  ",
@@ -3132,7 +3132,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   E .  ",
                         "   S    ",
                         "   .    "
-                    },new GridList {
+                    },new List<string> {
                         " .   ",
                         ".WET.",
                         " H   ",
@@ -3140,7 +3140,7 @@ namespace ShapeMakerCSharp.Calculators
                         " T   ",
                         " E   ",
                         " .   "
-                    },new GridList {
+                    },new List<string> {
                         "   . ",
                         "   Q ",
                         "   U ",
@@ -3148,20 +3148,20 @@ namespace ShapeMakerCSharp.Calculators
                         "   E ",
                         ".WET.",
                         "   . "
-                    },new GridList {
+                    },new List<string> {
                         "    . ",
                         "    C ",
                         "    O ",
                         ".SNOW.",
                         "    . "
-                    },new GridList {
+                    },new List<string> {
                         "  .    ",
                         "  L    ",
                         ".QUIET.",
                         "  G    ",
                         "  E    ",
                         "  .    "
-                    },new GridList {
+                    },new List<string> {
                         "        . ",
                         "        F ",
                         "        R ",
@@ -3169,7 +3169,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".OLYMPICS.",
                         "        T ",
                         "        . "
-                    },new GridList {
+                    },new List<string> {
                         " .      ",
                         " P      ",
                         " O      ",
@@ -3178,7 +3178,7 @@ namespace ShapeMakerCSharp.Calculators
                         " E      ",
                         ".RESORT.",
                         " .      "
-                    },new GridList {
+                    },new List<string> {
                         " .     ",
                         " W     ",
                         " H     ",
@@ -3186,7 +3186,7 @@ namespace ShapeMakerCSharp.Calculators
                         " T     ",
                         " E     ",
                         " .     "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         "     G ",
                         "     E ",
@@ -3196,14 +3196,14 @@ namespace ShapeMakerCSharp.Calculators
                         "     N ",
                         ".ITALY.",
                         "     . "
-                    },new GridList {
+                    },new List<string> {
                         " .     ",
                         " C     ",
                         " O     ",
                         " L     ",
                         ".DAVOS.",
                         " .     "
-                    },new GridList {
+                    },new List<string> {
                         " .   ",
                         " I   ",
                         ".COW.",
@@ -3214,9 +3214,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 8909:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "    .   ",
                         " .  P   ",
                         " A  A   ",
@@ -3226,7 +3226,7 @@ namespace ShapeMakerCSharp.Calculators
                         " E  .   ",
                         " A      ",
                         " .      "
-                    },new GridList {
+                    },new List<string> {
                         "    .   ",
                         " .POPPY.",
                         " A  A   ",
@@ -3236,7 +3236,7 @@ namespace ShapeMakerCSharp.Calculators
                         " E  .   ",
                         " A      ",
                         " .      "
-                    },new GridList {
+                    },new List<string> {
                         "   . ",
                         "   P ",
                         "   O ",
@@ -3244,7 +3244,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   P ",
                         ".MAY.",
                         "   . "
-                    },new GridList {
+                    },new List<string> {
                         " .   ",
                         " M   ",
                         " I   ",
@@ -3253,28 +3253,28 @@ namespace ShapeMakerCSharp.Calculators
                         " S   ",
                         " A   ",
                         " .   "
-                    },new GridList {
+                    },new List<string> {
                         "     .  ",
                         ".MIMOSA.",
                         "     A  ",
                         "     G  ",
                         "     E  ",
                         "     .  "
-                    },new GridList {
+                    },new List<string> {
                         "      . ",
                         ".AZALEA.",
                         "      L ",
                         "      O ",
                         "      E ",
                         "      . "
-                    },new GridList {
+                    },new List<string> {
                         " .     ",
                         " A     ",
                         " L     ",
                         ".OXLIP.",
                         " E     ",
                         " .     "
-                    },new GridList {
+                    },new List<string> {
                         "     .   ",
                         "     L   ",
                         "   . U   ",
@@ -3284,7 +3284,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   U .   ",
                         "   S     ",
                         "   .     "
-                    },new GridList {
+                    },new List<string> {
                         "     .     ",
                         "     L     ",
                         "     O.    ",
@@ -3294,7 +3294,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     .E    ",
                         "      R    ",
                         "      .    "
-                    },new GridList {
+                    },new List<string> {
                         "   . . ",
                         ".TULIP.",
                         "   U E ",
@@ -3302,7 +3302,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   I N ",
                         ".TANSY.",
                         "   . . "
-                    },new GridList {
+                    },new List<string> {
                         "   .     ",
                         "   B     ",
                         " .CACTUS.",
@@ -3311,7 +3311,7 @@ namespace ShapeMakerCSharp.Calculators
                         " I A     ",
                         " S M     ",
                         " . .     "
-                    },new GridList {
+                    },new List<string> {
                         "       .  ",
                         "       B  ",
                         "     . A  ",
@@ -3320,7 +3320,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     I A  ",
                         ".ALYSSUM. ",
                         "     . .  "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         "     N ",
                         "     E ",
@@ -3334,9 +3334,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 8910:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "  . .   ",
                         "  S U   ",
                         "  U N   ",
@@ -3347,7 +3347,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  O S   ",
                         ".WRITER.",
                         "  . .   "
-                    },new GridList {
+                    },new List<string> {
                         "    .       ",
                         "    U       ",
                         "    N .     ",
@@ -3359,7 +3359,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".WRITER.    ",
                         "    .R.     ",
                         "     .      "
-                    },new GridList {
+                    },new List<string> {
                         "  . .      ",
                         " .SCULPTOR.",
                         "  U N      ",
@@ -3370,7 +3370,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  O S      ",
                         "  R T      ",
                         "  . .      "
-                    },new GridList {
+                    },new List<string> {
                         " .      ",
                         ".PORTER.",
                         " I      ",
@@ -3378,7 +3378,7 @@ namespace ShapeMakerCSharp.Calculators
                         " O      ",
                         " T      ",
                         " .      "
-                    },new GridList {
+                    },new List<string> {
                         "  .     ",
                         "  S     ",
                         "  H     ",
@@ -3388,7 +3388,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  E     ",
                         ".BREWER.",
                         "  .     "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         "     B ",
                         "     R ",
@@ -3400,7 +3400,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  I    ",
                         "  C    ",
                         "  .    "
-                    },new GridList {
+                    },new List<string> {
                         "     .    ",
                         "     C    ",
                         "    .R    ",
@@ -3409,7 +3409,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   .TILER.",
                         "    .C    ",
                         "     .    "
-                    },new GridList {
+                    },new List<string> {
                         "   .   ",
                         ".NAVVY.",
                         "   A   ",
@@ -3417,28 +3417,28 @@ namespace ShapeMakerCSharp.Calculators
                         "   E   ",
                         "   T   ",
                         "   .   "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         "     A ",
                         ".NAVVY.",
                         "     A ",
                         "     H ",
                         "     . "
-                    },new GridList {
+                    },new List<string> {
                         " .     ",
                         " M     ",
                         " O     ",
                         ".NAVVY.",
                         " K     ",
                         " .     "
-                    },new GridList {
+                    },new List<string> {
                         " .    ",
                         ".MONK.",
                         " A    ",
                         " I    ",
                         " D    ",
                         " .    "
-                    },new GridList {
+                    },new List<string> {
                         "  .    ",
                         "  C    ",
                         "  R .  ",
@@ -3453,9 +3453,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 8911:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "  . .    ",
                         "  P F    ",
                         ".TRAINER.",
@@ -3463,7 +3463,7 @@ namespace ShapeMakerCSharp.Calculators
                         " .ZULU.  ",
                         "  E D    ",
                         "  . .    "
-                    },new GridList {
+                    },new List<string> {
                         "        .     ",
                         "        C     ",
                         "        O     ",
@@ -3474,7 +3474,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".TRAINER.     ",
                         "      .F      ",
                         "       .      "
-                    },new GridList {
+                    },new List<string> {
                         "       . ",
                         "       M ",
                         "       O ",
@@ -3482,7 +3482,7 @@ namespace ShapeMakerCSharp.Calculators
                         "       E ",
                         ".TUESDAY.",
                         "       . "
-                    },new GridList {
+                    },new List<string> {
                         "  . .   ",
                         "  T.W   ",
                         ".KIWI.  ",
@@ -3491,7 +3491,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  .A.   ",
                         "   N    ",
                         "   .    "
-                    },new GridList {
+                    },new List<string> {
                         "    .    ",
                         ".TUESDAY.",
                         "    I    ",
@@ -3499,7 +3499,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    K    ",
                         "    S    ",
                         "    .    "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         "     O ",
                         "     W ",
@@ -3507,7 +3507,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     E ",
                         "     R ",
                         "     . "
-                    },new GridList {
+                    },new List<string> {
                         "  .  ",
                         "  C  ",
                         "  O  ",
@@ -3516,7 +3516,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  S  ",
                         "  E  ",
                         "  .  "
-                    },new GridList {
+                    },new List<string> {
                         "  .      ",
                         "  T .    ",
                         ".TUESDAY.",
@@ -3525,7 +3525,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  . K    ",
                         "    S    ",
                         "    .    "
-                    },new GridList {
+                    },new List<string> {
                         " .     ",
                         " S     ",
                         " I     ",
@@ -3533,27 +3533,27 @@ namespace ShapeMakerCSharp.Calculators
                         " K     ",
                         ".START.",
                         " .     "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         "     C ",
                         "     O ",
                         "     L ",
                         ".START.",
                         "     . "
-                    },new GridList {
+                    },new List<string> {
                         " .   ",
                         ".CUP.",
                         " O   ",
                         " L   ",
                         " T   ",
                         " .   "
-                    },new GridList {
+                    },new List<string> {
                         " .    ",
                         " C    ",
                         " U    ",
                         ".POST.",
                         " .    "
-                    },new GridList {
+                    },new List<string> {
                         " .      ",
                         " T      ",
                         " R      ",
@@ -3561,7 +3561,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".COURSE.",
                         " K      ",
                         " .      "
-                    },new GridList {
+                    },new List<string> {
                         " .   ",
                         ".TAB.",
                         " R   ",
@@ -3569,7 +3569,7 @@ namespace ShapeMakerCSharp.Calculators
                         " C   ",
                         " K   ",
                         " .   "
-                    },new GridList {
+                    },new List<string> {
                         "  .  ",
                         "  M  ",
                         "  A  ",
@@ -3577,7 +3577,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  U  ",
                         ".TAB.",
                         "  .  "
-                    },new GridList {
+                    },new List<string> {
                         "   .   ",
                         " . P   ",
                         ".MALUA.",
@@ -3590,9 +3590,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 8912:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "    .   ",
                         "    B   ",
                         ".HOLLY. ",
@@ -3602,7 +3602,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    E D ",
                         "    N . ",
                         "    .   "
-                    },new GridList {
+                    },new List<string> {
                         "   .      ",
                         "   H      ",
                         "   O      ",
@@ -3611,7 +3611,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".JOY.     ",
                         "  X.      ",
                         "  .       "
-                    },new GridList {
+                    },new List<string> {
                         "        .   ",
                         "        B   ",
                         "        L   ",
@@ -3621,7 +3621,7 @@ namespace ShapeMakerCSharp.Calculators
                         "      O E   ",
                         ".SEASONING. ",
                         "      . .   "
-                    },new GridList {
+                    },new List<string> {
                         " .   . ",
                         ".BELLS.",
                         " E   E ",
@@ -3633,7 +3633,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     N ",
                         "     G ",
                         "     . "
-                    },new GridList {
+                    },new List<string> {
                         " .     ",
                         " W     ",
                         " A     ",
@@ -3641,7 +3641,7 @@ namespace ShapeMakerCSharp.Calculators
                         " C     ",
                         ".HOLLY.",
                         " .     "
-                    },new GridList {
+                    },new List<string> {
                         "   .    ",
                         ".TOYS.  ",
                         "   U W  ",
@@ -3650,14 +3650,14 @@ namespace ShapeMakerCSharp.Calculators
                         "   . C  ",
                         "     H  ",
                         "     .  "
-                    },new GridList {
+                    },new List<string> {
                         " . .    ",
                         ".TOYS.  ",
                         " I U    ",
                         " E L    ",
                         ".SWEETS.",
                         " . .    "
-                    },new GridList {
+                    },new List<string> {
                         "  . .  ",
                         " .VASE.",
                         "  I O  ",
@@ -3665,14 +3665,14 @@ namespace ShapeMakerCSharp.Calculators
                         "  E K  ",
                         ".TOYS. ",
                         "  . .  "
-                    },new GridList {
+                    },new List<string> {
                         "  .     ",
                         ".SWEETS.",
                         "  I     ",
                         "  N     ",
                         "  E     ",
                         "  .     "
-                    },new GridList {
+                    },new List<string> {
                         " .     ",
                         ".WATCH.",
                         " A     ",
@@ -3681,7 +3681,7 @@ namespace ShapeMakerCSharp.Calculators
                         " E     ",
                         " T     ",
                         " .     "
-                    },new GridList {
+                    },new List<string> {
                         "   .    ",
                         "   T    ",
                         "   I  . ",
@@ -3691,7 +3691,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".WALLET.",
                         "   .  A ",
                         "      . "
-                    },new GridList {
+                    },new List<string> {
                         " .      ",
                         ".TINSEL.",
                         " R      ",
@@ -3703,9 +3703,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9001:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "   . . ",
                         "   L M ",
                         " .EYRE.",
@@ -3715,14 +3715,14 @@ namespace ShapeMakerCSharp.Calculators
                         "   . E ",
                         "     S ",
                         "     . "
-                    },new GridList {
+                    },new List<string> {
                         "       . ",
                         "       F ",
                         "       I ",
                         ".MENZIES.",
                         "       K ",
                         "       . "
-                    },new GridList {
+                    },new List<string> {
                         " .       ",
                         ".MENZIES.",
                         " A       ",
@@ -3731,7 +3731,7 @@ namespace ShapeMakerCSharp.Calculators
                         " O       ",
                         " N       ",
                         " .       "
-                    },new GridList {
+                    },new List<string> {
                         " .     ",
                         " M     ",
                         " A     ",
@@ -3740,28 +3740,28 @@ namespace ShapeMakerCSharp.Calculators
                         ".OXLEY.",
                         " N     ",
                         " .     "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         "     B ",
                         "     O ",
                         ".OXLEY.",
                         "     D ",
                         "     . "
-                    },new GridList {
+                    },new List<string> {
                         "   .   ",
                         "   G   ",
                         "   O   ",
                         ".OXLEY.",
                         "   D   ",
                         "   .   "
-                    },new GridList {
+                    },new List<string> {
                         " .    ",
                         ".FYSH.",
                         " I    ",
                         " S    ",
                         " K    ",
                         " .    "
-                    },new GridList {
+                    },new List<string> {
                         "   .   ",
                         "   M   ",
                         "   U   ",
@@ -3775,7 +3775,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     E ",
                         "     Y ",
                         "     . "
-                    },new GridList {
+                    },new List<string> {
                         "    . ",
                         "    C ",
                         "    H ",
@@ -3785,7 +3785,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    E ",
                         ".QUAY.",
                         "    . "
-                    },new GridList {
+                    },new List<string> {
                         "   .   ",
                         "   M   ",
                         ".STURT.",
@@ -3794,7 +3794,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   A   ",
                         "   Y   ",
                         "   .   "
-                    },new GridList {
+                    },new List<string> {
                         "   .   . ",
                         ".ROBERTS.",
                         "   A   M ",
@@ -3802,14 +3802,14 @@ namespace ShapeMakerCSharp.Calculators
                         "  .STURT.",
                         "   .   H ",
                         "       . "
-                    },new GridList {
+                    },new List<string> {
                         "    . .     ",
                         "   .ROBERTS.",
                         "    E A     ",
                         ".SIRIUS.    ",
                         "    D S     ",
                         "    . .     "
-                    },new GridList {
+                    },new List<string> {
                         " .      ",
                         " F      ",
                         " I      ",
@@ -3818,14 +3818,14 @@ namespace ShapeMakerCSharp.Calculators
                         " E      ",
                         " R      ",
                         " .      "
-                    },new GridList {
+                    },new List<string> {
                         "  .   ",
                         "  H   ",
                         ".QUAY.",
                         "  M   ",
                         "  E   ",
                         "  .   "
-                    },new GridList {
+                    },new List<string> {
                         "    . ",
                         "    D ",
                         "    O ",
@@ -3839,9 +3839,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9002:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         " .  .   ",
                         ".AENEAS.",
                         " M  R   ",
@@ -3851,7 +3851,7 @@ namespace ShapeMakerCSharp.Calculators
                         " N      ",
                         " S      ",
                         " .      "
-                    },new GridList {
+                    },new List<string> {
                         " .    ",
                         " A    ",
                         " E    ",
@@ -3864,7 +3864,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   U  ",
                         "   S  ",
                         "   .  "
-                    },new GridList {
+                    },new List<string> {
                         "       . .    ",
                         "       J M    ",
                         "      .A E    ",
@@ -3875,7 +3875,7 @@ namespace ShapeMakerCSharp.Calculators
                         "      U E.    ",
                         "      S S     ",
                         "      . .     "
-                    },new GridList {
+                    },new List<string> {
                         "     .   ",
                         "     U   ",
                         "     R   ",
@@ -3886,7 +3886,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".JUNO.   ",
                         "  S.Y    ",
                         "  . .    "
-                    },new GridList {
+                    },new List<string> {
                         "    .    ",
                         "    M    ",
                         "    E    ",
@@ -3899,14 +3899,14 @@ namespace ShapeMakerCSharp.Calculators
                         "      E  ",
                         "      S  ",
                         "      .  "
-                    },new GridList {
+                    },new List<string> {
                         "       . ",
                         "       E ",
                         "       R ",
                         "       I ",
                         ".ROMULUS.",
                         "       . "
-                    },new GridList {
+                    },new List<string> {
                         "       . ",
                         "       C ",
                         "       H ",
@@ -3914,14 +3914,14 @@ namespace ShapeMakerCSharp.Calculators
                         "       O ",
                         ".ULYSSES.",
                         "       . "
-                    },new GridList {
+                    },new List<string> {
                         "      .  ",
                         ".AMAZONS.",
                         "      I  ",
                         "      K  ",
                         "      E  ",
                         "      .  "
-                    },new GridList {
+                    },new List<string> {
                         "   .  ",
                         ".NIKE.",
                         "   A  ",
@@ -3933,9 +3933,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9003:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "       . ",
                         "    .  S ",
                         "    B  Y ",
@@ -3945,7 +3945,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".FITZROY.",
                         "    A  . ",
                         "    .    "
-                    },new GridList {
+                    },new List<string> {
                         "  .      ",
                         "  B      ",
                         "  U      ",
@@ -3955,7 +3955,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  R E    ",
                         ".SYDNEY. ",
                         "  . .    "
-                    },new GridList {
+                    },new List<string> {
                         "  .      ",
                         "  Q .    ",
                         ".BUNBURY.",
@@ -3965,7 +3965,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".FITZROY.",
                         "  E A    ",
                         "  . .    "
-                    },new GridList {
+                    },new List<string> {
                         "      .  ",
                         ".FITZROY.",
                         "      U  ",
@@ -3973,7 +3973,7 @@ namespace ShapeMakerCSharp.Calculators
                         "      E  ",
                         "      N  ",
                         "      .  "
-                    },new GridList {
+                    },new List<string> {
                         "  .  ",
                         "  O  ",
                         "  U  ",
@@ -3981,7 +3981,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  E  ",
                         "  N  ",
                         "  .  "
-                    },new GridList {
+                    },new List<string> {
                         "    .  ",
                         "    O  ",
                         "    U  ",
@@ -3989,13 +3989,13 @@ namespace ShapeMakerCSharp.Calculators
                         "    E  ",
                         ".YOUNG.",
                         "    .  "
-                    },new GridList {
+                    },new List<string> {
                         " .     ",
                         " H     ",
                         " A     ",
                         ".YOUNG.",
                         " .     "
-                    },new GridList {
+                    },new List<string> {
                         "    .    ",
                         "    N    ",
                         "    H    ",
@@ -4003,7 +4003,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    L    ",
                         ".QUILPIE.",
                         "    .    "
-                    },new GridList {
+                    },new List<string> {
                         "    .  ",
                         ".LORNE.",
                         "    H  ",
@@ -4011,7 +4011,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    L  ",
                         "    L  ",
                         "    .  "
-                    },new GridList {
+                    },new List<string> {
                         "   .   ",
                         "   E . ",
                         ".TEXAS.",
@@ -4020,7 +4020,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   E N ",
                         ".LORNE.",
                         "   . . "
-                    },new GridList {
+                    },new List<string> {
                         " . .   ",
                         " S E   ",
                         ".TEXAS.",
@@ -4030,7 +4030,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".LORNE.",
                         " L .   ",
                         " .     "
-                    },new GridList {
+                    },new List<string> {
                         "    .    ",
                         ".SCONE.  ",
                         "    O B  ",
@@ -4038,7 +4038,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    R G  ",
                         "    A A  ",
                         "    . .  "
-                    },new GridList {
+                    },new List<string> {
                         "   .     ",
                         "   B     ",
                         ".WYEE.   ",
@@ -4046,7 +4046,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  .AVOCA.",
                         "   . E   ",
                         "     .   "
-                    },new GridList {
+                    },new List<string> {
                         "  .    ",
                         ".SCONE.",
                         "  A    ",
@@ -4055,7 +4055,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  N    ",
                         "  S    ",
                         "  .    "
-                    },new GridList {
+                    },new List<string> {
                         "   .  ",
                         " . C  ",
                         " T A  ",
@@ -4069,9 +4069,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9004:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         " .    ",
                         " Q    ",
                         " U    ",
@@ -4080,7 +4080,7 @@ namespace ShapeMakerCSharp.Calculators
                         " T    ",
                         ".ZINC.",
                         " .    "
-                    },new GridList {
+                    },new List<string> {
                         "    .   ",
                         "    P   ",
                         " .  O   ",
@@ -4091,7 +4091,7 @@ namespace ShapeMakerCSharp.Calculators
                         " R  R   ",
                         " Y  Y   ",
                         " .  .   "
-                    },new GridList {
+                    },new List<string> {
                         "        . ",
                         "        P ",
                         ".PORPHYRY.",
@@ -4101,14 +4101,14 @@ namespace ShapeMakerCSharp.Calculators
                         "        E ",
                         "        S ",
                         "        . "
-                    },new GridList {
+                    },new List<string> {
                         "      . ",
                         "      C ",
                         "      L ",
                         "      A ",
                         ".QUARRY.",
                         "      . "
-                    },new GridList {
+                    },new List<string> {
                         "      .     ",
                         "      G     ",
                         "      Y     ",
@@ -4121,7 +4121,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     R      ",
                         "     Y      ",
                         "     .      "
-                    },new GridList {
+                    },new List<string> {
                         " . .     ",
                         " R G     ",
                         ".ONYX.   ",
@@ -4130,7 +4130,7 @@ namespace ShapeMakerCSharp.Calculators
                         " .QUARTZ.",
                         "   M     ",
                         "   .     "
-                    },new GridList {
+                    },new List<string> {
                         "     .    ",
                         "     R    ",
                         "     E.   ",
@@ -4141,7 +4141,7 @@ namespace ShapeMakerCSharp.Calculators
                         "      U   ",
                         "      M   ",
                         "      .   "
-                    },new GridList {
+                    },new List<string> {
                         " . .    ",
                         ".JET.   ",
                         " A A    ",
@@ -4150,7 +4150,7 @@ namespace ShapeMakerCSharp.Calculators
                         " E .    ",
                         " R      ",
                         " .      "
-                    },new GridList {
+                    },new List<string> {
                         " .        ",
                         ".PORPHYRY.",
                         " E        ",
@@ -4159,7 +4159,7 @@ namespace ShapeMakerCSharp.Calculators
                         " E        ",
                         " R        ",
                         " .        "
-                    },new GridList {
+                    },new List<string> {
                         "    . . ",
                         " .TOPAZ.",
                         "    I I ",
@@ -4168,14 +4168,14 @@ namespace ShapeMakerCSharp.Calculators
                         "      O ",
                         "      N ",
                         "      . "
-                    },new GridList {
+                    },new List<string> {
                         "      . ",
                         "      I ",
                         "      R ",
                         "      O ",
                         ".ZIRCON.",
                         "      . "
-                    },new GridList {
+                    },new List<string> {
                         "   .  ",
                         ".IRON.",
                         "   C  ",
@@ -4183,14 +4183,14 @@ namespace ShapeMakerCSharp.Calculators
                         "   R  ",
                         "   E  ",
                         "   .  "
-                    },new GridList {
+                    },new List<string> {
                         "    .  ",
                         "    F  ",
                         "    A  ",
                         "    C  ",
                         ".STEEL.",
                         "    .  "
-                    },new GridList {
+                    },new List<string> {
                         " .   ",
                         " S   ",
                         ".TIN.",
@@ -4203,9 +4203,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9005:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "   .     ",
                         "   B .   ",
                         "   I J   ",
@@ -4213,7 +4213,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   E A   ",
                         "  .TENOR.",
                         "   . .   "
-                    },new GridList {
+                    },new List<string> {
                         "     .    ",
                         "    .T    ",
                         ".TENOR.   ",
@@ -4221,7 +4221,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  .DUO.   ",
                         "    S.    ",
                         "    .     "
-                    },new GridList {
+                    },new List<string> {
                         "   .    ",
                         " . P    ",
                         ".TRIO.  ",
@@ -4230,7 +4230,7 @@ namespace ShapeMakerCSharp.Calculators
                         " P A    ",
                         " O .    ",
                         " .      "
-                    },new GridList {
+                    },new List<string> {
                         "   .     ",
                         "   P  .  ",
                         "   I  B  ",
@@ -4239,7 +4239,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   A  O  ",
                         "   .LIND.",
                         "      .  "
-                    },new GridList {
+                    },new List<string> {
                         "    .   ",
                         "    C   ",
                         "    H   ",
@@ -4249,14 +4249,14 @@ namespace ShapeMakerCSharp.Calculators
                         ".OPUS.  ",
                         "   O.   ",
                         "   .    "
-                    },new GridList {
+                    },new List<string> {
                         "   . .  ",
                         "   S D  ",
                         ".CHORUS.",
                         "   L E  ",
                         " .FORTE.",
                         "   . .  "
-                    },new GridList {
+                    },new List<string> {
                         "  . .  ",
                         "  R T  ",
                         ".TUNE. ",
@@ -4264,7 +4264,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  F P  ",
                         " .OBOE.",
                         "  . .  "
-                    },new GridList {
+                    },new List<string> {
                         " .      ",
                         " D      ",
                         " A      ",
@@ -4272,7 +4272,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".CHORUS.",
                         " E      ",
                         " .      "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         "     D ",
                         "  .  A ",
@@ -4281,7 +4281,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".STAGE.",
                         "  O  . ",
                         "  .    "
-                    },new GridList {
+                    },new List<string> {
                         "       . ",
                         "       H ",
                         "       A ",
@@ -4289,7 +4289,7 @@ namespace ShapeMakerCSharp.Calculators
                         "       D ",
                         "       N ",
                         "       . "
-                    },new GridList {
+                    },new List<string> {
                         " .  .    ",
                         ".BASSO.  ",
                         " A  O    ",
@@ -4301,9 +4301,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9006:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "      .  ",
                         "      W  ",
                         "    . H  ",
@@ -4316,7 +4316,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     E   ",
                         "     R   ",
                         "     .   "
-                    },new GridList {
+                    },new List<string> {
                         "        .     ",
                         "        D     ",
                         "       .O     ",
@@ -4325,14 +4325,14 @@ namespace ShapeMakerCSharp.Calculators
                         "       S.     ",
                         "       S      ",
                         "       .      "
-                    },new GridList {
+                    },new List<string> {
                         "  .     ",
                         "  D   . ",
                         ".ZANDER.",
                         "  R   A ",
                         " .TUNNY.",
                         "  .   . "
-                    },new GridList {
+                    },new List<string> {
                         "       .     ",
                         "       B     ",
                         ".STINGRAY.   ",
@@ -4341,7 +4341,7 @@ namespace ShapeMakerCSharp.Calculators
                         "       . N   ",
                         "         A   ",
                         "         .   "
-                    },new GridList {
+                    },new List<string> {
                         "       . ",
                         "       M ",
                         "   .   A ",
@@ -4354,7 +4354,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   A     ",
                         "   Y     ",
                         "   .     "
-                    },new GridList {
+                    },new List<string> {
                         "     .   ",
                         "     E   ",
                         "   . X   ",
@@ -4367,7 +4367,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   A     ",
                         "   Y     ",
                         "   .     "
-                    },new GridList {
+                    },new List<string> {
                         "      .  ",
                         "      W  ",
                         "    . H  ",
@@ -4376,7 +4376,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".BRONZE. ",
                         "    D R  ",
                         "    . .  "
-                    },new GridList {
+                    },new List<string> {
                         "      . ",
                         ".MINNOW.",
                         "      H ",
@@ -4385,7 +4385,7 @@ namespace ShapeMakerCSharp.Calculators
                         "      E ",
                         "      R ",
                         "      . "
-                    },new GridList {
+                    },new List<string> {
                         "   . . ",
                         ".BREAM.",
                         "   X A ",
@@ -4394,21 +4394,21 @@ namespace ShapeMakerCSharp.Calculators
                         "   R A ",
                         "   T . ",
                         "   .   "
-                    },new GridList {
+                    },new List<string> {
                         " .        ",
                         " N        ",
                         " E        ",
                         " T        ",
                         ".STINGRAY.",
                         " .        "
-                    },new GridList {
+                    },new List<string> {
                         " .    ",
                         " L    ",
                         " I    ",
                         ".NETS.",
                         " E    ",
                         " .    "
-                    },new GridList {
+                    },new List<string> {
                         " . .  ",
                         ".SOLE.",
                         " H I  ",
@@ -4416,7 +4416,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".ROE. ",
                         " K .  ",
                         " .    "
-                    },new GridList {
+                    },new List<string> {
                         " .   ",
                         ".BOX.",
                         " O   ",
@@ -4425,19 +4425,19 @@ namespace ShapeMakerCSharp.Calculators
                         " T   ",
                         " O   ",
                         " .   "
-                    },new GridList {
+                    },new List<string> {
                         "   . ",
                         "   L ",
                         "   A ",
                         ".BOX.",
                         "   . "
-                    },new GridList {
+                    },new List<string> {
                         " .   ",
                         " E   ",
                         " E   ",
                         ".LAX.",
                         " .   "
-                    },new GridList {
+                    },new List<string> {
                         "    . ",
                         "    O ",
                         "    R ",
@@ -4449,9 +4449,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9007:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "    . . ",
                         "  .JAZZ.",
                         "    D O ",
@@ -4459,7 +4459,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    M E ",
                         ".KANSAS.",
                         "    . . "
-                    },new GridList {
+                    },new List<string> {
                         "   .      ",
                         "   A      ",
                         "   R .    ",
@@ -4470,7 +4470,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".TWAIN.   ",
                         "   S .    ",
                         "   .      "
-                    },new GridList {
+                    },new List<string> {
                         "     .   ",
                         "   . A   ",
                         "   L R   ",
@@ -4486,14 +4486,14 @@ namespace ShapeMakerCSharp.Calculators
                         "    E    ",
                         "    R    ",
                         "    .    "
-                    },new GridList {
+                    },new List<string> {
                         "    .   ",
                         ".NIXON. ",
                         "    H L ",
                         "    I E ",
                         "  .HOWE.",
                         "    . . "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         "   . A ",
                         ".TYLER.",
@@ -4504,7 +4504,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   T A ",
                         ".HAYES.",
                         "   . . "
-                    },new GridList {
+                    },new List<string> {
                         "  . .       ",
                         "  B T       ",
                         ".JULY.      ",
@@ -4512,7 +4512,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  H E       ",
                         "  .ARKANSAS.",
                         "    .       "
-                    },new GridList {
+                    },new List<string> {
                         " .     ",
                         ".TYLER.",
                         " E     ",
@@ -4520,7 +4520,7 @@ namespace ShapeMakerCSharp.Calculators
                         " A     ",
                         " S     ",
                         " .     "
-                    },new GridList {
+                    },new List<string> {
                         "    .    ",
                         ".WEBSTER.",
                         "    E    ",
@@ -4530,7 +4530,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    I    ",
                         "    A    ",
                         "    .    "
-                    },new GridList {
+                    },new List<string> {
                         "    .    ",
                         "    Q .  ",
                         ".SEQUOIA.",
@@ -4538,7 +4538,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  .STOWE.",
                         "    A A  ",
                         "    . .  "
-                    },new GridList {
+                    },new List<string> {
                         "    . ",
                         "    W ",
                         "    E ",
@@ -4548,7 +4548,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    E ",
                         "    R ",
                         "    . "
-                    },new GridList {
+                    },new List<string> {
                         "  .   ",
                         ".UTAH.",
                         "  A   ",
@@ -4560,9 +4560,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9008:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "     .    ",
                         "     E    ",
                         "     U    ",
@@ -4575,7 +4575,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     U    ",
                         "     S    ",
                         "     .    "
-                    },new GridList {
+                    },new List<string> {
                         "    .         ",
                         "    Q         ",
                         "  .EUCALYPTUS.",
@@ -4583,7 +4583,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".HUON.        ",
                         "  M A         ",
                         "  . .         "
-                    },new GridList {
+                    },new List<string> {
                         "    .    ",
                         "    B    ",
                         "    U    ",
@@ -4593,7 +4593,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    N M  ",
                         ".SASSY.  ",
                         "    .    "
-                    },new GridList {
+                    },new List<string> {
                         "   . .    ",
                         ".SASSY.   ",
                         "   I A    ",
@@ -4602,7 +4602,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   A A    ",
                         "   X H    ",
                         "   . .    "
-                    },new GridList {
+                    },new List<string> {
                         " .        ",
                         " H        ",
                         " I        ",
@@ -4615,7 +4615,7 @@ namespace ShapeMakerCSharp.Calculators
                         " . A      ",
                         "   X      ",
                         "   .      "
-                    },new GridList {
+                    },new List<string> {
                         "   . ",
                         "   S ",
                         "   I ",
@@ -4624,7 +4624,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   A ",
                         ".WAX.",
                         "   . "
-                    },new GridList {
+                    },new List<string> {
                         "    .  ",
                         "    B  ",
                         " .  U  ",
@@ -4637,7 +4637,7 @@ namespace ShapeMakerCSharp.Calculators
                         " U     ",
                         " S     ",
                         " .     "
-                    },new GridList {
+                    },new List<string> {
                         "     .    ",
                         "     Y    ",
                         "     A    ",
@@ -4646,7 +4646,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     A  O ",
                         "    .HOOP.",
                         "     .  . "
-                    },new GridList {
+                    },new List<string> {
                         "    . .     ",
                         "    Y M     ",
                         ".EUCALYPTUS.",
@@ -4654,13 +4654,13 @@ namespace ShapeMakerCSharp.Calculators
                         "   .COLANE. ",
                         "    A L     ",
                         "    . .     "
-                    },new GridList {
+                    },new List<string> {
                         "  .  ",
                         ".HOP.",
                         "  A  ",
                         "  K  ",
                         "  .  "
-                    },new GridList {
+                    },new List<string> {
                         "      . ",
                         "      H ",
                         ".MYRTLE.",
@@ -4668,7 +4668,7 @@ namespace ShapeMakerCSharp.Calculators
                         "      T ",
                         "      H ",
                         "      . "
-                    },new GridList {
+                    },new List<string> {
                         "  .      ",
                         "  M      ",
                         ".CYPRESS.",
@@ -4677,7 +4677,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  L      ",
                         "  E      ",
                         "  .      "
-                    },new GridList {
+                    },new List<string> {
                         "      .  ",
                         "      A  ",
                         ".CYPRESS.",
@@ -4688,16 +4688,16 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9009:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "    . . ",
                         ".ZIGZAG.",
                         "    O U ",
                         "    N L ",
                         "  .REEF.",
                         "    . . "
-                    },new GridList {
+                    },new List<string> {
                         " .      ",
                         ".ZIGZAG.",
                         " E      ",
@@ -4706,7 +4706,7 @@ namespace ShapeMakerCSharp.Calculators
                         " T      ",
                         " H      ",
                         " .      "
-                    },new GridList {
+                    },new List<string> {
                         "     ..      ",
                         "    .WIND.   ",
                         ".CABLES.     ",
@@ -4716,7 +4716,7 @@ namespace ShapeMakerCSharp.Calculators
                         "      U      ",
                         "      S      ",
                         "      .      "
-                    },new GridList {
+                    },new List<string> {
                         "     . .   ",
                         ".ISTHMUS.  ",
                         "     E E   ",
@@ -4725,13 +4725,13 @@ namespace ShapeMakerCSharp.Calculators
                         "     E     ",
                         "     S     ",
                         "     .     "
-                    },new GridList {
+                    },new List<string> {
                         "       . ",
                         "       B ",
                         "       A ",
                         ".ESTUARY.",
                         "       . "
-                    },new GridList {
+                    },new List<string> {
                         "     .     ",
                         "     M     ",
                         "     E     ",
@@ -4742,7 +4742,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     .I    ",
                         "      L    ",
                         "      .    "
-                    },new GridList {
+                    },new List<string> {
                         "   .     ",
                         "   M     ",
                         "   E  .  ",
@@ -4753,7 +4753,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   .  E  ",
                         "      S  ",
                         "      .  "
-                    },new GridList {
+                    },new List<string> {
                         "     .  ",
                         "     R  ",
                         "   . O  ",
@@ -4762,7 +4762,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   I E  ",
                         ".ATLAS. ",
                         "   . .  "
-                    },new GridList {
+                    },new List<string> {
                         " . .   ",
                         " A C   ",
                         ".SPACE.",
@@ -4771,7 +4771,7 @@ namespace ShapeMakerCSharp.Calculators
                         " .WEST.",
                         "   S   ",
                         "   .   "
-                    },new GridList {
+                    },new List<string> {
                         "  .   ",
                         ".EAST.",
                         "  T   ",
@@ -4779,7 +4779,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  A   ",
                         "  S   ",
                         "  .   "
-                    },new GridList {
+                    },new List<string> {
                         "   .  ",
                         "   T  ",
                         "   R  ",
@@ -4787,7 +4787,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   E  ",
                         ".EAST.",
                         "   .  "
-                    },new GridList {
+                    },new List<string> {
                         "    . ",
                         ".EAST.",
                         "    R ",
@@ -4796,7 +4796,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    I ",
                         "    C ",
                         "    . "
-                    },new GridList {
+                    },new List<string> {
                         "    .  ",
                         ".PORTS.",
                         "    R  ",
@@ -4804,7 +4804,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    E  ",
                         "    S  ",
                         "    .  "
-                    },new GridList {
+                    },new List<string> {
                         "   .   ",
                         "   A   ",
                         "   R   ",
@@ -4816,9 +4816,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9010:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "  .    ",
                         "  D .  ",
                         ".TRICK.",
@@ -4827,7 +4827,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".JAZZ. ",
                         "  . Y  ",
                         "    .  "
-                    },new GridList {
+                    },new List<string> {
                         "    . ",
                         "    T ",
                         "    R ",
@@ -4835,7 +4835,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    C ",
                         ".MASK.",
                         "    . "
-                    },new GridList {
+                    },new List<string> {
                         "     .  ",
                         "     A  ",
                         "     U  ",
@@ -4846,7 +4846,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  K.G.  ",
                         "  . E   ",
                         "    .   "
-                    },new GridList {
+                    },new List<string> {
                         "  .       ",
                         "  A  .    ",
                         "  C  D    ",
@@ -4855,7 +4855,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  R  U    ",
                         "  .MOTLEY.",
                         "     .    "
-                    },new GridList {
+                    },new List<string> {
                         "   .    ",
                         "   D  . ",
                         "   E  P ",
@@ -4863,7 +4863,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   U  A ",
                         ".MOTLEY.",
                         "   .  . "
-                    },new GridList {
+                    },new List<string> {
                         "       .  ",
                         "       A  ",
                         "   .   C  ",
@@ -4872,7 +4872,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   S   R  ",
                         ".SATIRE.  ",
                         "   .      "
-                    },new GridList {
+                    },new List<string> {
                         "   .    ",
                         "   M    ",
                         "   A  . ",
@@ -4883,19 +4883,19 @@ namespace ShapeMakerCSharp.Calculators
                         "      R ",
                         "      E ",
                         "      . "
-                    },new GridList {
+                    },new List<string> {
                         "     .  ",
                         "     P  ",
                         "     I  ",
                         ".TIGHTS.",
                         "     .  "
-                    },new GridList {
+                    },new List<string> {
                         " .      ",
                         " H      ",
                         " I      ",
                         ".TIGHTS.",
                         " .      "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         ".WINGS.",
                         "     M ",
@@ -4903,7 +4903,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     S ",
                         "     H ",
                         "     . "
-                    },new GridList {
+                    },new List<string> {
                         "   .   ",
                         "  .B.  ",
                         ".SHOW. ",
@@ -4912,7 +4912,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  O G  ",
                         "  . S  ",
                         "    .  "
-                    },new GridList {
+                    },new List<string> {
                         "  . . ",
                         ".SHOW.",
                         "  E I ",
@@ -4920,21 +4920,21 @@ namespace ShapeMakerCSharp.Calculators
                         ".SONG.",
                         "  . S ",
                         "    . "
-                    },new GridList {
+                    },new List<string> {
                         " .   ",
                         ".SET.",
                         " O   ",
                         " N   ",
                         " G   ",
                         " .   "
-                    },new GridList {
+                    },new List<string> {
                         " .    ",
                         " G    ",
                         " O    ",
                         " D    ",
                         ".SHOW.",
                         " .    "
-                    },new GridList {
+                    },new List<string> {
                         " .    ",
                         ".GODS.",
                         " A    ",
@@ -4945,9 +4945,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9011:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "  .     ",
                         "  N     ",
                         "  A .   ",
@@ -4960,7 +4960,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    W   ",
                         "    E   ",
                         "    .   "
-                    },new GridList {
+                    },new List<string> {
                         "   .      ",
                         "   T .    ",
                         "   I W    ",
@@ -4969,7 +4969,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   .TEA.  ",
                         "     S    ",
                         "     .    "
-                    },new GridList {
+                    },new List<string> {
                         "     .   ",
                         "     C   ",
                         "    .L   ",
@@ -4977,14 +4977,14 @@ namespace ShapeMakerCSharp.Calculators
                         ".WALES.  ",
                         "   .ASIA.",
                         "    ..   "
-                    },new GridList {
+                    },new List<string> {
                         "   . .   ",
                         "   T A   ",
                         ".CLASS.  ",
                         "   X I   ",
                         "  .ITALY.",
                         "   . .   "
-                    },new GridList {
+                    },new List<string> {
                         "    . ",
                         "    I ",
                         "    T ",
@@ -4992,14 +4992,14 @@ namespace ShapeMakerCSharp.Calculators
                         "    L ",
                         ".ORLY.",
                         "    . "
-                    },new GridList {
+                    },new List<string> {
                         "       .  ",
                         "       V  ",
                         "       I  ",
                         "       E  ",
                         ".ZIMBABWE.",
                         "       .  "
-                    },new GridList {
+                    },new List<string> {
                         " .      ",
                         " I      ",
                         ".TURKEY.",
@@ -5007,7 +5007,7 @@ namespace ShapeMakerCSharp.Calculators
                         " L      ",
                         " Y      ",
                         " .      "
-                    },new GridList {
+                    },new List<string> {
                         "   .  .  ",
                         "   P  O  ",
                         "   A  X  ",
@@ -5016,7 +5016,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  .SLEEP.",
                         "   .  N  ",
                         "      .  "
-                    },new GridList {
+                    },new List<string> {
                         "   .  .  ",
                         "  .PILOT.",
                         "   A  X  ",
@@ -5025,7 +5025,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   S  E  ",
                         "   .  N  ",
                         "      .  "
-                    },new GridList {
+                    },new List<string> {
                         "   .   ",
                         "   S . ",
                         "   A P ",
@@ -5034,7 +5034,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   T O ",
                         ".EGYPT.",
                         "   . . "
-                    },new GridList {
+                    },new List<string> {
                         "    .      ",
                         ".TRAVEL.   ",
                         "    I  M   ",
@@ -5042,7 +5042,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    A  A   ",
                         "    .  L   ",
                         "       .   "
-                    },new GridList {
+                    },new List<string> {
                         " .   ",
                         " T   ",
                         ".RUG.",
@@ -5051,7 +5051,7 @@ namespace ShapeMakerCSharp.Calculators
                         " E   ",
                         " L   ",
                         " .   "
-                    },new GridList {
+                    },new List<string> {
                         " .      ",
                         " I      ",
                         ".NARITA.",
@@ -5059,7 +5059,7 @@ namespace ShapeMakerCSharp.Calculators
                         " I      ",
                         " A      ",
                         " .      "
-                    },new GridList {
+                    },new List<string> {
                         "  .   ",
                         "  F   ",
                         ".VIEW.",
@@ -5070,9 +5070,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9012:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "     .  ",
                         "     M  ",
                         "   . A  ",
@@ -5083,7 +5083,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   E .  ",
                         "   R    ",
                         "   .    "
-                    },new GridList {
+                    },new List<string> {
                         " . .    ",
                         ".FUTURE.",
                         " I U    ",
@@ -5092,7 +5092,7 @@ namespace ShapeMakerCSharp.Calculators
                         " . E    ",
                         "   R    ",
                         "   .    "
-                    },new GridList {
+                    },new List<string> {
                         " .      ",
                         " D      ",
                         " R      ",
@@ -5100,7 +5100,7 @@ namespace ShapeMakerCSharp.Calculators
                         " A      ",
                         ".MARLEY.",
                         " .      "
-                    },new GridList {
+                    },new List<string> {
                         "  .     ",
                         "  T     ",
                         "  U     ",
@@ -5109,7 +5109,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  E     ",
                         ".FROSTY.",
                         "  .     "
-                    },new GridList {
+                    },new List<string> {
                         "      . ",
                         "      H ",
                         "      A ",
@@ -5117,7 +5117,7 @@ namespace ShapeMakerCSharp.Calculators
                         "      P ",
                         ".FROSTY.",
                         "      . "
-                    },new GridList {
+                    },new List<string> {
                         "  . .   ",
                         " .HAPPY.",
                         "  O A   ",
@@ -5125,7 +5125,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  L T   ",
                         "  Y .   ",
                         "  .     "
-                    },new GridList {
+                    },new List<string> {
                         "    .    ",
                         "    H    ",
                         "    O    ",
@@ -5137,7 +5137,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  E      ",
                         "  R      ",
                         "  .      "
-                    },new GridList {
+                    },new List<string> {
                         "  .    ",
                         "  S    ",
                         "  L    ",
@@ -5149,7 +5149,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   E   ",
                         "   R   ",
                         "   .   "
-                    },new GridList {
+                    },new List<string> {
                         "    .  ",
                         " .  W  ",
                         " F  I  ",
@@ -5158,7 +5158,7 @@ namespace ShapeMakerCSharp.Calculators
                         " G  E  ",
                         ".YEAR. ",
                         " .  .  "
-                    },new GridList {
+                    },new List<string> {
                         "   .      ",
                         "   B      ",
                         "   L      ",
@@ -5167,7 +5167,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  .SILVER.",
                         "   .M     ",
                         "    .     "
-                    },new GridList {
+                    },new List<string> {
                         "      .  ",
                         "      P  ",
                         "    .BOB.",
@@ -5175,14 +5175,14 @@ namespace ShapeMakerCSharp.Calculators
                         ".SILVER. ",
                         "    E .  ",
                         "    .    "
-                    },new GridList {
+                    },new List<string> {
                         "    .    ",
                         ".GHOST.  ",
                         "    O N  ",
                         "  .SLEET.",
                         "    E W  ",
                         "    . .  "
-                    },new GridList {
+                    },new List<string> {
                         "   . ",
                         "   D ",
                         "   R ",
@@ -5195,9 +5195,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9101:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "   . . ",
                         "   Q P ",
                         "   U A ",
@@ -5208,7 +5208,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  A V  ",
                         "  X E  ",
                         "  . .  "
-                    },new GridList {
+                    },new List<string> {
                         " .      ",
                         " S      ",
                         " L      ",
@@ -5219,7 +5219,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   B    ",
                         "   A    ",
                         "   .    "
-                    },new GridList {
+                    },new List<string> {
                         " .     ",
                         ".SPORT.",
                         " L     ",
@@ -5227,7 +5227,7 @@ namespace ShapeMakerCSharp.Calculators
                         " E     ",
                         " P     ",
                         " .     "
-                    },new GridList {
+                    },new List<string> {
                         "    .    ",
                         "    O    ",
                         "    A.   ",
@@ -5235,14 +5235,14 @@ namespace ShapeMakerCSharp.Calculators
                         "   .SAND.",
                         "    .N   ",
                         "     .   "
-                    },new GridList {
+                    },new List<string> {
                         "  .     ",
                         ".FOREST.",
                         "  A     ",
                         "  R     ",
                         "  S     ",
                         "  .     "
-                    },new GridList {
+                    },new List<string> {
                         "     .  ",
                         ".FOREST.",
                         "     P  ",
@@ -5250,7 +5250,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     D  ",
                         "     E  ",
                         "     .  "
-                    },new GridList {
+                    },new List<string> {
                         " .         ",
                         " S         ",
                         " P         ",
@@ -5258,7 +5258,7 @@ namespace ShapeMakerCSharp.Calculators
                         " D         ",
                         " E         ",
                         " .         "
-                    },new GridList {
+                    },new List<string> {
                         "    .      ",
                         "   .C.     ",
                         "  .BAT.    ",
@@ -5267,7 +5267,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  .HAT.    ",
                         "   .L.     ",
                         "    .      "
-                    },new GridList {
+                    },new List<string> {
                         " .      ",
                         " A      ",
                         " M      ",
@@ -5279,7 +5279,7 @@ namespace ShapeMakerCSharp.Calculators
                         " N      ",
                         ".TENNIS.",
                         " .      "
-                    },new GridList {
+                    },new List<string> {
                         "      .   ",
                         "      D   ",
                         "    .QUAY.",
@@ -5287,7 +5287,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    U E   ",
                         ".TENNIS.  ",
                         "    . .   "
-                    },new GridList {
+                    },new List<string> {
                         "    . ",
                         "    F ",
                         "    L ",
@@ -5296,14 +5296,14 @@ namespace ShapeMakerCSharp.Calculators
                         "    N ",
                         "    G ",
                         "    . "
-                    },new GridList {
+                    },new List<string> {
                         "       .   ",
                         "       R   ",
                         "       E   ",
                         ".AMUSEMENT.",
                         "       F   ",
                         "       .   "
-                    },new GridList {
+                    },new List<string> {
                         " .   ",
                         ".ROD.",
                         " E   ",
@@ -5315,9 +5315,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9102:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "    .    ",
                         "    L    ",
                         "   .A    ",
@@ -5327,7 +5327,7 @@ namespace ShapeMakerCSharp.Calculators
                         " .TYPE.  ",
                         "  A..C   ",
                         "  .  .   "
-                    },new GridList {
+                    },new List<string> {
                         " .      ",
                         " S      ",
                         " C      ",
@@ -5336,7 +5336,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".LAPTOP.",
                         " L      ",
                         " .      "
-                    },new GridList {
+                    },new List<string> {
                         "  . .  ",
                         "  F S  ",
                         ".PITCH.",
@@ -5345,7 +5345,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  . L  ",
                         "    L  ",
                         "    .  "
-                    },new GridList {
+                    },new List<string> {
                         " .    ",
                         ".ZERO.",
                         " E    ",
@@ -5354,21 +5354,21 @@ namespace ShapeMakerCSharp.Calculators
                         " T    ",
                         " H    ",
                         " .    "
-                    },new GridList {
+                    },new List<string> {
                         "     .  ",
                         ".ZENITH.",
                         "     A  ",
                         "     P  ",
                         "     E  ",
                         "     .  "
-                    },new GridList {
+                    },new List<string> {
                         "  .    ",
                         "  T    ",
                         "  A    ",
                         ".EPSON.",
                         "  E    ",
                         "  .    "
-                    },new GridList {
+                    },new List<string> {
                         "   .  ",
                         "   E  ",
                         "   P  ",
@@ -5376,7 +5376,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   O  ",
                         ".MENU.",
                         "   .  "
-                    },new GridList {
+                    },new List<string> {
                         " . .   ",
                         ".MOUSE.",
                         " E N   ",
@@ -5385,7 +5385,7 @@ namespace ShapeMakerCSharp.Calculators
                         " .WYSE.",
                         "   S   ",
                         "   .   "
-                    },new GridList {
+                    },new List<string> {
                         "   .   ",
                         "   U   ",
                         "   N   ",
@@ -5398,7 +5398,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  O E  ",
                         "  W N  ",
                         "  . .  "
-                    },new GridList {
+                    },new List<string> {
                         " . .  ",
                         ".WYSE.",
                         " I C  ",
@@ -5407,7 +5407,7 @@ namespace ShapeMakerCSharp.Calculators
                         " O E  ",
                         ".WANG.",
                         " . .  "
-                    },new GridList {
+                    },new List<string> {
                         "     .  ",
                         "     V  ",
                         "     I  ",
@@ -5415,7 +5415,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     E  ",
                         ".WINDOW.",
                         "     .  "
-                    },new GridList {
+                    },new List<string> {
                         "  . .  ",
                         ".DRIVE.",
                         "  A I  ",
@@ -5423,7 +5423,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  . E  ",
                         "    O  ",
                         "    .  "
-                    },new GridList {
+                    },new List<string> {
                         "   .    ",
                         ".UNISYS.",
                         "   B    ",
@@ -5434,9 +5434,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9103:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "   .     ",
                         "   W     ",
                         "   H     ",
@@ -5447,7 +5447,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".OLYMPUS.",
                         " K .     ",
                         " .       "
-                    },new GridList {
+                    },new List<string> {
                         "       .       ",
                         "       V       ",
                         "       E       ",
@@ -5460,7 +5460,7 @@ namespace ShapeMakerCSharp.Calculators
                         "      R.       ",
                         "      A        ",
                         "      .        "
-                    },new GridList {
+                    },new List<string> {
                         "  .       ",
                         "  W       ",
                         "  I       ",
@@ -5473,7 +5473,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     S    ",
                         "     T    ",
                         "     .    "
-                    },new GridList {
+                    },new List<string> {
                         "    .     ",
                         "    W     ",
                         "  . H     ",
@@ -5485,7 +5485,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  L       ",
                         "  M       ",
                         "  .       "
-                    },new GridList {
+                    },new List<string> {
                         "      .     ",
                         "      A     ",
                         "      L.    ",
@@ -5494,7 +5494,7 @@ namespace ShapeMakerCSharp.Calculators
                         "      .N    ",
                         "       A    ",
                         "       .    "
-                    },new GridList {
+                    },new List<string> {
                         "     . .  ",
                         "     E J  ",
                         ".VESUVIUS.",
@@ -5505,14 +5505,14 @@ namespace ShapeMakerCSharp.Calculators
                         "     T A  ",
                         "     . U  ",
                         "       .  "
-                    },new GridList {
+                    },new List<string> {
                         "      . .   ",
                         ".JUNGFRAU.  ",
                         "      I R   ",
                         "      G A   ",
                         "  .MCKINLEY.",
                         "      . .   "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         "     M ",
                         "     C ",
@@ -5523,7 +5523,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     E ",
                         ".ROCKY.",
                         "     . "
-                    },new GridList {
+                    },new List<string> {
                         "    . ",
                         ".SNOW.",
                         "    H ",
@@ -5531,7 +5531,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    T ",
                         "    E ",
                         "    . "
-                    },new GridList {
+                    },new List<string> {
                         "    .  ",
                         " .ALPS.",
                         " P  E  ",
@@ -5539,7 +5539,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".ANDES.",
                         " K  E  ",
                         " .  .  "
-                    },new GridList {
+                    },new List<string> {
                         "    . ",
                         "    H ",
                         "    E ",
@@ -5552,9 +5552,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9104:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         " .    ",
                         ".ZERO.",
                         " E    ",
@@ -5563,7 +5563,7 @@ namespace ShapeMakerCSharp.Calculators
                         " T    ",
                         " H    ",
                         " .    "
-                    },new GridList {
+                    },new List<string> {
                         "      .    ",
                         "     .E    ",
                         "    .WAVES.",
@@ -5571,14 +5571,14 @@ namespace ShapeMakerCSharp.Calculators
                         "    .STARS.",
                         ".ZENITH.   ",
                         "     ..    "
-                    },new GridList {
+                    },new List<string> {
                         "    ..     ",
                         "   .TABLES.",
                         "  .FIX.    ",
                         "   .MIDDAY.",
                         ".WAVES.    ",
                         "    ..     "
-                    },new GridList {
+                    },new List<string> {
                         " . .  ",
                         ".TIME.",
                         " A I  ",
@@ -5587,7 +5587,7 @@ namespace ShapeMakerCSharp.Calculators
                         " E A  ",
                         ".SKY. ",
                         " . .  "
-                    },new GridList {
+                    },new List<string> {
                         "   .    ",
                         "   S    ",
                         "   E .  ",
@@ -5597,7 +5597,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".ZENITH.",
                         "   T .  ",
                         "   .    "
-                    },new GridList {
+                    },new List<string> {
                         "   . . ",
                         ".PILOT.",
                         "   E R ",
@@ -5607,7 +5607,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     C ",
                         "     S ",
                         "     . "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         ".STARS.",
                         "     I ",
@@ -5615,7 +5615,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     N ",
                         "     S ",
                         "     . "
-                    },new GridList {
+                    },new List<string> {
                         " .  .  ",
                         " S  O  ",
                         " I  R  ",
@@ -5623,7 +5623,7 @@ namespace ShapeMakerCSharp.Calculators
                         " N  I  ",
                         ".SOUTH.",
                         " .  .  "
-                    },new GridList {
+                    },new List<string> {
                         " .   ",
                         ".SUN.",
                         " E   ",
@@ -5633,27 +5633,27 @@ namespace ShapeMakerCSharp.Calculators
                         " N   ",
                         " T   ",
                         " .   "
-                    },new GridList {
+                    },new List<string> {
                         " .     ",
                         " L     ",
                         ".ORBIT.",
                         " G     ",
                         " .     "
-                    },new GridList {
+                    },new List<string> {
                         "    .  ",
                         "    M  ",
                         "    O  ",
                         "    O  ",
                         ".SIGNS.",
                         "    .  "
-                    },new GridList {
+                    },new List<string> {
                         "  .  ",
                         "  M  ",
                         ".BOX.",
                         "  O  ",
                         "  N  ",
                         "  .  "
-                    },new GridList {
+                    },new List<string> {
                         "  .      ",
                         "  R      ",
                         "  A      ",
@@ -5661,7 +5661,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  G      ",
                         ".SEXTANT.",
                         "  .      "
-                    },new GridList {
+                    },new List<string> {
                         " . .  ",
                         ".PORT.",
                         " O A  ",
@@ -5674,9 +5674,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9105:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "       . ",
                         "       M ",
                         "     . A ",
@@ -5686,7 +5686,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     I T ",
                         ".DYNASTY.",
                         "     . . "
-                    },new GridList {
+                    },new List<string> {
                         "  .      ",
                         "  R      ",
                         "  O      ",
@@ -5696,7 +5696,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  T      ",
                         ".DYNASTY.",
                         "  .      "
-                    },new GridList {
+                    },new List<string> {
                         "     . .   ",
                         "     H A   ",
                         "     E T   ",
@@ -5705,7 +5705,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  .ROYALTY.",
                         "     . A   ",
                         "       .   "
-                    },new GridList {
+                    },new List<string> {
                         "     .     ",
                         "   . H     ",
                         "   O E     ",
@@ -5715,7 +5715,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   O .     ",
                         "   N       ",
                         "   .       "
-                    },new GridList {
+                    },new List<string> {
                         "     .  ",
                         "     O  ",
                         "     B  ",
@@ -5724,7 +5724,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     O  ",
                         ".REGENT.",
                         "     .  "
-                    },new GridList {
+                    },new List<string> {
                         "      .     ",
                         "      E     ",
                         "      M     ",
@@ -5734,7 +5734,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    .LORD.  ",
                         ".BANNER.    ",
                         "     ..     "
-                    },new GridList {
+                    },new List<string> {
                         "   .    ",
                         "   C    ",
                         "   O  . ",
@@ -5746,7 +5746,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   .  O ",
                         "      R ",
                         "      . "
-                    },new GridList {
+                    },new List<string> {
                         " .      ",
                         " V .    ",
                         " I C    ",
@@ -5757,7 +5757,7 @@ namespace ShapeMakerCSharp.Calculators
                         " I E    ",
                         " A T    ",
                         " . .    "
-                    },new GridList {
+                    },new List<string> {
                         "     .    ",
                         "   .MIDAS.",
                         "   C V    ",
@@ -5773,9 +5773,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9106:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         " .  .  ",
                         ".ZEUS. ",
                         " E  E  ",
@@ -5786,7 +5786,7 @@ namespace ShapeMakerCSharp.Calculators
                         " U     ",
                         " S     ",
                         " .     "
-                    },new GridList {
+                    },new List<string> {
                         "      . .   ",
                         ".ZEPHYRUS.  ",
                         "      H A   ",
@@ -5795,7 +5795,7 @@ namespace ShapeMakerCSharp.Calculators
                         "      . R   ",
                         "        N   ",
                         "        .   "
-                    },new GridList {
+                    },new List<string> {
                         "   .  . ",
                         "   N  A ",
                         "   E  D ",
@@ -5804,7 +5804,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   O  I ",
                         ".FURIES.",
                         "   .  . "
-                    },new GridList {
+                    },new List<string> {
                         "   . .  ",
                         ".ADONIS.",
                         "   D O  ",
@@ -5812,7 +5812,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   N I  ",
                         "   . A  ",
                         "     .  "
-                    },new GridList {
+                    },new List<string> {
                         "  . .  ",
                         ".JASON.",
                         "  D R  ",
@@ -5821,7 +5821,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  I N  ",
                         "  S .  ",
                         "  .    "
-                    },new GridList {
+                    },new List<string> {
                         "     .     ",
                         "   . C     ",
                         "  .MERCURY.",
@@ -5829,7 +5829,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   R O     ",
                         ".JASON.    ",
                         "   . .     "
-                    },new GridList {
+                    },new List<string> {
                         "  .       ",
                         "  M       ",
                         "  E .     ",
@@ -5841,7 +5841,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  . U     ",
                         "    S     ",
                         "    .     "
-                    },new GridList {
+                    },new List<string> {
                         "    .     ",
                         "    O .   ",
                         "    L I   ",
@@ -5851,14 +5851,14 @@ namespace ShapeMakerCSharp.Calculators
                         "    U .   ",
                         "    S     ",
                         "    .     "
-                    },new GridList {
+                    },new List<string> {
                         "       . ",
                         "       A ",
                         "       B ",
                         "       A ",
                         ".OLYMPUS.",
                         "       . "
-                    },new GridList {
+                    },new List<string> {
                         " .     ",
                         " U     ",
                         " L     ",
@@ -5868,7 +5868,7 @@ namespace ShapeMakerCSharp.Calculators
                         " E     ",
                         ".SATYR.",
                         " .     "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         "     P ",
                         "     A ",
@@ -5876,7 +5876,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     I ",
                         "     S ",
                         "     . "
-                    },new GridList {
+                    },new List<string> {
                         "    . ",
                         "    P ",
                         "    A ",
@@ -5889,9 +5889,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9107:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "     .    ",
                         "     B    ",
                         "     E    ",
@@ -5901,7 +5901,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   T N    ",
                         ".ROYCE.   ",
                         "   . .    "
-                    },new GridList {
+                    },new List<string> {
                         "    .     ",
                         "    S     ",
                         "    P.    ",
@@ -5911,7 +5911,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    .C    ",
                         "     E    ",
                         "     .    "
-                    },new GridList {
+                    },new List<string> {
                         " .  .  ",
                         ".SPORT.",
                         " E  O  ",
@@ -5919,7 +5919,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".TAIL. ",
                         " S  S  ",
                         " .  .  "
-                    },new GridList {
+                    },new List<string> {
                         "  .     ",
                         "  R .   ",
                         ".ROYCE. ",
@@ -5927,7 +5927,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  L R   ",
                         " .SPEED.",
                         "  . .   "
-                    },new GridList {
+                    },new List<string> {
                         " .  .  ",
                         " C  S  ",
                         " A  P  ",
@@ -5935,14 +5935,14 @@ namespace ShapeMakerCSharp.Calculators
                         " S  R  ",
                         " .DUTY.",
                         "    .  "
-                    },new GridList {
+                    },new List<string> {
                         "   . ",
                         "   C ",
                         "   A ",
                         "   R ",
                         ".GAS.",
                         "   . "
-                    },new GridList {
+                    },new List<string> {
                         "   .  . ",
                         "  .BELT.",
                         "   E  Y ",
@@ -5952,7 +5952,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   N    ",
                         "   E    ",
                         "   .    "
-                    },new GridList {
+                    },new List<string> {
                         " .  .    ",
                         " G  B    ",
                         ".AXLE.   ",
@@ -5962,7 +5962,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    N    ",
                         "    E    ",
                         "    .    "
-                    },new GridList {
+                    },new List<string> {
                         " .   ",
                         " B   ",
                         " E   ",
@@ -5972,7 +5972,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".NUT.",
                         " E   ",
                         " .   "
-                    },new GridList {
+                    },new List<string> {
                         "   .   ",
                         ".TYRE. ",
                         "   O B ",
@@ -5981,14 +5981,14 @@ namespace ShapeMakerCSharp.Calculators
                         "   . K ",
                         "     E ",
                         "     . "
-                    },new GridList {
+                    },new List<string> {
                         " .    ",
                         " L    ",
                         " O    ",
                         ".CARS.",
                         " K    ",
                         " .    "
-                    },new GridList {
+                    },new List<string> {
                         " .    ",
                         ".BOOT.",
                         " R    ",
@@ -5996,7 +5996,7 @@ namespace ShapeMakerCSharp.Calculators
                         " K    ",
                         " E    ",
                         " .    "
-                    },new GridList {
+                    },new List<string> {
                         "   .   ",
                         "   B   ",
                         "  .O.  ",
@@ -6005,14 +6005,14 @@ namespace ShapeMakerCSharp.Calculators
                         "  B.O  ",
                         "  S F  ",
                         "  . .  "
-                    },new GridList {
+                    },new List<string> {
                         "  . .    ",
                         "  H R    ",
                         ".AUTO.   ",
                         "  B O    ",
                         " .SAFETY.",
                         "  . .    "
-                    },new GridList {
+                    },new List<string> {
                         "   . ",
                         "   S ",
                         "   A ",
@@ -6021,7 +6021,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   T ",
                         ".KEY.",
                         "   . "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         "     B ",
                         "     R ",
@@ -6029,7 +6029,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     K ",
                         ".SPARE.",
                         "     . "
-                    },new GridList {
+                    },new List<string> {
                         "    . ",
                         ".VANS.",
                         "    P ",
@@ -6042,9 +6042,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9108:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "  ..     ",
                         ".LOW.    ",
                         " .ZEPHYR.",
@@ -6052,7 +6052,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  N.     ",
                         "  E      ",
                         "  .      "
-                    },new GridList {
+                    },new List<string> {
                         "     .  ",
                         "     D  ",
                         "     U  ",
@@ -6060,7 +6060,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     T  ",
                         ".ZEPHYR.",
                         "     .  "
-                    },new GridList {
+                    },new List<string> {
                         "   .    ",
                         "   C    ",
                         "   U    ",
@@ -6073,7 +6073,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  L R   ",
                         "  . M   ",
                         "    .   "
-                    },new GridList {
+                    },new List<string> {
                         "   . . ",
                         "   D S ",
                         " .GUST.",
@@ -6081,7 +6081,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".POLAR.",
                         "   . M ",
                         "     . "
-                    },new GridList {
+                    },new List<string> {
                         "  . .    ",
                         "  C C    ",
                         "  L U    ",
@@ -6091,7 +6091,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  .DUSTY.",
                         "    S    ",
                         "    .    "
-                    },new GridList {
+                    },new List<string> {
                         " .     ",
                         " S     ",
                         " T     ",
@@ -6099,7 +6099,7 @@ namespace ShapeMakerCSharp.Calculators
                         " R     ",
                         ".MUGGY.",
                         " .     "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         "     F ",
                         "     O ",
@@ -6107,7 +6107,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     G ",
                         ".MUGGY.",
                         "     . "
-                    },new GridList {
+                    },new List<string> {
                         " .  .   ",
                         ".FROSTS.",
                         " O  L   ",
@@ -6115,7 +6115,7 @@ namespace ShapeMakerCSharp.Calculators
                         " G  E   ",
                         " Y  T   ",
                         " .  .   "
-                    },new GridList {
+                    },new List<string> {
                         " .    ",
                         " S    ",
                         " L    ",
@@ -6123,14 +6123,14 @@ namespace ShapeMakerCSharp.Calculators
                         " E    ",
                         ".THAW.",
                         " .    "
-                    },new GridList {
+                    },new List<string> {
                         "    . ",
                         "    T ",
                         "    H ",
                         "    A ",
                         ".SNOW.",
                         "    . "
-                    },new GridList {
+                    },new List<string> {
                         "  .      ",
                         "  M   .  ",
                         "  E   H  ",
@@ -6139,7 +6139,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  O   L  ",
                         ".FROSTS. ",
                         "  .   .  "
-                    },new GridList {
+                    },new List<string> {
                         " . .    ",
                         ".MIST.  ",
                         " E M    ",
@@ -6153,9 +6153,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9109:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "         .    ",
                         "         B    ",
                         "         U    ",
@@ -6168,7 +6168,7 @@ namespace ShapeMakerCSharp.Calculators
                         "      .TELLER.",
                         "   .ORDER.    ",
                         "       ..     "
-                    },new GridList {
+                    },new List<string> {
                         "   .     ",
                         " .SCREEN.",
                         " T O     ",
@@ -6180,7 +6180,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   E     ",
                         "   R     ",
                         "   .     "
-                    },new GridList {
+                    },new List<string> {
                         " .  . ",
                         ".LIST.",
                         " E  A ",
@@ -6189,7 +6189,7 @@ namespace ShapeMakerCSharp.Calculators
                         " E  . ",
                         " R    ",
                         " .    "
-                    },new GridList {
+                    },new List<string> {
                         "   .     ",
                         "   M     ",
                         "   A     ",
@@ -6200,7 +6200,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   N     ",
                         "   E     ",
                         "   .     "
-                    },new GridList {
+                    },new List<string> {
                         "   . . ",
                         "   M L ",
                         "   O I ",
@@ -6208,7 +6208,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   E T ",
                         ".KEYS. ",
                         "   .   "
-                    },new GridList {
+                    },new List<string> {
                         "  . .  ",
                         ".KEYS. ",
                         "  A C  ",
@@ -6217,7 +6217,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  . E  ",
                         "    N  ",
                         "    .  "
-                    },new GridList {
+                    },new List<string> {
                         "     . .   ",
                         ".COPYPAPER.",
                         "     A A   ",
@@ -6225,7 +6225,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     E T   ",
                         "     R E   ",
                         "     . .   "
-                    },new GridList {
+                    },new List<string> {
                         "      . ",
                         "  .   E ",
                         "  E   R ",
@@ -6234,7 +6234,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".TELLER.",
                         "  R   . ",
                         "  .     "
-                    },new GridList {
+                    },new List<string> {
                         "   .  ",
                         "   S  ",
                         "   C  ",
@@ -6243,7 +6243,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   E  ",
                         ".SEND.",
                         "   .  "
-                    },new GridList {
+                    },new List<string> {
                         "       .  ",
                         "       B  ",
                         "       A  ",
@@ -6255,9 +6255,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9110:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "      .   ",
                         "      F   ",
                         "      R   ",
@@ -6273,7 +6273,7 @@ namespace ShapeMakerCSharp.Calculators
                         "        L ",
                         "        E ",
                         "        . "
-                    },new GridList {
+                    },new List<string> {
                         "  .      ",
                         "  A      ",
                         "  P      ",
@@ -6281,19 +6281,19 @@ namespace ShapeMakerCSharp.Calculators
                         "  O      ",
                         "  N      ",
                         "  .      "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         "     F ",
                         "     A ",
                         ".APRON.",
                         "     . "
-                    },new GridList {
+                    },new List<string> {
                         " .     ",
                         " T     ",
                         " E     ",
                         ".APRON.",
                         " .     "
-                    },new GridList {
+                    },new List<string> {
                         "   .  . ",
                         ".BASKET.",
                         "   C  E ",
@@ -6302,7 +6302,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   E    ",
                         "   S    ",
                         "   .    "
-                    },new GridList {
+                    },new List<string> {
                         "   .        ",
                         "   S        ",
                         "   C        ",
@@ -6315,7 +6315,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     R      ",
                         "     S      ",
                         "     .      "
-                    },new GridList {
+                    },new List<string> {
                         "      .      ",
                         "      S      ",
                         "      H      ",
@@ -6326,7 +6326,7 @@ namespace ShapeMakerCSharp.Calculators
                         "      .N     ",
                         "       K     ",
                         "       .     "
-                    },new GridList {
+                    },new List<string> {
                         " .  .    ",
                         ".BOTTLES.",
                         " A  I    ",
@@ -6335,7 +6335,7 @@ namespace ShapeMakerCSharp.Calculators
                         " E  S    ",
                         " T  .    ",
                         " .       "
-                    },new GridList {
+                    },new List<string> {
                         "    .   ",
                         "    S . ",
                         "  .SINK.",
@@ -6345,7 +6345,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    S L ",
                         "    . E ",
                         "      . "
-                    },new GridList {
+                    },new List<string> {
                         "      .   ",
                         "      S   ",
                         "   .  I   ",
@@ -6355,7 +6355,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".SPOONS.  ",
                         "   L  .   ",
                         "   .      "
-                    },new GridList {
+                    },new List<string> {
                         " . .    ",
                         ".GAS.   ",
                         " L T    ",
@@ -6368,9 +6368,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9111:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "      .   ",
                         "      P   ",
                         "      R   ",
@@ -6383,7 +6383,7 @@ namespace ShapeMakerCSharp.Calculators
                         "      . L ",
                         "        E ",
                         "        . "
-                    },new GridList {
+                    },new List<string> {
                         "   .      ",
                         "   C .    ",
                         "   A R    ",
@@ -6392,7 +6392,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   L F    ",
                         ".WEEDS.   ",
                         "   . .    "
-                    },new GridList {
+                    },new List<string> {
                         "   .    ",
                         "   R .  ",
                         ".SHELLS.",
@@ -6400,7 +6400,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  .FINS.",
                         "   S E  ",
                         "   . .  "
-                    },new GridList {
+                    },new List<string> {
                         "    .       ",
                         "    O .     ",
                         "  .HYDROZOA.",
@@ -6409,7 +6409,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    E K     ",
                         ".SHARKS.    ",
                         "    . .     "
-                    },new GridList {
+                    },new List<string> {
                         "      . . ",
                         ".MOLLUSCS.",
                         "      A H ",
@@ -6418,7 +6418,7 @@ namespace ShapeMakerCSharp.Calculators
                         "      . K ",
                         "        S ",
                         "        . "
-                    },new GridList {
+                    },new List<string> {
                         "       . ",
                         "       S ",
                         "       H ",
@@ -6427,7 +6427,7 @@ namespace ShapeMakerCSharp.Calculators
                         "       L ",
                         ".MUSSELS.",
                         "       . "
-                    },new GridList {
+                    },new List<string> {
                         "    .    ",
                         "    D    ",
                         "    U    ",
@@ -6435,7 +6435,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    E    ",
                         ".MUSSELS.",
                         "    .    "
-                    },new GridList {
+                    },new List<string> {
                         "    . .   ",
                         ".PRAWNS.  ",
                         "    I T   ",
@@ -6443,7 +6443,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   .DUNES.",
                         "    . G   ",
                         "      .   "
-                    },new GridList {
+                    },new List<string> {
                         " .        ",
                         ".MOLLUSCS.",
                         " A        ",
@@ -6452,7 +6452,7 @@ namespace ShapeMakerCSharp.Calculators
                         " N        ",
                         " E        ",
                         " .        "
-                    },new GridList {
+                    },new List<string> {
                         " . .  ",
                         " R M  ",
                         " O A  ",
@@ -6466,9 +6466,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9112:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "     . . ",
                         "     M D ",
                         "     A O ",
@@ -6479,7 +6479,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     A . ",
                         "     N   ",
                         "     .   "
-                    },new GridList {
+                    },new List<string> {
                         "     .      ",
                         "     H      ",
                         "     O      ",
@@ -6491,7 +6491,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    D       ",
                         "    Y       ",
                         "    .       "
-                    },new GridList {
+                    },new List<string> {
                         "   . ",
                         "   B ",
                         "   R ",
@@ -6500,28 +6500,28 @@ namespace ShapeMakerCSharp.Calculators
                         "   D ",
                         ".TOY.",
                         "   . "
-                    },new GridList {
+                    },new List<string> {
                         " .   ",
                         " S   ",
                         ".TOY.",
                         " A   ",
                         " R   ",
                         " .   "
-                    },new GridList {
+                    },new List<string> {
                         "    . ",
                         "    T ",
                         ".STAR.",
                         "    E ",
                         "    E ",
                         "    . "
-                    },new GridList {
+                    },new List<string> {
                         " .     ",
                         ".TOAST.",
                         " R     ",
                         " E     ",
                         " E     ",
                         " .     "
-                    },new GridList {
+                    },new List<string> {
                         " .      ",
                         " T      ",
                         " O      ",
@@ -6529,7 +6529,7 @@ namespace ShapeMakerCSharp.Calculators
                         " S      ",
                         ".TURKEY.",
                         " .      "
-                    },new GridList {
+                    },new List<string> {
                         "      . ",
                         "      W ",
                         "      H ",
@@ -6538,7 +6538,7 @@ namespace ShapeMakerCSharp.Calculators
                         "      K ",
                         ".TURKEY.",
                         "      . "
-                    },new GridList {
+                    },new List<string> {
                         "    .   ",
                         "    P   ",
                         " .  R   ",
@@ -6549,7 +6549,7 @@ namespace ShapeMakerCSharp.Calculators
                         " T  T   ",
                         " S  S   ",
                         " .  .   "
-                    },new GridList {
+                    },new List<string> {
                         "        . ",
                         "        D ",
                         "        A ",
@@ -6557,14 +6557,14 @@ namespace ShapeMakerCSharp.Calculators
                         "        C ",
                         "        E ",
                         "        . "
-                    },new GridList {
+                    },new List<string> {
                         "  .    ",
                         "  F    ",
                         "  O    ",
                         ".HOLLY.",
                         "  D    ",
                         "  .    "
-                    },new GridList {
+                    },new List<string> {
                         " .     ",
                         " C     ",
                         " R     ",
@@ -6572,7 +6572,7 @@ namespace ShapeMakerCSharp.Calculators
                         " A     ",
                         ".MERRY.",
                         " .     "
-                    },new GridList {
+                    },new List<string> {
                         "      . . ",
                         "  .SWEETS.",
                         "      G E ",
@@ -6586,9 +6586,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9201:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "    .     ",
                         "  . M     ",
                         "  M A     ",
@@ -6601,7 +6601,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  . I     ",
                         "    A     ",
                         "    .     "
-                    },new GridList {
+                    },new List<string> {
                         "     .     ",
                         "     M     ",
                         "     A     ",
@@ -6614,7 +6614,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     I .   ",
                         "     A     ",
                         "     .     "
-                    },new GridList {
+                    },new List<string> {
                         " .      ",
                         " E .    ",
                         ".WOMBAT.",
@@ -6625,7 +6625,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   D    ",
                         "   A    ",
                         "   .    "
-                    },new GridList {
+                    },new List<string> {
                         "       . ",
                         "       O ",
                         "       P ",
@@ -6636,7 +6636,7 @@ namespace ShapeMakerCSharp.Calculators
                         "       M ",
                         "       S ",
                         "       . "
-                    },new GridList {
+                    },new List<string> {
                         "     . .    ",
                         "  .OPOSSUMS.",
                         "     R K    ",
@@ -6646,7 +6646,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     L .    ",
                         "     Y      ",
                         "     .      "
-                    },new GridList {
+                    },new List<string> {
                         "     .      ",
                         "     O      ",
                         "     R      ",
@@ -6656,7 +6656,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     L      ",
                         ".LILLYPILLY.",
                         "     .      "
-                    },new GridList {
+                    },new List<string> {
                         "         . ",
                         "         L ",
                         "         I ",
@@ -6669,7 +6669,7 @@ namespace ShapeMakerCSharp.Calculators
                         "         L ",
                         ".CASSOWARY.",
                         "         . "
-                    },new GridList {
+                    },new List<string> {
                         "   .        ",
                         "   W .      ",
                         "  .OPOSSUMS.",
@@ -6680,7 +6680,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     L      ",
                         "     Y      ",
                         "     .      "
-                    },new GridList {
+                    },new List<string> {
                         " .       ",
                         " I .     ",
                         " D W     ",
@@ -6690,7 +6690,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".STATION.",
                         " S .     ",
                         " .       "
-                    },new GridList {
+                    },new List<string> {
                         "          . ",
                         "          M ",
                         "          U ",
@@ -6698,7 +6698,7 @@ namespace ShapeMakerCSharp.Calculators
                         "          G ",
                         ".MACROZAMIA.",
                         "          . "
-                    },new GridList {
+                    },new List<string> {
                         "    . ",
                         ".BATS.",
                         "    W ",
@@ -6713,9 +6713,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9202:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         " . .     ",
                         " S R     ",
                         " H A     ",
@@ -6726,7 +6726,7 @@ namespace ShapeMakerCSharp.Calculators
                         " E E     ",
                         " . L     ",
                         "   .     "
-                    },new GridList {
+                    },new List<string> {
                         " .  .     ",
                         ".SHUTTLE. ",
                         " E  H     ",
@@ -6736,7 +6736,7 @@ namespace ShapeMakerCSharp.Calculators
                         " N  .     ",
                         " T        ",
                         " .        "
-                    },new GridList {
+                    },new List<string> {
                         "       . ",
                         ".SERVANT.",
                         "       R ",
@@ -6745,7 +6745,7 @@ namespace ShapeMakerCSharp.Calculators
                         "       L ",
                         "       S ",
                         "       . "
-                    },new GridList {
+                    },new List<string> {
                         "  .    ",
                         "  T    ",
                         "  R    ",
@@ -6754,14 +6754,14 @@ namespace ShapeMakerCSharp.Calculators
                         "  L    ",
                         "  S    ",
                         "  .    "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         "     H ",
                         "     A ",
                         ".TOWER.",
                         "     E ",
                         "     . "
-                    },new GridList {
+                    },new List<string> {
                         "      .     ",
                         ".LIZARDS.   ",
                         "      R D   ",
@@ -6770,7 +6770,7 @@ namespace ShapeMakerCSharp.Calculators
                         "      M K   ",
                         "      S .   ",
                         "      .     "
-                    },new GridList {
+                    },new List<string> {
                         "      . ",
                         "      G ",
                         "      R ",
@@ -6780,7 +6780,7 @@ namespace ShapeMakerCSharp.Calculators
                         "      O ",
                         "      N ",
                         "      . "
-                    },new GridList {
+                    },new List<string> {
                         "   .  ",
                         "   D  ",
                         "   R  ",
@@ -6789,7 +6789,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   M  ",
                         ".PUSS.",
                         "   .  "
-                    },new GridList {
+                    },new List<string> {
                         "    . ",
                         ".PUSS.",
                         "    T ",
@@ -6797,21 +6797,21 @@ namespace ShapeMakerCSharp.Calculators
                         "    A ",
                         "    W ",
                         "    . "
-                    },new GridList {
+                    },new List<string> {
                         "   .   ",
                         "   F   ",
                         ".STRAW.",
                         "   O   ",
                         "   G   ",
                         "   .   "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         ".STRAW.",
                         "     A ",
                         "     N ",
                         "     D ",
                         "     . "
-                    },new GridList {
+                    },new List<string> {
                         " .    ",
                         " S    ",
                         ".PUSS.",
@@ -6820,7 +6820,7 @@ namespace ShapeMakerCSharp.Calculators
                         " L    ",
                         " S    ",
                         " .    "
-                    },new GridList {
+                    },new List<string> {
                         " .    ",
                         " G  . ",
                         ".IMPS.",
@@ -6830,7 +6830,7 @@ namespace ShapeMakerCSharp.Calculators
                         " .  L ",
                         "    S ",
                         "    . "
-                    },new GridList {
+                    },new List<string> {
                         "      . ",
                         "      G ",
                         "      O ",
@@ -6838,7 +6838,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".SPELLS.",
                         "      E ",
                         "      . "
-                    },new GridList {
+                    },new List<string> {
                         "     .  ",
                         ".TROLLS.",
                         "     I  ",
@@ -6849,9 +6849,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9203:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "   . . ",
                         "   L P ",
                         "   A E ",
@@ -6864,7 +6864,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  E .  ",
                         "  R    ",
                         "  .    "
-                    },new GridList {
+                    },new List<string> {
                         "    .    ",
                         "  . A    ",
                         ".LAWSUIT.",
@@ -6874,7 +6874,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  . L    ",
                         "    T    ",
                         "    .    "
-                    },new GridList {
+                    },new List<string> {
                         "    . ",
                         "    A ",
                         "    S ",
@@ -6884,21 +6884,21 @@ namespace ShapeMakerCSharp.Calculators
                         "    L ",
                         ".WRIT.",
                         "    . "
-                    },new GridList {
+                    },new List<string> {
                         " .       ",
                         ".WITNESS.",
                         " R       ",
                         " I       ",
                         " T       ",
                         " .       "
-                    },new GridList {
+                    },new List<string> {
                         "      .  ",
                         ".WITNESS.",
                         "      E  ",
                         "      A  ",
                         "      L  ",
                         "      .  "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         "     B ",
                         ".USHER.",
@@ -6908,7 +6908,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     R ",
                         "     Y ",
                         "     . "
-                    },new GridList {
+                    },new List<string> {
                         "       . ",
                         "       L ",
                         "       A ",
@@ -6918,7 +6918,7 @@ namespace ShapeMakerCSharp.Calculators
                         "       N ",
                         ".BRIBERY.",
                         "       . "
-                    },new GridList {
+                    },new List<string> {
                         "  .     ",
                         "  L     ",
                         "  A     ",
@@ -6928,7 +6928,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  N     ",
                         "  Y     ",
                         "  .     "
-                    },new GridList {
+                    },new List<string> {
                         "      . ",
                         "      L ",
                         "      E ",
@@ -6937,7 +6937,7 @@ namespace ShapeMakerCSharp.Calculators
                         "      C ",
                         ".FELONY.",
                         "      . "
-                    },new GridList {
+                    },new List<string> {
                         "    .   ",
                         "    P   ",
                         "    R   ",
@@ -6945,7 +6945,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    O   ",
                         "    F   ",
                         "    .   "
-                    },new GridList {
+                    },new List<string> {
                         " .       ",
                         " P       ",
                         " R       ",
@@ -6953,7 +6953,7 @@ namespace ShapeMakerCSharp.Calculators
                         " O       ",
                         ".FORGERY.",
                         " .       "
-                    },new GridList {
+                    },new List<string> {
                         "       . ",
                         "       F ",
                         "    .  O ",
@@ -6963,7 +6963,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    R  R ",
                         ".CUSTODY.",
                         "    .  . "
-                    },new GridList {
+                    },new List<string> {
                         " .      ",
                         " P      ",
                         ".LEGACY.",
@@ -6975,9 +6975,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9204:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "   .      ",
                         "   S      ",
                         "   H....  ",
@@ -6987,7 +6987,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   .D..A  ",
                         "    .  M  ",
                         "       .  "
-                    },new GridList {
+                    },new List<string> {
                         " .  .  ",
                         ".TIPS. ",
                         " A  A  ",
@@ -6997,13 +6997,13 @@ namespace ShapeMakerCSharp.Calculators
                         " .  R  ",
                         "    S  ",
                         "    .  "
-                    },new GridList {
+                    },new List<string> {
                         "   .  ",
                         "   C  ",
                         "   U  ",
                         ".TIPS.",
                         "   .  "
-                    },new GridList {
+                    },new List<string> {
                         "  .   ",
                         "  A   ",
                         "  S   ",
@@ -7011,14 +7011,14 @@ namespace ShapeMakerCSharp.Calculators
                         "  A   ",
                         ".AMOY.",
                         "  .   "
-                    },new GridList {
+                    },new List<string> {
                         "  .    ",
                         "  A    ",
                         "  M    ",
                         "  O    ",
                         ".HYSON.",
                         "  .    "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         "   . A ",
                         ".HYSON.",
@@ -7027,7 +7027,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   A E ",
                         "   Y I ",
                         "   . . "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         "     C ",
                         "     E ",
@@ -7038,28 +7038,28 @@ namespace ShapeMakerCSharp.Calculators
                         "     N ",
                         ".SPRAY.",
                         "     . "
-                    },new GridList {
+                    },new List<string> {
                         " .   ",
                         " N   ",
                         " I   ",
                         ".CUP.",
                         " E   ",
                         " .   "
-                    },new GridList {
+                    },new List<string> {
                         " .    ",
                         ".AMOY.",
                         " S    ",
                         " I    ",
                         " A    ",
                         " .    "
-                    },new GridList {
+                    },new List<string> {
                         "      . ",
                         "      A ",
                         ".CHESTS.",
                         "      I ",
                         "      A ",
                         "      . "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         "     T ",
                         "   . E ",
@@ -7070,7 +7070,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   T . ",
                         "   S   ",
                         "   .   "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         ".SHOOT.",
                         "     E ",
@@ -7079,7 +7079,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     O ",
                         "     T ",
                         "     . "
-                    },new GridList {
+                    },new List<string> {
                         "    .     ",
                         "    P     ",
                         "    E     ",
@@ -7087,7 +7087,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    O     ",
                         ".CEREMONY.",
                         "    .     "
-                    },new GridList {
+                    },new List<string> {
                         "    .  ",
                         "    P  ",
                         ".YEMEN.",
@@ -7095,7 +7095,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    O  ",
                         "    E  ",
                         "    .  "
-                    },new GridList {
+                    },new List<string> {
                         " .     ",
                         " K     ",
                         " E     ",
@@ -7108,9 +7108,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9206:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "     .  ",
                         "     A  ",
                         "     N  ",
@@ -7123,7 +7123,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   G    ",
                         "   E    ",
                         "   .    "
-                    },new GridList {
+                    },new List<string> {
                         "  .      ",
                         "  G      ",
                         "  A      ",
@@ -7131,21 +7131,21 @@ namespace ShapeMakerCSharp.Calculators
                         "  E      ",
                         ".ANATOMY.",
                         "  .      "
-                    },new GridList {
+                    },new List<string> {
                         " .      ",
                         " R      ",
                         ".ECZEMA.",
                         " I      ",
                         " D      ",
                         " .      "
-                    },new GridList {
+                    },new List<string> {
                         "       . ",
                         "       E ",
                         "       Y ",
                         ".LOZENGE.",
                         "       S ",
                         "       . "
-                    },new GridList {
+                    },new List<string> {
                         "     . . ",
                         "     A S ",
                         "     N A ",
@@ -7155,14 +7155,14 @@ namespace ShapeMakerCSharp.Calculators
                         ".ECZEMA. ",
                         "     Y   ",
                         "     .   "
-                    },new GridList {
+                    },new List<string> {
                         " .     ",
                         ".SALVE.",
                         " A     ",
                         " L     ",
                         " K     ",
                         " .     "
-                    },new GridList {
+                    },new List<string> {
                         " .     ",
                         " S     ",
                         " A     ",
@@ -7170,7 +7170,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".VIRUS.",
                         " E     ",
                         " .     "
-                    },new GridList {
+                    },new List<string> {
                         "     .     ",
                         "    .D     ",
                         "   .BODY.  ",
@@ -7180,14 +7180,14 @@ namespace ShapeMakerCSharp.Calculators
                         "    E      ",
                         "    T      ",
                         "    .      "
-                    },new GridList {
+                    },new List<string> {
                         "   .    ",
                         "   B    ",
                         "   O    ",
                         "   D    ",
                         ".OXYGEN.",
                         "   .    "
-                    },new GridList {
+                    },new List<string> {
                         "     .  ",
                         "     R  ",
                         " .   E  ",
@@ -7196,7 +7196,7 @@ namespace ShapeMakerCSharp.Calculators
                         " N   D  ",
                         ".EMBRYO.",
                         " .   .  "
-                    },new GridList {
+                    },new List<string> {
                         "      . ",
                         "      B ",
                         "      U ",
@@ -7207,7 +7207,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".NURSE. ",
                         "    E   ",
                         "    .   "
-                    },new GridList {
+                    },new List<string> {
                         " .      ",
                         " B      ",
                         " U      ",
@@ -7216,7 +7216,7 @@ namespace ShapeMakerCSharp.Calculators
                         " E      ",
                         ".THOMAS.",
                         " .      "
-                    },new GridList {
+                    },new List<string> {
                         "   . .  ",
                         "   C P  ",
                         ".THOMAS.",
@@ -7228,9 +7228,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9207:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "      .    ",
                         "    . M    ",
                         "    O E    ",
@@ -7241,7 +7241,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    I .    ",
                         "    C      ",
                         "    .      "
-                    },new GridList {
+                    },new List<string> {
                         "      .    ",
                         "      D    ",
                         "    . I    ",
@@ -7252,14 +7252,14 @@ namespace ShapeMakerCSharp.Calculators
                         "    E .    ",
                         "    Y      ",
                         "    .      "
-                    },new GridList {
+                    },new List<string> {
                         "       . ",
                         ".CYCLIST.",
                         "       E ",
                         "       A ",
                         "       M ",
                         "       . "
-                    },new GridList {
+                    },new List<string> {
                         " .      ",
                         " T      ",
                         " E  .   ",
@@ -7271,7 +7271,7 @@ namespace ShapeMakerCSharp.Calculators
                         " E  I   ",
                         ".SOCCER.",
                         " .  .   "
-                    },new GridList {
+                    },new List<string> {
                         " .         ",
                         ".TEAMMATES.",
                         " A         ",
@@ -7279,7 +7279,7 @@ namespace ShapeMakerCSharp.Calculators
                         " L         ",
                         " E         ",
                         " .         "
-                    },new GridList {
+                    },new List<string> {
                         "      . ",
                         "      C ",
                         "      Y ",
@@ -7291,7 +7291,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".SPORT. ",
                         "   W    ",
                         "   .    "
-                    },new GridList {
+                    },new List<string> {
                         " .     ",
                         ".SPORT.",
                         " C     ",
@@ -7300,14 +7300,14 @@ namespace ShapeMakerCSharp.Calculators
                         " L     ",
                         " S     ",
                         " .     "
-                    },new GridList {
+                    },new List<string> {
                         "      . ",
                         ".SCULLS.",
                         "      O ",
                         "      L ",
                         "      O ",
                         "      . "
-                    },new GridList {
+                    },new List<string> {
                         " .     ",
                         " S     ",
                         " P     ",
@@ -7315,7 +7315,7 @@ namespace ShapeMakerCSharp.Calculators
                         " R     ",
                         ".TOKYO.",
                         " .     "
-                    },new GridList {
+                    },new List<string> {
                         "    .   ",
                         "    R   ",
                         "  . O   ",
@@ -7326,7 +7326,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  . F   ",
                         "    T   ",
                         "    .   "
-                    },new GridList {
+                    },new List<string> {
                         "        . ",
                         "        W ",
                         "        I ",
@@ -7335,7 +7335,7 @@ namespace ShapeMakerCSharp.Calculators
                         "        E ",
                         "        R ",
                         "        . "
-                    },new GridList {
+                    },new List<string> {
                         "    .    ",
                         "  . M    ",
                         ".ROME.   ",
@@ -7351,9 +7351,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9208:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "        .   ",
                         "        D   ",
                         "        O   ",
@@ -7367,7 +7367,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   R    .   ",
                         "   E        ",
                         "   .        "
-                    },new GridList {
+                    },new List<string> {
                         "   .        ",
                         "   T        ",
                         "   H  .     ",
@@ -7377,7 +7377,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   R  E     ",
                         ".OPERETTA.  ",
                         "   .  .     "
-                    },new GridList {
+                    },new List<string> {
                         " .          ",
                         " L .        ",
                         " I T        ",
@@ -7388,7 +7388,7 @@ namespace ShapeMakerCSharp.Calculators
                         " T R        ",
                         ".OPERETTA.  ",
                         " . .        "
-                    },new GridList {
+                    },new List<string> {
                         "        .   ",
                         "        D   ",
                         "        O   ",
@@ -7401,7 +7401,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".TETRAZZINI.",
                         "        . N ",
                         "          . "
-                    },new GridList {
+                    },new List<string> {
                         "  .        ",
                         "  V        ",
                         "  A        ",
@@ -7410,7 +7410,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  I        ",
                         "  S        ",
                         "  .        "
-                    },new GridList {
+                    },new List<string> {
                         "      . ",
                         "      V ",
                         "      A ",
@@ -7419,7 +7419,7 @@ namespace ShapeMakerCSharp.Calculators
                         "      I ",
                         ".CHORUS.",
                         "      . "
-                    },new GridList {
+                    },new List<string> {
                         " .      ",
                         " U      ",
                         " L      ",
@@ -7429,7 +7429,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".VALOIS.",
                         " A      ",
                         " .      "
-                    },new GridList {
+                    },new List<string> {
                         "    .    ",
                         "    M  . ",
                         "    A  A ",
@@ -7437,7 +7437,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    O  I ",
                         ".ULANOVA.",
                         "    .  . "
-                    },new GridList {
+                    },new List<string> {
                         "  .    ",
                         ".DUETS.",
                         "  L    ",
@@ -7447,7 +7447,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  V    ",
                         "  A    ",
                         "  .    "
-                    },new GridList {
+                    },new List<string> {
                         " .    ",
                         " D    ",
                         " U    ",
@@ -7455,14 +7455,14 @@ namespace ShapeMakerCSharp.Calculators
                         ".TUTU.",
                         " S    ",
                         " .    "
-                    },new GridList {
+                    },new List<string> {
                         "   .  ",
                         ".TUTU.",
                         "   R  ",
                         "   I  ",
                         "   O  ",
                         "   .  "
-                    },new GridList {
+                    },new List<string> {
                         " .     ",
                         " C     ",
                         " A     ",
@@ -7476,9 +7476,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9209:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "   . .   ",
                         "   R F   ",
                         ".UNIFORM.",
@@ -7486,7 +7486,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   L A   ",
                         ".ENEMY.  ",
                         "   . .   "
-                    },new GridList {
+                    },new List<string> {
                         "    . .   ",
                         "    T R   ",
                         "    U I   ",
@@ -7497,7 +7497,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    .E    ",
                         "     T    ",
                         "     .    "
-                    },new GridList {
+                    },new List<string> {
                         "    .   ",
                         "    T   ",
                         "    U   ",
@@ -7509,14 +7509,14 @@ namespace ShapeMakerCSharp.Calculators
                         "  U     ",
                         "  R     ",
                         "  .     "
-                    },new GridList {
+                    },new List<string> {
                         " .      ",
                         " F      ",
                         " O      ",
                         " R      ",
                         ".TURRET.",
                         " .      "
-                    },new GridList {
+                    },new List<string> {
                         "    .  ",
                         ".FORAY.",
                         "    L  ",
@@ -7524,7 +7524,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    M  ",
                         "    O  ",
                         "    .  "
-                    },new GridList {
+                    },new List<string> {
                         "      .    ",
                         "    ..F    ",
                         " .ALAMO.   ",
@@ -7534,7 +7534,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    O.F    ",
                         "    N Y    ",
                         "    . .    "
-                    },new GridList {
+                    },new List<string> {
                         "       . ",
                         "     . F ",
                         "     A O ",
@@ -7544,7 +7544,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     O F ",
                         ".ALLENBY.",
                         "     . . "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         "     C ",
                         "     O ",
@@ -7552,21 +7552,21 @@ namespace ShapeMakerCSharp.Calculators
                         "     P ",
                         ".YPRES.",
                         "     . "
-                    },new GridList {
+                    },new List<string> {
                         " .     ",
                         " A     ",
                         " R     ",
                         " M     ",
                         ".YPRES.",
                         " .     "
-                    },new GridList {
+                    },new List<string> {
                         "         . ",
                         ".DIVISIONS.",
                         "         L ",
                         "         I ",
                         "         M ",
                         "         . "
-                    },new GridList {
+                    },new List<string> {
                         "     .      ",
                         "  .  A      ",
                         "  M  C      ",
@@ -7575,7 +7575,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  A  O      ",
                         ".ALLENBY.   ",
                         "  .  .      "
-                    },new GridList {
+                    },new List<string> {
                         "      . ",
                         "      B ",
                         ".ARMOUR.",
@@ -7587,9 +7587,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9210:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "     . ",
                         "     B ",
                         "   . R ",
@@ -7604,7 +7604,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   L   ",
                         "   A   ",
                         "   .   "
-                    },new GridList {
+                    },new List<string> {
                         "   .    ",
                         "   M    ",
                         "   A    ",
@@ -7617,7 +7617,7 @@ namespace ShapeMakerCSharp.Calculators
                         " E L    ",
                         " . A    ",
                         "   .    "
-                    },new GridList {
+                    },new List<string> {
                         "     .      ",
                         "     T      ",
                         "     O.     ",
@@ -7627,7 +7627,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     .N     ",
                         "      E     ",
                         "      .     "
-                    },new GridList {
+                    },new List<string> {
                         "   . ",
                         "   S ",
                         "   H ",
@@ -7636,7 +7636,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   R ",
                         ".DRY.",
                         "   . "
-                    },new GridList {
+                    },new List<string> {
                         " .     ",
                         ".TOAST.",
                         " A     ",
@@ -7644,7 +7644,7 @@ namespace ShapeMakerCSharp.Calculators
                         " T     ",
                         " E     ",
                         " .     "
-                    },new GridList {
+                    },new List<string> {
                         "      . ",
                         "      T ",
                         "    . A ",
@@ -7653,7 +7653,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    L E ",
                         ".STILL. ",
                         "    .   "
-                    },new GridList {
+                    },new List<string> {
                         "    . ",
                         "  . S ",
                         " .VAT.",
@@ -7662,7 +7662,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  L L ",
                         "  T . ",
                         "  .   "
-                    },new GridList {
+                    },new List<string> {
                         "  . .   ",
                         "  R D   ",
                         ".SHERRY.",
@@ -7670,13 +7670,13 @@ namespace ShapeMakerCSharp.Calculators
                         " .NEGUS.",
                         "  E S   ",
                         "  . .   "
-                    },new GridList {
+                    },new List<string> {
                         "  .   ",
                         ".ASTI.",
                         "  E   ",
                         "  C   ",
                         "  .   "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         ".PRESS.",
                         "     P ",
@@ -7684,7 +7684,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     I ",
                         "     N ",
                         "     . "
-                    },new GridList {
+                    },new List<string> {
                         " .    ",
                         ".PORT.",
                         " R    ",
@@ -7692,7 +7692,7 @@ namespace ShapeMakerCSharp.Calculators
                         " S    ",
                         " S    ",
                         " .    "
-                    },new GridList {
+                    },new List<string> {
                         "    .    ",
                         "  .SWEET.",
                         "  B I    ",
@@ -7702,7 +7702,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  D      ",
                         "  Y      ",
                         "  .      "
-                    },new GridList {
+                    },new List<string> {
                         "   . ",
                         "   M ",
                         "   A ",
@@ -7714,9 +7714,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9211:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "     . ",
                         "     S ",
                         " .   C ",
@@ -7728,7 +7728,7 @@ namespace ShapeMakerCSharp.Calculators
                         " .   E ",
                         "     R ",
                         "     . "
-                    },new GridList {
+                    },new List<string> {
                         "    . .     ",
                         "    F L     ",
                         "    L A     ",
@@ -7736,7 +7736,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    S K     ",
                         " .SCHNAUZER.",
                         "    . .     "
-                    },new GridList {
+                    },new List<string> {
                         "  . .      ",
                         ".SCHNAUZER.",
                         "  R A      ",
@@ -7745,7 +7745,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  T .      ",
                         "  S        ",
                         "  .        "
-                    },new GridList {
+                    },new List<string> {
                         "   .      ",
                         "   C      ",
                         "   R      ",
@@ -7759,7 +7759,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    E     ",
                         "    L     ",
                         "    .     "
-                    },new GridList {
+                    },new List<string> {
                         "      . ",
                         "    . M ",
                         "  .ASTA.",
@@ -7767,7 +7767,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".SPHYNX.",
                         "    E . ",
                         "    .   "
-                    },new GridList {
+                    },new List<string> {
                         "  . .       ",
                         "  C F       ",
                         "  L L       ",
@@ -7775,7 +7775,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  W S       ",
                         " .SCHNAUZER.",
                         "  . .       "
-                    },new GridList {
+                    },new List<string> {
                         " .  .  ",
                         ".CATS. ",
                         " H  P  ",
@@ -7785,7 +7785,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    E  ",
                         "    L  ",
                         "    .  "
-                    },new GridList {
+                    },new List<string> {
                         "         . ",
                         "         B ",
                         "         O ",
@@ -7793,14 +7793,14 @@ namespace ShapeMakerCSharp.Calculators
                         "         E ",
                         ".SCHNAUZER.",
                         "         . "
-                    },new GridList {
+                    },new List<string> {
                         "  .    ",
                         ".WHINE.",
                         "  A    ",
                         "  I    ",
                         "  R    ",
                         "  .    "
-                    },new GridList {
+                    },new List<string> {
                         " .      ",
                         " S      ",
                         " P      ",
@@ -7810,7 +7810,7 @@ namespace ShapeMakerCSharp.Calculators
                         " E      ",
                         ".LASSIE.",
                         " .      "
-                    },new GridList {
+                    },new List<string> {
                         "         . ",
                         "         L ",
                         "       . A ",
@@ -7825,9 +7825,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9212:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "     .    ",
                         "   . B    ",
                         " .BEAR.   ",
@@ -7838,7 +7838,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   O .    ",
                         "   S      ",
                         "   .      "
-                    },new GridList {
+                    },new List<string> {
                         "       .   ",
                         "       W   ",
                         "       A   ",
@@ -7848,7 +7848,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".ESKIMOS.  ",
                         "      X.   ",
                         "      .    "
-                    },new GridList {
+                    },new List<string> {
                         "    .   ",
                         ".NORWAY.",
                         "    A   ",
@@ -7857,7 +7857,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    U   ",
                         "    S   ",
                         "    .   "
-                    },new GridList {
+                    },new List<string> {
                         "      . ",
                         "      K ",
                         "      A ",
@@ -7865,7 +7865,7 @@ namespace ShapeMakerCSharp.Calculators
                         "      A ",
                         "      K ",
                         "      . "
-                    },new GridList {
+                    },new List<string> {
                         " .      ",
                         " T      ",
                         " E  .   ",
@@ -7876,7 +7876,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    U   ",
                         "    S   ",
                         "    .   "
-                    },new GridList {
+                    },new List<string> {
                         " .   .    ",
                         ".NUNATAKS.",
                         " A   E    ",
@@ -7885,14 +7885,14 @@ namespace ShapeMakerCSharp.Calculators
                         " E   .    ",
                         " N        ",
                         " .        "
-                    },new GridList {
+                    },new List<string> {
                         " .    ",
                         " F    ",
                         " U    ",
                         " R    ",
                         ".SNOW.",
                         " .    "
-                    },new GridList {
+                    },new List<string> {
                         " . .      ",
                         ".BREEZE.  ",
                         " A R      ",
@@ -7901,7 +7901,7 @@ namespace ShapeMakerCSharp.Calculators
                         " . N      ",
                         "   E      ",
                         "   .      "
-                    },new GridList {
+                    },new List<string> {
                         "        . ",
                         "        A ",
                         ".SOMERSET.",
@@ -7909,7 +7909,7 @@ namespace ShapeMakerCSharp.Calculators
                         "        A ",
                         "        S ",
                         "        . "
-                    },new GridList {
+                    },new List<string> {
                         "    .   ",
                         "    A   ",
                         "    T   ",
@@ -7917,21 +7917,21 @@ namespace ShapeMakerCSharp.Calculators
                         "    A   ",
                         ".MOSSES.",
                         "    .   "
-                    },new GridList {
+                    },new List<string> {
                         "      . ",
                         "      D ",
                         "      O ",
                         "      G ",
                         ".MOSSES.",
                         "      . "
-                    },new GridList {
+                    },new List<string> {
                         "   .   ",
                         "   N   ",
                         ".SCOTT.",
                         "   M   ",
                         "   E   ",
                         "   .   "
-                    },new GridList {
+                    },new List<string> {
                         "      . ",
                         "      I ",
                         "      C ",
@@ -7942,9 +7942,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9301:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "    .     ",
                         "    B     ",
                         "    R .   ",
@@ -7956,7 +7956,7 @@ namespace ShapeMakerCSharp.Calculators
                         "      M   ",
                         "      S   ",
                         "      .   "
-                    },new GridList {
+                    },new List<string> {
                         "      .   ",
                         "      C . ",
                         ".SALZBURG.",
@@ -7966,28 +7966,28 @@ namespace ShapeMakerCSharp.Calculators
                         "      M . ",
                         "      S   ",
                         "      .   "
-                    },new GridList {
+                    },new List<string> {
                         "       . ",
                         "       A ",
                         ".CUSTOMS.",
                         "       I ",
                         "       A ",
                         "       . "
-                    },new GridList {
+                    },new List<string> {
                         " .        ",
                         ".SALZBURG.",
                         " H        ",
                         " I        ",
                         " P        ",
                         " .        "
-                    },new GridList {
+                    },new List<string> {
                         "   .  ",
                         "   S  ",
                         "   H  ",
                         ".TRIP.",
                         "   P  ",
                         "   .  "
-                    },new GridList {
+                    },new List<string> {
                         "  .  . ",
                         ".ITALY.",
                         "  R  A ",
@@ -7995,7 +7995,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  P  H ",
                         "  .JET.",
                         "     . "
-                    },new GridList {
+                    },new List<string> {
                         "  .       ",
                         "  C       ",
                         "  H       ",
@@ -8003,27 +8003,27 @@ namespace ShapeMakerCSharp.Calculators
                         "  N       ",
                         ".SALZBURG.",
                         "  .       "
-                    },new GridList {
+                    },new List<string> {
                         "   .   ",
                         "   B   ",
                         "   A   ",
                         "   L   ",
                         ".CHINA.",
                         "   .   "
-                    },new GridList {
+                    },new List<string> {
                         "  .  ",
                         "  B  ",
                         ".CAR.",
                         "  L  ",
                         "  I  ",
                         "  .  "
-                    },new GridList {
+                    },new List<string> {
                         " .      ",
                         ".BRAZIL.",
                         " U      ",
                         " S      ",
                         " .      "
-                    },new GridList {
+                    },new List<string> {
                         "   . ",
                         "   T ",
                         "   I ",
@@ -8033,7 +8033,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   T ",
                         ".BUS.",
                         "   . "
-                    },new GridList {
+                    },new List<string> {
                         "     .    ",
                         "     A    ",
                         "     T    ",
@@ -8042,7 +8042,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   A N    ",
                         "  .BOSTON.",
                         "   . .    "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         "     A ",
                         ".EGYPT.",
@@ -8051,7 +8051,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     N ",
                         "     S ",
                         "     . "
-                    },new GridList {
+                    },new List<string> {
                         " . .   ",
                         " V N   ",
                         " O O   ",
@@ -8060,7 +8060,7 @@ namespace ShapeMakerCSharp.Calculators
                         " G A   ",
                         ".EGYPT.",
                         " . .   "
-                    },new GridList {
+                    },new List<string> {
                         " . .    ",
                         ".VENICE.",
                         " O O    ",
@@ -8069,7 +8069,7 @@ namespace ShapeMakerCSharp.Calculators
                         " G A    ",
                         " E Y    ",
                         " . .    "
-                    },new GridList {
+                    },new List<string> {
                         " .   ",
                         ".TAX.",
                         " I   ",
@@ -8084,9 +8084,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9302:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "    .    ",
                         "    A    ",
                         "    M    ",
@@ -8098,7 +8098,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    T    ",
                         "    E    ",
                         "    .    "
-                    },new GridList {
+                    },new List<string> {
                         "        .    ",
                         "      . F    ",
                         "      A I    ",
@@ -8107,7 +8107,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".KUNZITE.    ",
                         "      E      ",
                         "      .      "
-                    },new GridList {
+                    },new List<string> {
                         " .        ",
                         " G        ",
                         " A        ",
@@ -8116,7 +8116,7 @@ namespace ShapeMakerCSharp.Calculators
                         " E        ",
                         ".TRINKETS.",
                         " .        "
-                    },new GridList {
+                    },new List<string> {
                         "      .   ",
                         "      B   ",
                         "    . U   ",
@@ -8125,7 +8125,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    I L   ",
                         ".TRINKETS.",
                         "    . .   "
-                    },new GridList {
+                    },new List<string> {
                         "      . ",
                         "      A ",
                         "      M ",
@@ -8138,7 +8138,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    L . ",
                         "    E   ",
                         "    .   "
-                    },new GridList {
+                    },new List<string> {
                         "  .      ",
                         "  B      ",
                         "  E      ",
@@ -8147,7 +8147,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  T      ",
                         "  Y      ",
                         "  .      "
-                    },new GridList {
+                    },new List<string> {
                         "      . ",
                         "      R ",
                         "      A ",
@@ -8156,7 +8156,7 @@ namespace ShapeMakerCSharp.Calculators
                         "      T ",
                         ".BEAUTY.",
                         "      . "
-                    },new GridList {
+                    },new List<string> {
                         "   .    ",
                         " . C    ",
                         " C A    ",
@@ -8165,7 +8165,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".WATCH. ",
                         " N .    ",
                         " .      "
-                    },new GridList {
+                    },new List<string> {
                         "  .     ",
                         "  P     ",
                         "  Y     ",
@@ -8174,7 +8174,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  P     ",
                         ".BEAUTY.",
                         "  .     "
-                    },new GridList {
+                    },new List<string> {
                         "   .  ",
                         "   P  ",
                         ".ONYX.",
@@ -8183,7 +8183,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   P  ",
                         "   E  ",
                         "   .  "
-                    },new GridList {
+                    },new List<string> {
                         " .    ",
                         " C    ",
                         ".ONYX.",
@@ -8196,9 +8196,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9303:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "    .     ",
                         "    S     ",
                         "    E     ",
@@ -8209,7 +8209,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    T D   ",
                         "   .YIELD.",
                         "    . .   "
-                    },new GridList {
+                    },new List<string> {
                         "       .  ",
                         "       S  ",
                         "    .  A  ",
@@ -8222,7 +8222,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    T     ",
                         "    Y     ",
                         "    .     "
-                    },new GridList {
+                    },new List<string> {
                         "   .      ",
                         "   P      ",
                         "   E      ",
@@ -8233,7 +8233,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  I       ",
                         "  T       ",
                         "  .       "
-                    },new GridList {
+                    },new List<string> {
                         " . .    ",
                         " P P    ",
                         " O I    ",
@@ -8243,7 +8243,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".SALARY.",
                         " . E    ",
                         "   .    "
-                    },new GridList {
+                    },new List<string> {
                         "      .   ",
                         "      L . ",
                         ".SECURITY.",
@@ -8252,7 +8252,7 @@ namespace ShapeMakerCSharp.Calculators
                         "      . L ",
                         "        D ",
                         "        . "
-                    },new GridList {
+                    },new List<string> {
                         "    .  ",
                         "    A  ",
                         "  .BUY.",
@@ -8260,7 +8260,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  O I  ",
                         ".QUOTE.",
                         "  . .  "
-                    },new GridList {
+                    },new List<string> {
                         " .   ",
                         " B   ",
                         " O   ",
@@ -8268,7 +8268,7 @@ namespace ShapeMakerCSharp.Calculators
                         " U   ",
                         ".SOU.",
                         " .   "
-                    },new GridList {
+                    },new List<string> {
                         " .     ",
                         " R .   ",
                         " U B   ",
@@ -8277,13 +8277,13 @@ namespace ShapeMakerCSharp.Calculators
                         ".ECU.  ",
                         " . S   ",
                         "   .   "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         "     P ",
                         "     A ",
                         ".PROXY.",
                         "     . "
-                    },new GridList {
+                    },new List<string> {
                         "     .     ",
                         ".DINERO.   ",
                         "     U B   ",
@@ -8292,7 +8292,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     E U   ",
                         "     . S   ",
                         "       .   "
-                    },new GridList {
+                    },new List<string> {
                         "    .  ",
                         "    R  ",
                         "    O  ",
@@ -8301,7 +8301,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    L  ",
                         ".RUPEE.",
                         "    .  "
-                    },new GridList {
+                    },new List<string> {
                         " .      ",
                         " M .    ",
                         " A D    ",
@@ -8310,7 +8310,7 @@ namespace ShapeMakerCSharp.Calculators
                         " I A    ",
                         ".NOTES. ",
                         " . .    "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         "     A ",
                         "     I ",
@@ -8321,9 +8321,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9304:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "      .    ",
                         "      K    ",
                         "      I    ",
@@ -8337,14 +8337,14 @@ namespace ShapeMakerCSharp.Calculators
                         "      .A   ",
                         "       M   ",
                         "       .   "
-                    },new GridList {
+                    },new List<string> {
                         "  . .  ",
                         ".TROY. ",
                         "  E A  ",
                         " .ACRE.",
                         "  M D  ",
                         "  . .  "
-                    },new GridList {
+                    },new List<string> {
                         "   .       ",
                         "   B       ",
                         " . U       ",
@@ -8357,7 +8357,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  C E      ",
                         "  E T      ",
                         "  . .      "
-                    },new GridList {
+                    },new List<string> {
                         "  . .      ",
                         "  T P      ",
                         ".KILOHERTZ.",
@@ -8366,7 +8366,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  C E      ",
                         ".FEET.     ",
                         "  . .      "
-                    },new GridList {
+                    },new List<string> {
                         "    .      ",
                         "    P .    ",
                         ".KILOHERTZ.",
@@ -8375,7 +8375,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    E .    ",
                         "    T      ",
                         "    .      "
-                    },new GridList {
+                    },new List<string> {
                         "   . .   ",
                         "   B D   ",
                         " .QUARTO.",
@@ -8384,21 +8384,21 @@ namespace ShapeMakerCSharp.Calculators
                         ".STEP.   ",
                         "   L     ",
                         "   .     "
-                    },new GridList {
+                    },new List<string> {
                         "      . ",
                         "      P ",
                         ".QUARTO.",
                         "      L ",
                         "      E ",
                         "      . "
-                    },new GridList {
+                    },new List<string> {
                         " .     ",
                         ".PROOF.",
                         " O     ",
                         " L     ",
                         " E     ",
                         " .     "
-                    },new GridList {
+                    },new List<string> {
                         " .    ",
                         " P    ",
                         " R    ",
@@ -8406,7 +8406,7 @@ namespace ShapeMakerCSharp.Calculators
                         " O    ",
                         ".FOOT.",
                         " .    "
-                    },new GridList {
+                    },new List<string> {
                         "   .      ",
                         ".FOOT.    ",
                         "   H P    ",
@@ -8414,7 +8414,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   . N    ",
                         "     T    ",
                         "     .    "
-                    },new GridList {
+                    },new List<string> {
                         "  .   ",
                         "  M . ",
                         "  O S ",
@@ -8425,7 +8425,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  .I. ",
                         "   T  ",
                         "   .  "
-                    },new GridList {
+                    },new List<string> {
                         "   .  ",
                         "   U  ",
                         "   N  ",
@@ -8437,9 +8437,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9305:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "      . ",
                         "      B ",
                         "      R ",
@@ -8448,14 +8448,14 @@ namespace ShapeMakerCSharp.Calculators
                         "      I ",
                         "      L ",
                         "      . "
-                    },new GridList {
+                    },new List<string> {
                         " .      ",
                         " P      ",
                         " I      ",
                         " E      ",
                         ".SPRITZ.",
                         " .      "
-                    },new GridList {
+                    },new List<string> {
                         "    .     ",
                         "    G.    ",
                         ".SYRUP.   ",
@@ -8463,7 +8463,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".RUSSE.   ",
                         "    .S    ",
                         "     .    "
-                    },new GridList {
+                    },new List<string> {
                         "  .    ",
                         "  T    ",
                         "  A    ",
@@ -8471,7 +8471,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  F    ",
                         ".SYRUP.",
                         "  .    "
-                    },new GridList {
+                    },new List<string> {
                         "    .  ",
                         " .  G  ",
                         ".SYRUP.",
@@ -8481,7 +8481,7 @@ namespace ShapeMakerCSharp.Calculators
                         " E     ",
                         " T     ",
                         " .     "
-                    },new GridList {
+                    },new List<string> {
                         "  .      ",
                         "  P .    ",
                         ".MINTS.  ",
@@ -8490,7 +8490,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  . T    ",
                         "    E    ",
                         "    .    "
-                    },new GridList {
+                    },new List<string> {
                         "      . ",
                         ".SORBET.",
                         "      R ",
@@ -8501,7 +8501,7 @@ namespace ShapeMakerCSharp.Calculators
                         "      E ",
                         "      S ",
                         "      . "
-                    },new GridList {
+                    },new List<string> {
                         "    . ",
                         "    M ",
                         "    I ",
@@ -8509,7 +8509,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    T ",
                         ".NUTS.",
                         "    . "
-                    },new GridList {
+                    },new List<string> {
                         " .    ",
                         " S    ",
                         " I    ",
@@ -8518,21 +8518,21 @@ namespace ShapeMakerCSharp.Calculators
                         " E    ",
                         " L    ",
                         " .    "
-                    },new GridList {
+                    },new List<string> {
                         "  .    ",
                         "  B    ",
                         ".TAFFY.",
                         "  R    ",
                         "  S    ",
                         "  .    "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         "     B ",
                         "     A ",
                         "     R ",
                         ".FLOSS.",
                         "     . "
-                    },new GridList {
+                    },new List<string> {
                         " .      ",
                         " F      ",
                         " L      ",
@@ -8540,7 +8540,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".SWEETS.",
                         " S      ",
                         " .      "
-                    },new GridList {
+                    },new List<string> {
                         " .      ",
                         " P    . ",
                         " A    S ",
@@ -8550,7 +8550,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".YOGURT.",
                         " .    S ",
                         "      . "
-                    },new GridList {
+                    },new List<string> {
                         " .      ",
                         " P      ",
                         " A      ",
@@ -8561,7 +8561,7 @@ namespace ShapeMakerCSharp.Calculators
                         " .  I   ",
                         "    T   ",
                         "    .   "
-                    },new GridList {
+                    },new List<string> {
                         "    .  ",
                         "    F  ",
                         "    R  ",
@@ -8569,14 +8569,14 @@ namespace ShapeMakerCSharp.Calculators
                         "    I  ",
                         ".TARTS.",
                         "    .  "
-                    },new GridList {
+                    },new List<string> {
                         "  .    ",
                         "  P    ",
                         "  E    ",
                         "  E    ",
                         ".FLOSS.",
                         "  .    "
-                    },new GridList {
+                    },new List<string> {
                         "    .  ",
                         ".DROPS.",
                         "    E  ",
@@ -8588,9 +8588,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9306:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "   .   .   ",
                         ".BUZZARDET.",
                         "   E   A   ",
@@ -8604,7 +8604,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   R       ",
                         "   A       ",
                         "   .       "
-                    },new GridList {
+                    },new List<string> {
                         "       . .  ",
                         ".BUZZARDET. ",
                         "       A A  ",
@@ -8613,7 +8613,7 @@ namespace ShapeMakerCSharp.Calculators
                         "       L    ",
                         "       Y    ",
                         "       .    "
-                    },new GridList {
+                    },new List<string> {
                         "   .       ",
                         "   Z       ",
                         "   E       ",
@@ -8629,7 +8629,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   .    P  ",
                         "        S  ",
                         "        .  "
-                    },new GridList {
+                    },new List<string> {
                         "    .    ",
                         ".EPIZOON.",
                         "    O    ",
@@ -8641,7 +8641,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    R    ",
                         "    A    ",
                         "    .    "
-                    },new GridList {
+                    },new List<string> {
                         "        .  ",
                         "        T  ",
                         "      . H  ",
@@ -8652,7 +8652,7 @@ namespace ShapeMakerCSharp.Calculators
                         "      S .  ",
                         "      E    ",
                         "      .    "
-                    },new GridList {
+                    },new List<string> {
                         "      . ",
                         "    . D ",
                         "    M I ",
@@ -8664,7 +8664,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    . N ",
                         "      S ",
                         "      . "
-                    },new GridList {
+                    },new List<string> {
                         "         . ",
                         "         A ",
                         "         P ",
@@ -8672,21 +8672,21 @@ namespace ShapeMakerCSharp.Calculators
                         "         I ",
                         ".DIPTERANS.",
                         "         . "
-                    },new GridList {
+                    },new List<string> {
                         "     .  ",
                         ".DAYFLY.",
                         "     E  ",
                         "     M  ",
                         "     A  ",
                         "     .  "
-                    },new GridList {
+                    },new List<string> {
                         " .    ",
                         " L    ",
                         " E    ",
                         ".MITE.",
                         " A    ",
                         " .    "
-                    },new GridList {
+                    },new List<string> {
                         " .         ",
                         ".BUZZARDET.",
                         " O         ",
@@ -8699,9 +8699,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9307:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "    .       ",
                         "    T .     ",
                         "    A B     ",
@@ -8712,7 +8712,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    I E     ",
                         "    A .     ",
                         "    .       "
-                    },new GridList {
+                    },new List<string> {
                         "  .     ",
                         "  Q .   ",
                         ".MALTA. ",
@@ -8724,7 +8724,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    I   ",
                         "    A   ",
                         "    .   "
-                    },new GridList {
+                    },new List<string> {
                         "    .     ",
                         "  .BELIZE.",
                         "  P G     ",
@@ -8732,7 +8732,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  R P     ",
                         "  U T     ",
                         "  . .     "
-                    },new GridList {
+                    },new List<string> {
                         "   . . ",
                         "   K A ",
                         " .PERU.",
@@ -8742,7 +8742,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   . I ",
                         "     A ",
                         "     . "
-                    },new GridList {
+                    },new List<string> {
                         "        . ",
                         "        S ",
                         "        U ",
@@ -8750,7 +8750,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".TANZANIA.",
                         "        N ",
                         "        . "
-                    },new GridList {
+                    },new List<string> {
                         " .       ",
                         " S       ",
                         ".URUGUAY.",
@@ -8758,7 +8758,7 @@ namespace ShapeMakerCSharp.Calculators
                         " A       ",
                         " N       ",
                         " .       "
-                    },new GridList {
+                    },new List<string> {
                         "       . ",
                         "       S ",
                         ".URUGUAY.",
@@ -8766,14 +8766,14 @@ namespace ShapeMakerCSharp.Calculators
                         "       I ",
                         "       A ",
                         "       . "
-                    },new GridList {
+                    },new List<string> {
                         "   .     ",
                         "   C     ",
                         ".URUGUAY.",
                         "   B     ",
                         "   A     ",
                         "   .     "
-                    },new GridList {
+                    },new List<string> {
                         "     .   ",
                         "     T   ",
                         ".URUGUAY.",
@@ -8782,7 +8782,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     E   ",
                         "     Y   ",
                         "     .   "
-                    },new GridList {
+                    },new List<string> {
                         "      . ",
                         "      L ",
                         "      I ",
@@ -8790,7 +8790,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".TURKEY.",
                         "      A ",
                         "      . "
-                    },new GridList {
+                    },new List<string> {
                         "   .   ",
                         " .FIJI.",
                         " L R   ",
@@ -8799,7 +8799,7 @@ namespace ShapeMakerCSharp.Calculators
                         " Y .   ",
                         " A     ",
                         " .     "
-                    },new GridList {
+                    },new List<string> {
                         " .     ",
                         " L   . ",
                         ".ITALY.",
@@ -8813,9 +8813,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9308:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "         .   ",
                         "       . C   ",
                         "       R E   ",
@@ -8825,7 +8825,7 @@ namespace ShapeMakerCSharp.Calculators
                         "       N N   ",
                         "       S E   ",
                         "       . .   "
-                    },new GridList {
+                    },new List<string> {
                         "     .     ",
                         "     G     ",
                         "     R     ",
@@ -8834,7 +8834,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".VELAZQUEZ.",
                         "     E     ",
                         "     .     "
-                    },new GridList {
+                    },new List<string> {
                         "      .        ",
                         "      H        ",
                         "      E        ",
@@ -8847,7 +8847,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     E         ",
                         "     T         ",
                         "     .         "
-                    },new GridList {
+                    },new List<string> {
                         "      . ",
                         "      H ",
                         "      E ",
@@ -8856,14 +8856,14 @@ namespace ShapeMakerCSharp.Calculators
                         "      E ",
                         "      N ",
                         "      . "
-                    },new GridList {
+                    },new List<string> {
                         "   .    ",
                         "   E    ",
                         ".WEYDEN.",
                         "   C    ",
                         "   K    ",
                         "   .    "
-                    },new GridList {
+                    },new List<string> {
                         "  .   . ",
                         " .WATTS.",
                         "  E   C ",
@@ -8872,7 +8872,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".VERNET.",
                         "  N   . ",
                         "  .     "
-                    },new GridList {
+                    },new List<string> {
                         "     . . ",
                         "     R D ",
                         "   .LELY.",
@@ -8880,7 +8880,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     O K ",
                         ".RUBENS. ",
                         "     .   "
-                    },new GridList {
+                    },new List<string> {
                         "     . . ",
                         " .RUBENS.",
                         "     R T ",
@@ -8888,7 +8888,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     S E ",
                         "     T R ",
                         "     . . "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         "     S ",
                         "     A ",
@@ -8898,21 +8898,21 @@ namespace ShapeMakerCSharp.Calculators
                         "     N ",
                         ".ERNST.",
                         "     . "
-                    },new GridList {
+                    },new List<string> {
                         " .       ",
                         " H       ",
                         " A       ",
                         " L       ",
                         ".SARGENT.",
                         " .       "
-                    },new GridList {
+                    },new List<string> {
                         "  .     ",
                         "  B     ",
                         ".GREUZE.",
                         "  I     ",
                         "  L     ",
                         "  .     "
-                    },new GridList {
+                    },new List<string> {
                         " .      ",
                         " H      ",
                         " O      ",
@@ -8925,9 +8925,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9309:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "      . .   ",
                         ".PASSAMEZZO.",
                         "      I A   ",
@@ -8939,7 +8939,7 @@ namespace ShapeMakerCSharp.Calculators
                         "        D   ",
                         "        O   ",
                         "        .   "
-                    },new GridList {
+                    },new List<string> {
                         " . .        ",
                         ".PASSAMEZZO.",
                         " I T        ",
@@ -8951,7 +8951,7 @@ namespace ShapeMakerCSharp.Calculators
                         " T          ",
                         " E          ",
                         " .          "
-                    },new GridList {
+                    },new List<string> {
                         "        .    ",
                         ".PIROUETTE.  ",
                         "        A V  ",
@@ -8960,7 +8960,7 @@ namespace ShapeMakerCSharp.Calculators
                         "        O S  ",
                         "        . E  ",
                         "          .  "
-                    },new GridList {
+                    },new List<string> {
                         "   .    ",
                         "   C    ",
                         "   A    ",
@@ -8973,7 +8973,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  T     ",
                         "  A     ",
                         "  .     "
-                    },new GridList {
+                    },new List<string> {
                         "    .  ",
                         "    P  ",
                         "    O  ",
@@ -8985,28 +8985,28 @@ namespace ShapeMakerCSharp.Calculators
                         ".TROT. ",
                         " A  E  ",
                         " .  .  "
-                    },new GridList {
+                    },new List<string> {
                         "       .   ",
                         "     . B   ",
                         ".ZAPATEADO.",
                         "     A L   ",
                         "    .POLKA.",
                         "     . .   "
-                    },new GridList {
+                    },new List<string> {
                         "       . . ",
                         "       B J ",
                         ".ZAPATEADO.",
                         "       L T ",
                         "    .POLKA.",
                         "       . . "
-                    },new GridList {
+                    },new List<string> {
                         " .       ",
                         " J       ",
                         " O       ",
                         ".TWOSTEP.",
                         " A       ",
                         " .       "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         "     T ",
                         "     W ",
@@ -9016,19 +9016,19 @@ namespace ShapeMakerCSharp.Calculators
                         "     E ",
                         "     P ",
                         "     . "
-                    },new GridList {
+                    },new List<string> {
                         "   .       ",
                         ".ZAPATEADO.",
                         "   A       ",
                         "   S       ",
                         "   .       "
-                    },new GridList {
+                    },new List<string> {
                         "   .     ",
                         "   H     ",
                         ".TWOSTEP.",
                         "   P     ",
                         "   .     "
-                    },new GridList {
+                    },new List<string> {
                         "   .   ",
                         "   J   ",
                         ".TWIST.",
@@ -9040,9 +9040,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9310:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "     .     ",
                         "     R     ",
                         "     O     ",
@@ -9054,7 +9054,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     E     ",
                         ".DONIZETTI.",
                         "     .     "
-                    },new GridList {
+                    },new List<string> {
                         "       .   ",
                         "       M   ",
                         "       O   ",
@@ -9068,7 +9068,7 @@ namespace ShapeMakerCSharp.Calculators
                         "       K   ",
                         "       Y   ",
                         "       .   "
-                    },new GridList {
+                    },new List<string> {
                         "         .   ",
                         "         S . ",
                         "         T D ",
@@ -9081,7 +9081,7 @@ namespace ShapeMakerCSharp.Calculators
                         "         K . ",
                         "         Y   ",
                         "         .   "
-                    },new GridList {
+                    },new List<string> {
                         "      .  ",
                         ".STRAUSS.",
                         "      T  ",
@@ -9094,7 +9094,7 @@ namespace ShapeMakerCSharp.Calculators
                         "      K  ",
                         "      Y  ",
                         "      .  "
-                    },new GridList {
+                    },new List<string> {
                         "         .      ",
                         "       .STRAUSS.",
                         "       R O      ",
@@ -9107,7 +9107,7 @@ namespace ShapeMakerCSharp.Calculators
                         "       E        ",
                         "       Z        ",
                         "       .        "
-                    },new GridList {
+                    },new List<string> {
                         " . .         ",
                         ".MARKS.      ",
                         " A A         ",
@@ -9118,7 +9118,7 @@ namespace ShapeMakerCSharp.Calculators
                         " N L         ",
                         " I D         ",
                         " . .         "
-                    },new GridList {
+                    },new List<string> {
                         " . .         ",
                         " M R         ",
                         " A A         ",
@@ -9129,7 +9129,7 @@ namespace ShapeMakerCSharp.Calculators
                         " N L         ",
                         " I D         ",
                         " . .         "
-                    },new GridList {
+                    },new List<string> {
                         "         .   ",
                         "       . T   ",
                         "       R O   ",
@@ -9147,9 +9147,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9311:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "    .       ",
                         "    H       ",
                         "  . O       ",
@@ -9159,7 +9159,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  C O       ",
                         "  E N       ",
                         "  . .       "
-                    },new GridList {
+                    },new List<string> {
                         "    .  .    ",
                         "    H  S    ",
                         "    O  C    ",
@@ -9169,7 +9169,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    O  L    ",
                         "    N  E    ",
                         "    .  .    "
-                    },new GridList {
+                    },new List<string> {
                         "      .  .     ",
                         "     .STOWAWAY.",
                         "      C  I     ",
@@ -9179,7 +9179,7 @@ namespace ShapeMakerCSharp.Calculators
                         "      L        ",
                         "      E        ",
                         "      .        "
-                    },new GridList {
+                    },new List<string> {
                         "    . ",
                         "    S ",
                         "    T ",
@@ -9190,14 +9190,14 @@ namespace ShapeMakerCSharp.Calculators
                         "    A ",
                         ".BUOY.",
                         "    . "
-                    },new GridList {
+                    },new List<string> {
                         "      .   ",
                         "  .   C   ",
                         " .AFTER.  ",
                         "  F   E   ",
                         ".STOWAWAY.",
                         "  .   .   "
-                    },new GridList {
+                    },new List<string> {
                         " .       ",
                         " H       ",
                         " A       ",
@@ -9205,7 +9205,7 @@ namespace ShapeMakerCSharp.Calculators
                         " C       ",
                         ".HORIZON.",
                         " .       "
-                    },new GridList {
+                    },new List<string> {
                         "    . ",
                         " .  H ",
                         " E  A ",
@@ -9216,7 +9216,7 @@ namespace ShapeMakerCSharp.Calculators
                         " G    ",
                         " O    ",
                         " .    "
-                    },new GridList {
+                    },new List<string> {
                         "    .    ",
                         " .ASHORE.",
                         " E  A    ",
@@ -9227,7 +9227,7 @@ namespace ShapeMakerCSharp.Calculators
                         " G       ",
                         " O       ",
                         " .       "
-                    },new GridList {
+                    },new List<string> {
                         "  .        ",
                         "  S        ",
                         "  C        ",
@@ -9237,7 +9237,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  L        ",
                         ".SEAWORTHY.",
                         "  .        "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         "     S ",
                         "     E ",
@@ -9254,9 +9254,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9312:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "    .    ",
                         "    R    ",
                         "  . U    ",
@@ -9269,7 +9269,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".FUJI.   ",
                         "  S .    ",
                         "  .      "
-                    },new GridList {
+                    },new List<string> {
                         "     .         ",
                         "     J.        ",
                         ".EREBUS.       ",
@@ -9281,7 +9281,7 @@ namespace ShapeMakerCSharp.Calculators
                         "      A        ",
                         "      N        ",
                         "      .        "
-                    },new GridList {
+                    },new List<string> {
                         "    .    ",
                         "    R  . ",
                         "    U  I ",
@@ -9294,7 +9294,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    I  M ",
                         "    .  I ",
                         "       . "
-                    },new GridList {
+                    },new List<string> {
                         "  .    ",
                         "  I    ",
                         "  T  . ",
@@ -9306,14 +9306,14 @@ namespace ShapeMakerCSharp.Calculators
                         "  M  . ",
                         "  I    ",
                         "  .    "
-                    },new GridList {
+                    },new List<string> {
                         " .    ",
                         " U    ",
                         ".ROSA.",
                         " A    ",
                         " L    ",
                         " .    "
-                    },new GridList {
+                    },new List<string> {
                         "   .  ",
                         "   A  ",
                         "   T  ",
@@ -9321,7 +9321,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   A  ",
                         ".ROSA.",
                         "   .  "
-                    },new GridList {
+                    },new List<string> {
                         "       . ",
                         "       A ",
                         ".EVEREST.",
@@ -9329,7 +9329,7 @@ namespace ShapeMakerCSharp.Calculators
                         "       A ",
                         "       S ",
                         "       . "
-                    },new GridList {
+                    },new List<string> {
                         "       . ",
                         "       S ",
                         "       U ",
@@ -9340,14 +9340,14 @@ namespace ShapeMakerCSharp.Calculators
                         "       A ",
                         ".SIMPLON.",
                         "       . "
-                    },new GridList {
+                    },new List<string> {
                         " .       ",
                         " A       ",
                         " L       ",
                         " P       ",
                         ".SIMPLON.",
                         " .       "
-                    },new GridList {
+                    },new List<string> {
                         "   .    ",
                         "   I    ",
                         "   T    ",
@@ -9359,7 +9359,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   M    ",
                         ".OLIVES.",
                         "   .    "
-                    },new GridList {
+                    },new List<string> {
                         " .       ",
                         " P       ",
                         ".EVEREST.",
@@ -9372,9 +9372,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9401:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "     . .  ",
                         "     B T  ",
                         "     E E  ",
@@ -9384,7 +9384,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  .SQUASH.",
                         "     E .  ",
                         "     .    "
-                    },new GridList {
+                    },new List<string> {
                         " .        ",
                         " B        ",
                         " O        ",
@@ -9392,7 +9392,7 @@ namespace ShapeMakerCSharp.Calculators
                         " L        ",
                         " S        ",
                         " .        "
-                    },new GridList {
+                    },new List<string> {
                         "  .   . ",
                         "  C   B ",
                         " .RODEO.",
@@ -9402,7 +9402,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  E   . ",
                         "  T     ",
                         "  .     "
-                    },new GridList {
+                    },new List<string> {
                         "    . ",
                         "    C ",
                         "    R ",
@@ -9412,7 +9412,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    E ",
                         ".TEST.",
                         "    . "
-                    },new GridList {
+                    },new List<string> {
                         " .     ",
                         " N     ",
                         " E .   ",
@@ -9424,7 +9424,7 @@ namespace ShapeMakerCSharp.Calculators
                         " . N   ",
                         "   G   ",
                         "   .   "
-                    },new GridList {
+                    },new List<string> {
                         "   .   ",
                         "   S   ",
                         "   K . ",
@@ -9434,7 +9434,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   N B ",
                         ".RUGBY.",
                         "   . . "
-                    },new GridList {
+                    },new List<string> {
                         " .      ",
                         ".SQUASH.",
                         " K      ",
@@ -9445,7 +9445,7 @@ namespace ShapeMakerCSharp.Calculators
                         " E      ",
                         " S      ",
                         " .      "
-                    },new GridList {
+                    },new List<string> {
                         "     .    ",
                         "     D    ",
                         "     A    ",
@@ -9453,7 +9453,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".SKITTLES.",
                         "     S    ",
                         "     .    "
-                    },new GridList {
+                    },new List<string> {
                         "        . ",
                         ".SKITTLES.",
                         "        K ",
@@ -9462,21 +9462,21 @@ namespace ShapeMakerCSharp.Calculators
                         "        N ",
                         "        G ",
                         "        . "
-                    },new GridList {
+                    },new List<string> {
                         "   .     ",
                         "   J     ",
                         "   U     ",
                         "   D     ",
                         ".CROQUET.",
                         "   .     "
-                    },new GridList {
+                    },new List<string> {
                         "   .      ",
                         "   G      ",
                         "   O      ",
                         ".WALTZING.",
                         "   F      ",
                         "   .      "
-                    },new GridList {
+                    },new List<string> {
                         "    .   ",
                         "    D   ",
                         "    I   ",
@@ -9485,7 +9485,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    N   ",
                         "    G   ",
                         "    .   "
-                    },new GridList {
+                    },new List<string> {
                         "      . ",
                         ".SQUASH.",
                         "      O ",
@@ -9494,7 +9494,7 @@ namespace ShapeMakerCSharp.Calculators
                         "      E ",
                         "      Y ",
                         "      . "
-                    },new GridList {
+                    },new List<string> {
                         "    . ",
                         "    H ",
                         "    O ",
@@ -9503,14 +9503,14 @@ namespace ShapeMakerCSharp.Calculators
                         "    E ",
                         ".PLAY.",
                         "    . "
-                    },new GridList {
+                    },new List<string> {
                         "  .   ",
                         "  B   ",
                         "  A   ",
                         "  L   ",
                         ".PLAY.",
                         "  .   "
-                    },new GridList {
+                    },new List<string> {
                         "  .    ",
                         "  C    ",
                         "  A    ",
@@ -9520,7 +9520,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  T    ",
                         "  A    ",
                         "  .    "
-                    },new GridList {
+                    },new List<string> {
                         "      .  ",
                         "      B  ",
                         "      A  ",
@@ -9532,9 +9532,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9402:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "         . .     ",
                         "         L D     ",
                         "         I I     ",
@@ -9545,7 +9545,7 @@ namespace ShapeMakerCSharp.Calculators
                         "         . U     ",
                         "           R     ",
                         "           .     "
-                    },new GridList {
+                    },new List<string> {
                         "     .   ",
                         "     S   ",
                         "     E . ",
@@ -9555,7 +9555,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     N K ",
                         " .TURTLE.",
                         "     . . "
-                    },new GridList {
+                    },new List<string> {
                         "      .     ",
                         "      D     ",
                         "      I     ",
@@ -9571,7 +9571,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     N E    ",
                         "     . R    ",
                         "       .    "
-                    },new GridList {
+                    },new List<string> {
                         " . .    ",
                         " T R    ",
                         " A A    ",
@@ -9581,7 +9581,7 @@ namespace ShapeMakerCSharp.Calculators
                         " N E    ",
                         " .KRAIT.",
                         "   .    "
-                    },new GridList {
+                    },new List<string> {
                         "   .    ",
                         "   R    ",
                         "   A    ",
@@ -9591,7 +9591,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   E  W ",
                         " .KRAIT.",
                         "   .  . "
-                    },new GridList {
+                    },new List<string> {
                         "   .   .     ",
                         "  .WARAL.    ",
                         "   O   A     ",
@@ -9600,7 +9600,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".STEGOSAURUS.",
                         "   L   .     ",
                         "   .         "
-                    },new GridList {
+                    },new List<string> {
                         " .           ",
                         " E           ",
                         " L           ",
@@ -9608,14 +9608,14 @@ namespace ShapeMakerCSharp.Calculators
                         " P           ",
                         ".STEGOSAURUS.",
                         " .           "
-                    },new GridList {
+                    },new List<string> {
                         "     .       ",
                         "     F       ",
                         "     R       ",
                         ".STEGOSAURUS.",
                         "     G       ",
                         "     .       "
-                    },new GridList {
+                    },new List<string> {
                         "   .     ",
                         "   P     ",
                         ".TUATARA.",
@@ -9625,7 +9625,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   C     ",
                         "   K     ",
                         "   .     "
-                    },new GridList {
+                    },new List<string> {
                         "       . ",
                         "   .   P ",
                         "   D   A ",
@@ -9635,7 +9635,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   A   C ",
                         "  .SKINK.",
                         "   .   . "
-                    },new GridList {
+                    },new List<string> {
                         "  .       ",
                         "  M .     ",
                         ".TOAD.    ",
@@ -9645,7 +9645,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  O A     ",
                         "  R S     ",
                         "  . .     "
-                    },new GridList {
+                    },new List<string> {
                         "   .     ",
                         "   D     ",
                         "   I .   ",
@@ -9659,9 +9659,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9403:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "   .     ",
                         "   V     ",
                         "   E     ",
@@ -9677,14 +9677,14 @@ namespace ShapeMakerCSharp.Calculators
                         "     E   ",
                         "     Y   ",
                         "     .   "
-                    },new GridList {
+                    },new List<string> {
                         "       . ",
                         "       B ",
                         ".STANLEY.",
                         "       R ",
                         "       D ",
                         "       . "
-                    },new GridList {
+                    },new List<string> {
                         "   .  .      ",
                         "   E  N      ",
                         "  .VELASQUEZ.",
@@ -9693,7 +9693,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   S  E      ",
                         "   .  N      ",
                         "      .      "
-                    },new GridList {
+                    },new List<string> {
                         "       . ",
                         "       J ",
                         "       E ",
@@ -9708,7 +9708,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     E   ",
                         "     Y   ",
                         "     .   "
-                    },new GridList {
+                    },new List<string> {
                         "       . ",
                         "       J ",
                         "       E ",
@@ -9723,7 +9723,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     E   ",
                         "     Y   ",
                         "     .   "
-                    },new GridList {
+                    },new List<string> {
                         " .       ",
                         ".PIZZARO.",
                         " E       ",
@@ -9731,7 +9731,7 @@ namespace ShapeMakerCSharp.Calculators
                         " R       ",
                         " Y       ",
                         " .       "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         "     K ",
                         "     E ",
@@ -9741,7 +9741,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     D ",
                         ".PEARY.",
                         "     . "
-                    },new GridList {
+                    },new List<string> {
                         "    . . ",
                         "  .COOK.",
                         "    A E ",
@@ -9751,7 +9751,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    . D ",
                         "      Y ",
                         "      . "
-                    },new GridList {
+                    },new List<string> {
                         " .  .   ",
                         " O  O   ",
                         " S  A   ",
@@ -9760,7 +9760,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".ROSS.  ",
                         " N  .   ",
                         " .      "
-                    },new GridList {
+                    },new List<string> {
                         "   . . ",
                         "   M O ",
                         ".ADAMS.",
@@ -9769,7 +9769,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   O R ",
                         "   N N ",
                         "   . . "
-                    },new GridList {
+                    },new List<string> {
                         " . .   ",
                         " T M   ",
                         ".ADAMS.",
@@ -9778,7 +9778,7 @@ namespace ShapeMakerCSharp.Calculators
                         " A O   ",
                         " N N   ",
                         " . .   "
-                    },new GridList {
+                    },new List<string> {
                         "   .  .   ",
                         " .STEWART.",
                         "   O  U   ",
@@ -9787,7 +9787,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   E  I   ",
                         ".TASMAN.  ",
                         "   .  .   "
-                    },new GridList {
+                    },new List<string> {
                         "   .  . ",
                         " .SCOTT.",
                         "   O  A ",
@@ -9796,7 +9796,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   E  A ",
                         "   S  N ",
                         "   .  . "
-                    },new GridList {
+                    },new List<string> {
                         " .      ",
                         " L      ",
                         ".EANNES.",
@@ -9808,9 +9808,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9404:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         " .      ",
                         " S      ",
                         " C  .   ",
@@ -9824,7 +9824,7 @@ namespace ShapeMakerCSharp.Calculators
                         " U      ",
                         " S      ",
                         " .      "
-                    },new GridList {
+                    },new List<string> {
                         "    .     ",
                         "    B .   ",
                         "    A H   ",
@@ -9832,7 +9832,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    K K   ",
                         "  .ASTERS.",
                         "    . .   "
-                    },new GridList {
+                    },new List<string> {
                         "         . . ",
                         ".SCHIZANTHUS.",
                         "         E P ",
@@ -9840,7 +9840,7 @@ namespace ShapeMakerCSharp.Calculators
                         "         R R ",
                         "      .THYME.",
                         "         . . "
-                    },new GridList {
+                    },new List<string> {
                         "   . .         ",
                         "  .SCHIZANTHUS.",
                         "   T E         ",
@@ -9850,7 +9850,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   N .         ",
                         "   S           ",
                         "   .           "
-                    },new GridList {
+                    },new List<string> {
                         "       .  ",
                         "       L  ",
                         "     . O  ",
@@ -9860,7 +9860,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     D .  ",
                         "     S    ",
                         "     .    "
-                    },new GridList {
+                    },new List<string> {
                         "   .      ",
                         "   V      ",
                         "   I .    ",
@@ -9870,7 +9870,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   . D    ",
                         "     S    ",
                         "     .    "
-                    },new GridList {
+                    },new List<string> {
                         "      .      ",
                         "      F      ",
                         "    .FLOWERS.",
@@ -9879,7 +9879,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    K E      ",
                         ".ASTERS.     ",
                         "    . .      "
-                    },new GridList {
+                    },new List<string> {
                         "  . .    ",
                         "  F T    ",
                         ".FLOWERS.",
@@ -9889,7 +9889,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  S I    ",
                         "  . E    ",
                         "    .    "
-                    },new GridList {
+                    },new List<string> {
                         "  .      ",
                         "  F .    ",
                         "  L R    ",
@@ -9899,7 +9899,7 @@ namespace ShapeMakerCSharp.Calculators
                         " .RUE.   ",
                         "  S S    ",
                         "  . .    "
-                    },new GridList {
+                    },new List<string> {
                         " . .    ",
                         " F T    ",
                         " L W    ",
@@ -9909,7 +9909,7 @@ namespace ShapeMakerCSharp.Calculators
                         " S I    ",
                         " .KEW.  ",
                         "   .    "
-                    },new GridList {
+                    },new List<string> {
                         " .     ",
                         " D     ",
                         " A     ",
@@ -9917,7 +9917,7 @@ namespace ShapeMakerCSharp.Calculators
                         " I     ",
                         " D     ",
                         " .     "
-                    },new GridList {
+                    },new List<string> {
                         "       . ",
                         "       P ",
                         "       E ",
@@ -9926,7 +9926,7 @@ namespace ShapeMakerCSharp.Calculators
                         "       L ",
                         ".FLOWERS.",
                         "       . "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         "     P ",
                         "     E ",
@@ -9935,7 +9935,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     L ",
                         "     S ",
                         "     . "
-                    },new GridList {
+                    },new List<string> {
                         "  .  ",
                         "  F  ",
                         "  R  ",
@@ -9943,7 +9943,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  I  ",
                         "  T  ",
                         "  .  "
-                    },new GridList {
+                    },new List<string> {
                         " .      ",
                         " R      ",
                         " E      ",
@@ -9952,7 +9952,7 @@ namespace ShapeMakerCSharp.Calculators
                         " E      ",
                         ".SHRUBS.",
                         " .      "
-                    },new GridList {
+                    },new List<string> {
                         "      . ",
                         "      F ",
                         "      E ",
@@ -9960,14 +9960,14 @@ namespace ShapeMakerCSharp.Calculators
                         "      N ",
                         ".SHRUBS.",
                         "      . "
-                    },new GridList {
+                    },new List<string> {
                         "   . ",
                         ".KEW.",
                         "   A ",
                         "   R ",
                         "   D ",
                         "   . "
-                    },new GridList {
+                    },new List<string> {
                         "     .  ",
                         ".ASTERS.",
                         "     O  ",
@@ -9975,7 +9975,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     I  ",
                         "     N  ",
                         "     .  "
-                    },new GridList {
+                    },new List<string> {
                         " .     ",
                         ".LOTUS.",
                         " U     ",
@@ -9988,9 +9988,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9406:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "   . .     ",
                         ".RAMAZZINI.",
                         "   A O     ",
@@ -10000,7 +10000,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   I E     ",
                         "   G R     ",
                         "   . .     "
-                    },new GridList {
+                    },new List<string> {
                         "       .   ",
                         " .     H   ",
                         ".SURGERY.  ",
@@ -10010,7 +10010,7 @@ namespace ShapeMakerCSharp.Calculators
                         " I     N   ",
                         " .     E   ",
                         "       .   "
-                    },new GridList {
+                    },new List<string> {
                         "     .   ",
                         "     F . ",
                         ".MASHRIG.",
@@ -10019,7 +10019,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     K M ",
                         "     . S ",
                         "       . "
-                    },new GridList {
+                    },new List<string> {
                         "    . .  ",
                         "  .GERMS.",
                         "    V A  ",
@@ -10027,7 +10027,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    N O  ",
                         "    S .  ",
                         "    .    "
-                    },new GridList {
+                    },new List<string> {
                         " .      ",
                         " M  .   ",
                         " O  E   ",
@@ -10036,7 +10036,7 @@ namespace ShapeMakerCSharp.Calculators
                         " O  N   ",
                         ".NURSE. ",
                         " .  .   "
-                    },new GridList {
+                    },new List<string> {
                         "    . ",
                         ".MAYO.",
                         "    X ",
@@ -10045,7 +10045,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    E ",
                         "    N ",
                         "    . "
-                    },new GridList {
+                    },new List<string> {
                         "    .   ",
                         "    O   ",
                         "  . X   ",
@@ -10056,7 +10056,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  H .   ",
                         "  T     ",
                         "  .     "
-                    },new GridList {
+                    },new List<string> {
                         "      . ",
                         "      V ",
                         "  .   I ",
@@ -10067,7 +10067,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  H   N ",
                         ".STOKES.",
                         "  .   . "
-                    },new GridList {
+                    },new List<string> {
                         " .      ",
                         ".HARVEY.",
                         " Y      ",
@@ -10077,7 +10077,7 @@ namespace ShapeMakerCSharp.Calculators
                         " N      ",
                         " E      ",
                         " .      "
-                    },new GridList {
+                    },new List<string> {
                         "         . ",
                         "         S ",
                         ".RAMAZZINI.",
@@ -10087,7 +10087,7 @@ namespace ShapeMakerCSharp.Calculators
                         "         O ",
                         "         N ",
                         "         . "
-                    },new GridList {
+                    },new List<string> {
                         "  .   . ",
                         "  S   F ",
                         "  I   L ",
@@ -10097,7 +10097,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".BOTANY.",
                         "  N   . ",
                         "  .     "
-                    },new GridList {
+                    },new List<string> {
                         "   .   ",
                         "   H   ",
                         "   A   ",
@@ -10109,9 +10109,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9407:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "     .     ",
                         "     S .   ",
                         "     U H   ",
@@ -10122,7 +10122,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     O O   ",
                         "     . N   ",
                         "       .   "
-                    },new GridList {
+                    },new List<string> {
                         "     .    ",
                         "  .  S    ",
                         "  H  U    ",
@@ -10133,7 +10133,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  R  O    ",
                         ".BYRD.    ",
                         "  .       "
-                    },new GridList {
+                    },new List<string> {
                         "     .    ",
                         "     S .  ",
                         "   .FUCHS.",
@@ -10144,7 +10144,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     O O  ",
                         "     . N  ",
                         "       .  "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         "     P ",
                         "     E ",
@@ -10154,7 +10154,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     L ",
                         ".FUCHS.",
                         "     . "
-                    },new GridList {
+                    },new List<string> {
                         "   . .      ",
                         "  .SUPPLIES.",
                         "   T E      ",
@@ -10164,7 +10164,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   . L      ",
                         "     S      ",
                         "     .      "
-                    },new GridList {
+                    },new List<string> {
                         "    . .   ",
                         "    G.S   ",
                         " .INUIT.  ",
@@ -10172,7 +10172,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".WINTER.  ",
                         "    ..M   ",
                         "      .   "
-                    },new GridList {
+                    },new List<string> {
                         "      . .   ",
                         ".SUPPLIES.  ",
                         "      G A   ",
@@ -10183,7 +10183,7 @@ namespace ShapeMakerCSharp.Calculators
                         "      . G   ",
                         "        I   ",
                         "        .   "
-                    },new GridList {
+                    },new List<string> {
                         "    . . ",
                         "    S W ",
                         "    A H ",
@@ -10194,14 +10194,14 @@ namespace ShapeMakerCSharp.Calculators
                         "    G . ",
                         "    I   ",
                         "    .   "
-                    },new GridList {
+                    },new List<string> {
                         "        . ",
                         "        W ",
                         ".SASTRUGI.",
                         "        N ",
                         "        D ",
                         "        . "
-                    },new GridList {
+                    },new List<string> {
                         "      . ",
                         "      W ",
                         "      E ",
@@ -10211,7 +10211,7 @@ namespace ShapeMakerCSharp.Calculators
                         " N    L ",
                         ".DRIFTS.",
                         " .    . "
-                    },new GridList {
+                    },new List<string> {
                         "   .  . ",
                         "  .SNOW.",
                         "   E  E ",
@@ -10221,7 +10221,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   .  L ",
                         "      S ",
                         "      . "
-                    },new GridList {
+                    },new List<string> {
                         "  .    ",
                         "  P    ",
                         "  O    ",
@@ -10233,9 +10233,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9408:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "   .   ",
                         "   T   ",
                         "   Y   ",
@@ -10248,7 +10248,7 @@ namespace ShapeMakerCSharp.Calculators
                         " E H   ",
                         ".ROYAL.",
                         " . .   "
-                    },new GridList {
+                    },new List<string> {
                         "   . .  ",
                         "   T Q  ",
                         ".STYLUS.",
@@ -10261,7 +10261,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   H    ",
                         "   Y    ",
                         "   .    "
-                    },new GridList {
+                    },new List<string> {
                         "      .     ",
                         "      P     ",
                         "      A     ",
@@ -10274,7 +10274,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     L      ",
                         "     L      ",
                         "     .      "
-                    },new GridList {
+                    },new List<string> {
                         "    .    ",
                         " .  D    ",
                         ".PAGE.   ",
@@ -10284,7 +10284,7 @@ namespace ShapeMakerCSharp.Calculators
                         " R       ",
                         " S       ",
                         " .       "
-                    },new GridList {
+                    },new List<string> {
                         "     .     ",
                         "     S     ",
                         "     C     ",
@@ -10298,7 +10298,7 @@ namespace ShapeMakerCSharp.Calculators
                         "      R    ",
                         "      S    ",
                         "      .    "
-                    },new GridList {
+                    },new List<string> {
                         "     .    ",
                         "     R    ",
                         "     O    ",
@@ -10312,7 +10312,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    E     ",
                         "    S     ",
                         "    .     "
-                    },new GridList {
+                    },new List<string> {
                         "    .    ",
                         "    B    ",
                         " .  A    ",
@@ -10322,7 +10322,7 @@ namespace ShapeMakerCSharp.Calculators
                         " S  O    ",
                         ".SEWN.   ",
                         " .  .    "
-                    },new GridList {
+                    },new List<string> {
                         " .       ",
                         " P       ",
                         " A .     ",
@@ -10331,7 +10331,7 @@ namespace ShapeMakerCSharp.Calculators
                         " R I     ",
                         ".SCRIPT. ",
                         " . .     "
-                    },new GridList {
+                    },new List<string> {
                         "  .     ",
                         "  R .   ",
                         ".FONT.  ",
@@ -10340,13 +10340,13 @@ namespace ShapeMakerCSharp.Calculators
                         "  S L   ",
                         "  . E   ",
                         "    .   "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         "     B ",
                         ".TITLE.",
                         "     D ",
                         "     . "
-                    },new GridList {
+                    },new List<string> {
                         "      .    ",
                         "      P    ",
                         ".ROLLERS.  ",
@@ -10354,7 +10354,7 @@ namespace ShapeMakerCSharp.Calculators
                         "      N O  ",
                         "     .TEXT.",
                         "      . .  "
-                    },new GridList {
+                    },new List<string> {
                         "   . ",
                         "   P ",
                         "   L ",
@@ -10363,7 +10363,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   E ",
                         ".EMS.",
                         "   . "
-                    },new GridList {
+                    },new List<string> {
                         " .      ",
                         " P      ",
                         " R      ",
@@ -10372,14 +10372,14 @@ namespace ShapeMakerCSharp.Calculators
                         " F      ",
                         ".STYLUS.",
                         " .      "
-                    },new GridList {
+                    },new List<string> {
                         " .      ",
                         ".PROOFS.",
                         " I      ",
                         " C      ",
                         " A      ",
                         " .      "
-                    },new GridList {
+                    },new List<string> {
                         "      .    ",
                         "    . R    ",
                         ".QUARTO.   ",
@@ -10389,7 +10389,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    . R    ",
                         "      S    ",
                         "      .    "
-                    },new GridList {
+                    },new List<string> {
                         " . .   ",
                         " S F   ",
                         ".CROWN.",
@@ -10398,7 +10398,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".PRESS.",
                         " T .   ",
                         " .     "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         "     I ",
                         ".CROWN.",
@@ -10409,9 +10409,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9409:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "   .    ",
                         "   S    ",
                         "   T    ",
@@ -10427,7 +10427,7 @@ namespace ShapeMakerCSharp.Calculators
                         " A      ",
                         " T      ",
                         " .      "
-                    },new GridList {
+                    },new List<string> {
                         " .         ",
                         " C .       ",
                         " U M       ",
@@ -10438,7 +10438,7 @@ namespace ShapeMakerCSharp.Calculators
                         " S R       ",
                         " .GYROSTAT.",
                         "   .       "
-                    },new GridList {
+                    },new List<string> {
                         "    .     ",
                         "    E     ",
                         "    J     ",
@@ -10448,7 +10448,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  L O     ",
                         " .MERCURY.",
                         "  . .     "
-                    },new GridList {
+                    },new List<string> {
                         "    .   ",
                         "    G   ",
                         "    Y   ",
@@ -10461,21 +10461,21 @@ namespace ShapeMakerCSharp.Calculators
                         " T  .   ",
                         " E      ",
                         " .      "
-                    },new GridList {
+                    },new List<string> {
                         "      . ",
                         "      B ",
                         ".SMITHY.",
                         "      R ",
                         "      D ",
                         "      . "
-                    },new GridList {
+                    },new List<string> {
                         "   . .  ",
                         "  .BYRD.",
                         "   A I  ",
                         ".WINGS. ",
                         "   K E  ",
                         "   . .  "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         "     S ",
                         "     H ",
@@ -10485,7 +10485,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     L ",
                         "     E ",
                         "     . "
-                    },new GridList {
+                    },new List<string> {
                         "    .    ",
                         " .STULTZ.",
                         " S  F    ",
@@ -10494,7 +10494,7 @@ namespace ShapeMakerCSharp.Calculators
                         " U       ",
                         " T       ",
                         " .       "
-                    },new GridList {
+                    },new List<string> {
                         "      . ",
                         ".STULTZ.",
                         "      E ",
@@ -10505,7 +10505,7 @@ namespace ShapeMakerCSharp.Calculators
                         "      I ",
                         "      N ",
                         "      . "
-                    },new GridList {
+                    },new List<string> {
                         "  .         ",
                         "  P         ",
                         ".KITES.     ",
@@ -10516,7 +10516,7 @@ namespace ShapeMakerCSharp.Calculators
                         "      E     ",
                         "      N     ",
                         "      .     "
-                    },new GridList {
+                    },new List<string> {
                         "   .  . ",
                         "   S  A ",
                         "   T  I ",
@@ -10529,7 +10529,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   E  . ",
                         "   R    ",
                         "   .    "
-                    },new GridList {
+                    },new List<string> {
                         "      .     ",
                         "      G     ",
                         "    . A     ",
@@ -10538,7 +10538,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    L E     ",
                         ".AIRLINER.  ",
                         "    . .     "
-                    },new GridList {
+                    },new List<string> {
                         "    . ",
                         "    E ",
                         "    J ",
@@ -10548,7 +10548,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    O ",
                         "    R ",
                         "    . "
-                    },new GridList {
+                    },new List<string> {
                         " .       ",
                         " G       ",
                         " R       ",
@@ -10561,9 +10561,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9410:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "     . ",
                         "     A ",
                         "     T ",
@@ -10574,7 +10574,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  E  E ",
                         ".USURY.",
                         "  .  . "
-                    },new GridList {
+                    },new List<string> {
                         "  .       ",
                         "  S       ",
                         "  U       ",
@@ -10584,7 +10584,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  C       ",
                         ".ATTORNEY.",
                         "  .       "
-                    },new GridList {
+                    },new List<string> {
                         "      .      ",
                         "      T .    ",
                         "      R F    ",
@@ -10599,7 +10599,7 @@ namespace ShapeMakerCSharp.Calculators
                         "       C     ",
                         "       T     ",
                         "       .     "
-                    },new GridList {
+                    },new List<string> {
                         "     .     ",
                         "     S .   ",
                         "   .SURTAX.",
@@ -10609,7 +10609,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     C .   ",
                         "     T     ",
                         "     .     "
-                    },new GridList {
+                    },new List<string> {
                         "       .   ",
                         "       S   ",
                         "   .   U   ",
@@ -10619,14 +10619,14 @@ namespace ShapeMakerCSharp.Calculators
                         "   A   C   ",
                         "   L   T   ",
                         "   .   .   "
-                    },new GridList {
+                    },new List<string> {
                         " .       ",
                         ".WITNESS.",
                         " R       ",
                         " I       ",
                         " T       ",
                         " .       "
-                    },new GridList {
+                    },new List<string> {
                         "      .  ",
                         ".CRUELTY.",
                         "      R  ",
@@ -10637,7 +10637,7 @@ namespace ShapeMakerCSharp.Calculators
                         "      S  ",
                         "      S  ",
                         "      .  "
-                    },new GridList {
+                    },new List<string> {
                         "    . ",
                         "    C ",
                         "    R ",
@@ -10647,7 +10647,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    T ",
                         ".JURY.",
                         "    . "
-                    },new GridList {
+                    },new List<string> {
                         " . .     ",
                         " E A     ",
                         " X C     ",
@@ -10659,7 +10659,7 @@ namespace ShapeMakerCSharp.Calculators
                         " R A     ",
                         " . L     ",
                         "   .     "
-                    },new GridList {
+                    },new List<string> {
                         "  .   ",
                         "  J   ",
                         ".JURY.",
@@ -10669,7 +10669,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  C   ",
                         "  E   ",
                         "  .   "
-                    },new GridList {
+                    },new List<string> {
                         "    .   ",
                         "    F   ",
                         ".FELONY.",
@@ -10678,7 +10678,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    E   ",
                         "    R   ",
                         "    .   "
-                    },new GridList {
+                    },new List<string> {
                         "      . ",
                         "      B ",
                         "      I ",
@@ -10687,7 +10687,7 @@ namespace ShapeMakerCSharp.Calculators
                         "      M ",
                         ".FELONY.",
                         "      . "
-                    },new GridList {
+                    },new List<string> {
                         " .      ",
                         " F      ",
                         " O      ",
@@ -10696,7 +10696,7 @@ namespace ShapeMakerCSharp.Calculators
                         " E      ",
                         " R      ",
                         " .      "
-                    },new GridList {
+                    },new List<string> {
                         "      . ",
                         "      L ",
                         "      E ",
@@ -10705,7 +10705,7 @@ namespace ShapeMakerCSharp.Calculators
                         "      C ",
                         ".GUILTY.",
                         "      . "
-                    },new GridList {
+                    },new List<string> {
                         "    .   ",
                         "    F   ",
                         ".BIGAMY.",
@@ -10718,9 +10718,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9411:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "      . . ",
                         "  .HELMET.",
                         "      A A ",
@@ -10731,7 +10731,7 @@ namespace ShapeMakerCSharp.Calculators
                         "      N . ",
                         "      E   ",
                         "      .   "
-                    },new GridList {
+                    },new List<string> {
                         "  .       ",
                         "  D .     ",
                         "  E Q     ",
@@ -10743,7 +10743,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  O .     ",
                         "  R       ",
                         "  .       "
-                    },new GridList {
+                    },new List<string> {
                         "         .    ",
                         "         M    ",
                         "        .O    ",
@@ -10752,7 +10752,7 @@ namespace ShapeMakerCSharp.Calculators
                         "       .LANCE.",
                         ".DETONATOR.   ",
                         "        ..    "
-                    },new GridList {
+                    },new List<string> {
                         "    .    ",
                         "  . B    ",
                         " .MORTAR.",
@@ -10762,7 +10762,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  E .    ",
                         "  R      ",
                         "  .      "
-                    },new GridList {
+                    },new List<string> {
                         "  .    ",
                         "  M    ",
                         "  O  . ",
@@ -10772,7 +10772,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  R  A ",
                         "  .  R ",
                         "     . "
-                    },new GridList {
+                    },new List<string> {
                         " .    ",
                         " D    ",
                         " A    ",
@@ -10780,13 +10780,13 @@ namespace ShapeMakerCSharp.Calculators
                         " T    ",
                         ".SHOT.",
                         " .    "
-                    },new GridList {
+                    },new List<string> {
                         "    .  ",
                         "    J  ",
                         "    E  ",
                         ".DARTS.",
                         "    .  "
-                    },new GridList {
+                    },new List<string> {
                         "   .   ",
                         "   S   ",
                         "   P   ",
@@ -10794,7 +10794,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   A   ",
                         ".ARROW.",
                         "   .   "
-                    },new GridList {
+                    },new List<string> {
                         "   . ",
                         "   A ",
                         "   R ",
@@ -10802,19 +10802,19 @@ namespace ShapeMakerCSharp.Calculators
                         "   O ",
                         ".BOW.",
                         "   . "
-                    },new GridList {
+                    },new List<string> {
                         "      . ",
                         ".MAUSER.",
                         "      A ",
                         "      M ",
                         "      . "
-                    },new GridList {
+                    },new List<string> {
                         " .     ",
                         ".ARROW.",
                         " X     ",
                         " E     ",
                         " .     "
-                    },new GridList {
+                    },new List<string> {
                         "   . ",
                         "   P ",
                         ".AXE.",
@@ -10823,7 +10823,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   R ",
                         "   D ",
                         "   . "
-                    },new GridList {
+                    },new List<string> {
                         "   .  ",
                         "   D  ",
                         " . E  ",
@@ -10834,7 +10834,7 @@ namespace ShapeMakerCSharp.Calculators
                         " R E  ",
                         ".DIRK.",
                         " . .  "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         ".SWORD.",
                         "     A ",
@@ -10842,7 +10842,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     T ",
                         "     S ",
                         "     . "
-                    },new GridList {
+                    },new List<string> {
                         " .     ",
                         ".SWORD.",
                         " I     ",
@@ -10850,7 +10850,7 @@ namespace ShapeMakerCSharp.Calculators
                         " E     ",
                         " N     ",
                         " .     "
-                    },new GridList {
+                    },new List<string> {
                         "   . .  ",
                         "  .BOMB.",
                         "   A I  ",
@@ -10862,9 +10862,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9412:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         " .      ",
                         " E .    ",
                         " G G    ",
@@ -10873,7 +10873,7 @@ namespace ShapeMakerCSharp.Calculators
                         " T R    ",
                         " .MYRRH.",
                         "   .    "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         "     N ",
                         "     I ",
@@ -10881,14 +10881,14 @@ namespace ShapeMakerCSharp.Calculators
                         "     H ",
                         ".EGYPT.",
                         "     . "
-                    },new GridList {
+                    },new List<string> {
                         "   .   ",
                         "   M   ",
                         "   A   ",
                         ".NIGHT.",
                         "   I   ",
                         "   .   "
-                    },new GridList {
+                    },new List<string> {
                         " .     ",
                         " T     ",
                         " H     ",
@@ -10896,7 +10896,7 @@ namespace ShapeMakerCSharp.Calculators
                         " E     ",
                         ".EGYPT.",
                         " .     "
-                    },new GridList {
+                    },new List<string> {
                         "   .   ",
                         ".WATCH.",
                         "   H   ",
@@ -10904,7 +10904,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   E   ",
                         "   E   ",
                         "   .   "
-                    },new GridList {
+                    },new List<string> {
                         " .    ",
                         ".WISH.",
                         " A    ",
@@ -10912,7 +10912,7 @@ namespace ShapeMakerCSharp.Calculators
                         " C    ",
                         " H    ",
                         " .    "
-                    },new GridList {
+                    },new List<string> {
                         "   .  ",
                         "   T  ",
                         "   I  ",
@@ -10922,7 +10922,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   G  ",
                         ".WISH.",
                         "   .  "
-                    },new GridList {
+                    },new List<string> {
                         " . .    ",
                         ".FATHER.",
                         " E I    ",
@@ -10932,7 +10932,7 @@ namespace ShapeMakerCSharp.Calculators
                         " . G    ",
                         "   S    ",
                         "   .    "
-                    },new GridList {
+                    },new List<string> {
                         "  .  .    ",
                         "  F  S    ",
                         "  A  P    ",
@@ -10941,7 +10941,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  E  I    ",
                         ".FROST.   ",
                         "  .  .    "
-                    },new GridList {
+                    },new List<string> {
                         "    .  ",
                         ".FROST.",
                         "    A  ",
@@ -10949,7 +10949,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    N  ",
                         "    T  ",
                         "    .  "
-                    },new GridList {
+                    },new List<string> {
                         "    .     ",
                         "    S     ",
                         " .  A     ",
@@ -10958,7 +10958,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".EAST.    ",
                         " L  .     ",
                         " .        "
-                    },new GridList {
+                    },new List<string> {
                         "   .     ",
                         "   N     ",
                         "   A     ",
@@ -10970,14 +10970,14 @@ namespace ShapeMakerCSharp.Calculators
                         ".JOY.    ",
                         "  N.     ",
                         "  .      "
-                    },new GridList {
+                    },new List<string> {
                         "   .   ",
                         ".EAST. ",
                         "   N H ",
                         "   O A ",
                         " .AWAY.",
                         "   . . "
-                    },new GridList {
+                    },new List<string> {
                         "   .     ",
                         "   S     ",
                         "   T     ",
@@ -10987,7 +10987,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  .EVE.  ",
                         "   .E    ",
                         "    .    "
-                    },new GridList {
+                    },new List<string> {
                         "   .    ",
                         "   B    ",
                         "   L    ",
@@ -10998,7 +10998,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    L   ",
                         "    L   ",
                         "    .   "
-                    },new GridList {
+                    },new List<string> {
                         "   . . ",
                         "   S P ",
                         " .STAR.",
@@ -11007,7 +11007,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   L E ",
                         "   . R ",
                         "     . "
-                    },new GridList {
+                    },new List<string> {
                         "     .  ",
                         ".SPIRIT.",
                         "     N  ",
@@ -11018,9 +11018,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9501:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "        .        ",
                         "       .F        ",
                         "      .AUTOMATED.",
@@ -11030,7 +11030,7 @@ namespace ShapeMakerCSharp.Calculators
                         "      .TERMS.    ",
                         ".BUSINESS.       ",
                         "       ..        "
-                    },new GridList {
+                    },new List<string> {
                         "     .    ",
                         "     S    ",
                         " .   H    ",
@@ -11039,7 +11039,7 @@ namespace ShapeMakerCSharp.Calculators
                         " L   E    ",
                         ".TRANSFER.",
                         " .   .    "
-                    },new GridList {
+                    },new List<string> {
                         "    .      ",
                         "   .BUY.   ",
                         "    O  S   ",
@@ -11048,14 +11048,14 @@ namespace ShapeMakerCSharp.Calculators
                         "    .  M   ",
                         "       P   ",
                         "       .   "
-                    },new GridList {
+                    },new List<string> {
                         "   . ",
                         "   D ",
                         "   U ",
                         "   T ",
                         ".BUY.",
                         "   . "
-                    },new GridList {
+                    },new List<string> {
                         "  .   ",
                         "  E   ",
                         "  Q   ",
@@ -11064,7 +11064,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  T   ",
                         "  Y   ",
                         "  .   "
-                    },new GridList {
+                    },new List<string> {
                         "      . ",
                         ".EQUITY.",
                         "      I ",
@@ -11072,7 +11072,7 @@ namespace ShapeMakerCSharp.Calculators
                         "      L ",
                         "      D ",
                         "      . "
-                    },new GridList {
+                    },new List<string> {
                         "    .   ",
                         "    E   ",
                         "    Q   ",
@@ -11081,7 +11081,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".DEBT.  ",
                         "  E Y   ",
                         "  . .   "
-                    },new GridList {
+                    },new List<string> {
                         " .      ",
                         " B      ",
                         " O      ",
@@ -11089,14 +11089,14 @@ namespace ShapeMakerCSharp.Calculators
                         " D      ",
                         ".SHARES.",
                         " .      "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         "     C ",
                         "     A ",
                         ".TERMS.",
                         "     H ",
                         "     . "
-                    },new GridList {
+                    },new List<string> {
                         "      .  ",
                         "      B  ",
                         ".AUCTION.",
@@ -11104,7 +11104,7 @@ namespace ShapeMakerCSharp.Calculators
                         "      D  ",
                         "      S  ",
                         "      .  "
-                    },new GridList {
+                    },new List<string> {
                         "  .      ",
                         "  R .    ",
                         ".AUCTION.",
@@ -11113,27 +11113,27 @@ namespace ShapeMakerCSharp.Calculators
                         "  . L    ",
                         "    E    ",
                         "    .    "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         ".STAMP.",
                         "     A ",
                         "     R ",
                         "     . "
-                    },new GridList {
+                    },new List<string> {
                         "   . ",
                         "   F ",
                         ".PAR.",
                         "   E ",
                         "   E ",
                         "   . "
-                    },new GridList {
+                    },new List<string> {
                         " .     ",
                         " C     ",
                         " A     ",
                         " S     ",
                         ".HOUSE.",
                         " .     "
-                    },new GridList {
+                    },new List<string> {
                         "    .  ",
                         "    T  ",
                         "    I  ",
@@ -11141,7 +11141,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    L  ",
                         ".BUYER.",
                         "    .  "
-                    },new GridList {
+                    },new List<string> {
                         " .   . ",
                         ".BUYER.",
                         " U   I ",
@@ -11149,7 +11149,7 @@ namespace ShapeMakerCSharp.Calculators
                         " L   K ",
                         " S   . ",
                         " .     "
-                    },new GridList {
+                    },new List<string> {
                         "   . . ",
                         ".BULLS.",
                         "   O A ",
@@ -11162,9 +11162,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9502:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "   .      ",
                         "   T      ",
                         "   R      ",
@@ -11176,7 +11176,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".ROULETTE.",
                         "   M  .   ",
                         "   .      "
-                    },new GridList {
+                    },new List<string> {
                         "     .       ",
                         "     L  .    ",
                         "   .QUADRANT.",
@@ -11188,7 +11188,7 @@ namespace ShapeMakerCSharp.Calculators
                         "        T    ",
                         "        E    ",
                         "        .    "
-                    },new GridList {
+                    },new List<string> {
                         " .       ",
                         " R       ",
                         " O    .  ",
@@ -11199,7 +11199,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".TRIDENT.",
                         " E    T  ",
                         " .    .  "
-                    },new GridList {
+                    },new List<string> {
                         "      .  ",
                         "   .  O  ",
                         "   C  C  ",
@@ -11208,7 +11208,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".TRIDENT.",
                         "   C  T  ",
                         "   .  .  "
-                    },new GridList {
+                    },new List<string> {
                         " .     ",
                         " T     ",
                         " R     ",
@@ -11220,7 +11220,7 @@ namespace ShapeMakerCSharp.Calculators
                         " U  T  ",
                         " M  .  ",
                         " .     "
-                    },new GridList {
+                    },new List<string> {
                         "       . .   ",
                         "       C L   ",
                         ".HYPERBOLA.  ",
@@ -11229,7 +11229,7 @@ namespace ShapeMakerCSharp.Calculators
                         "       I N   ",
                         "   .QUADRANT.",
                         "       . .   "
-                    },new GridList {
+                    },new List<string> {
                         "  .        ",
                         "  C        ",
                         ".HYPERBOLA.",
@@ -11240,7 +11240,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  E        ",
                         "  R        ",
                         "  .        "
-                    },new GridList {
+                    },new List<string> {
                         "    .   ",
                         "    Q   ",
                         "    U   ",
@@ -11251,7 +11251,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    N   ",
                         ".SECTOR.",
                         "    .   "
-                    },new GridList {
+                    },new List<string> {
                         "   . .    ",
                         "  .SECTOR.",
                         "   O O    ",
@@ -11259,7 +11259,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   I E    ",
                         "   D .    ",
                         "   .      "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         ".LOCUS.",
                         "     P ",
@@ -11268,7 +11268,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     N ",
                         "     E ",
                         "     . "
-                    },new GridList {
+                    },new List<string> {
                         "       . .   ",
                         "       C L   ",
                         ".HYPERBOLA.  ",
@@ -11277,13 +11277,13 @@ namespace ShapeMakerCSharp.Calculators
                         "       I N   ",
                         "       D A   ",
                         "       . .   "
-                    },new GridList {
+                    },new List<string> {
                         "     .     ",
                         "     A     ",
                         ".HYPERBOLA.",
                         "     C     ",
                         "     .     "
-                    },new GridList {
+                    },new List<string> {
                         "      . ",
                         ".SECTOR.",
                         "      H ",
@@ -11291,7 +11291,7 @@ namespace ShapeMakerCSharp.Calculators
                         "      M ",
                         "      B ",
                         "      . "
-                    },new GridList {
+                    },new List<string> {
                         "        . ",
                         "        C ",
                         "      . U ",
@@ -11302,7 +11302,7 @@ namespace ShapeMakerCSharp.Calculators
                         "      N   ",
                         "      T   ",
                         "      .   "
-                    },new GridList {
+                    },new List<string> {
                         " .         ",
                         ".TRAPEZIUM.",
                         " O         ",
@@ -11310,14 +11310,14 @@ namespace ShapeMakerCSharp.Calculators
                         " U         ",
                         " S         ",
                         " .         "
-                    },new GridList {
+                    },new List<string> {
                         "    .     ",
                         "    K     ",
                         ".CYLINDER.",
                         "    T     ",
                         "    E     ",
                         "    .     "
-                    },new GridList {
+                    },new List<string> {
                         "        . ",
                         "        L ",
                         "        I ",
@@ -11329,9 +11329,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9503:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "      .   ",
                         "  .   B   ",
                         " .TILBURY.",
@@ -11339,7 +11339,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  X   G   ",
                         ".JITNEY.  ",
                         "  .   .   "
-                    },new GridList {
+                    },new List<string> {
                         "   .      ",
                         "   W      ",
                         "  .A      ",
@@ -11348,14 +11348,14 @@ namespace ShapeMakerCSharp.Calculators
                         "  X.      ",
                         "  I       ",
                         "  .       "
-                    },new GridList {
+                    },new List<string> {
                         "   .  ",
                         ".YAWL.",
                         "   A  ",
                         "   I  ",
                         "   N  ",
                         "   .  "
-                    },new GridList {
+                    },new List<string> {
                         " .  . ",
                         ".SHAY.",
                         " L  A ",
@@ -11364,7 +11364,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".GIG. ",
                         " E    ",
                         " .    "
-                    },new GridList {
+                    },new List<string> {
                         "       .      ",
                         "       J      ",
                         "       A      ",
@@ -11376,7 +11376,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     G        ",
                         "     Y        ",
                         "     .        "
-                    },new GridList {
+                    },new List<string> {
                         "   .     ",
                         "   C     ",
                         "   O     ",
@@ -11386,14 +11386,14 @@ namespace ShapeMakerCSharp.Calculators
                         "   E A   ",
                         ".LORRY.  ",
                         "   . .   "
-                    },new GridList {
+                    },new List<string> {
                         "     .   ",
                         "     C   ",
                         "     A   ",
                         "     R   ",
                         ".COASTER.",
                         "     .   "
-                    },new GridList {
+                    },new List<string> {
                         "   .    ",
                         ".JITNEY.",
                         "   R    ",
@@ -11401,7 +11401,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   C    ",
                         "   K    ",
                         "   .    "
-                    },new GridList {
+                    },new List<string> {
                         "  .    ",
                         "  T    ",
                         "  R    ",
@@ -11409,7 +11409,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  C    ",
                         "  K    ",
                         "  .    "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         ".SULKY.",
                         "     A ",
@@ -11417,7 +11417,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     H ",
                         "     T ",
                         "     . "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         ".YACHT.",
                         "     A ",
@@ -11426,7 +11426,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     E ",
                         "     R ",
                         "     . "
-                    },new GridList {
+                    },new List<string> {
                         "      . ",
                         "      T ",
                         "   .  A ",
@@ -11437,7 +11437,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   E  . ",
                         "   R    ",
                         "   .    "
-                    },new GridList {
+                    },new List<string> {
                         "      . ",
                         "      M ",
                         " .    O ",
@@ -11448,7 +11448,7 @@ namespace ShapeMakerCSharp.Calculators
                         " O    I ",
                         " N    L ",
                         " .    . "
-                    },new GridList {
+                    },new List<string> {
                         "   .    ",
                         "   S    ",
                         "   E    ",
@@ -11456,28 +11456,28 @@ namespace ShapeMakerCSharp.Calculators
                         "   A    ",
                         ".HANSOM.",
                         "   .    "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         "     B ",
                         "     I ",
                         ".TRUCK.",
                         "     E ",
                         "     . "
-                    },new GridList {
+                    },new List<string> {
                         " .   ",
                         ".BUS.",
                         " I   ",
                         " K   ",
                         " E   ",
                         " .   "
-                    },new GridList {
+                    },new List<string> {
                         "   . ",
                         ".BUS.",
                         "   H ",
                         "   I ",
                         "   P ",
                         "   . "
-                    },new GridList {
+                    },new List<string> {
                         "  .     ",
                         "  C     ",
                         ".JALOPY.",
@@ -11488,9 +11488,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9504:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "   .     ",
                         "   G     ",
                         "   O     ",
@@ -11503,7 +11503,7 @@ namespace ShapeMakerCSharp.Calculators
                         " B L     ",
                         ".YEAST.  ",
                         " . .     "
-                    },new GridList {
+                    },new List<string> {
                         "   .     ",
                         "   G     ",
                         "   O     ",
@@ -11516,7 +11516,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   L   . ",
                         "   A     ",
                         "   .     "
-                    },new GridList {
+                    },new List<string> {
                         "   .     ",
                         "   G     ",
                         "   O.    ",
@@ -11524,7 +11524,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".FETA.   ",
                         "  .SWISS.",
                         "   ..    "
-                    },new GridList {
+                    },new List<string> {
                         " .       ",
                         " S       ",
                         " W       ",
@@ -11532,7 +11532,7 @@ namespace ShapeMakerCSharp.Calculators
                         " S       ",
                         ".SAVOURY.",
                         " .       "
-                    },new GridList {
+                    },new List<string> {
                         "       . ",
                         "       D ",
                         "       A ",
@@ -11540,7 +11540,7 @@ namespace ShapeMakerCSharp.Calculators
                         "       R ",
                         ".SAVOURY.",
                         "       . "
-                    },new GridList {
+                    },new List<string> {
                         "     .   ",
                         "     C   ",
                         "     H   ",
@@ -11548,7 +11548,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     R   ",
                         "     N   ",
                         "     .   "
-                    },new GridList {
+                    },new List<string> {
                         "     .   ",
                         "     C   ",
                         "     H   ",
@@ -11556,27 +11556,27 @@ namespace ShapeMakerCSharp.Calculators
                         "     R   ",
                         ".KETONES.",
                         "     .   "
-                    },new GridList {
+                    },new List<string> {
                         "   .        ",
                         "   B        ",
                         "   A        ",
                         ".GORGONZOLA.",
                         "   .        "
-                    },new GridList {
+                    },new List<string> {
                         " .          ",
                         " A          ",
                         ".GORGONZOLA.",
                         " E          ",
                         " D          ",
                         " .          "
-                    },new GridList {
+                    },new List<string> {
                         "      . ",
                         "      A ",
                         "      G ",
                         ".MATURE.",
                         "      D ",
                         "      . "
-                    },new GridList {
+                    },new List<string> {
                         " .  .     ",
                         ".SKIM.    ",
                         " A  A     ",
@@ -11585,7 +11585,7 @@ namespace ShapeMakerCSharp.Calculators
                         " D  R     ",
                         " .  E     ",
                         "    .     "
-                    },new GridList {
+                    },new List<string> {
                         "      . .  ",
                         "      W G  ",
                         "     .HARD.",
@@ -11595,7 +11595,7 @@ namespace ShapeMakerCSharp.Calculators
                         "      . R  ",
                         "        E  ",
                         "        .  "
-                    },new GridList {
+                    },new List<string> {
                         "      . .    ",
                         "      W G    ",
                         "      H R    ",
@@ -11605,7 +11605,7 @@ namespace ShapeMakerCSharp.Calculators
                         "      .CREAM.",
                         "        E    ",
                         "        .    "
-                    },new GridList {
+                    },new List<string> {
                         "    .    ",
                         "    F.   ",
                         ".CREAM.  ",
@@ -11613,7 +11613,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    .L   ",
                         "     K   ",
                         "     .   "
-                    },new GridList {
+                    },new List<string> {
                         "   .   ",
                         "   M   ",
                         " .TINT.",
@@ -11622,7 +11622,7 @@ namespace ShapeMakerCSharp.Calculators
                         " R .   ",
                         " E     ",
                         " .     "
-                    },new GridList {
+                    },new List<string> {
                         "    . ",
                         "    D ",
                         "    E ",
@@ -11632,7 +11632,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    R ",
                         ".TINT.",
                         "    . "
-                    },new GridList {
+                    },new List<string> {
                         " . .     ",
                         " A E     ",
                         ".COWS.   ",
@@ -11644,9 +11644,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9505:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         " .  .    ",
                         ".PRIZE.  ",
                         " O  I    ",
@@ -11656,7 +11656,7 @@ namespace ShapeMakerCSharp.Calculators
                         " R  R    ",
                         " .ASSETS.",
                         "    .    "
-                    },new GridList {
+                    },new List<string> {
                         "  . .   ",
                         ".ASSETS.",
                         "  T W   ",
@@ -11664,7 +11664,7 @@ namespace ShapeMakerCSharp.Calculators
                         " .FIRM. ",
                         "  F S   ",
                         "  . .   "
-                    },new GridList {
+                    },new List<string> {
                         "     .   ",
                         "     L   ",
                         "    .I   ",
@@ -11673,7 +11673,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".EWERS.  ",
                         "    M.   ",
                         "    .    "
-                    },new GridList {
+                    },new List<string> {
                         " .  .  ",
                         ".PRIZE.",
                         " O  I  ",
@@ -11683,7 +11683,7 @@ namespace ShapeMakerCSharp.Calculators
                         " R  R  ",
                         " .  S  ",
                         "    .  "
-                    },new GridList {
+                    },new List<string> {
                         "     .  ",
                         "     C  ",
                         "     R  ",
@@ -11692,7 +11692,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     I  ",
                         ".ASSETS.",
                         "     .  "
-                    },new GridList {
+                    },new List<string> {
                         "     .   ",
                         " .CREDIT.",
                         " S   E   ",
@@ -11701,7 +11701,7 @@ namespace ShapeMakerCSharp.Calculators
                         " C   .   ",
                         " K       ",
                         " .       "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         " .   D ",
                         " S   E ",
@@ -11710,14 +11710,14 @@ namespace ShapeMakerCSharp.Calculators
                         ".CASH. ",
                         " K     ",
                         " .     "
-                    },new GridList {
+                    },new List<string> {
                         " .      ",
                         " C      ",
                         " A      ",
                         ".SHEETS.",
                         " H      ",
                         " .      "
-                    },new GridList {
+                    },new List<string> {
                         "   .     ",
                         "   S     ",
                         "   H     ",
@@ -11726,7 +11726,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   T     ",
                         ".DISPLAY.",
                         "   .     "
-                    },new GridList {
+                    },new List<string> {
                         "       . ",
                         "       G ",
                         "       R ",
@@ -11736,7 +11736,7 @@ namespace ShapeMakerCSharp.Calculators
                         "       R ",
                         ".DISPLAY.",
                         "       . "
-                    },new GridList {
+                    },new List<string> {
                         "     .     ",
                         "     P     ",
                         "   .LUXURY.",
@@ -11748,7 +11748,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   R       ",
                         "   Y       ",
                         "   .       "
-                    },new GridList {
+                    },new List<string> {
                         "      . ",
                         "      M ",
                         "      O ",
@@ -11756,7 +11756,7 @@ namespace ShapeMakerCSharp.Calculators
                         "      E ",
                         ".LUXURY.",
                         "      . "
-                    },new GridList {
+                    },new List<string> {
                         "  . .   ",
                         "  P Q   ",
                         ".LUXURY.",
@@ -11766,7 +11766,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  . T   ",
                         "    Y   ",
                         "    .   "
-                    },new GridList {
+                    },new List<string> {
                         "   .   ",
                         "   Q   ",
                         "   U   ",
@@ -11776,7 +11776,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   T   ",
                         ".BUYER.",
                         "   .   "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         "     W ",
                         "     A ",
@@ -11784,7 +11784,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     E ",
                         "     S ",
                         "     . "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         "     G ",
                         "     O ",
@@ -11792,14 +11792,14 @@ namespace ShapeMakerCSharp.Calculators
                         "     D ",
                         ".WARES.",
                         "     . "
-                    },new GridList {
+                    },new List<string> {
                         " .     ",
                         " S     ",
                         " A     ",
                         ".LIFTS.",
                         " E     ",
                         " .     "
-                    },new GridList {
+                    },new List<string> {
                         "    .   ",
                         "    S   ",
                         "    P   ",
@@ -11812,9 +11812,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9506:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "   .     ",
                         "   Q  .  ",
                         " .CUCKOO.",
@@ -11824,7 +11824,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   A  E  ",
                         "   L  Y  ",
                         "   .  .  "
-                    },new GridList {
+                    },new List<string> {
                         "      . ",
                         "      L ",
                         ".OSPREY.",
@@ -11835,7 +11835,7 @@ namespace ShapeMakerCSharp.Calculators
                         "      R ",
                         "      D ",
                         "      . "
-                    },new GridList {
+                    },new List<string> {
                         "   .      ",
                         "   C      ",
                         "   U      ",
@@ -11846,7 +11846,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   .A     ",
                         "    N     ",
                         "    .     "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         "     E ",
                         "  .  A ",
@@ -11855,7 +11855,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  O  E ",
                         ".SWAN. ",
                         "  .    "
-                    },new GridList {
+                    },new List<string> {
                         "         . ",
                         "       . Q ",
                         "      .EMU.",
@@ -11864,7 +11864,7 @@ namespace ShapeMakerCSharp.Calculators
                         "       E L ",
                         ".LYREBIRD. ",
                         "       .   "
-                    },new GridList {
+                    },new List<string> {
                         " .    ",
                         " E    ",
                         " A    ",
@@ -11872,7 +11872,7 @@ namespace ShapeMakerCSharp.Calculators
                         " L    ",
                         " E    ",
                         " .    "
-                    },new GridList {
+                    },new List<string> {
                         "      . ",
                         ".ORIOLE.",
                         "      A ",
@@ -11880,7 +11880,7 @@ namespace ShapeMakerCSharp.Calculators
                         "      L ",
                         "      E ",
                         "      . "
-                    },new GridList {
+                    },new List<string> {
                         "     .    ",
                         "     R    ",
                         "     A .  ",
@@ -11895,7 +11895,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    N .   ",
                         "    G     ",
                         "    .     "
-                    },new GridList {
+                    },new List<string> {
                         "     .    ",
                         "     R    ",
                         "     A .  ",
@@ -11904,7 +11904,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   .STORK.",
                         "     E N  ",
                         "     . .  "
-                    },new GridList {
+                    },new List<string> {
                         "    . .  ",
                         "    S O  ",
                         ".BITTERN.",
@@ -11915,7 +11915,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    N .  ",
                         "    G    ",
                         "    .    "
-                    },new GridList {
+                    },new List<string> {
                         " .  .    ",
                         " I  S    ",
                         ".BITTERN.",
@@ -11926,7 +11926,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    N    ",
                         "    G    ",
                         "    .    "
-                    },new GridList {
+                    },new List<string> {
                         "     .     ",
                         "   .BROLGA.",
                         "   A A     ",
@@ -11935,7 +11935,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   . T     ",
                         "     E     ",
                         "     .     "
-                    },new GridList {
+                    },new List<string> {
                         "    .    ",
                         "    S    ",
                         "    T    ",
@@ -11947,14 +11947,14 @@ namespace ShapeMakerCSharp.Calculators
                         "  O G    ",
                         "  T .    ",
                         "  .      "
-                    },new GridList {
+                    },new List<string> {
                         "   . ",
                         "   G ",
                         "   U ",
                         ".OWL.",
                         "   L ",
                         "   . "
-                    },new GridList {
+                    },new List<string> {
                         " .       ",
                         " R       ",
                         " O       ",
@@ -11962,7 +11962,7 @@ namespace ShapeMakerCSharp.Calculators
                         " I       ",
                         " N       ",
                         " .       "
-                    },new GridList {
+                    },new List<string> {
                         " .       ",
                         " C       ",
                         " O       ",
@@ -11973,9 +11973,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9507:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "        .    ",
                         "        A    ",
                         "        R .  ",
@@ -11985,7 +11985,7 @@ namespace ShapeMakerCSharp.Calculators
                         "        T .  ",
                         "        S    ",
                         "        .    "
-                    },new GridList {
+                    },new List<string> {
                         "   .         ",
                         "   T         ",
                         "   R         ",
@@ -11995,7 +11995,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".RAZZAMATAZZ.",
                         "   E         ",
                         "   .         "
-                    },new GridList {
+                    },new List<string> {
                         "       .   ",
                         "       G   ",
                         "       Y   ",
@@ -12005,7 +12005,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".ARTISTS.  ",
                         "      .T   ",
                         "       .   "
-                    },new GridList {
+                    },new List<string> {
                         "  .      ",
                         "  F      ",
                         "  L      ",
@@ -12013,7 +12013,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  E      ",
                         "  R      ",
                         "  .      "
-                    },new GridList {
+                    },new List<string> {
                         "    . ",
                         ".SHOW.",
                         "    A ",
@@ -12021,7 +12021,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    O ",
                         "    N ",
                         "    . "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         "     B ",
                         "     U ",
@@ -12030,7 +12030,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     E ",
                         ".FLYER.",
                         "     . "
-                    },new GridList {
+                    },new List<string> {
                         "   .    ",
                         "   L    ",
                         "   I    ",
@@ -12038,7 +12038,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   N    ",
                         ".BUSKER.",
                         "   .    "
-                    },new GridList {
+                    },new List<string> {
                         "  .      ",
                         "  A      ",
                         "  C .    ",
@@ -12047,7 +12047,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".TRAPEZE.",
                         "  S E    ",
                         "  . .    "
-                    },new GridList {
+                    },new List<string> {
                         "     .      ",
                         "     A      ",
                         "     C      ",
@@ -12061,7 +12061,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    E       ",
                         "    R       ",
                         "    .       "
-                    },new GridList {
+                    },new List<string> {
                         "      .      ",
                         "      B .    ",
                         ".TUMBLERS.   ",
@@ -12070,7 +12070,7 @@ namespace ShapeMakerCSharp.Calculators
                         "      S L    ",
                         "      . L    ",
                         "        .    "
-                    },new GridList {
+                    },new List<string> {
                         " .       ",
                         " M       ",
                         ".ARTISTS.",
@@ -12078,7 +12078,7 @@ namespace ShapeMakerCSharp.Calculators
                         " I       ",
                         " C       ",
                         " .       "
-                    },new GridList {
+                    },new List<string> {
                         "      .    ",
                         "      T    ",
                         "      A    ",
@@ -12088,7 +12088,7 @@ namespace ShapeMakerCSharp.Calculators
                         "      .N   ",
                         "       G   ",
                         "       .   "
-                    },new GridList {
+                    },new List<string> {
                         " .  . ",
                         ".TENT.",
                         " A  R ",
@@ -12096,20 +12096,20 @@ namespace ShapeMakerCSharp.Calculators
                         " E  C ",
                         ".RISK.",
                         " .  . "
-                    },new GridList {
+                    },new List<string> {
                         "  .       ",
                         "  F       ",
                         ".TUMBLERS.",
                         "  N       ",
                         "  .       "
-                    },new GridList {
+                    },new List<string> {
                         "  .    ",
                         "  W    ",
                         "  H    ",
                         ".LIONS.",
                         "  P    ",
                         "  .    "
-                    },new GridList {
+                    },new List<string> {
                         " .    ",
                         " C    ",
                         " L    ",
@@ -12117,14 +12117,14 @@ namespace ShapeMakerCSharp.Calculators
                         ".WHIP.",
                         " N    ",
                         " .    "
-                    },new GridList {
+                    },new List<string> {
                         " .      ",
                         " B      ",
                         ".ACTORS.",
                         " N      ",
                         " D      ",
                         " .      "
-                    },new GridList {
+                    },new List<string> {
                         "  .   ",
                         "  C   ",
                         "  A   ",
@@ -12136,9 +12136,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9508:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "        .     ",
                         "        P     ",
                         "       .O.    ",
@@ -12153,7 +12153,7 @@ namespace ShapeMakerCSharp.Calculators
                         "         A    ",
                         "         N    ",
                         "         .    "
-                    },new GridList {
+                    },new List<string> {
                         "  .     ",
                         "  A     ",
                         "  Z   . ",
@@ -12166,7 +12166,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  A     ",
                         "  N     ",
                         "  .     "
-                    },new GridList {
+                    },new List<string> {
                         "    .     ",
                         "    S     ",
                         "    L.    ",
@@ -12178,7 +12178,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    T     ",
                         "    Z     ",
                         "    .     "
-                    },new GridList {
+                    },new List<string> {
                         "    .     ",
                         "    C     ",
                         "    A.    ",
@@ -12188,7 +12188,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     E    ",
                         "     R    ",
                         "     .    "
-                    },new GridList {
+                    },new List<string> {
                         "  .  .   ",
                         ".SWEET.  ",
                         "  A  O   ",
@@ -12196,7 +12196,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  E  A   ",
                         "  R  Y   ",
                         "  .  .   "
-                    },new GridList {
+                    },new List<string> {
                         "  .  ",
                         "  T  ",
                         "  O  ",
@@ -12204,7 +12204,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  A  ",
                         ".RYE.",
                         "  .  "
-                    },new GridList {
+                    },new List<string> {
                         "      . ",
                         "      I ",
                         "      T ",
@@ -12212,14 +12212,14 @@ namespace ShapeMakerCSharp.Calculators
                         "      L ",
                         ".TURKEY.",
                         "      . "
-                    },new GridList {
+                    },new List<string> {
                         " .         ",
                         " R         ",
                         " O         ",
                         ".SLIVOVITZ.",
                         " E         ",
                         " .         "
-                    },new GridList {
+                    },new List<string> {
                         "   .  ",
                         "   G  ",
                         "   R  ",
@@ -12228,14 +12228,14 @@ namespace ShapeMakerCSharp.Calculators
                         "   E  ",
                         ".USSR.",
                         "   .  "
-                    },new GridList {
+                    },new List<string> {
                         "  .   ",
                         ".USSR.",
                         "  O   ",
                         "  I   ",
                         "  L   ",
                         "  .   "
-                    },new GridList {
+                    },new List<string> {
                         "     .  ",
                         ".WINERY.",
                         "     H  ",
@@ -12243,7 +12243,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     N  ",
                         "     E  ",
                         "     .  "
-                    },new GridList {
+                    },new List<string> {
                         "      . ",
                         "      M ",
                         "   .  A ",
@@ -12253,13 +12253,13 @@ namespace ShapeMakerCSharp.Calculators
                         "   N  E ",
                         ".SHERRY.",
                         "   .  . "
-                    },new GridList {
+                    },new List<string> {
                         "   .   ",
                         ".PERRY.",
                         "   U   ",
                         "   M   ",
                         "   .   "
-                    },new GridList {
+                    },new List<string> {
                         " .    ",
                         " A    ",
                         " P    ",
@@ -12267,14 +12267,14 @@ namespace ShapeMakerCSharp.Calculators
                         " L    ",
                         " E    ",
                         " .    "
-                    },new GridList {
+                    },new List<string> {
                         "   .  ",
                         "   W  ",
                         ".SOIL.",
                         "   N  ",
                         "   E  ",
                         "   .  "
-                    },new GridList {
+                    },new List<string> {
                         " .     ",
                         " C     ",
                         " H     ",
@@ -12289,9 +12289,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9509:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "    .  ",
                         "  . P  ",
                         " .ZEUS.",
@@ -12302,7 +12302,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  T .  ",
                         "  S    ",
                         "  .    "
-                    },new GridList {
+                    },new List<string> {
                         "    .     ",
                         "    V     ",
                         "    E     ",
@@ -12316,7 +12316,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   I      ",
                         "   T      ",
                         "   .      "
-                    },new GridList {
+                    },new List<string> {
                         "     .    ",
                         "     P    ",
                         "     R    ",
@@ -12329,7 +12329,7 @@ namespace ShapeMakerCSharp.Calculators
                         "       T  ",
                         "       O  ",
                         "       .  "
-                    },new GridList {
+                    },new List<string> {
                         "    .    ",
                         "   .A    ",
                         "  .GRAIL.",
@@ -12339,7 +12339,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   T     ",
                         "   O     ",
                         "   .     "
-                    },new GridList {
+                    },new List<string> {
                         "    .   ",
                         "    T   ",
                         "    R   ",
@@ -12350,7 +12350,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    P   ",
                         ".GROTTO.",
                         "    .   "
-                    },new GridList {
+                    },new List<string> {
                         " .        ",
                         " A        ",
                         " L        ",
@@ -12358,7 +12358,7 @@ namespace ShapeMakerCSharp.Calculators
                         " A        ",
                         " R        ",
                         " .        "
-                    },new GridList {
+                    },new List<string> {
                         "   .      ",
                         "   B      ",
                         "   E .    ",
@@ -12368,7 +12368,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   . R    ",
                         "     E    ",
                         "     .    "
-                    },new GridList {
+                    },new List<string> {
                         "     .  ",
                         ".GROTTO.",
                         "     O  ",
@@ -12376,7 +12376,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     E  ",
                         "     M  ",
                         "     .  "
-                    },new GridList {
+                    },new List<string> {
                         "   .  . ",
                         "   T  A ",
                         "   O  B ",
@@ -12384,7 +12384,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   E  E ",
                         ".ROMSEY.",
                         "   .  . "
-                    },new GridList {
+                    },new List<string> {
                         "  .     ",
                         "  V .   ",
                         "  E B   ",
@@ -12394,14 +12394,14 @@ namespace ShapeMakerCSharp.Calculators
                         ".PRIORY.",
                         "  S P   ",
                         "  . .   "
-                    },new GridList {
+                    },new List<string> {
                         " .       ",
                         " N       ",
                         " A       ",
                         ".VESPERS.",
                         " E       ",
                         " .       "
-                    },new GridList {
+                    },new List<string> {
                         "       . ",
                         ".ZEALOTS.",
                         "       H ",
@@ -12410,21 +12410,21 @@ namespace ShapeMakerCSharp.Calculators
                         "       N ",
                         "       E ",
                         "       . "
-                    },new GridList {
+                    },new List<string> {
                         "     .  ",
                         "     I  ",
                         "     C  ",
                         "     O  ",
                         ".SHRINE.",
                         "     .  "
-                    },new GridList {
+                    },new List<string> {
                         " .      ",
                         " K      ",
                         " I      ",
                         ".ROMSEY.",
                         " K      ",
                         " .      "
-                    },new GridList {
+                    },new List<string> {
                         "    .  ",
                         "  . P  ",
                         " .ZEUS.",
@@ -12435,7 +12435,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  T .  ",
                         "  S    ",
                         "  .    "
-                    },new GridList {
+                    },new List<string> {
                         " .    ",
                         ".NAVE.",
                         " I    ",
@@ -12443,7 +12443,7 @@ namespace ShapeMakerCSharp.Calculators
                         " H    ",
                         " E    ",
                         " .    "
-                    },new GridList {
+                    },new List<string> {
                         "     .  ",
                         "     S  ",
                         "     P  ",
@@ -12451,7 +12451,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     R  ",
                         ".EASTER.",
                         "     .  "
-                    },new GridList {
+                    },new List<string> {
                         "   . ",
                         "   N ",
                         "   I ",
@@ -12459,7 +12459,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   H ",
                         ".SEE.",
                         "   . "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         ".WELLS.",
                         "     E ",
@@ -12470,9 +12470,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9510:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         " .    .  ",
                         ".ZITHER. ",
                         " A    A  ",
@@ -12483,7 +12483,7 @@ namespace ShapeMakerCSharp.Calculators
                         " N    .  ",
                         " A       ",
                         " .       "
-                    },new GridList {
+                    },new List<string> {
                         "     .    ",
                         "     V    ",
                         "   . I    ",
@@ -12495,7 +12495,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   T      ",
                         "   E      ",
                         "   .      "
-                    },new GridList {
+                    },new List<string> {
                         "       .  ",
                         "     . H  ",
                         "    .VIOL.",
@@ -12505,7 +12505,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     I    ",
                         "     N    ",
                         "     .    "
-                    },new GridList {
+                    },new List<string> {
                         " .     ",
                         " S     ",
                         " P     ",
@@ -12514,7 +12514,7 @@ namespace ShapeMakerCSharp.Calculators
                         " E     ",
                         ".TUDUM.",
                         " .     "
-                    },new GridList {
+                    },new List<string> {
                         "   .     ",
                         "   C     ",
                         "   O .   ",
@@ -12523,7 +12523,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   E F   ",
                         ".ZITHER. ",
                         "   . .   "
-                    },new GridList {
+                    },new List<string> {
                         "    .   ",
                         "    P   ",
                         " .  A   ",
@@ -12533,14 +12533,14 @@ namespace ShapeMakerCSharp.Calculators
                         " L  P   ",
                         ".OBOE.  ",
                         " .  .   "
-                    },new GridList {
+                    },new List<string> {
                         " .       ",
                         " H       ",
                         " A       ",
                         " R       ",
                         ".PANPIPE.",
                         " .       "
-                    },new GridList {
+                    },new List<string> {
                         "   .   ",
                         "   W   ",
                         "   U   ",
@@ -12552,7 +12552,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   E R ",
                         ".HARP. ",
                         "   .   "
-                    },new GridList {
+                    },new List<string> {
                         "   .   ",
                         " . W   ",
                         ".DRUM. ",
@@ -12564,7 +12564,7 @@ namespace ShapeMakerCSharp.Calculators
                         " . E   ",
                         "   R   ",
                         "   .   "
-                    },new GridList {
+                    },new List<string> {
                         "   .    ",
                         "   W    ",
                         "   U    ",
@@ -12576,14 +12576,14 @@ namespace ShapeMakerCSharp.Calculators
                         "   E R  ",
                         "   R .  ",
                         "   .    "
-                    },new GridList {
+                    },new List<string> {
                         "    . ",
                         "    P ",
                         "    I ",
                         "    P ",
                         ".LUTE.",
                         "    . "
-                    },new GridList {
+                    },new List<string> {
                         "  .   .    ",
                         ".SPOONS.   ",
                         "  I   I    ",
@@ -12591,7 +12591,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  E   A    ",
                         "  .   R    ",
                         "      .    "
-                    },new GridList {
+                    },new List<string> {
                         "  .   ",
                         "  P   ",
                         "  S   ",
@@ -12602,7 +12602,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  R   ",
                         ".LYRE.",
                         "  .   "
-                    },new GridList {
+                    },new List<string> {
                         "    . .    ",
                         ".SPOONS.   ",
                         "    C I    ",
@@ -12617,9 +12617,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9511:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         " .         ",
                         ".ZIGZAGGER.",
                         " I         ",
@@ -12629,26 +12629,26 @@ namespace ShapeMakerCSharp.Calculators
                         " R         ",
                         " S         ",
                         " .         "
-                    },new GridList {
+                    },new List<string> {
                         "    . .     ",
                         ".ZIPPERS.   ",
                         "    I E     ",
                         "    N E     ",
                         "    .PLEATS.",
                         "      .     "
-                    },new GridList {
+                    },new List<string> {
                         "     .     ",
                         ".ZIGZAGGER.",
                         "     R     ",
                         "     T     ",
                         "     .     "
-                    },new GridList {
+                    },new List<string> {
                         "   . ",
                         ".ART.",
                         "   I ",
                         "   E ",
                         "   . "
-                    },new GridList {
+                    },new List<string> {
                         "      . ",
                         "      R ",
                         "    . A ",
@@ -12659,7 +12659,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    A   ",
                         "    S   ",
                         "    .   "
-                    },new GridList {
+                    },new List<string> {
                         "     .  ",
                         "     C  ",
                         "     A  ",
@@ -12669,7 +12669,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".PRESS. ",
                         "  K  .  ",
                         "  .     "
-                    },new GridList {
+                    },new List<string> {
                         "  .       ",
                         "  W       ",
                         "  O .     ",
@@ -12681,7 +12681,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    E     ",
                         "    S     ",
                         "    .     "
-                    },new GridList {
+                    },new List<string> {
                         "        . ",
                         "        A ",
                         "        D ",
@@ -12694,7 +12694,7 @@ namespace ShapeMakerCSharp.Calculators
                         "       I  ",
                         "       N  ",
                         "       .  "
-                    },new GridList {
+                    },new List<string> {
                         "   .       ",
                         "   S  .    ",
                         "   L  W    ",
@@ -12705,7 +12705,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".MUSLIN.   ",
                         "   .  G    ",
                         "      .    "
-                    },new GridList {
+                    },new List<string> {
                         "   .     ",
                         "   D     ",
                         "   I .   ",
@@ -12715,7 +12715,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     M   ",
                         "     S   ",
                         "     .   "
-                    },new GridList {
+                    },new List<string> {
                         "      .   ",
                         "      P   ",
                         "      I   ",
@@ -12728,7 +12728,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     N    ",
                         "     G    ",
                         "     .    "
-                    },new GridList {
+                    },new List<string> {
                         "      .    ",
                         "      V    ",
                         "      E    ",
@@ -12738,21 +12738,21 @@ namespace ShapeMakerCSharp.Calculators
                         "   L  T    ",
                         ".SATINS.   ",
                         "   .  .    "
-                    },new GridList {
+                    },new List<string> {
                         "      .  ",
                         ".VELVETS.",
                         "      U  ",
                         "      C  ",
                         "      K  ",
                         "      .  "
-                    },new GridList {
+                    },new List<string> {
                         "  . .    ",
                         "  B W    ",
                         ".PIPED.  ",
                         "  A L    ",
                         " .SATINS.",
                         "  . .    "
-                    },new GridList {
+                    },new List<string> {
                         " .     ",
                         " D .   ",
                         ".RAISE.",
@@ -12765,9 +12765,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9512:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "  . .   ",
                         ".SPICES.",
                         "  I H   ",
@@ -12777,7 +12777,7 @@ namespace ShapeMakerCSharp.Calculators
                         " .THYME.",
                         "  O .   ",
                         "  .     "
-                    },new GridList {
+                    },new List<string> {
                         "    . . ",
                         ".SPICES.",
                         "    H E ",
@@ -12786,7 +12786,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    R M ",
                         " .THYME.",
                         "    . . "
-                    },new GridList {
+                    },new List<string> {
                         " . .  ",
                         " S M  ",
                         " E E  ",
@@ -12795,7 +12795,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".MINT.",
                         " E S  ",
                         " . .  "
-                    },new GridList {
+                    },new List<string> {
                         "     .     ",
                         "     M     ",
                         "     I.    ",
@@ -12806,7 +12806,7 @@ namespace ShapeMakerCSharp.Calculators
                         "      R    ",
                         "      Y    ",
                         "      .    "
-                    },new GridList {
+                    },new List<string> {
                         "      . ",
                         "      B ",
                         "      E ",
@@ -12815,7 +12815,7 @@ namespace ShapeMakerCSharp.Calculators
                         "      N ",
                         ".SAVORY.",
                         "      . "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         "     C ",
                         "     R ",
@@ -12827,7 +12827,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     R ",
                         ".TANSY.",
                         "     . "
-                    },new GridList {
+                    },new List<string> {
                         "    .  ",
                         ".TANSY.",
                         "    A  ",
@@ -12837,7 +12837,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    F  ",
                         "    Y  ",
                         "    .  "
-                    },new GridList {
+                    },new List<string> {
                         "        . ",
                         "        S ",
                         "        A ",
@@ -12847,7 +12847,7 @@ namespace ShapeMakerCSharp.Calculators
                         "        F ",
                         ".COSTMARY.",
                         "        . "
-                    },new GridList {
+                    },new List<string> {
                         "    .    ",
                         "    R    ",
                         "    O .  ",
@@ -12858,7 +12858,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    R E  ",
                         "    Y L  ",
                         "    . .  "
-                    },new GridList {
+                    },new List<string> {
                         "        . ",
                         "        C ",
                         "        I ",
@@ -12869,7 +12869,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     O  . ",
                         "     N    ",
                         "     .    "
-                    },new GridList {
+                    },new List<string> {
                         "     .    ",
                         "     L    ",
                         "     E .  ",
@@ -12877,7 +12877,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     O U  ",
                         "  .FENNEL.",
                         "     . .  "
-                    },new GridList {
+                    },new List<string> {
                         "    .  ",
                         ".THYME.",
                         "    U  ",
@@ -12888,7 +12888,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    R  ",
                         "    Y  ",
                         "    .  "
-                    },new GridList {
+                    },new List<string> {
                         "    . .   ",
                         "    C C   ",
                         "    R O   ",
@@ -12900,7 +12900,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    R .   ",
                         "    Y     ",
                         "    .     "
-                    },new GridList {
+                    },new List<string> {
                         "   . ",
                         "   M ",
                         "   U ",
@@ -12911,7 +12911,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   R ",
                         ".BAY.",
                         "   . "
-                    },new GridList {
+                    },new List<string> {
                         "   .       ",
                         " . B       ",
                         ".CRANBERRY.",
@@ -12920,14 +12920,14 @@ namespace ShapeMakerCSharp.Calculators
                         " O .       ",
                         " A         ",
                         " .         "
-                    },new GridList {
+                    },new List<string> {
                         " .      ",
                         ".MELONS.",
                         " A      ",
                         " C      ",
                         " E      ",
                         " .      "
-                    },new GridList {
+                    },new List<string> {
                         "    .     ",
                         "    P     ",
                         "    O     ",
@@ -12939,9 +12939,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9601:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "      . ",
                         "      G ",
                         "      A ",
@@ -12952,7 +12952,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".MIZZEN.",
                         "    E . ",
                         "    .   "
-                    },new GridList {
+                    },new List<string> {
                         "    .   ",
                         "  . P   ",
                         " .BARGE.",
@@ -12960,7 +12960,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".MIZZEN.",
                         "  G E   ",
                         "  . .   "
-                    },new GridList {
+                    },new List<string> {
                         "   . ",
                         ".LOG.",
                         "   A ",
@@ -12970,7 +12970,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   O ",
                         "   N ",
                         "   . "
-                    },new GridList {
+                    },new List<string> {
                         " .   ",
                         " C   ",
                         " O   ",
@@ -12978,7 +12978,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".LOG.",
                         " E   ",
                         " .   "
-                    },new GridList {
+                    },new List<string> {
                         "     .   ",
                         "     C   ",
                         ".ROWBOAT.",
@@ -12986,7 +12986,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     L   ",
                         "     E   ",
                         "     .   "
-                    },new GridList {
+                    },new List<string> {
                         "    .    ",
                         "    R    ",
                         " .  O    ",
@@ -12996,7 +12996,7 @@ namespace ShapeMakerCSharp.Calculators
                         " M  A    ",
                         ".PUNT.   ",
                         " .  .    "
-                    },new GridList {
+                    },new List<string> {
                         "  .      ",
                         "  T      ",
                         "  O      ",
@@ -13009,7 +13009,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    A    ",
                         "    T    ",
                         "    .    "
-                    },new GridList {
+                    },new List<string> {
                         "      . ",
                         "      G ",
                         "      A ",
@@ -13018,7 +13018,7 @@ namespace ShapeMakerCSharp.Calculators
                         "      E ",
                         ".WHERRY.",
                         "      . "
-                    },new GridList {
+                    },new List<string> {
                         "    .      ",
                         "    A.     ",
                         ".FERRY.    ",
@@ -13027,7 +13027,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   .SLAVER.",
                         "    Y.     ",
                         "    .      "
-                    },new GridList {
+                    },new List<string> {
                         "    .  ",
                         "    A  ",
                         "    R  ",
@@ -13040,41 +13040,41 @@ namespace ShapeMakerCSharp.Calculators
                         "  E    ",
                         "  R    ",
                         "  .    "
-                    },new GridList {
+                    },new List<string> {
                         "   .     ",
                         "  .C     ",
                         " .TOSHER.",
                         ".TUG.    ",
                         "  B.     ",
                         "  .      "
-                    },new GridList {
+                    },new List<string> {
                         "      . ",
                         ".SLAVER.",
                         "      A ",
                         "      F ",
                         "      T ",
                         "      . "
-                    },new GridList {
+                    },new List<string> {
                         "      . ",
                         "      R ",
                         "      A ",
                         "      F ",
                         ".DUGOUT.",
                         "      . "
-                    },new GridList {
+                    },new List<string> {
                         "  . .   ",
                         "  J B   ",
                         ".DUGOUT.",
                         "  N A   ",
                         " .KETCH.",
                         "  . .   "
-                    },new GridList {
+                    },new List<string> {
                         "       . ",
                         "       A ",
                         ".SHOALER.",
                         "       K ",
                         "       . "
-                    },new GridList {
+                    },new List<string> {
                         " .     ",
                         " S     ",
                         " K     ",
@@ -13082,7 +13082,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".FERRY.",
                         " F     ",
                         " .     "
-                    },new GridList {
+                    },new List<string> {
                         " .    ",
                         ".SHIP.",
                         " K    ",
@@ -13090,7 +13090,7 @@ namespace ShapeMakerCSharp.Calculators
                         " F    ",
                         " F    ",
                         " .    "
-                    },new GridList {
+                    },new List<string> {
                         "   .  ",
                         "   G  ",
                         ".SHIP.",
@@ -13101,9 +13101,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9602:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         " . .   ",
                         ".METER.",
                         " A R   ",
@@ -13115,7 +13115,7 @@ namespace ShapeMakerCSharp.Calculators
                         " E     ",
                         " S     ",
                         " .     "
-                    },new GridList {
+                    },new List<string> {
                         "   .    ",
                         "   M    ",
                         " . A    ",
@@ -13125,7 +13125,7 @@ namespace ShapeMakerCSharp.Calculators
                         " E F    ",
                         ".RAYS.  ",
                         " . .    "
-                    },new GridList {
+                    },new List<string> {
                         "   . .  ",
                         "   M T  ",
                         "   A R  ",
@@ -13137,7 +13137,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   E    ",
                         "   S    ",
                         "   .    "
-                    },new GridList {
+                    },new List<string> {
                         "       . .   ",
                         "      .LEVER.",
                         "       E I   ",
@@ -13146,7 +13146,7 @@ namespace ShapeMakerCSharp.Calculators
                         "       . O   ",
                         "         N   ",
                         "         .   "
-                    },new GridList {
+                    },new List<string> {
                         "   .  ",
                         "   V  ",
                         "   I  ",
@@ -13158,14 +13158,14 @@ namespace ShapeMakerCSharp.Calculators
                         "  B   ",
                         "  S   ",
                         "  .   "
-                    },new GridList {
+                    },new List<string> {
                         "    . ",
                         ".RAYS.",
                         "    H ",
                         "    O ",
                         "    T ",
                         "    . "
-                    },new GridList {
+                    },new List<string> {
                         "    . ",
                         "    S ",
                         ".SHOT.",
@@ -13173,35 +13173,35 @@ namespace ShapeMakerCSharp.Calculators
                         "    L ",
                         "    L ",
                         "    . "
-                    },new GridList {
+                    },new List<string> {
                         " .     ",
                         ".STILL.",
                         " N     ",
                         " A     ",
                         " P     ",
                         " .     "
-                    },new GridList {
+                    },new List<string> {
                         " .       ",
                         " T       ",
                         " I       ",
                         ".MAGNIFY.",
                         " E       ",
                         " .       "
-                    },new GridList {
+                    },new List<string> {
                         "    . ",
                         "    T ",
                         "    A ",
                         ".SNAP.",
                         "    E ",
                         "    . "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         ".SHOOT.",
                         "     A ",
                         "     P ",
                         "     E ",
                         "     . "
-                    },new GridList {
+                    },new List<string> {
                         " .      ",
                         " B      ",
                         " U      ",
@@ -13209,7 +13209,7 @@ namespace ShapeMakerCSharp.Calculators
                         " B      ",
                         ".SPOOLS.",
                         " .      "
-                    },new GridList {
+                    },new List<string> {
                         "    .     ",
                         "    B     ",
                         "    I     ",
@@ -13220,7 +13220,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  S E     ",
                         " .MAXWELL.",
                         "  . .     "
-                    },new GridList {
+                    },new List<string> {
                         "    .    ",
                         "    B    ",
                         "    I    ",
@@ -13231,7 +13231,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    E N  ",
                         "    X E  ",
                         "    . .  "
-                    },new GridList {
+                    },new List<string> {
                         "    .  ",
                         "    C  ",
                         "    U  ",
@@ -13239,7 +13239,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    E  ",
                         ".PRISM.",
                         "    .  "
-                    },new GridList {
+                    },new List<string> {
                         "     .  ",
                         "     C  ",
                         ".COLOUR.",
@@ -13247,7 +13247,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     E  ",
                         "     S  ",
                         "     .  "
-                    },new GridList {
+                    },new List<string> {
                         "  .     ",
                         "  B     ",
                         ".MIRROR.",
@@ -13258,7 +13258,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  E     ",
                         "  X     ",
                         "  .     "
-                    },new GridList {
+                    },new List<string> {
                         "    . ",
                         "    M ",
                         "    I ",
@@ -13267,7 +13267,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".HYPO.",
                         "    R ",
                         "    . "
-                    },new GridList {
+                    },new List<string> {
                         "    .    ",
                         "    L    ",
                         "    I.   ",
@@ -13275,7 +13275,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   .HYPO.",
                         ".PLATE.  ",
                         "    ..   "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         ".LEVER.",
                         "     O ",
@@ -13287,9 +13287,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9603:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "     .    ",
                         "     P    ",
                         "   . A    ",
@@ -13299,7 +13299,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   I E    ",
                         ".TILTYARD.",
                         "   . .    "
-                    },new GridList {
+                    },new List<string> {
                         " . .      ",
                         ".CAVALRY. ",
                         " R I      ",
@@ -13307,7 +13307,7 @@ namespace ShapeMakerCSharp.Calculators
                         " S I      ",
                         ".TILTYARD.",
                         " . .      "
-                    },new GridList {
+                    },new List<string> {
                         "     .   ",
                         ".PANOPLY.",
                         "     A   ",
@@ -13317,7 +13317,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     E   ",
                         "     Y   ",
                         "     .   "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         "     P ",
                         "     A ",
@@ -13327,7 +13327,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     L ",
                         ".ESSAY.",
                         "     . "
-                    },new GridList {
+                    },new List<string> {
                         "     . .   ",
                         "    .ESSAY.",
                         "     P U   ",
@@ -13337,7 +13337,7 @@ namespace ShapeMakerCSharp.Calculators
                         "       A   ",
                         "       T   ",
                         "       .   "
-                    },new GridList {
+                    },new List<string> {
                         "   .      ",
                         "   H      ",
                         "   E .    ",
@@ -13347,7 +13347,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   D R    ",
                         "   .ESSAY.",
                         "     .    "
-                    },new GridList {
+                    },new List<string> {
                         "  .     ",
                         "  C .   ",
                         ".QUIVER.",
@@ -13357,7 +13357,7 @@ namespace ShapeMakerCSharp.Calculators
                         " .SPURS.",
                         "  S R   ",
                         "  . .   "
-                    },new GridList {
+                    },new List<string> {
                         "  . .   ",
                         ".SWORD. ",
                         "  A A   ",
@@ -13367,7 +13367,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  O     ",
                         "  R     ",
                         "  .     "
-                    },new GridList {
+                    },new List<string> {
                         " .    ",
                         ".HERO.",
                         " E    ",
@@ -13376,7 +13376,7 @@ namespace ShapeMakerCSharp.Calculators
                         " L    ",
                         " D    ",
                         " .    "
-                    },new GridList {
+                    },new List<string> {
                         "  .     ",
                         "  P     ",
                         "  R     ",
@@ -13385,7 +13385,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  C     ",
                         ".JENNET.",
                         "  .     "
-                    },new GridList {
+                    },new List<string> {
                         "     . .    ",
                         "     E S    ",
                         "     P U    ",
@@ -13395,7 +13395,7 @@ namespace ShapeMakerCSharp.Calculators
                         "       A    ",
                         "       T    ",
                         "       .    "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         "     C ",
                         "     A ",
@@ -13404,7 +13404,7 @@ namespace ShapeMakerCSharp.Calculators
                         "     L ",
                         "     E ",
                         "     . "
-                    },new GridList {
+                    },new List<string> {
                         "   . .  ",
                         ".CASTLE.",
                         "   Q I  ",
@@ -13413,7 +13413,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   R S  ",
                         "   E .  ",
                         "   .    "
-                    },new GridList {
+                    },new List<string> {
                         "  . .  ",
                         "  S L  ",
                         "  Q I  ",
@@ -13427,9 +13427,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9604:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "    .      ",
                         "    A      ",
                         "    L .    ",
@@ -13440,7 +13440,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  .ARMOURY.",
                         "    . W    ",
                         "      .    "
-                    },new GridList {
+                    },new List<string> {
                         "         . ",
                         "         G ",
                         "      .  A ",
@@ -13451,7 +13451,7 @@ namespace ShapeMakerCSharp.Calculators
                         "  .ARMOURY.",
                         "      W  . ",
                         "      .    "
-                    },new GridList {
+                    },new List<string> {
                         "         .     ",
                         "        .G     ",
                         "       .PAGODA.",
@@ -13461,7 +13461,7 @@ namespace ShapeMakerCSharp.Calculators
                         "        .R     ",
                         "         Y     ",
                         "         .     "
-                    },new GridList {
+                    },new List<string> {
                         "  . .   ",
                         "  P A   ",
                         "  A L   ",
@@ -13470,14 +13470,14 @@ namespace ShapeMakerCSharp.Calculators
                         "  D T   ",
                         ".EAVES. ",
                         "  . .   "
-                    },new GridList {
+                    },new List<string> {
                         " .         ",
                         " D         ",
                         " O         ",
                         ".MEZZANINE.",
                         " E         ",
                         " .         "
-                    },new GridList {
+                    },new List<string> {
                         " .       ",
                         " T       ",
                         " H       ",
@@ -13487,7 +13487,7 @@ namespace ShapeMakerCSharp.Calculators
                         " R       ",
                         " E       ",
                         " .       "
-                    },new GridList {
+                    },new List<string> {
                         " .       ",
                         ".ARMOURY.",
                         " T       ",
@@ -13496,7 +13496,7 @@ namespace ShapeMakerCSharp.Calculators
                         " U       ",
                         " M       ",
                         " .       "
-                    },new GridList {
+                    },new List<string> {
                         "   .         ",
                         "   A         ",
                         "   T         ",
@@ -13507,7 +13507,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   .O        ",
                         "    R        ",
                         "    .        "
-                    },new GridList {
+                    },new List<string> {
                         "    .    ",
                         "    M    ",
                         "    O    ",
@@ -13521,7 +13521,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    . A  ",
                         "      T  ",
                         "      .  "
-                    },new GridList {
+                    },new List<string> {
                         "         . ",
                         "         A ",
                         "         B ",
@@ -13529,7 +13529,7 @@ namespace ShapeMakerCSharp.Calculators
                         "         E ",
                         ".MONASTERY.",
                         "         . "
-                    },new GridList {
+                    },new List<string> {
                         " .  . ",
                         ".STUD.",
                         " C  O ",
@@ -13537,7 +13537,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".PIER.",
                         " E  . ",
                         " .    "
-                    },new GridList {
+                    },new List<string> {
                         "   . ",
                         "   A ",
                         ".HUT.",
@@ -13546,7 +13546,7 @@ namespace ShapeMakerCSharp.Calculators
                         "   U ",
                         "   M ",
                         "   . "
-                    },new GridList {
+                    },new List<string> {
                         "        . ",
                         "        L ",
                         "        A ",
@@ -13558,7 +13558,7 @@ namespace ShapeMakerCSharp.Calculators
                         ".ZIGGURAT.",
                         "        H ",
                         "        . "
-                    },new GridList {
+                    },new List<string> {
                         "   . ",
                         "   L ",
                         "   A ",
@@ -13575,9 +13575,9 @@ namespace ShapeMakerCSharp.Calculators
 
                 case 9605:
 
-                    return new List<GridList> {
+                    return new List<List<string>> {
 
-                    new GridList {
+                    new List<string> {
                         "    .  ",
                         "    A  ",
                         "    S  ",
@@ -13587,7 +13587,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    E  ",
                         "    S  ",
                         "    .  "
-                    },new GridList {
+                    },new List<string> {
                         "      .         ",
                         "      T         ",
                         "      E         ",
@@ -13603,7 +13603,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    E           ",
                         "    S           ",
                         "    .           "
-                    },new GridList {
+                    },new List<string> {
                         "   .  .  ",
                         "  .ABET. ",
                         "   C  E  ",
@@ -13614,7 +13614,7 @@ namespace ShapeMakerCSharp.Calculators
                         "      O  ",
                         "      R  ",
                         "      .  "
-                    },new GridList {
+                    },new List<string> {
                         "    .      ",
                         "    I      ",
                         "    N .    ",
@@ -13626,21 +13626,21 @@ namespace ShapeMakerCSharp.Calculators
                         "      N    ",
                         "      S    ",
                         "      .    "
-                    },new GridList {
+                    },new List<string> {
                         "     . ",
                         "     J ",
                         "     U ",
                         "     R ",
                         ".USURY.",
                         "     . "
-                    },new GridList {
+                    },new List<string> {
                         "  .   ",
                         "  S   ",
                         ".JURY.",
                         "  I   ",
                         "  T   ",
                         "  .   "
-                    },new GridList {
+                    },new List<string> {
                         "    . ",
                         "    S ",
                         ".SUIT.",
@@ -13648,7 +13648,7 @@ namespace ShapeMakerCSharp.Calculators
                         "    A ",
                         "    L ",
                         "    . "
-                    },new GridList {
+                    },new List<string> {
                         "       . ",
                         "       E ",
                         ".SUMMONS.",
@@ -13657,7 +13657,7 @@ namespace ShapeMakerCSharp.Calculators
                         "       O ",
                         "       W ",
                         "       . "
-                    },new GridList {
+                    },new List<string> {
                         "     .   ",
                         "     P   ",
                         " .ESCROW.",
@@ -13666,13 +13666,13 @@ namespace ShapeMakerCSharp.Calculators
                         " T   O   ",
                         " H   N   ",
                         " .   .   "
-                    },new GridList {
+                    },new List<string> {
                         "      . ",
                         "      L ",
                         "      A ",
                         ".ESCROW.",
                         "      . "
-                    },new GridList {
+                    },new List<string> {
                         "     .   ",
                         "     P   ",
                         "     R   ",
@@ -13681,21 +13681,21 @@ namespace ShapeMakerCSharp.Calculators
                         "   O O   ",
                         "  .BENCH.",
                         "   . .   "
-                    },new GridList {
+                    },new List<string> {
                         "    . ",
                         "    O ",
                         "    A ",
                         ".WRIT.",
                         "    H ",
                         "    . "
-                    },new GridList {
+                    },new List<string> {
                         "       . ",
                         "       C ",
                         "       A ",
                         ".ASSIZES.",
                         "       E ",
                         "       . "
-                    },new GridList {
+                    },new List<string> {
                         "       . ",
                         ".LAWSUIT.",
                         "       R ",
@@ -13705,7 +13705,7 @@ namespace ShapeMakerCSharp.Calculators
                         "       O ",
                         "       N ",
                         "       . "
-                    },new GridList {
+                    },new List<string> {
                         " .   ",
                         " L   ",
                         " A   ",
@@ -13715,7 +13715,7 @@ namespace ShapeMakerCSharp.Calculators
                         " I   ",
                         " T   ",
                         " .   "
-                    },new GridList {
+                    },new List<string> {
                         " .      ",
                         " L      ",
                         ".INSULT.",
@@ -13727,7 +13727,7 @@ namespace ShapeMakerCSharp.Calculators
 
                 default:
                     
-                    return new List<GridList>();
+                    return new List<List<string>>();
             }
         }
     }

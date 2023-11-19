@@ -1,19 +1,31 @@
 ﻿using System;
 namespace CrozzleInterfaces
 {
-	public class GridList : List<string>
+	public class GridList
 	{
 
-        public int findScore()
+        public static ShapeModel ToShape(in List<string> grid, in List<string> words)
+        {
+            var placements = fromTextToPlacements(grid, words);
+
+            int height = grid.Count;
+            int width = grid[0].Length;
+            int score = findScore(grid) + placements.Count * 10;
+            ShapeModel shape = new ShapeModel((ushort)score, (byte)width, (byte)height, placements);
+
+            return shape;
+        }
+
+        public static int findScore(in List<string> grid)
         {
 
-            var height = this.Count;
+            var height = grid.Count;
 
             if (height == 0)
             {
                 return 0;
             }
-            var width = this[0].Length;
+            var width = grid[0].Length;
             var result = 0;
 
 
@@ -23,15 +35,15 @@ namespace CrozzleInterfaces
                 for (int x = 1; x < (width - 1); x++)
                 {
 
-                    if (IsAlphabet(this[y][x]))
+                    if (IsAlphabet(grid[y][x]))
                     {
-                        var isHorizontal = (IsAlphabet(this[y][x - 1]) || IsAlphabet(this[y][x + 1]));
-                        var isVertical = (IsAlphabet(this[y - 1][x]) || IsAlphabet(this[y + 1][x]));
+                        var isHorizontal = (IsAlphabet(grid[y][x - 1]) || IsAlphabet(grid[y][x + 1]));
+                        var isVertical = (IsAlphabet(grid[y - 1][x]) || IsAlphabet(grid[y + 1][x]));
 
 
                         if (isHorizontal && isVertical)
                         {
-                            result += ScoreCalculator.score(this[y][x]);
+                            result += ScoreCalculator.score(grid[y][x]);
                         }
                     }
                 }
@@ -53,23 +65,13 @@ namespace CrozzleInterfaces
         }
 
 
-        public ShapeModel ToShape(List<string> words)
+        
+
+        private static List<PlacementModel> fromTextToPlacements(in List<string> grid, in List<string> words)
         {
-            var placements = fromTextToPlacements(words: words);
+            var placements = fromTextToPlacementsHorizontal(grid, words);
 
-            int height = this.Count;
-            int width = this[0].Length;
-            int score = findScore() + placements.Count * 10;
-            ShapeModel shape = new ShapeModel((ushort)score, (byte)width, (byte)height, placements);
-
-            return shape;
-        }
-
-        private List<PlacementModel> fromTextToPlacements(List<string> words)
-        {
-            var placements = fromTextToPlacementsHorizontal(words: words);
-
-            var verticalPlacements = fromTextToPlacementsVertical(words: words);
+            var verticalPlacements = fromTextToPlacementsVertical(grid, words);
 
             placements.AddRange(verticalPlacements);
 
@@ -78,21 +80,21 @@ namespace CrozzleInterfaces
 
 
 
-        private List<PlacementModel> fromTextToPlacementsHorizontal(List<string> words)
+        private static List<PlacementModel> fromTextToPlacementsHorizontal(in List<string> grid, in List<string> words)
         {
             var result = new List<PlacementModel>();
 
-            if (this.Count == 0)
+            if (grid.Count == 0)
             {
                 return result;
             }
 
-            int height = this.Count;
-            int width = this[0].Length;
+            int height = grid.Count;
+            int width = grid[0].Length;
 
             for (int y = 1; y < height - 1; y++)
             {
-                string line = this[y];
+                string line = grid[y];
 
                 string word = "";
                 int xPos = 0;
@@ -122,7 +124,7 @@ namespace CrozzleInterfaces
                             if (wordId == -1)
                             {
                                 Console.WriteLine($"{word} not found in List<string>");
-                                // It is invalid as we cannot find this word
+                                // It is invalid as we cannot find grid word
                                 return new List<PlacementModel>();
                             }
                             else
@@ -139,7 +141,7 @@ namespace CrozzleInterfaces
                         }
                         else if (current == '.')
                         {
-                            // this is invalid as a word cannot end in a space
+                            // grid is invalid as a word cannot end in a space
                             return new List<PlacementModel>();
                         }
                     }
@@ -151,18 +153,18 @@ namespace CrozzleInterfaces
         }
 
 
-        private List<PlacementModel> fromTextToPlacementsVertical(List<string> words)
+        private static List<PlacementModel> fromTextToPlacementsVertical(in List<string> grid, List<string> words)
         {
             var result = new List<PlacementModel>();
 
-            int height = this.Count;
+            int height = grid.Count;
             if (height == 0)
             {
                 return result;
             }
 
             
-            int width = this[0].Length;
+            int width = grid[0].Length;
 
             int yPos = 0;
             for (int x = 1; x < width - 1; x++)
@@ -172,11 +174,11 @@ namespace CrozzleInterfaces
                 for (int y = 1; y < height; y++)
                 {
 
-                    char current = this[y][x];
+                    char current = grid[y][x];
 
                     if (word == "")
                     {
-                        if (this[y - 1][x] == '.' && IsAlphabet(current) && y != height - 1 && IsAlphabet(this[y + 1][x]))
+                        if (grid[y - 1][x] == '.' && IsAlphabet(current) && y != height - 1 && IsAlphabet(grid[y + 1][x]))
                         {
                             word += current;
                             yPos = y - 1;
@@ -196,7 +198,7 @@ namespace CrozzleInterfaces
                             if (wordId == -1)
                             {
                                 Console.WriteLine($"{word} not found in List<string>");
-                                // It is invalid as we cannot find this word
+                                // It is invalid as we cannot find grid word
                                 return new List<PlacementModel>();
                             }
                             else
@@ -214,7 +216,7 @@ namespace CrozzleInterfaces
                         }
                         else if (current == '.')
                         {
-                            // this is invalid as a word cannot end in a space
+                            // grid is invalid as a word cannot end in a space
                             return new List<PlacementModel>();
                         }
                     }

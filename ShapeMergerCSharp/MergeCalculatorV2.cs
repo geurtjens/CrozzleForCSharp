@@ -283,15 +283,7 @@ namespace ShapeMergerCSharp
         }
 
 
-        public static Tuple<bool, int, int, bool> mergeSizeValidation(
-            in MergeInstructionModel instruction,
-            in ShapeModel sourceShape,
-            in ShapeModel searchShape,
-            int widthMax,
-            int heightMax)
-        {
-            return MergeSizeValidation.execute(sourceShape, instruction.firstSourcePos, searchShape, instruction.firstSearchPos, widthMax, heightMax);
-        }
+        
 
 
         public static List<ShapeModel> ExecuteSameShapeOneAsync(
@@ -541,17 +533,15 @@ namespace ShapeMergerCSharp
 
 
                 // We have matches of 2 but instruction says its a match of 1
-                var a = mergeSizeValidation(
-                    instruction: instruction,
+                var (isValidSize, calcWidth, calcHeight, flipped) = MergeSizeValidation.execute(
                     sourceShape: sourceShape,
+                    sourcePos: instruction.firstSourcePos,
                     searchShape: searchShape,
+                    searchPos: instruction.firstSearchPos,
                     widthMax: widthMax,
                     heightMax: heightMax);
 
-                var isValidSize = a.Item1;
-                var calcWidth = a.Item2;
-                var calcHeight = a.Item3;
-                var flipped = a.Item4;
+                
 
                 if (isValidSize)
                 {
@@ -665,13 +655,15 @@ namespace ShapeMergerCSharp
             }
             var instruction = (MergeInstructionModel)instruction1;
 
-            // We have matches of 2 but instruction says its a match of 1
-            var (isValidSize, calcWidth, calcHeight, isflipped) = mergeSizeValidation(
-                instruction: instruction,
+            
+            var (isValidSize, calcWidth, calcHeight, flipped) = MergeSizeValidation.execute(
                 sourceShape: sourceShape,
+                sourcePos: instruction.firstSourcePos,
                 searchShape: searchShape,
+                searchPos: instruction.firstSearchPos,
                 widthMax: widthMax,
                 heightMax: heightMax);
+
 
             if (isValidSize)
             {
