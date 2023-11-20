@@ -23,6 +23,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CrozzleInterfaces\CrozzleInterfaces.csproj" />
+    <ProjectReference Include="..\CrozzleBranchAndBound\CrozzleBranchAndBound.csproj" />
   </ItemGroup>
 </Project>

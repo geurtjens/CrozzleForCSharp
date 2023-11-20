@@ -95,8 +95,7 @@ namespace CrozzleInterfaces
 
         public static List<ShapeModel> SortToFindDuplicates(in List<ShapeModel> shapes)
         {
-            return (shapes.OrderByDescending(e => e.score).ThenBy(e => e.placements.Count).ThenBy(e => e.width * e.height).ThenBy(e => e.wordSequence).ToList());
-
+            return (shapes.OrderBy(e => e.wordSequence).ToList());
         }
 
 

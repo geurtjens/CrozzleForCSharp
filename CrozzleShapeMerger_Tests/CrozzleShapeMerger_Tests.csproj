@@ -23,6 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CrozzleInterfaces\CrozzleInterfaces.csproj" />
+    <ProjectReference Include="..\CrozzleShapeMaker\CrozzleShapeMaker.csproj" />
+    <ProjectReference Include="..\CrozzleShapeMerger\CrozzleShapeMerger.csproj" />
   </ItemGroup>
 </Project>
