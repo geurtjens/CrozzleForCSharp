@@ -69,9 +69,9 @@ public class StartingDataCalculator
             scoresMin = MinScoreList.Execute(0);
         }
 
-        WordToShapeIndex wordIndex = new WordToShapeIndex(searchShapes, words.Count);
+        
 
-        StartingDataModel result = new StartingDataModel(gameId, searchShapes, winningShapes, startingShapes, words, scoresMin, wordIndex, widthMax, heightMax, winningScore);
+        StartingDataModel result = new StartingDataModel(gameId, searchShapes, winningShapes, startingShapes, words, scoresMin, widthMax, heightMax, winningScore);
 
 
 

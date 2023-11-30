@@ -23,7 +23,7 @@ public readonly record struct StartingDataModel
 
 	public readonly int winningScore;
 
-	public readonly WordToShapeIndex wordIndex;
+
 
 
 	public StartingDataModel(
@@ -33,7 +33,6 @@ public readonly record struct StartingDataModel
 		in List<ShapeModel> startingShapes,
 		in List<string> words,
 		in List<int> scoresMin,
-		in WordToShapeIndex wordIndex,
 		int maxWidth,
 		int maxHeight,
 		int winningScore
@@ -44,7 +43,6 @@ public readonly record struct StartingDataModel
 		this.winningShapes = winningShapes;
 		this.startingShapes = startingShapes;
 		this.words = words;
-		this.wordIndex = wordIndex;
 		this.maxWidth = maxWidth;
 		this.maxHeight = maxHeight;
 		this.winningScore = winningScore;
