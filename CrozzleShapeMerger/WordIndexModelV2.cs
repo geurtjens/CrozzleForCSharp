@@ -5,7 +5,7 @@ namespace CrozzleShapeMerger;
 public class WordIndexModelV2
 {
 
-    public List<MergeInstructionModel> checkMatchesForLeafs(
+    public List<MergeInstructionModel> CheckMatchesForLeafs(
         in List<int> matches,
         in ShapeModel sourceShape,
         int sourceShapeId,
@@ -16,13 +16,13 @@ public class WordIndexModelV2
         foreach (var searchShapeId in matches)
         {
 
-            var matchCount = findMatchCount(sourceShape: sourceShape, searchShape: searchShapes[searchShapeId]);
+            var matchCount = FindMatchCount(sourceShape: sourceShape, searchShape: searchShapes[searchShapeId]);
 
 
-            if (matchCount != sourceShape.placements.Count && matchCount != searchShapes[searchShapeId].placements.Count)
+            if (matchCount != sourceShape.Placements.Count && matchCount != searchShapes[searchShapeId].Placements.Count)
             {
 
-                var item = WordIndexModelV2.processMatches(matchCount: matchCount, sourceShape: sourceShape, sourceShapeId: sourceShapeId, searchShape: searchShapes[searchShapeId], searchShapeId: searchShapeId);
+                var item = MatchCalculator.ProcessMatches(matchCount: matchCount, sourceShape: sourceShape, sourceShapeId: sourceShapeId, searchShape: searchShapes[searchShapeId], searchShapeId: searchShapeId);
 
 
                 if (item is not null)
@@ -38,88 +38,14 @@ public class WordIndexModelV2
 
 
 
-    static bool isSameDistance(
-            int firstSourcePos,
-            int firstSearchPos,
-            in List<int> matches,
-            bool isFlipped,
-            in ShapeModel sourceShape,
-            in ShapeModel searchShape)
-    {
-
-        /// How could the first match be the same
-        var sourceX = (int)(sourceShape.placements[firstSourcePos].x);
-        var sourceY = (int)(sourceShape.placements[firstSourcePos].y);
-
-        var searchX = (int)(searchShape.placements[firstSearchPos].x);
-        var searchY = (int)(searchShape.placements[firstSearchPos].y);
-
-
-        for (int sourcePos = (firstSourcePos + 1); sourcePos < matches.Count; sourcePos++)
-        {
-            //for i in (firstMatch+1)..<matchingWords.count {
-            var searchPos = matches[sourcePos];
-
-
-            if (searchPos != -1)
-            {
-                var sourceX_diff = sourceX - (int)(sourceShape.placements[sourcePos].x);
-                var sourceY_diff = sourceY - (int)(sourceShape.placements[sourcePos].y);
-
-                var searchX_diff = searchX - (int)(searchShape.placements[searchPos].x);
-                var searchY_diff = searchY - (int)(searchShape.placements[searchPos].y);
-
-
-                if (isFlipped)
-                {
-                    if (sourceX_diff != searchY_diff || sourceY_diff != searchX_diff)
-                    {
-                        return false;
-                    }
-                }
-                else
-                {
-                    if (sourceX_diff != searchX_diff || sourceY_diff != searchY_diff)
-                    {
-                        return false;
-                    }
-                }
-            }
-        }
-        // We have passed all the distance checks
-        return true;
-    }
 
 
 
-    // While we are here lets see if they are the same orientation
-    static bool isSameDirection(
-        int firstSourcePos,
-        int firstSearchPos,
-        in List<int> matches,
-        bool firstIsFlipped,
-        in ShapeModel sourceShape,
-        in ShapeModel searchShape)
-    {
-
-        for (int sourcePos = (firstSourcePos + 1); sourcePos < matches.Count; sourcePos++)
-        {
-            var searchPos = matches[sourcePos];
-            if (searchPos != -1)
-            {
-
-                bool isFlipped = (sourceShape.placements[sourcePos].z != searchShape.placements[searchPos].z);
-                if (firstIsFlipped != isFlipped)
-                {
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
 
 
-    public readonly List<List<int>> index;
+
+
+    public readonly List<List<int>> Index;
 
     /// `WordIndexModelV2` is used to `findMatches`between a `sourceShape` and a collection of `searchShapes` to returns  `[MergeInstructionModel]`.
     ///  These instructions contain a potential merge between the `sourceShape` and `searchShape`.
@@ -142,18 +68,18 @@ public class WordIndexModelV2
     /// For bulk loads this can take an extra 7 seconds so if all shapes are same size then use the other init
 
     /// We go through each word and build up a list of shapes that contain the same words as the shape we are looking through
-    public List<int> findMatchUsingIndex(
+    public List<int> FindMatchUsingIndex(
         in ShapeModel sourceShape,
         int searchMin,
         int searchMax)
     {
 
         var matches = new List<int>();
-        for (int sourcePos = 0; sourcePos < sourceShape.placements.Count; sourcePos++)
+        for (int sourcePos = 0; sourcePos < sourceShape.Placements.Count; sourcePos++)
         {
-            int w = (int)sourceShape.placements[sourcePos].w;
+            int w = (int)sourceShape.Placements[sourcePos].W;
 
-            matches.AddRange(this.index[w]);
+            matches.AddRange(this.Index[w]);
         }
 
         // Remove items out of score
@@ -165,55 +91,7 @@ public class WordIndexModelV2
         return matches;
     }
 
-    public static MergeInstructionModel? processMatches(
-        int matchCount,
-        in ShapeModel sourceShape,
-        int sourceShapeId,
-        in ShapeModel searchShape,
-        int searchShapeId)
-    {
-
-        // We only have 1 match
-        if (matchCount == 1)
-        {
-            var match = singleWordMatch(
-                sourceShape: sourceShape,
-                sourceShapeId: sourceShapeId,
-                searchShape: searchShape,
-                searchShapeId: searchShapeId);
-
-
-            return match;
-
-
-        }
-        else if (matchCount > 1)
-        {
-
-            // We have more than one match
-            if (matchCount < sourceShape.placements.Count)
-            {
-
-                var multiWordMatch2 = multiWordMatch(
-                    sourceShape: sourceShape,
-                    sourceShapeId: sourceShapeId,
-                    searchShape: searchShape,
-                    searchShapeId: searchShapeId,
-                    matchingWordCount: matchCount);
-
-
-                return multiWordMatch2;
-            }
-            else
-            {
-                return null;
-            }
-        }
-        return null;
-
-
-    }
-
+    
 
 
     public WordIndexModelV2(in List<ShapeModel> shapes, int wordCount)
@@ -226,13 +104,13 @@ public class WordIndexModelV2
 
         for (int shapeId = 0; shapeId < shapes.Count; shapeId++)
         {
-            for (int placementId = 0; placementId < shapes[shapeId].placements.Count; placementId++)
+            for (int placementId = 0; placementId < shapes[shapeId].Placements.Count; placementId++)
             {
-                int w = (int)(shapes[shapeId].placements[placementId].w);
+                int w = (int)(shapes[shapeId].Placements[placementId].W);
                 indexTemp[w].Add(shapeId);
             }
         }
-        this.index = indexTemp;
+        this.Index = indexTemp;
     }
 
     /// Use this when you know the size of the shape
@@ -254,15 +132,15 @@ public class WordIndexModelV2
         {
             for (int placementId = 0; placementId < wordsPerShape; placementId++)
             {
-                var w = (int)(shapes[shapeId].placements[placementId].w);
+                var w = (int)(shapes[shapeId].Placements[placementId].W);
                 indexTemp[w].Add(shapeId);
             }
         }
-        this.index = indexTemp;
+        this.Index = indexTemp;
     }
 
 
-    public List<MergeInstructionModel> findMatches(
+    public List<MergeInstructionModel> FindMatches(
         in List<int> words,
         in ShapeModel sourceShape,
         int sourceShapeId,
@@ -272,7 +150,7 @@ public class WordIndexModelV2
     {
 
         // Find potential matches by using the index against all words in shape
-        var matches = findMatchUsingIndex(sourceShape: sourceShape, searchMin: searchMin, searchMax: searchMax);
+        var matches = FindMatchUsingIndex(sourceShape: sourceShape, searchMin: searchMin, searchMax: searchMax);
 
 
 
@@ -296,7 +174,7 @@ public class WordIndexModelV2
             }
             else
             {
-                var item1 = WordIndexModelV2.processMatches(matchCount: matchCount, sourceShape: sourceShape, sourceShapeId: sourceShapeId, searchShape: searchShapes[previous], searchShapeId: previous);
+                var item1 = MatchCalculator.ProcessMatches(matchCount: matchCount, sourceShape: sourceShape, sourceShapeId: sourceShapeId, searchShape: searchShapes[previous], searchShapeId: previous);
                 if (item1 is not null)
                 {
                     result.Add(item1!);
@@ -312,7 +190,7 @@ public class WordIndexModelV2
             Console.WriteLine("What should we do here then with previous and searchShapeId being different");
         }
         // Process last one, should this be previous or should it be searchShapeId?
-        var item2 = WordIndexModelV2.processMatches(matchCount: matchCount, sourceShape: sourceShape, sourceShapeId: sourceShapeId, searchShape: searchShapes[searchShapeId], searchShapeId: searchShapeId);
+        var item2 = MatchCalculator.ProcessMatches(matchCount: matchCount, sourceShape: sourceShape, sourceShapeId: sourceShapeId, searchShape: searchShapes[searchShapeId], searchShapeId: searchShapeId);
         if (item2 is not null)
         {
             result.Add(item2!);
@@ -322,16 +200,16 @@ public class WordIndexModelV2
     }
 
 
-    public int findMatchCount(
+    public int FindMatchCount(
         in ShapeModel sourceShape,
         in ShapeModel searchShape)
     {
         var matchCount = 0;
-        foreach (var sourcePlacement in sourceShape.placements)
+        foreach (var sourcePlacement in sourceShape.Placements)
         {
-            foreach (var searchPlacement in searchShape.placements)
+            foreach (var searchPlacement in searchShape.Placements)
             {
-                if (sourcePlacement.w == searchPlacement.w)
+                if (sourcePlacement.W == searchPlacement.W)
                 {
                     matchCount += 1;
                 }
@@ -341,7 +219,7 @@ public class WordIndexModelV2
     }
 
 
-    public List<MergeInstructionModel> checkMatches(
+    public List<MergeInstructionModel> CheckMatches(
         in List<int> matches,
         in ShapeModel sourceShape,
         int sourceShapeId,
@@ -363,7 +241,7 @@ public class WordIndexModelV2
             }
             else
             {
-                var item1 = WordIndexModelV2.processMatches(matchCount: matchCount, sourceShape: sourceShape, sourceShapeId: sourceShapeId, searchShape: searchShapes[previous], searchShapeId: previous);
+                var item1 = MatchCalculator.ProcessMatches(matchCount: matchCount, sourceShape: sourceShape, sourceShapeId: sourceShapeId, searchShape: searchShapes[previous], searchShapeId: previous);
                 if (item1 is not null)
                 {
                     result.Add(item1!);
@@ -379,7 +257,7 @@ public class WordIndexModelV2
             Console.WriteLine("What should we do here then with previous and searchShapeId being different");
         }
         // Process last one, should this be previous or should it be searchShapeId?
-        var item2 = WordIndexModelV2.processMatches(matchCount: matchCount, sourceShape: sourceShape, sourceShapeId: sourceShapeId, searchShape: searchShapes[searchShapeId], searchShapeId: searchShapeId);
+        var item2 = MatchCalculator.ProcessMatches(matchCount: matchCount, sourceShape: sourceShape, sourceShapeId: sourceShapeId, searchShape: searchShapes[searchShapeId], searchShapeId: searchShapeId);
         if (item2 is not null)
         {
             result.Add(item2!);
@@ -390,7 +268,7 @@ public class WordIndexModelV2
 
 
 
-    public List<MergeInstructionModel> findMatches(
+    public List<MergeInstructionModel> FindMatches(
         in List<int> containingWords,
         in List<int> shapesToExclude,
         in ShapeModel sourceShape,
@@ -399,19 +277,19 @@ public class WordIndexModelV2
     {
 
         // Find potential matches by using the index against all words in shape
-        var matches = findMatchUsingIndex(words: containingWords, shapesToExclude: shapesToExclude);
+        var matches = FindMatchUsingIndex(words: containingWords, shapesToExclude: shapesToExclude);
 
         if (matches.Count == 0)
         {
             return new List<MergeInstructionModel>();
         }
 
-        return checkMatchesForLeafs(matches: matches, sourceShape: sourceShape, sourceShapeId: sourceShapeId, searchShapes: searchShapes);
+        return CheckMatchesForLeafs(matches: matches, sourceShape: sourceShape, sourceShapeId: sourceShapeId, searchShapes: searchShapes);
     }
 
 
 
-    public List<MergeInstructionModel> findMatches(
+    public List<MergeInstructionModel> FindMatches(
         in ShapeModel sourceShape,
         int sourceShapeId,
         int searchMin,
@@ -419,166 +297,18 @@ public class WordIndexModelV2
         in List<ShapeModel> searchShapes)
     {
         // Find potential matches by using the index against all words in shape
-        var matches = findMatchUsingIndex(sourceShape: sourceShape, searchMin: searchMin, searchMax: searchMax);
+        var matches = FindMatchUsingIndex(sourceShape: sourceShape, searchMin: searchMin, searchMax: searchMax);
 
         if (matches.Count == 0)
         {
             return new List<MergeInstructionModel>();
         }
 
-        return checkMatches(matches: matches, sourceShape: sourceShape, sourceShapeId: sourceShapeId, searchShapes: searchShapes);
-    }
-
-    /// Is there a placement in the searchShape that has the same word as what we are looking for
-    /// if so then what is the word position within the shape
-    private static int MatchingPlacementPosition(
-        in ShapeModel searchShape,
-        int wordId)
-    {
-
-        for (int placementId = 0; placementId < searchShape.placements.Count; placementId++)
-        {
-            if (searchShape.placements[placementId].w == wordId)
-            {
-                return placementId;
-            }
-        }
-        return -1;
+        return CheckMatches(matches: matches, sourceShape: sourceShape, sourceShapeId: sourceShapeId, searchShapes: searchShapes);
     }
 
 
-
-
-    private static MergeInstructionModel? singleWordMatch(
-        in ShapeModel sourceShape,
-        int sourceShapeId,
-        in ShapeModel searchShape,
-        int searchShapeId)
-    {
-
-        for (int sourcePos = 0; sourcePos < sourceShape.placements.Count; sourcePos++)
-        {
-
-            /// Tells us the location of the word matching with the current word or else -1
-            var searchPos = WordIndexModelV2.MatchingPlacementPosition(searchShape: searchShape,
-                                                      wordId: (int)(sourceShape.placements[sourcePos].w));
-
-
-            if (searchPos != -1)
-            {
-                var flipped = sourceShape.placements[sourcePos].z != searchShape.placements[searchPos].z;
-
-                return new MergeInstructionModel(sourceShapeId: sourceShapeId,
-                                             searchShapeId: searchShapeId,
-                                             matchingWordCount: 1,
-                                             firstSourcePos: sourcePos,
-                                             firstSearchPos: searchPos,
-                                             flipped: flipped);
-            }
-        }
-        return null;
-    }
-
-
-    public static MatchesModel GetMatches(
-        in ShapeModel sourceShape,
-        in ShapeModel searchShape)
-    {
-
-        var firstSourcePos = -1;
-        var firstSearchPos = -1;
-        var matches = new List<int>();
-        int matchingWordCount = 0;
-        for (int sourcePos = 0; sourcePos < sourceShape.placements.Count; sourcePos++)
-        {
-
-            /// Tells us the location of the word matching with the current word or else -1
-            var searchPos = MatchingPlacementPosition(searchShape: searchShape,
-                                                      wordId: (int)(sourceShape.placements[sourcePos].w));
-            matches.Add(searchPos);
-
-            if (searchPos != -1)
-            {
-                if (firstSourcePos == -1)
-                {
-                    firstSourcePos = sourcePos;
-                    firstSearchPos = searchPos;
-                }
-                matchingWordCount += 1;
-            }
-        }
-        return new MatchesModel(matches, firstSourcePos, firstSearchPos, matchingWordCount);
-    }
-
-
-    static MergeInstructionModel? multiWordMatch(
-        in ShapeModel sourceShape,
-        int sourceShapeId,
-        in ShapeModel searchShape,
-        int searchShapeId,
-        int matchingWordCount)
-    {
-
-        // If we have the smaller and larger the wrong way around then call again but this time making smaller actually smaller
-
-        if (matchingWordCount == sourceShape.placements.Count || matchingWordCount == searchShape.placements.Count)
-        {
-            // We have found some shape to be a subset of another shape
-            return null;
-        }
-
-
-
-        var matchesModel = WordIndexModelV2.GetMatches(sourceShape: sourceShape, searchShape: searchShape);
-
-
-        var firstIsFlipped = (sourceShape.placements[matchesModel.firstSourcePos].z != searchShape.placements[matchesModel.firstSearchPos].z);
-
-
-        var sameDirectionIsOk = isSameDirection(
-            firstSourcePos: matchesModel.firstSourcePos,
-            firstSearchPos: matchesModel.firstSearchPos,
-            matches: matchesModel.matches,
-            firstIsFlipped: firstIsFlipped,
-            sourceShape: sourceShape,
-            searchShape: searchShape);
-
-
-        if (sameDirectionIsOk == false)
-        {
-            return null;
-        }
-
-
-        var isMatchingDistance = isSameDistance(firstSourcePos: matchesModel.firstSourcePos,
-                                                  firstSearchPos: matchesModel.firstSearchPos,
-                                                  matches: matchesModel.matches,
-                                                  isFlipped: firstIsFlipped,
-                                                  sourceShape: sourceShape,
-                                                  searchShape: searchShape);
-
-
-
-        if (isMatchingDistance == false)
-        {
-            return null;
-        }
-        else
-        {
-
-            return new MergeInstructionModel(sourceShapeId: sourceShapeId,
-                                         searchShapeId: searchShapeId,
-                                         matchingWordCount: (matchingWordCount),
-                                         firstSourcePos: matchesModel.firstSourcePos,
-                                         firstSearchPos: matchesModel.firstSearchPos,
-                                         flipped: firstIsFlipped);
-        }
-    }
-
-
-
-
-    List<int> findMatchUsingIndex(
+    List<int> FindMatchUsingIndex(
         in List<int> words,
         in List<int> shapesToExclude)
     {
@@ -586,7 +316,7 @@ public class WordIndexModelV2
         var matches = new List<int>();
         foreach (var w in words)
         {
-            matches.AddRange(this.index[w]);
+            matches.AddRange(this.Index[w]);
         }
 
         // This will remove those that we do not want
@@ -598,7 +328,7 @@ public class WordIndexModelV2
 
 
     // Finds all matches in the source shape and search shape and includes word count.  Maybe we dont need the word count?
-    List<PotentialMatchModel> findMatches(
+    List<PotentialMatchModel> FindMatches(
         in List<ShapeModel> sourceShapes,
         int sourceShapeId,
         int searchMin,
@@ -612,7 +342,7 @@ public class WordIndexModelV2
         for (int shapeId = 0; shapeId < sourceShapes.Count; shapeId++)
         {
             // Find potential matches by using the index against all words in shape
-            var matches = findMatchUsingIndex(sourceShape: sourceShapes[shapeId], searchMin: searchMin, searchMax: searchMax);
+            var matches = FindMatchUsingIndex(sourceShape: sourceShapes[shapeId], searchMin: searchMin, searchMax: searchMax);
 
 
             int searchShapeId = matches[0];

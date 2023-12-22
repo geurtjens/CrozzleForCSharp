@@ -443,7 +443,7 @@ in List<ShapeModel> sourceShapes,
         //            sourceWordIndex: wordIndex,
         //            searchMax: searchMax)
 
-        var instructions = wordIndex.findMatches(sourceShape: sourceShape,
+        var instructions = wordIndex.FindMatches(sourceShape: sourceShape,
                                                     sourceShapeId: sourceShapeId,
                                                     searchMin: sourceShapeId + 1,
                                                     searchMax: searchMax,
@@ -490,7 +490,7 @@ in List<ShapeModel> sourceShapes,
         //            indexSize += item.count
         //        }
         //        Console.WriteLine("index size {indexSize)")
-        var instructions = searchWordIndex.findMatches(sourceShape: sourceShape,
+        var instructions = searchWordIndex.FindMatches(sourceShape: sourceShape,
                                                         sourceShapeId: sourceShapeId,
                                                         searchMin: 0,
                                                         searchMax: searchMax,
@@ -527,16 +527,16 @@ in List<ShapeModel> sourceShapes,
         foreach (var instruction in instructions)
         {
 
-            var searchShape = searchShapes[instruction.searchShapeId];
+            var searchShape = searchShapes[instruction.SearchShapeId];
 
 
 
             // We have matches of 2 but instruction says its a match of 1
-            var (isValidSize, calcWidth, calcHeight, flipped) = MergeSizeValidation.execute(
+            var (isValidSize, calcWidth, calcHeight, flipped) = MergeSizeValidation.Execute(
                 sourceShape: sourceShape,
-                sourcePos: instruction.firstSourcePos,
+                sourcePos: instruction.FirstSourcePos,
                 searchShape: searchShape,
-                searchPos: instruction.firstSearchPos,
+                searchPos: instruction.FirstSearchPos,
                 widthMax: widthMax,
                 heightMax: heightMax);
 
@@ -546,8 +546,8 @@ in List<ShapeModel> sourceShapes,
             {
 
                 var potentialPlacements = MergePlacementsCalculator.Execute(
-                    sourceShape.placements,
-                    searchShape.placements);
+                    sourceShape.Placements,
+                    searchShape.Placements);
 
 
 
@@ -556,8 +556,8 @@ in List<ShapeModel> sourceShapes,
                 if (potentialPlacements.Count > 0)
                 {
 
-                    var potentialWidth = PlacementList.width(potentialPlacements);
-                    var potentialHeight = PlacementList.height(potentialPlacements);
+                    var potentialWidth = PlacementList.GetWidth(potentialPlacements);
+                    var potentialHeight = PlacementList.GetHeight(potentialPlacements);
 
                     if ((calcWidth == potentialWidth && calcHeight == potentialHeight) || (calcWidth == potentialHeight && calcHeight == potentialWidth)) { }
                     else
@@ -570,7 +570,7 @@ in List<ShapeModel> sourceShapes,
 
 
                         Console.WriteLine("// sourceShape\n");
-                        if (instruction.flipped)
+                        if (instruction.Flipped)
                         {
                             Console.WriteLine($"/*\n{sourceShape.Flip().ToTextDebug(words: words)}\n*/");
                         }
@@ -581,7 +581,7 @@ in List<ShapeModel> sourceShapes,
                         Console.WriteLine("// searchShape\n");
                         Console.WriteLine($"/*\n{searchShape.ToTextDebug(words: words)})\n*/");
                         Console.WriteLine("// result\n");
-                        Console.WriteLine($"/*\n{new ShapeModel(0, (byte)PlacementList.width(potentialPlacements), (byte)PlacementList.height(potentialPlacements), potentialPlacements).ToTextDebug(words: words)}\n*/");
+                        Console.WriteLine($"/*\n{new ShapeModel(0, (byte)PlacementList.GetWidth(potentialPlacements), (byte)PlacementList.GetHeight(potentialPlacements), potentialPlacements).ToTextDebug(words: words)}\n*/");
                         Console.WriteLine($"potentialWH::({potentialWidth},{potentialHeight}), calcWH:({calcWidth}, {calcHeight})");
 
 
@@ -601,11 +601,11 @@ in List<ShapeModel> sourceShapes,
                             var validShape = (ShapeModel)isValidShape;
 
                             // I wonder if (the shape width and height are the same
-                            if (potentialWidth == validShape.width && potentialHeight == validShape.height)
+                            if (potentialWidth == validShape.Width && potentialHeight == validShape.Height)
                             {
                                 //Console.WriteLine("same")
                             }
-                            else if (potentialWidth == validShape.height && potentialHeight == validShape.width)
+                            else if (potentialWidth == validShape.Height && potentialHeight == validShape.Width)
                             {
                                 //Console.WriteLine("opposite")
                             }
@@ -616,12 +616,12 @@ in List<ShapeModel> sourceShapes,
 
 
                             // is shape is not nil so it must be a valid shape
-                            var wordCount = validShape.placements.Count;
+                            var wordCount = validShape.Placements.Count;
                             var scoreMin = scoresMin[wordCount];
-                            if (validShape.score >= scoreMin)
+                            if (validShape.Score >= scoreMin)
                             {
 
-                                validShape.history = ShapeModel.createMergeHistory(sourceShapeHistory: sourceShape.history, searchShapeHistory: searchShape.history);
+                                validShape.History = ShapeModel.CreateMergeHistory(sourceShapeHistory: sourceShape.History, searchShapeHistory: searchShape.History);
                                 shapes.Add(validShape);
                             }
                         }
@@ -637,7 +637,7 @@ in List<ShapeModel> sourceShapes,
     }
 
 
-    public static ShapeModel? mergeTwoShapes(
+    public static ShapeModel? MergeTwoShapes(
         in ShapeModel sourceShape,
         in ShapeModel searchShape,
         in List<string> words,
@@ -645,9 +645,9 @@ in List<ShapeModel> sourceShapes,
         int heightMax,
         in List<int> scoresMin)
     {
-        var matchesModel = WordIndexModelV2.GetMatches(sourceShape: sourceShape, searchShape: searchShape);
+        var matchesModel = MatchCalculator.GetMatches(sourceShape: sourceShape, searchShape: searchShape);
 
-        var instruction1 = WordIndexModelV2.processMatches(matchCount: matchesModel.matchingWordCount, sourceShape: sourceShape, sourceShapeId: 0, searchShape: searchShape, searchShapeId: 0);
+        var instruction1 = MatchCalculator.ProcessMatches(matchCount: matchesModel.MatchingWordCount, sourceShape: sourceShape, sourceShapeId: 0, searchShape: searchShape, searchShapeId: 0);
         if (instruction1 is null)
         {
             return null;
@@ -655,11 +655,11 @@ in List<ShapeModel> sourceShapes,
         var instruction = (MergeInstructionModel)instruction1;
 
             
-        var (isValidSize, calcWidth, calcHeight, flipped) = MergeSizeValidation.execute(
+        var (isValidSize, calcWidth, calcHeight, flipped) = MergeSizeValidation.Execute(
             sourceShape: sourceShape,
-            sourcePos: instruction.firstSourcePos,
+            sourcePos: instruction.FirstSourcePos,
             searchShape: searchShape,
-            searchPos: instruction.firstSearchPos,
+            searchPos: instruction.FirstSearchPos,
             widthMax: widthMax,
             heightMax: heightMax);
 
@@ -668,15 +668,15 @@ in List<ShapeModel> sourceShapes,
         {
 
             var potentialPlacements = MergePlacementsCalculator.Execute(
-                sourceShape.placements,
-                searchShape.placements);
+                sourceShape.Placements,
+                searchShape.Placements);
 
 
             if (potentialPlacements.Count > 0)
             {
 
-                var potentialWidth = PlacementList.width(potentialPlacements);
-                var potentialHeight = PlacementList.height(potentialPlacements);
+                var potentialWidth = PlacementList.GetWidth(potentialPlacements);
+                var potentialHeight = PlacementList.GetHeight(potentialPlacements);
 
                 if ((calcWidth == potentialWidth && calcHeight == potentialHeight) || (calcWidth == potentialHeight && calcHeight == potentialWidth)) { }
                 else
@@ -689,7 +689,7 @@ in List<ShapeModel> sourceShapes,
 
 
                     Console.WriteLine("// sourceShape\n");
-                    if (instruction.flipped)
+                    if (instruction.Flipped)
                     {
                         Console.WriteLine($"/*\n{sourceShape.Flip().ToTextDebug(words: words)}\n*/");
                     }
@@ -700,7 +700,7 @@ in List<ShapeModel> sourceShapes,
                     Console.WriteLine("// searchShape\n");
                     Console.WriteLine($"/*\n{searchShape.ToTextDebug(words: words)}\n*/");
                     Console.WriteLine("// result\n");
-                    Console.WriteLine($"/*\n{new ShapeModel(0, (byte)PlacementList.width(potentialPlacements), (byte)PlacementList.height(potentialPlacements), potentialPlacements).ToTextDebug(words: words)}\n*/");
+                    Console.WriteLine($"/*\n{new ShapeModel(0, (byte)PlacementList.GetWidth(potentialPlacements), (byte)PlacementList.GetHeight(potentialPlacements), potentialPlacements).ToTextDebug(words: words)}\n*/");
                     Console.WriteLine($"potentialWH::({potentialWidth},{potentialHeight}), calcWH:({calcWidth}, {calcHeight})");
 
 
@@ -720,11 +720,11 @@ in List<ShapeModel> sourceShapes,
                         ShapeModel shape = (ShapeModel)validShape;
 
                         // I wonder if the shape width and height are the same
-                        if (potentialWidth == shape.width && potentialHeight == shape.height)
+                        if (potentialWidth == shape.Width && potentialHeight == shape.Height)
                         {
                             //Console.WriteLine("same")
                         }
-                        else if (potentialWidth == shape.height && potentialHeight == shape.width)
+                        else if (potentialWidth == shape.Height && potentialHeight == shape.Width)
                         {
                             //Console.WriteLine("opposite")
                         }
@@ -735,11 +735,11 @@ in List<ShapeModel> sourceShapes,
 
 
                         // is shape is not nil so it must be a valid shape
-                        var scoreMin = scoresMin[shape.placements.Count];
-                        if (shape.score >= scoreMin)
+                        var scoreMin = scoresMin[shape.Placements.Count];
+                        if (shape.Score >= scoreMin)
                         {
 
-                            shape.history = ShapeModel.createMergeHistory(sourceShapeHistory: sourceShape.history, searchShapeHistory: searchShape.history);
+                            shape.History = ShapeModel.CreateMergeHistory(sourceShapeHistory: sourceShape.History, searchShapeHistory: searchShape.History);
                             return shape;
                         }
                     }

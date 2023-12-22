@@ -1,24 +1,21 @@
-﻿using System;
-using CrozzleInterfaces;
-
-namespace CrozzleInterfaces;
+﻿namespace CrozzleInterfaces;
 
 public record struct ShapeModel
 {
-	public readonly byte width;
-	public readonly byte height;
-	public readonly ushort score;
-	public readonly List<PlacementModel> placements;
-    public readonly string wordSequence;
+	public readonly byte Width;
+	public readonly byte Height;
+	public readonly ushort Score;
+	public readonly List<PlacementModel> Placements;
+    public readonly string WordSequence;
 
-    public List<int> history;
-    public bool isValid;
+    public List<int> History;
+    public bool IsValid;
 
 		public ShapeModel(ushort score, byte width, byte height, in List<PlacementModel> placements)
 		{
-        this.isValid = true;
-        this.score = score;
-        this.history = new List<int>();
+        this.IsValid = true;
+        this.Score = score;
+        this.History = new List<int>();
 
 
         var sortedPlacements = PlacementList.SortByWord(placements);
@@ -28,25 +25,25 @@ public record struct ShapeModel
             // We are flipping the shape as it makes GetWordSequence for all shapes same orientation
             var flippedPlacements = PlacementList.Flip(sortedPlacements);
 
-            this.width = height;
-            this.height = width;
-            this.placements = flippedPlacements;
-            this.wordSequence = PlacementList.GetWordSequence(flippedPlacements);
+            this.Width = height;
+            this.Height = width;
+            this.Placements = flippedPlacements;
+            this.WordSequence = PlacementList.GetWordSequence(flippedPlacements);
         }
         else {
-            this.width = width;
-            this.height = height;
-            this.placements = sortedPlacements;
-            this.wordSequence = PlacementList.GetWordSequence(sortedPlacements);
+            this.Width = width;
+            this.Height = height;
+            this.Placements = sortedPlacements;
+            this.WordSequence = PlacementList.GetWordSequence(sortedPlacements);
         }            
 		}
 
     public void SetToInvalid()
     {
-        isValid = false;
+        IsValid = false;
     }
 
-    public static List<int> createMergeHistory(
+    public static List<int> CreateMergeHistory(
         in List<int> sourceShapeHistory,
         in List<int> searchShapeHistory)
     {
@@ -82,9 +79,9 @@ public record struct ShapeModel
     {
         var code = "";
 
-        code += PlacementsToCSharp(placements: placements) + "\n";
+        code += PlacementsToCSharp(placements: Placements) + "\n";
 
-        code += $"var shape = new ShapeModel(score: {score}, width: {width}, height: {height}, placements: placements);";
+        code += $"var shape = new ShapeModel(score: {Score}, width: {Width}, height: {Height}, placements: placements);";
 
         return code;
     }
@@ -104,11 +101,11 @@ public record struct ShapeModel
     public static String PlacementToCSharp(PlacementModel placement)
     {
         var horizontal = "true";
-        if (placement.z == false)
+        if (placement.Z == false)
         {
             horizontal = "false";
         }
-        return $"new PlacementModel(w: {placement.w}, x: {placement.x}, y: {placement.y}, z: {horizontal}, l:{placement.l})";
+        return $"new PlacementModel(w: {placement.W}, x: {placement.X}, y: {placement.Y}, z: {horizontal}, l:{placement.L})";
     }
 
 
@@ -116,9 +113,9 @@ public record struct ShapeModel
     {
         var code = "";
 
-        code += PlacementsToSwift(placements: placements) + "\n";
+        code += PlacementsToSwift(placements: Placements) + "\n";
 
-        code += $"let shape = ShapeModel(score: {score}, width: {width}, height: {height}, placements: placements)";
+        code += $"let shape = ShapeModel(score: {Score}, width: {Width}, height: {Height}, placements: placements)";
 
         return code;
     }
@@ -141,11 +138,11 @@ public record struct ShapeModel
     public static String PlacementToSwift(PlacementModel placement)
     {
         var horizontal = "true";
-        if (placement.z == false)
+        if (placement.Z == false)
         {
             horizontal = "false";
         }
-        return $"PlacementModel(w: {placement.w}, x: {placement.x}, y: {placement.y}, z: {horizontal}, l:{placement.l})";
+        return $"PlacementModel(w: {placement.W}, x: {placement.X}, y: {placement.Y}, z: {horizontal}, l:{placement.L})";
     }
 
     /// rotate a shape and return a rotated shape which means width becomes height and all placements are rearranged
@@ -153,23 +150,39 @@ public record struct ShapeModel
     {
         var placements = new List<PlacementModel>();
 
-        foreach (var p in this.placements)
+        foreach (var p in this.Placements)
         {
-            placements.Add(new PlacementModel(w: p.w, x: p.y, y: p.x, z: !p.z, l: p.l));
+            placements.Add(new PlacementModel(w: p.W, x: p.Y, y: p.X, z: !p.Z, l: p.L));
         }
 
-        var result = new ShapeModel(score: this.score, width: this.height, height: this.width, placements: placements);
+        var result = new ShapeModel(score: this.Score, width: this.Height, height: this.Width, placements: placements);
         return result;
     }
 
-    
+    public String ToTextArray(in List<string> words)
+    {
+        var lines = ToTextDebug(words).Split("\n");
+        string result = "";
+        foreach(var line in lines)
+        {
+            if (result != "")
+            {
+                result += ",\n";
+            }
+            result += "\"" + line + "\"";
+        }
+        
+        return "[\n" + result + "\n]";
+    }
+
+
 
     public String ToTextDebug(in List<string> words)
     {
         int score = 0;
 
-        int widthEOL = (int)this.width + 1;
-        int height = (int)this.height;
+        int widthEOL = (int)this.Width + 1;
+        int height = (int)this.Height;
 
         int gridSize = widthEOL * height;
 
@@ -187,11 +200,11 @@ public record struct ShapeModel
             grid[i * widthEOL] = '\n';
         }
 
-        foreach (var placement in this.placements)
+        foreach (var placement in this.Placements)
         {
 
             // the word must include the blocking characters at either end of the shape
-            var word = "." + words[(int)placement.w] + ".";
+            var word = "." + words[(int)placement.W] + ".";
 
             int gridPos = 0;
 
@@ -199,13 +212,13 @@ public record struct ShapeModel
             {
                 char letter = word[i];
 
-                if (placement.z)
+                if (placement.Z)
                 {
-                    gridPos = (int)placement.x + i + (int)placement.y * widthEOL + 1;
+                    gridPos = (int)placement.X + i + (int)placement.Y * widthEOL + 1;
                 }
                 else
                 {
-                    gridPos = (int)placement.x + 1 + (int)(placement.y + i) * widthEOL;
+                    gridPos = (int)placement.X + 1 + (int)(placement.Y + i) * widthEOL;
                 }
 
                 if (grid[gridPos] != ' ' && grid[gridPos] != letter)
@@ -235,7 +248,7 @@ public record struct ShapeModel
         }
         else
         {
-            score += this.placements.Count * 10;
+            score += this.Placements.Count * 10;
         }
 
         return result;
@@ -243,12 +256,12 @@ public record struct ShapeModel
 
     public List<int> GetWordIds()
     {
-        return PlacementList.GetWords(this.placements);
+        return PlacementList.GetWords(this.Placements);
     }
 
     public HashSet<int> GetHashSetWordIds()
     {
-        return new HashSet<int>(PlacementList.GetWords(this.placements));
+        return new HashSet<int>(PlacementList.GetWords(this.Placements));
     }
 }
 

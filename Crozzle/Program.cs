@@ -1,6 +1,10 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using CrozzleInterfaces;
 using CrozzleShapeMaker;
+using CrozzleBranchAndBound;
+
+BranchAndBoundRunner.WinningWords_UseGuidedScores();
+
 
 var watch = System.Diagnostics.Stopwatch.StartNew();
 
@@ -26,22 +30,22 @@ foreach (var gameId in games)
     var widthSum = 0;
     var heightSum = 0;
 
-    var winningWordShapes = WinningShapesCalculator.execute(game.gameId, game.winningWords);
+    var winningWordShapes = WinningShapesCalculator.execute(game.GameId, game.WinningWords);
     foreach(var item in winningWordShapes){
-        scoreSum += item.score;
-        widthSum += item.width;
-        heightSum += item.height;
+        scoreSum += item.Score;
+        widthSum += item.Width;
+        heightSum += item.Height;
     }
 
     totalScoreSum += scoreSum;
     totalWidthSum += widthSum;
     totalHeightSum += heightSum;
 
-    var wordShapes = WinningShapesCalculator.execute(game.gameId, game.words);
+    var wordShapes = WinningShapesCalculator.execute(game.GameId, game.Words);
 
     var growth = (int)((float)wordShapes.Count / (float)winningWordShapes.Count * 100) / 100;
 
-    Console.WriteLine($"{game.gameId}, {winningWordShapes.Count}, {wordShapes.Count}, {growth}X, {scoreSum}, {widthSum}, {heightSum}");
+    Console.WriteLine($"{game.GameId}, {winningWordShapes.Count}, {wordShapes.Count}, {growth}X, {scoreSum}, {widthSum}, {heightSum}");
 
     winningWordShapesCount += winningWordShapes.Count;
     wordShapesCount += wordShapes.Count;
@@ -74,18 +78,13 @@ totalShapes += PacmanCalculator.ExecuteAllSerial(gameList, 0, true);
 totalShapes += OuterCalculator.ExecuteAllSerial(gameList, 0, true);
 
 
-
-
-
-
-
 Console.WriteLine("WinningWords");
 foreach(var game in gameList)
 {
-    var winningWordShapes = WinningShapesCalculator.execute(game.gameId, game.winningWords);
-    var wordShapes = WinningShapesCalculator.execute(game.gameId, game.words);
+    var winningWordShapes = WinningShapesCalculator.execute(game.GameId, game.WinningWords);
+    var wordShapes = WinningShapesCalculator.execute(game.GameId, game.Words);
 
-    Console.WriteLine($"{game.gameId}, {winningWordShapes.Count}, {wordShapes.Count}");
+    Console.WriteLine($"{game.GameId}, {winningWordShapes.Count}, {wordShapes.Count}");
 
 }
 

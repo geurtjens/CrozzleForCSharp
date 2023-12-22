@@ -4,7 +4,7 @@ namespace CrozzleBranchAndBound
 {
     public class BranchAndBoundSolutions
     {
-        public static List<int> executeGamesWinningWords(
+        public static List<int> ExecuteGamesWinningWords(
             List<int> gameIds,
             int lookaheadDepth,
             int beamWidth,
@@ -16,7 +16,7 @@ namespace CrozzleBranchAndBound
         }
 
 
-        public static List<int> executeGamesAllWords(
+        public static List<int> ExecuteGamesAllWords(
             List<int> gameIds,
             int lookaheadDepth,
             int beamWidth,
@@ -29,7 +29,7 @@ namespace CrozzleBranchAndBound
 
 
         // It cannot translate this so i will do it myself
-        public void allShapesThatCanBeSolvedWithoutGuides()
+        public void AllShapesThatCanBeSolvedWithoutGuides()
         {
 
             List<int> depth1_width1 = new List<int> { 8802, 8808, 9104, 9212, 9306, 9406 };
@@ -105,59 +105,59 @@ namespace CrozzleBranchAndBound
 
             var solved = new List<int>();
 
-            solved.AddRange(executeGamesWinningWords(gameIds: depth1_width1, lookaheadDepth: 1, beamWidth: 1, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth2_width1, lookaheadDepth: 2, beamWidth: 1, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth3_width1, lookaheadDepth: 3, beamWidth: 1, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth1_width2, lookaheadDepth: 1, beamWidth: 2, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth2_width2, lookaheadDepth: 2, beamWidth: 2, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth3_width2, lookaheadDepth: 3, beamWidth: 2, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth1_width3, lookaheadDepth: 1, beamWidth: 3, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth2_width3, lookaheadDepth: 2, beamWidth: 3, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth3_width3, lookaheadDepth: 3, beamWidth: 3, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth2_width4, lookaheadDepth: 2, beamWidth: 4, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth3_width4, lookaheadDepth: 3, beamWidth: 4, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth1_width5, lookaheadDepth: 1, beamWidth: 5, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth2_width5, lookaheadDepth: 2, beamWidth: 5, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth3_width5, lookaheadDepth: 3, beamWidth: 5, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth2_width6, lookaheadDepth: 2, beamWidth: 6, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth3_width6, lookaheadDepth: 3, beamWidth: 6, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth2_width7, lookaheadDepth: 2, beamWidth: 7, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth3_width7, lookaheadDepth: 3, beamWidth: 7, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth1_width8, lookaheadDepth: 1, beamWidth: 8, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth2_width8, lookaheadDepth: 2, beamWidth: 8, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth3_width9, lookaheadDepth: 3, beamWidth: 9, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth2_width10, lookaheadDepth: 2, beamWidth: 10, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth3_width10, lookaheadDepth: 3, beamWidth: 10, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth3_width11, lookaheadDepth: 3, beamWidth: 11, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth2_width13, lookaheadDepth: 2, beamWidth: 13, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth1_width1, lookaheadDepth: 1, beamWidth: 1, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth2_width1, lookaheadDepth: 2, beamWidth: 1, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth3_width1, lookaheadDepth: 3, beamWidth: 1, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth1_width2, lookaheadDepth: 1, beamWidth: 2, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth2_width2, lookaheadDepth: 2, beamWidth: 2, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth3_width2, lookaheadDepth: 3, beamWidth: 2, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth1_width3, lookaheadDepth: 1, beamWidth: 3, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth2_width3, lookaheadDepth: 2, beamWidth: 3, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth3_width3, lookaheadDepth: 3, beamWidth: 3, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth2_width4, lookaheadDepth: 2, beamWidth: 4, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth3_width4, lookaheadDepth: 3, beamWidth: 4, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth1_width5, lookaheadDepth: 1, beamWidth: 5, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth2_width5, lookaheadDepth: 2, beamWidth: 5, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth3_width5, lookaheadDepth: 3, beamWidth: 5, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth2_width6, lookaheadDepth: 2, beamWidth: 6, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth3_width6, lookaheadDepth: 3, beamWidth: 6, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth2_width7, lookaheadDepth: 2, beamWidth: 7, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth3_width7, lookaheadDepth: 3, beamWidth: 7, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth1_width8, lookaheadDepth: 1, beamWidth: 8, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth2_width8, lookaheadDepth: 2, beamWidth: 8, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth3_width9, lookaheadDepth: 3, beamWidth: 9, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth2_width10, lookaheadDepth: 2, beamWidth: 10, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth3_width10, lookaheadDepth: 3, beamWidth: 10, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth3_width11, lookaheadDepth: 3, beamWidth: 11, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth2_width13, lookaheadDepth: 2, beamWidth: 13, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
             // changed this one with 9010 and 2909
-            solved.AddRange(executeGamesWinningWords(gameIds: depth3_width153, lookaheadDepth: 3, beamWidth: 153, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth1_width17, lookaheadDepth: 1, beamWidth: 17, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth3_width18, lookaheadDepth: 3, beamWidth: 18, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth3_width19, lookaheadDepth: 3, beamWidth: 19, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth3_width21, lookaheadDepth: 3, beamWidth: 21, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth3_width22, lookaheadDepth: 3, beamWidth: 22, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth1_width27, lookaheadDepth: 1, beamWidth: 27, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth2_width36, lookaheadDepth: 2, beamWidth: 36, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth3_width36, lookaheadDepth: 3, beamWidth: 36, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth2_width37, lookaheadDepth: 2, beamWidth: 37, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth3_width153, lookaheadDepth: 3, beamWidth: 153, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth1_width17, lookaheadDepth: 1, beamWidth: 17, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth3_width18, lookaheadDepth: 3, beamWidth: 18, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth3_width19, lookaheadDepth: 3, beamWidth: 19, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth3_width21, lookaheadDepth: 3, beamWidth: 21, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth3_width22, lookaheadDepth: 3, beamWidth: 22, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth1_width27, lookaheadDepth: 1, beamWidth: 27, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth2_width36, lookaheadDepth: 2, beamWidth: 36, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth3_width36, lookaheadDepth: 3, beamWidth: 36, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth2_width37, lookaheadDepth: 2, beamWidth: 37, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
 
 
-            solved.AddRange(executeGamesWinningWords(gameIds: depth3_width66, lookaheadDepth: 3, beamWidth: 66, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth3_width107, lookaheadDepth: 3, beamWidth: 107, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth3_width124, lookaheadDepth: 3, beamWidth: 124, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth3_width98, lookaheadDepth: 3, beamWidth: 98, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth3_width193, lookaheadDepth: 3, beamWidth: 193, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth4_width7, lookaheadDepth: 4, beamWidth: 7, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth4_width8, lookaheadDepth: 4, beamWidth: 8, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth4_width23, lookaheadDepth: 4, beamWidth: 23, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth4_width35, lookaheadDepth: 4, beamWidth: 35, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth4_width68, lookaheadDepth: 4, beamWidth: 68, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth4_width140, lookaheadDepth: 4, beamWidth: 140, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth3_width66, lookaheadDepth: 3, beamWidth: 66, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth3_width107, lookaheadDepth: 3, beamWidth: 107, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth3_width124, lookaheadDepth: 3, beamWidth: 124, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth3_width98, lookaheadDepth: 3, beamWidth: 98, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth3_width193, lookaheadDepth: 3, beamWidth: 193, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth4_width7, lookaheadDepth: 4, beamWidth: 7, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth4_width8, lookaheadDepth: 4, beamWidth: 8, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth4_width23, lookaheadDepth: 4, beamWidth: 23, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth4_width35, lookaheadDepth: 4, beamWidth: 35, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth4_width68, lookaheadDepth: 4, beamWidth: 68, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth4_width140, lookaheadDepth: 4, beamWidth: 140, maxDepth: 30, rootWidth: 1, useGuidedScores: false));
 
 
 
-            solved.AddRange(executeGamesWinningWords(
+            solved.AddRange(ExecuteGamesWinningWords(
                 gameIds: new List<int> { 8803 },
                 lookaheadDepth: 3,
                 beamWidth: 28,
@@ -166,7 +166,7 @@ namespace CrozzleBranchAndBound
                 useGuidedScores: false));
 
             // Start from winningWords[2]
-            solved.AddRange(executeGamesWinningWords(
+            solved.AddRange(ExecuteGamesWinningWords(
                 gameIds: new List<int> { 8804 },
                 lookaheadDepth: 3,
                 beamWidth: 4,
@@ -175,7 +175,7 @@ namespace CrozzleBranchAndBound
                 useGuidedScores: false)); ;
 
             // Start from winningWords[8]
-            solved.AddRange(executeGamesWinningWords(
+            solved.AddRange(ExecuteGamesWinningWords(
                 gameIds: new List<int> { 8806 },
                 lookaheadDepth: 3,
                 beamWidth: 77,
@@ -184,7 +184,7 @@ namespace CrozzleBranchAndBound
                 useGuidedScores: false)); ;
 
             // Start from winningWords[5]
-            solved.AddRange(executeGamesWinningWords(
+            solved.AddRange(ExecuteGamesWinningWords(
                 gameIds: new List<int> { 9305 },
                 lookaheadDepth: 3,
                 beamWidth: 40,
@@ -193,7 +193,7 @@ namespace CrozzleBranchAndBound
                 useGuidedScores: false));
 
             // Start from winningWords[3]
-            solved.AddRange(executeGamesWinningWords(
+            solved.AddRange(ExecuteGamesWinningWords(
                 gameIds: new List<int> { 9504 },
                 lookaheadDepth: 3,
                 beamWidth: 87,
@@ -202,7 +202,7 @@ namespace CrozzleBranchAndBound
                 useGuidedScores: false));
 
             // Start from winningWords[6]
-            solved.AddRange(executeGamesWinningWords(
+            solved.AddRange(ExecuteGamesWinningWords(
                 gameIds: new List<int> { 9505 },
                 lookaheadDepth: 3,
                 beamWidth: 51,
@@ -211,7 +211,7 @@ namespace CrozzleBranchAndBound
                 useGuidedScores: false));
 
             // Start from winningWords[6]
-            solved.AddRange(executeGamesWinningWords(
+            solved.AddRange(ExecuteGamesWinningWords(
                 gameIds: new List<int> { 9507 },
                 lookaheadDepth: 3,
                 beamWidth: 87,
@@ -220,7 +220,7 @@ namespace CrozzleBranchAndBound
                 useGuidedScores: false));
 
             // Start from winningWords[1]
-            solved.AddRange(executeGamesWinningWords(
+            solved.AddRange(ExecuteGamesWinningWords(
                 gameIds: new List<int> { 9602 },
                 lookaheadDepth: 3,
                 beamWidth: 22,
@@ -269,7 +269,7 @@ namespace CrozzleBranchAndBound
 
 
 
-        public static void allShapesThatCanBeSolved()
+        public static void AllShapesThatCanBeSolved()
         {
 
             List<int> depth1_width1 = new List<int> { 8802, 8808, 9104, 9212, 9306, 9406 };
@@ -327,57 +327,57 @@ namespace CrozzleBranchAndBound
 
             List<int> solved = new List<int>();
 
-            solved.AddRange(executeGamesWinningWords(gameIds: depth1_width1, lookaheadDepth: 1, beamWidth: 1, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth2_width1, lookaheadDepth: 2, beamWidth: 1, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth3_width1, lookaheadDepth: 3, beamWidth: 1, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth1_width2, lookaheadDepth: 1, beamWidth: 2, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth2_width2, lookaheadDepth: 2, beamWidth: 2, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth3_width2, lookaheadDepth: 3, beamWidth: 2, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth1_width3, lookaheadDepth: 1, beamWidth: 3, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth2_width3, lookaheadDepth: 2, beamWidth: 3, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth3_width3, lookaheadDepth: 3, beamWidth: 3, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth2_width4, lookaheadDepth: 2, beamWidth: 4, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth3_width4, lookaheadDepth: 3, beamWidth: 4, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth1_width5, lookaheadDepth: 1, beamWidth: 5, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth2_width5, lookaheadDepth: 2, beamWidth: 5, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth3_width5, lookaheadDepth: 3, beamWidth: 5, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth2_width6, lookaheadDepth: 2, beamWidth: 6, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth3_width6, lookaheadDepth: 3, beamWidth: 6, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth2_width7, lookaheadDepth: 2, beamWidth: 7, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth3_width7, lookaheadDepth: 3, beamWidth: 7, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth1_width8, lookaheadDepth: 1, beamWidth: 8, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth2_width8, lookaheadDepth: 2, beamWidth: 8, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth3_width9, lookaheadDepth: 3, beamWidth: 9, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth2_width10, lookaheadDepth: 2, beamWidth: 10, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth3_width10, lookaheadDepth: 3, beamWidth: 10, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth3_width11, lookaheadDepth: 3, beamWidth: 11, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth2_width13, lookaheadDepth: 2, beamWidth: 13, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth3_width14, lookaheadDepth: 3, beamWidth: 14, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth3_width16, lookaheadDepth: 3, beamWidth: 16, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth1_width17, lookaheadDepth: 1, beamWidth: 17, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth3_width18, lookaheadDepth: 3, beamWidth: 18, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth3_width19, lookaheadDepth: 3, beamWidth: 19, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth3_width21, lookaheadDepth: 3, beamWidth: 21, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth3_width22, lookaheadDepth: 3, beamWidth: 22, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth1_width27, lookaheadDepth: 1, beamWidth: 27, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth2_width36, lookaheadDepth: 2, beamWidth: 36, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth3_width36, lookaheadDepth: 3, beamWidth: 36, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth2_width37, lookaheadDepth: 2, beamWidth: 37, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth3_width49, lookaheadDepth: 3, beamWidth: 49, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth3_width66, lookaheadDepth: 3, beamWidth: 66, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth3_width74, lookaheadDepth: 3, beamWidth: 74, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth3_width98, lookaheadDepth: 3, beamWidth: 98, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth3_width193, lookaheadDepth: 3, beamWidth: 193, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth4_width7, lookaheadDepth: 4, beamWidth: 7, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth4_width8, lookaheadDepth: 4, beamWidth: 8, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth4_width23, lookaheadDepth: 4, beamWidth: 23, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth4_width35, lookaheadDepth: 4, beamWidth: 35, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth4_width68, lookaheadDepth: 4, beamWidth: 68, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
-            solved.AddRange(executeGamesWinningWords(gameIds: depth4_width82, lookaheadDepth: 4, beamWidth: 82, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth1_width1, lookaheadDepth: 1, beamWidth: 1, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth2_width1, lookaheadDepth: 2, beamWidth: 1, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth3_width1, lookaheadDepth: 3, beamWidth: 1, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth1_width2, lookaheadDepth: 1, beamWidth: 2, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth2_width2, lookaheadDepth: 2, beamWidth: 2, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth3_width2, lookaheadDepth: 3, beamWidth: 2, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth1_width3, lookaheadDepth: 1, beamWidth: 3, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth2_width3, lookaheadDepth: 2, beamWidth: 3, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth3_width3, lookaheadDepth: 3, beamWidth: 3, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth2_width4, lookaheadDepth: 2, beamWidth: 4, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth3_width4, lookaheadDepth: 3, beamWidth: 4, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth1_width5, lookaheadDepth: 1, beamWidth: 5, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth2_width5, lookaheadDepth: 2, beamWidth: 5, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth3_width5, lookaheadDepth: 3, beamWidth: 5, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth2_width6, lookaheadDepth: 2, beamWidth: 6, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth3_width6, lookaheadDepth: 3, beamWidth: 6, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth2_width7, lookaheadDepth: 2, beamWidth: 7, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth3_width7, lookaheadDepth: 3, beamWidth: 7, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth1_width8, lookaheadDepth: 1, beamWidth: 8, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth2_width8, lookaheadDepth: 2, beamWidth: 8, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth3_width9, lookaheadDepth: 3, beamWidth: 9, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth2_width10, lookaheadDepth: 2, beamWidth: 10, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth3_width10, lookaheadDepth: 3, beamWidth: 10, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth3_width11, lookaheadDepth: 3, beamWidth: 11, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth2_width13, lookaheadDepth: 2, beamWidth: 13, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth3_width14, lookaheadDepth: 3, beamWidth: 14, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth3_width16, lookaheadDepth: 3, beamWidth: 16, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth1_width17, lookaheadDepth: 1, beamWidth: 17, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth3_width18, lookaheadDepth: 3, beamWidth: 18, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth3_width19, lookaheadDepth: 3, beamWidth: 19, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth3_width21, lookaheadDepth: 3, beamWidth: 21, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth3_width22, lookaheadDepth: 3, beamWidth: 22, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth1_width27, lookaheadDepth: 1, beamWidth: 27, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth2_width36, lookaheadDepth: 2, beamWidth: 36, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth3_width36, lookaheadDepth: 3, beamWidth: 36, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth2_width37, lookaheadDepth: 2, beamWidth: 37, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth3_width49, lookaheadDepth: 3, beamWidth: 49, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth3_width66, lookaheadDepth: 3, beamWidth: 66, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth3_width74, lookaheadDepth: 3, beamWidth: 74, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth3_width98, lookaheadDepth: 3, beamWidth: 98, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth3_width193, lookaheadDepth: 3, beamWidth: 193, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth4_width7, lookaheadDepth: 4, beamWidth: 7, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth4_width8, lookaheadDepth: 4, beamWidth: 8, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth4_width23, lookaheadDepth: 4, beamWidth: 23, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth4_width35, lookaheadDepth: 4, beamWidth: 35, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth4_width68, lookaheadDepth: 4, beamWidth: 68, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
+            solved.AddRange(ExecuteGamesWinningWords(gameIds: depth4_width82, lookaheadDepth: 4, beamWidth: 82, maxDepth: 30, rootWidth: 1, useGuidedScores: true));
 
 
 
-            solved.AddRange(executeGamesWinningWords(
+            solved.AddRange(ExecuteGamesWinningWords(
                 gameIds: new List<int> { 8803 },
                 lookaheadDepth: 3,
                 beamWidth: 28,
@@ -386,7 +386,7 @@ namespace CrozzleBranchAndBound
                 useGuidedScores: false));
 
             // Start from winningWords[2 };
-            solved.AddRange(executeGamesWinningWords(
+            solved.AddRange(ExecuteGamesWinningWords(
                 gameIds: new List<int> { 8804 },
                 lookaheadDepth: 3,
                 beamWidth: 4,
@@ -395,7 +395,7 @@ namespace CrozzleBranchAndBound
                 useGuidedScores: false));
 
             // Start from winningWords[8 };
-            solved.AddRange(executeGamesWinningWords(
+            solved.AddRange(ExecuteGamesWinningWords(
                 gameIds: new List<int> { 8806 },
                 lookaheadDepth: 3,
                 beamWidth: 77,
@@ -404,7 +404,7 @@ namespace CrozzleBranchAndBound
                 useGuidedScores: false));
 
             // Start from winningWords[5 };
-            solved.AddRange(executeGamesWinningWords(
+            solved.AddRange(ExecuteGamesWinningWords(
                 gameIds: new List<int> { 9305 },
                 lookaheadDepth: 3,
                 beamWidth: 40,
@@ -413,7 +413,7 @@ namespace CrozzleBranchAndBound
                 useGuidedScores: false));
 
             // Start from winningWords[3 };
-            solved.AddRange(executeGamesWinningWords(
+            solved.AddRange(ExecuteGamesWinningWords(
                 gameIds: new List<int> { 9504 },
                 lookaheadDepth: 3,
                 beamWidth: 87,
@@ -422,7 +422,7 @@ namespace CrozzleBranchAndBound
                 useGuidedScores: false));
 
             // Start from winningWords[6 };
-            solved.AddRange(executeGamesWinningWords(
+            solved.AddRange(ExecuteGamesWinningWords(
                 gameIds: new List<int> { 9505 },
                 lookaheadDepth: 3,
                 beamWidth: 51,
@@ -431,7 +431,7 @@ namespace CrozzleBranchAndBound
                 useGuidedScores: false));
 
             // Start from winningWords[6 };
-            solved.AddRange(executeGamesWinningWords(
+            solved.AddRange(ExecuteGamesWinningWords(
                 gameIds: new List<int> { 9507 },
                 lookaheadDepth: 3,
                 beamWidth: 87,
@@ -440,7 +440,7 @@ namespace CrozzleBranchAndBound
                 useGuidedScores: false));
 
             // Start from winningWords[1 };
-            solved.AddRange(executeGamesWinningWords(
+            solved.AddRange(ExecuteGamesWinningWords(
                 gameIds: new List<int> { 9602 },
                 lookaheadDepth: 3,
                 beamWidth: 22,
@@ -505,19 +505,19 @@ namespace CrozzleBranchAndBound
 
             List<int> solved = new List<int>();
 
-            solved.AddRange(executeGamesAllWords(depth1_width1, 1, 1, 30, 1, false));
-            solved.AddRange(executeGamesAllWords(depth1_width25, 1, 25, 30, 1, false));
-            solved.AddRange(executeGamesAllWords(depth1_width43, 1, 43, 30, 1, false));
-            solved.AddRange(executeGamesAllWords(depth1_width75, 1, 75, 30, 1, false));
+            solved.AddRange(ExecuteGamesAllWords(depth1_width1, 1, 1, 30, 1, false));
+            solved.AddRange(ExecuteGamesAllWords(depth1_width25, 1, 25, 30, 1, false));
+            solved.AddRange(ExecuteGamesAllWords(depth1_width43, 1, 43, 30, 1, false));
+            solved.AddRange(ExecuteGamesAllWords(depth1_width75, 1, 75, 30, 1, false));
 
-            solved.AddRange(executeGamesAllWords(depth2_width1, 2, 1, 30, 1, false));
-            solved.AddRange(executeGamesAllWords(depth2_width50, 2, 50, 30, 1, false));
-            solved.AddRange(executeGamesAllWords(depth2_width75, 2, 75, 30, 1, false));
-            solved.AddRange(executeGamesAllWords(depth2_width87, 2, 87, 30, 1, false));
+            solved.AddRange(ExecuteGamesAllWords(depth2_width1, 2, 1, 30, 1, false));
+            solved.AddRange(ExecuteGamesAllWords(depth2_width50, 2, 50, 30, 1, false));
+            solved.AddRange(ExecuteGamesAllWords(depth2_width75, 2, 75, 30, 1, false));
+            solved.AddRange(ExecuteGamesAllWords(depth2_width87, 2, 87, 30, 1, false));
 
-            solved.AddRange(executeGamesAllWords(depth3_width1, 3, 1, 30, 1, false));
-            solved.AddRange(executeGamesAllWords(depth3_width25, 3, 25, 30, 1, false));
-            solved.AddRange(executeGamesAllWords(depth3_width37, 3, 37, 30, 1, false));
+            solved.AddRange(ExecuteGamesAllWords(depth3_width1, 3, 1, 30, 1, false));
+            solved.AddRange(ExecuteGamesAllWords(depth3_width25, 3, 25, 30, 1, false));
+            solved.AddRange(ExecuteGamesAllWords(depth3_width37, 3, 37, 30, 1, false));
 
             var gameIds = GameList.Games();
             var missing = new List<int>();

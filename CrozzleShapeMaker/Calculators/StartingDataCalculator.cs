@@ -26,9 +26,9 @@ public class StartingDataCalculator
         List<ShapeModel> searchShapes = WinningShapesCalculator.execute(gameId, words);
 
         List<ShapeModel> winningShapes = WinningGameCalculator.execute(gameId, words);
+        
 
-
-        ShapeList.setMergeHistories(winningShapes, searchShapes);
+        ShapeList.SetMergeHistories(winningShapes, searchShapes);
 
         
         //let winningShapeIds = ShapeCalculator.getLastMergeHistoryShapeId(shapes: winningShapes)

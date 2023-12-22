@@ -13,17 +13,17 @@ public class WinningShapesCalculator_Tests
         {
             GameModel game = GameList.FindGame(gameId);
 
-            List<string> words = game.winningWords;
+            List<string> words = game.WinningWords;
 
             var result = WinningShapesCalculator.execute(gameId, words);
             Console.WriteLine($"{gameId}, {result.Count}");
 
             for (int shapeId = 0; shapeId < result.Count; shapeId++)
             {
-                var text = result[shapeId].ToTextDebug(words: game.winningWords);
+                var text = result[shapeId].ToTextDebug(words: game.WinningWords);
                 if (text.Contains("#"))
                 {
-                    Console.WriteLine($"{game.gameId}");
+                    Console.WriteLine($"{game.GameId}");
                     Console.WriteLine(result[shapeId].ToCSharpCode());
 
                 }

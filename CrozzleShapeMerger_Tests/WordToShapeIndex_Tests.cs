@@ -1,9 +1,6 @@
-﻿using System;
-using System.Text.RegularExpressions;
-using CrozzleInterfaces;
+﻿using CrozzleInterfaces;
 using CrozzleShapeMaker;
 using CrozzleShapeMerger;
-
 
 namespace CrozzleShapeMerger_Tests;
 
@@ -49,14 +46,14 @@ public class WordToShapeIndex_Tests
         WordToShapeIndex wordIndex = new WordToShapeIndex(result.searchShapes, words.Count);
 
 
-        Assert.Equal(25, wordIndex.index.Count);
+        Assert.Equal(25, wordIndex.Index.Count);
 
         
         
-        Assert.Equal(380, wordIndex.shapeCount);
+        Assert.Equal(380, wordIndex.ShapeCount);
 
         // AND summing up all possible interlocks there should be 982 interlocking shape points available
-        Assert.Equal(982, wordIndex.interlockability);
+        Assert.Equal(982, wordIndex.Interlockability);
 
         // AND our json representation of this should look like as follows
         string expectedStatistics = "{\"wordCount\": 25, \"shapeCount\": 380, \"wordToShapeSum\": 982, \"wordToShapeCount\": \"27,53,35,15,35,44,28,44,59,30,57,63,53,33,50,27,38,26,47,18,71,33,20,39,37\"}";
@@ -107,10 +104,10 @@ public class WordToShapeIndex_Tests
         //Assert.Equal(91, result.wordIndex.index.Count);
 
         // AND 11,371 search shapes are found
-        Assert.Equal(11_371, wordIndex.shapeCount);
+        Assert.Equal(11_371, wordIndex.ShapeCount);
 
         // AND summing up all possible interlocks there should be 43,178 interlocking shape points available
-        Assert.Equal(43_178, wordIndex.interlockability);
+        Assert.Equal(43_178, wordIndex.Interlockability);
 
         // AND our json representation of this should look like as follows
         string expectedStatistics = "{\"wordCount\": 91, \"shapeCount\": 11371, \"wordToShapeSum\": 43178, \"wordToShapeCount\": \"600,453,307,35,393,721,327,367,820,312,1074,773,892,373,554,444,905,645,575,328,1410,1177,654,618,638,638,185,0,733,489,577,809,942,308,253,371,510,0,447,487,565,1101,202,472,400,175,0,210,550,833,173,0,205,0,443,0,179,626,0,992,146,345,481,406,387,374,221,261,581,700,426,1016,252,206,162,694,184,178,954,359,658,546,218,1020,328,234,527,202,521,363,958\"}";
@@ -188,23 +185,23 @@ public class WordToShapeIndex_Tests
 
 
         WordToShapeIndex wordIndex = new WordToShapeIndex(searchShapes, words.Count);
-        Assert.Equal(7, wordIndex.index.Count);
-        Assert.Single(wordIndex.index[0]);
-        Assert.Single(wordIndex.index[1]);
-        Assert.Single(wordIndex.index[2]);
-        Assert.Single(wordIndex.index[3]);
-        Assert.Single(wordIndex.index[4]);
+        Assert.Equal(7, wordIndex.Index.Count);
+        Assert.Single(wordIndex.Index[0]);
+        Assert.Single(wordIndex.Index[1]);
+        Assert.Single(wordIndex.Index[2]);
+        Assert.Single(wordIndex.Index[3]);
+        Assert.Single(wordIndex.Index[4]);
 
 
-        Assert.Equal(0, wordIndex.index[0][0]);
-        Assert.Equal(0, wordIndex.index[1][0]);
-        Assert.Equal(0, wordIndex.index[2][0]);
-        Assert.Equal(0, wordIndex.index[3][0]);
-        Assert.Equal(0, wordIndex.index[4][0]);
+        Assert.Equal(0, wordIndex.Index[0][0]);
+        Assert.Equal(0, wordIndex.Index[1][0]);
+        Assert.Equal(0, wordIndex.Index[2][0]);
+        Assert.Equal(0, wordIndex.Index[3][0]);
+        Assert.Equal(0, wordIndex.Index[4][0]);
 
 
 
-        var searchShapeIds = wordIndex.findMatches(sourceShape: sourceShape);
+        var searchShapeIds = wordIndex.FindMatches(sourceShape: sourceShape);
 
 
         //Assert.Single(instructions);
@@ -276,19 +273,19 @@ public class WordToShapeIndex_Tests
         var wordIndex = new WordToShapeIndex(shapes: new List<ShapeModel> { searchShape }, wordCount: 4);
 
         /// THEN there will be four positions in the index, one for each word
-        Assert.Equal(4, wordIndex.index.Count);
+        Assert.Equal(4, wordIndex.Index.Count);
 
         /// AND each index points to only one shape (because we only had one shape)
-        Assert.Single(wordIndex.index[0]);
-        Assert.Single(wordIndex.index[1]);
-        Assert.Single(wordIndex.index[2]);
-        Assert.Single(wordIndex.index[3]);
+        Assert.Single(wordIndex.Index[0]);
+        Assert.Single(wordIndex.Index[1]);
+        Assert.Single(wordIndex.Index[2]);
+        Assert.Single(wordIndex.Index[3]);
 
         /// AND the shape that each index item is pointing to is our only shape, shape 0
-        Assert.Equal(0, wordIndex.index[0][0]);
-        Assert.Equal(0, wordIndex.index[1][0]);
-        Assert.Equal(0, wordIndex.index[2][0]);
-        Assert.Equal(0, wordIndex.index[3][0]);
+        Assert.Equal(0, wordIndex.Index[0][0]);
+        Assert.Equal(0, wordIndex.Index[1][0]);
+        Assert.Equal(0, wordIndex.Index[2][0]);
+        Assert.Equal(0, wordIndex.Index[3][0]);
 
     }
 
@@ -305,7 +302,7 @@ public class WordToShapeIndex_Tests
         ShapeModel sourceShape = get_Hymn_Merry();
 
         /// WHEN we search for this shape which is really a subset of the shape we are searching
-        var matchingShapes = searchIndex.findMatches(sourceShape);
+        var matchingShapes = searchIndex.FindMatches(sourceShape);
 
         /// THEN we find there are no results because we do not return subsets
         Assert.Single(matchingShapes);

@@ -11,7 +11,7 @@ public class PacmanCalculator_Tests
     {
         var game = GameList.FindGame(8803);
 
-        var words = game.winningWords;
+        var words = game.WinningWords;
         var letterIndex = new LetterIndexModel(words);
         var end = WordList.Reversed(words);
         var len = WordList.Lengths(words);

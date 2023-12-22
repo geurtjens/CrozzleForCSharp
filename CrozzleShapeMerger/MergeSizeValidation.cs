@@ -6,28 +6,31 @@ namespace CrozzleShapeMerger;
 public class MergeSizeValidation
 {
 
-    public static Tuple<bool, int, int, bool> execute(
-        in ShapeModel sourceShape, int sourcePos,
-        in ShapeModel searchShape, int searchPos,
-        int widthMax, int heightMax)
+    public static Tuple<bool, int, int, bool> Execute(
+        in ShapeModel sourceShape,
+        int sourcePos,
+        in ShapeModel searchShape,
+        int searchPos,
+        int widthMax,
+        int heightMax)
     {
-        var sourcePlacement = sourceShape.placements[sourcePos];
-        var searchPlacement = searchShape.placements[searchPos];
+        var sourcePlacement = sourceShape.Placements[sourcePos];
+        var searchPlacement = searchShape.Placements[searchPos];
 
-        var firstIsFlipped = (sourcePlacement.z != searchPlacement.z);
+        var firstIsFlipped = (sourcePlacement.Z != searchPlacement.Z);
 
         var width = 0;
         var height = 0;
 
         if (firstIsFlipped == false)
         {
-            width = getWidth(width1: sourceShape.width, x1: sourcePlacement.x, width2: searchShape.width, x2: searchPlacement.x);
-            height = getHeight(height1: sourceShape.height, y1: sourcePlacement.y, height2: searchShape.height, y2: searchPlacement.y);
+            width = GetWidth(width1: sourceShape.Width, x1: sourcePlacement.X, width2: searchShape.Width, x2: searchPlacement.X);
+            height = GetHeight(height1: sourceShape.Height, y1: sourcePlacement.Y, height2: searchShape.Height, y2: searchPlacement.Y);
         }
         else
         {
-            width = getWidth(width1: sourceShape.width, x1: sourcePlacement.x, width2: searchShape.height, x2: searchPlacement.y);
-            height = getHeight(height1: sourceShape.height, y1: sourcePlacement.y, height2: searchShape.width, y2: searchPlacement.x);
+            width = GetWidth(width1: sourceShape.Width, x1: sourcePlacement.X, width2: searchShape.Height, x2: searchPlacement.Y);
+            height = GetHeight(height1: sourceShape.Height, y1: sourcePlacement.Y, height2: searchShape.Width, y2: searchPlacement.X);
         }
 
         var isValid = false;
@@ -38,7 +41,7 @@ public class MergeSizeValidation
         return new Tuple<bool, int, int, bool>(isValid, width, height, firstIsFlipped);
     }
 
-    private static int getWidth(int width1, int x1, int width2, int x2)
+    private static int GetWidth(int width1, int x1, int width2, int x2)
     {
         var extra1 = width1 - x1;
         var extra2 = width2 - x2;
@@ -46,24 +49,11 @@ public class MergeSizeValidation
     }
 
 
-    private static int getHeight(int height1, int y1, int height2, int y2)
+    private static int GetHeight(int height1, int y1, int height2, int y2)
     {
         var extra1 = height1 - y1;
         var extra2 = height2 - y2;
         return Math.Max(extra1, extra2) + Math.Max(y1, y2);
     }
-
-
-    
+   
 }
-
-
-
-
-
-
-
-
-
-
-

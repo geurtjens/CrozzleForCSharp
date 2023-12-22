@@ -1,4 +1,6 @@
-﻿public readonly struct SourceSearchPositionModel
+﻿namespace CrozzleShapeMerger;
+
+public readonly struct SourceSearchPositionModel
 {
     public readonly int SourcePosition;
     public readonly int SearchShapeId;

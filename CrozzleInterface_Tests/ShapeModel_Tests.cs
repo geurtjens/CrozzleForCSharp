@@ -8,7 +8,7 @@ public class ShapeModel_Tests
     public void test_ToTextDebug_ShouldFlipAndSort()
     {
         var game = GameList.FindGame(8803);
-        List<string> words = game.winningWords;
+        List<string> words = game.WinningWords;
         Console.WriteLine($"{words[2]}, {words[8]}, {words[9]}, {words[13]}, {words[22]}, {words[23]}");
 
         var placements = new List<PlacementModel> {
@@ -48,7 +48,7 @@ public class ShapeModel_Tests
     public void test_ToTextDebug_NoNeedToFlipOrSort()
     {
         var game = GameList.FindGame(8803);
-        List<string> words = game.winningWords;
+        List<string> words = game.WinningWords;
         Console.WriteLine($"{words[2]}, {words[8]}, {words[9]}, {words[13]}, {words[22]}, {words[23]}");
 
 

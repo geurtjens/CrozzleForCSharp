@@ -22,7 +22,7 @@ public class MergeCalculatorV2_Tests
 
 		ShapeModel shapeA = GridList.ToShape(a, words);
 
-		Assert.Equal(4, shapeA.placements.Count);
+		Assert.Equal(4, shapeA.Placements.Count);
 
 
 		List<string> b = new List<string> {
@@ -38,10 +38,10 @@ public class MergeCalculatorV2_Tests
 			"  .   "};
 
 		ShapeModel shapeB = GridList.ToShape(b, words);
-        Assert.Equal(5, shapeB.placements.Count);
+        Assert.Equal(5, shapeB.Placements.Count);
 
         List<int> scoresMin = MinScoreList.Execute(0);
-		ShapeModel? shapeOrNull = MergeCalculatorV2.mergeTwoShapes(shapeA, shapeB, words, 17, 12, scoresMin);
+		ShapeModel? shapeOrNull = MergeCalculatorV2.MergeTwoShapes(shapeA, shapeB, words, 17, 12, scoresMin);
 
 		Assert.NotNull(shapeOrNull);
 

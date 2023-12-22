@@ -5,7 +5,6 @@ namespace CrozzleShapeMaker;
 public class RectangleCalculatorV2
 {
 
-
     public static int ExecuteAllSerial(
         in List<GameModel> games,
         int scoreMin,
@@ -24,8 +23,8 @@ public class RectangleCalculatorV2
 
         foreach (GameModel game in games)
         {
-            var shapesFromWinningWords = Execute(game.winningWords, scoreMin, game.widthMax, game.heightMax);
-            var shapesFromWords = Execute(game.words, scoreMin, game.widthMax, game.heightMax);
+            var shapesFromWinningWords = Execute(game.WinningWords, scoreMin, game.WidthMax, game.HeightMax);
+            var shapesFromWords = Execute(game.Words, scoreMin, game.WidthMax, game.HeightMax);
 
             var a = new List<ShapeModel>();
             a.Capacity = shapesFromWinningWords.Count;
@@ -44,7 +43,7 @@ public class RectangleCalculatorV2
 
             if (includeBreakdown)
             {
-                Console.WriteLine($"{game.gameId}, {shapesFromWinningWords.Count}, {shapesFromWords.Count}");
+                Console.WriteLine($"{game.GameId}, {shapesFromWinningWords.Count}, {shapesFromWords.Count}");
             }
 
             shapesFromWordsCount += b.Count;

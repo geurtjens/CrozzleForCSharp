@@ -4,30 +4,30 @@ namespace CrozzleShapeMerger;
 public class MergeInstructionModel
 {
     /// position of the shape in the first shape list that is going to be used in the merge
-    public readonly int sourceShapeId;
+    public readonly int SourceShapeId;
     /// position of the shape in the secend shape list that is going to be used in the merge
-    public readonly int searchShapeId;
+    public readonly int SearchShapeId;
 
     /// how many words are the same in both of these shapes
-    public readonly int matchingWordCount;
+    public readonly int MatchingWordCount;
 
     /// position of first matching word in first shape
-    public readonly int firstSourcePos;
+    public readonly int FirstSourcePos;
 
     /// position of first matching owrd in second shape
-    public readonly int firstSearchPos;
+    public readonly int FirstSearchPos;
 
     /// does the second shape have to be flipped before they come together
-    public readonly bool flipped;
+    public readonly bool Flipped;
 
 
     public MergeInstructionModel(int sourceShapeId, int searchShapeId, int matchingWordCount, int firstSourcePos, int firstSearchPos, bool flipped)
     {
-        this.sourceShapeId = sourceShapeId;
-        this.searchShapeId = searchShapeId;
-        this.matchingWordCount = matchingWordCount;
-        this.firstSourcePos = firstSourcePos;
-        this.firstSearchPos = firstSearchPos;
-        this.flipped = flipped;
+        SourceShapeId = sourceShapeId;
+        SearchShapeId = searchShapeId;
+        MatchingWordCount = matchingWordCount;
+        FirstSourcePos = firstSourcePos;
+        FirstSearchPos = firstSearchPos;
+        Flipped = flipped;
     }
 }

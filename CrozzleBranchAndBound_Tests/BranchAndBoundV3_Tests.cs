@@ -12,8 +12,8 @@ public class BranchAndBoundV3_Tests
         int gameId = 8802;
 
         GameModel game = GameList.FindGame(gameId: gameId);
-        int winningScore = game.winningScore;
-        List<string> words = game.winningWords;
+        int winningScore = game.WinningScore;
+        List<string> words = game.WinningWords;
 
 
 
@@ -27,7 +27,7 @@ public class BranchAndBoundV3_Tests
             winningScore: winningScore,
             useGuidedScores: true);
 
-        Assert.Equal(winningScore, result.score);
+        Assert.Equal(winningScore, result.Score);
     }
 
 
@@ -56,8 +56,8 @@ public class BranchAndBoundV3_Tests
 
 
         GameModel game = GameList.FindGame(gameId: gameId);
-        int winningScore = game.winningScore;
-        List<string> words = game.winningWords;
+        int winningScore = game.WinningScore;
+        List<string> words = game.WinningWords;
 
 
 
@@ -71,7 +71,7 @@ public class BranchAndBoundV3_Tests
             winningScore: winningScore,
             useGuidedScores: true);
 
-        Assert.Equal(winningScore, result.score);
+        Assert.Equal(winningScore, result.Score);
     }
 }
 

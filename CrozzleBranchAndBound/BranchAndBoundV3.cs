@@ -11,9 +11,9 @@ public class BranchAndBoundV3
         GetStartingData(int gameId, List<string> words, int rootWidth, bool useGuidedScores)
     {
         GameModel game = GameList.FindGame(gameId);
-        int widthMax = game.widthMax;
-        int heightMax = game.heightMax;
-        int winningScore = game.winningScore;
+        int widthMax = game.WidthMax;
+        int heightMax = game.HeightMax;
+        int winningScore = game.WinningScore;
 
         StartingDataModel startingDataModel = StartingDataCalculator.Execute(gameId, words, rootWidth, useGuidedScores);
 
@@ -28,16 +28,7 @@ public class BranchAndBoundV3
             startingDataModel.maxHeight,
             searchWordIndex);
 
-
-
-
-
-
         WordIndexModelV2 wordIndex = new WordIndexModelV2(startingDataModel.searchShapes, words.Count);
-
-
-
-
 
         return new Tuple<int, List<ShapeModel>, WordIndexModelV2, List<TreeNodeModel>, List<int>, int, int>(
             winningScore, startingDataModel.searchShapes, wordIndex, startingTreeNodes, startingDataModel.scoresMin, widthMax, heightMax);
@@ -66,18 +57,18 @@ public class BranchAndBoundV3
             GameModel game = GameList.FindGame(gameId);
 
             ShapeModel bestShape = ExecuteGame(
-                game.gameId,
-                game.words,
+                game.GameId,
+                game.Words,
                 lookaheadDepth,
                 beamWidth,
                 maxDepth,
                 rootWidth,
-                game.winningScore,
+                game.WinningScore,
                 useGuidedScores);
 
-            if (bestShape.score >= game.winningScore)
+            if (bestShape.Score >= game.WinningScore)
             {
-                successfulGames.Add(game.gameId);
+                successfulGames.Add(game.GameId);
             }
 
         }
@@ -111,19 +102,20 @@ public class BranchAndBoundV3
 
         List<int> successfulGames = new List<int>();
 
-        Console.WriteLine($"\"lookaheadDepth\": {lookaheadDepth}, \"beamWidth\": {beamWidth}, \"rootWidth\": {rootWidth}, \"maxDepth\": {maxDepth}, \"games\": {gameIds.Count}");
-        Console.WriteLine(string.Join(", ", gameIds));
+        Console.Write("[");
+        
 
         foreach (int gameId in gameIds)
         {
             GameModel game = GameList.FindGame(gameId);
-            ShapeModel bestShape = ExecuteGame(
-                game.gameId, game.winningWords, lookaheadDepth, beamWidth,
-                maxDepth, rootWidth, game.winningScore, useGuidedScores);
 
-            if (bestShape.score >= game.winningScore)
+            ShapeModel bestShape = ExecuteGame(
+                game.GameId, game.WinningWords, lookaheadDepth, beamWidth,
+                maxDepth, rootWidth, game.WinningScore, useGuidedScores);
+
+            if (bestShape.Score >= game.WinningScore)
             {
-                successfulGames.Add(game.gameId);
+                successfulGames.Add(game.GameId);
             }
 
         }
@@ -160,7 +152,7 @@ public class BranchAndBoundV3
 
         GameModel game = GameList.FindGame(gameId);
 
-        int winningScore = game.winningScore;
+        int winningScore = game.WinningScore;
 
         ShapeModel bestShape = ExecuteGame(
             gameId,
@@ -172,7 +164,7 @@ public class BranchAndBoundV3
             winningScore,
             useGuidedScores);
 
-        if (bestShape.score >= game.winningScore)
+        if (bestShape.Score >= game.WinningScore)
         {
             return true;
         }
@@ -181,14 +173,6 @@ public class BranchAndBoundV3
             return false;
         }
     }
-
-
-
-
-
-
-
-
 
 
     public static ShapeModel ExecuteGame(
@@ -213,7 +197,7 @@ public class BranchAndBoundV3
 
         var bestShape = bestShapes[0];
 
-        if (bestShapes[0].score == winningScoreValue)
+        if (bestShapes[0].Score == winningScoreValue)
         {
             return bestShapes[0];
         }
@@ -232,14 +216,14 @@ public class BranchAndBoundV3
 
             foreach (var shape in shapes)
             {
-                if (shape.score > bestShape.score)
+                if (shape.Score > bestShape.Score)
                 {
                     bestShape = shape;
                 }
             }
         }
 
-        if (bestShape.score >= winningScoreValue)
+        if (bestShape.Score >= winningScoreValue)
         {
             Console.WriteLine($"HUMAN SCORE {gameId} Calculated at end");
         }
@@ -265,7 +249,7 @@ public class BranchAndBoundV3
     {
         var startTime = DateTimeCalculator.Now();
 
-        var bestShape = rootTreeNodes[0].parentShape;
+        var bestShape = rootTreeNodes[0].ParentShape;
         var bestScores = new List<ushort>();
         var shapesCreatedCount = 0;
         var shapesCreated = 0;
@@ -282,7 +266,7 @@ public class BranchAndBoundV3
             shapesCreatedCount = treeNodes.Count;
             foreach (var treeNode in treeNodes)
             {
-                shapesCreatedCount += treeNode.childShapes.Count;
+                shapesCreatedCount += treeNode.ChildShapes.Count;
             }
 
             (treeNodes, shapesCreated) = ExecuteLookaheadAndBeamAsync(
@@ -300,34 +284,41 @@ public class BranchAndBoundV3
                 List<ShapeModel> childShapes = new List<ShapeModel>();
                 foreach (var treeNode in previousNodes)
                 {
-                    childShapes.AddRange(treeNode.childShapes);
+                    childShapes.AddRange(treeNode.ChildShapes);
                 }
 
-                childShapes = ShapeList.RemoveDuplicates(childShapes).OrderByDescending(e => e.score).ToList();
+                childShapes = ShapeList.RemoveDuplicates(childShapes).OrderByDescending(e => e.Score).ToList();
 
                 var bestShapes = new List<ShapeModel>();
 
                 for (var childShapeId = 0; childShapeId < childShapes.Count && bestShapes.Count < beamWidth; childShapeId++)
                 {
                     bestShapes.Add(childShapes[childShapeId]);
-                    bestScores.Add(childShapes[childShapeId].score);
+                    
                 }
 
-                if (bestShape.score < bestShapes[0].score)
+                bestShapes = bestShapes.OrderByDescending(e => e.Score).ToList();
+                bestScores.Clear();
+                foreach(var shape in bestShapes)
+                {
+                    bestScores.Add(shape.Score);
+                }
+
+
+                if (bestShape.Score < bestShapes[0].Score)
                 {
                     bestShape = bestShapes[0];
                 }
 
-                Console.WriteLine($"score:{bestShape.score}");
+                Console.WriteLine($"score:{bestShape.Score}");
                 Console.WriteLine(bestShape.ToTextDebug(words));
 
-                var siblingMerges = TreeNodeList.identifySiblingMerges(treeNodes, 1, 2);
+                var siblingMerges = TreeNodeList.IdentifySiblingMerges(treeNodes, 1, 2);
 
                 Console.WriteLine($"{{\"cycle\": {cycleId}, \"shapesCreated\": {shapesCreatedCount}, " +
-                    $"\"bestScores\": {string.Join(",", bestScores)}, " +
-                    $"\"merges\": JsonConvert.SerializeObject(siblingMerges)}}");
+                    $"\"bestScores\": [{string.Join(",", bestScores)}],\n");
 
-                if (bestShape.score >= winningScore)
+                if (bestShape.Score >= winningScore)
                 {
                     Console.WriteLine($"HUMAN SCORE {gameId}");
                     Console.WriteLine(DateTimeCalculator.Duration(start: startTime));
@@ -341,29 +332,30 @@ public class BranchAndBoundV3
                 }
             }
 
-            Console.WriteLine($"score:{bestShape.score}");
-            Console.WriteLine(bestShape.ToTextDebug(words));
+            Console.WriteLine($"\"bestGame\": {bestShape.ToTextArray(words)}");
 
             if (treeNodes.Count > 0)
             {
-                var bestShapes = treeNodes.Select(treeNode => treeNode.parentShape).ToList();
+                var bestShapes = treeNodes.Select(treeNode => treeNode.ParentShape).ToList();
                 bestShapes = ShapeList.RemoveDuplicates(bestShapes);
 
+                bestShapes = bestShapes.OrderByDescending(e => e.Score).ToList();
+                bestScores.Clear();
                 foreach (var shape in bestShapes)
                 {
-                    bestScores.Add(shape.score);
+                    bestScores.Add(shape.Score);
                 }
 
-                if (bestShape.score < bestShapes[0].score)
+                if (bestShape.Score < bestShapes[0].Score)
                 {
                     bestShape = bestShapes[0];
                 }
 
                 var siblingMerges = new List<(int, int, List<int>)>();
 
-                Console.WriteLine($"{{\"cycle\": {cycleId}, \"shapesCreated\": {shapesCreatedCount}, " +
-                    $"\"bestScores\": {string.Join(",", bestScores)}, " +
-                    $"\"merges\": JsonConvert.SerializeObject(siblingMerges),");
+                Console.Write($"{{\"cycle\": {cycleId}, \"shapesCreated\": {shapesCreatedCount}, " +
+                    $"\"bestScores\": [{string.Join(",", bestScores)}],");
+                
             }
         }
 
@@ -397,10 +389,10 @@ public class BranchAndBoundV3
             shapesCreatedCount += shapesCreated;
         }
 
-        List<TreeNodeModel> treeNodesSorted = TreeNodeList.sortByBestDescendant(treeNodes);
+        List<TreeNodeModel> treeNodesSorted = TreeNodeList.SortByBestDescendant(treeNodes);
 
 
-        var result = TreeNodeList.applyBeamWidth(treeNodesSorted, beamWidth);
+        var result = TreeNodeList.ApplyBeamWidth(treeNodesSorted, beamWidth);
 
         return new Tuple<List<TreeNodeModel>, int>(result, shapesCreatedCount);
     }
@@ -416,8 +408,8 @@ public class BranchAndBoundV3
     {
         var result = new List<TreeNodeModel>();
 
-        var leafShapesAddedToBecomeSiblings = ShapeList.getLastMergeHistoryShapeId(treeNode.childShapes);
-        var wordDifferenceBetweenParentAndSibling = ShapeList.getWordDifferences(treeNode.childShapes, treeNode.parentShape);
+        var leafShapesAddedToBecomeSiblings = ShapeList.GetLastMergeHistoryShapeId(treeNode.ChildShapes);
+        var wordDifferenceBetweenParentAndSibling = ShapeList.GetWordDifferences(treeNode.ChildShapes, treeNode.ParentShape);
 
         var processedQueue = new HashSet<string>();
 
@@ -426,7 +418,7 @@ public class BranchAndBoundV3
             var resultForShape = new List<ShapeModel>();
 
             var sourceShapeId = leafShapesAddedToBecomeSiblings[siblingId];
-            var sourceShape = treeNode.childShapes[siblingId];
+            var sourceShape = treeNode.ChildShapes[siblingId];
             var siblingWords = wordDifferenceBetweenParentAndSibling[siblingId];
 
             for (var matchingSiblingId = 0; matchingSiblingId < leafShapesAddedToBecomeSiblings.Count; matchingSiblingId++)
@@ -445,7 +437,7 @@ public class BranchAndBoundV3
                 {
                     processedQueue.Add($"{sourceShapeId},{searchShapeId}");
 
-                    var mergedShape = MergeCalculatorV2.mergeTwoShapes(
+                    var mergedShape = MergeCalculatorV2.MergeTwoShapes(
                         sourceShape, searchShapes[searchShapeId], words, widthMax, heightMax, scoresMin);
 
                     if (mergedShape is not null)
@@ -479,7 +471,7 @@ public class BranchAndBoundV3
                 resultForShape.Sort((a, b) =>
                 {
 
-                    return b.score.CompareTo(a.score);
+                    return b.Score.CompareTo(a.Score);
                 });
 
                 result.Add(new TreeNodeModel(
@@ -491,7 +483,7 @@ public class BranchAndBoundV3
                 );
             }
         }
-        result = TreeNodeList.sortByBestDescendant(result);
+        result = TreeNodeList.SortByBestDescendant(result);
 
         return result;
     }
@@ -509,7 +501,7 @@ public class BranchAndBoundV3
         int widthMax,
         int heightMax)
     {
-        var instructions = wordIndex.findMatches(siblingWords, shapesToExclude, sourceShape, sourceShapeId, searchShapes);
+        var instructions = wordIndex.FindMatches(siblingWords, shapesToExclude, sourceShape, sourceShapeId, searchShapes);
 
         var leafShapes = MergeCalculatorV2.GetShapesFromInstructions(
             instructions, sourceShape, searchShapes, words, scoresMin, widthMax, heightMax);
@@ -586,7 +578,7 @@ public class BranchAndBoundV3
         in List<int> scoresMin)
     {
         var treeNodes = new List<TreeNodeModel> { treeNode };
-        var bestShape = treeNode.parentShape;
+        var bestShape = treeNode.ParentShape;
         var shapesCreated = 0;
 
         for (var i = 1; i < lookaheadDepth; i++)
@@ -601,11 +593,11 @@ public class BranchAndBoundV3
                 scoresMin);
 
 
-            var currentBestShapeNullable = TreeNodeList.getBestShape(treeNodes);
+            var currentBestShapeNullable = TreeNodeList.GetBestShape(treeNodes);
             if (currentBestShapeNullable is not null)
             {
                 var currentBestShape = (ShapeModel)currentBestShapeNullable;
-                if (currentBestShape.score > bestShape.score)
+                if (currentBestShape.Score > bestShape.Score)
 
                     bestShape = currentBestShape;
             }
@@ -633,7 +625,7 @@ public class BranchAndBoundV3
 
             result.AddRange(values);
         }
-        result = TreeNodeList.sortByBestDescendant(result);
+        result = TreeNodeList.SortByBestDescendant(result);
 
 
         return result;

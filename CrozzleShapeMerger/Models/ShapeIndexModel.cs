@@ -3,7 +3,7 @@ using CrozzleInterfaces;
 
 namespace CrozzleShapeMerger;
 
-public readonly record struct ShapeIndex
+public readonly record struct ShapeIndexModel
 {
 	public readonly List<int> Start;
 	public readonly List<byte> WordCount;
@@ -15,7 +15,7 @@ public readonly record struct ShapeIndex
 
 
 
-	public ShapeIndex(in List<ShapeModel> shapes)
+	public ShapeIndexModel(in List<ShapeModel> shapes)
 	{
 		int startPos = 0;
 		List<int> start = new List<int>();
@@ -31,17 +31,17 @@ public readonly record struct ShapeIndex
         {
             ShapeModel shape = shapes[shapeId];
 
-            int wordsCount = (int)shape.placements.Count;
+            int wordsCount = (int)shape.Placements.Count;
             wordCount.Add((byte)wordsCount);
             for (int placementId = 0; placementId < wordsCount; placementId++)
             {
-                PlacementModel placement = shape.placements[placementId];
+                PlacementModel placement = shape.Placements[placementId];
 
-                w.Add(placement.w);
-                x.Add(placement.x);
-                y.Add(placement.y);
-                l.Add(placement.l);
-                if (placement.z == true) {
+                w.Add(placement.W);
+                x.Add(placement.X);
+                y.Add(placement.Y);
+                l.Add(placement.L);
+                if (placement.Z == true) {
                     z.Add(1);
                 } else
                 {

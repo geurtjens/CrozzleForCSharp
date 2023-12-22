@@ -24,7 +24,7 @@ namespace CrozzleShapeMerger;
             return new List<PlacementModel>();
         }
 
-        bool flip = sourcePlacements[commonSourceId].z != searchPlacements[commonSearchId].z;
+        bool flip = sourcePlacements[commonSourceId].Z != searchPlacements[commonSearchId].Z;
 
         // So we know the common word and we have flipped to same orientation
         return Execute(sourcePlacements, searchPlacements, commonSourceId, commonSearchId, flip);
@@ -51,10 +51,10 @@ namespace CrozzleShapeMerger;
 
         // The first thing we need to do is calculate the offset of the common word placement for both sides
         var (sourceOffsetX, sourceOffsetY, searchOffsetX, searchOffsetY) = CalculateOffsets(
-            sourcePlacements[commonSourceId].x,
-            sourcePlacements[commonSourceId].y,
-            searchPlacements[commonSearchId].x,
-            searchPlacements[commonSearchId].y,
+            sourcePlacements[commonSourceId].X,
+            sourcePlacements[commonSourceId].Y,
+            searchPlacements[commonSearchId].X,
+            searchPlacements[commonSearchId].Y,
             flip);
 
         sourcePlacements = ApplyOffsets(sourcePlacements, sourceOffsetX, sourceOffsetY);
@@ -101,7 +101,7 @@ namespace CrozzleShapeMerger;
         {
             for (int j = 0; j < searchPlacements.Count; j++)
             {
-                if (sourcePlacements[i].w == searchPlacements[j].w)
+                if (sourcePlacements[i].W == searchPlacements[j].W)
                 {
                     return new Tuple<int, int>(i, j);
                 }
@@ -122,11 +122,11 @@ namespace CrozzleShapeMerger;
         foreach (var j in placements)
         {
             var newPlacement = new PlacementModel(
-            w: j.w,
-            x: (byte)(int)(j.x + xOffset),
-            y: (byte)(int)(j.y + yOffset),
-            z: j.z,
-            l: j.l);
+            w: j.W,
+            x: (byte)(int)(j.X + xOffset),
+            y: (byte)(int)(j.Y + yOffset),
+            z: j.Z,
+            l: j.L);
             newPlacements.Add(newPlacement);
         }
         return newPlacements;
@@ -141,14 +141,14 @@ namespace CrozzleShapeMerger;
         var result = new List<PlacementModel>();
         foreach (var j in placements)
         {
-            if (excludedWords.Contains(j.w) == false)
+            if (excludedWords.Contains(j.W) == false)
             {
                 var newPlacement = new PlacementModel(
-                w: j.w,
-                x: (byte)(int)(j.x + xOffset),
-                y: (byte)(int)(j.y + yOffset),
-                z: j.z,
-                l: j.l);
+                w: j.W,
+                x: (byte)(int)(j.X + xOffset),
+                y: (byte)(int)(j.Y + yOffset),
+                z: j.Z,
+                l: j.L);
                 result.Add(newPlacement);
             }
         }
@@ -167,14 +167,14 @@ namespace CrozzleShapeMerger;
         var result = new List<PlacementModel>();
         foreach (var j in placements)
         {
-            if (excludedWords.Contains(j.w) == false)
+            if (excludedWords.Contains(j.W) == false)
             {
                 var newPlacement = new PlacementModel(
-                w: j.w,
-                x: (byte)(int)(j.y + xOffset),
-                y: (byte)(int)(j.x + yOffset),
-                z: !j.z,
-                l: j.l);
+                w: j.W,
+                x: (byte)(int)(j.Y + xOffset),
+                y: (byte)(int)(j.X + yOffset),
+                z: !j.Z,
+                l: j.L);
                 result.Add(newPlacement);
             }
         }
@@ -233,5 +233,5 @@ namespace CrozzleShapeMerger;
         return new Tuple<byte, byte, byte, byte>((byte)sourceOffsetX, (byte)sourceOffsetY, (byte)searchOffsetX, (byte)searchOffsetY);
     }
 
-	}
+}
 

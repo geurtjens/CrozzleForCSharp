@@ -6,7 +6,7 @@ namespace CrozzleBranchAndBound
     public class OptimizeBranchAndBound
     {
 
-        public static Tuple<List<int>, List<int>> optimizeWithStartingWords(
+        public static Tuple<List<int>, List<int>> OptimizeWithStartingWords(
         int gameId,
         in List<string> words,
         int lookaheadDepth,
@@ -16,7 +16,7 @@ namespace CrozzleBranchAndBound
         {
             List<int> beamWidthResults = new List<int>();
 
-            List<int> startingWords = findValidStartingWords(
+            List<int> startingWords = FindValidStartingWords(
                 gameId,
                 words,
                 lookaheadDepth,
@@ -122,7 +122,7 @@ namespace CrozzleBranchAndBound
         /// <param name="beamWidth"></param>
         /// <param name="maxDepth"></param>
         /// <returns></returns>
-        public static List<int> findValidStartingWords(
+        public static List<int> FindValidStartingWords(
             int gameId,
             List<string> words,
             int lookaheadDepth,

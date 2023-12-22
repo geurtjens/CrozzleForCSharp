@@ -11,19 +11,13 @@ public readonly record struct WordToShapeIndex
     /// Another novel idea is that we can capture the words inside each of the shapes
     /// So we do not have to iterate through the placement lists
     /// </summary>
-    public readonly List<List<int>> wordsForShapes;
+    public readonly List<List<int>> WordsForShapes;
 
     /// <summary>
     /// We might also like to do a score breakdown so we search only those that already have a specific contributing score
     /// </summary>
 
-    
-
-
-
-
-
-    public readonly List<List<int>> index;
+    public readonly List<List<int>> Index;
 
 
     /// <summary>
@@ -42,22 +36,22 @@ public readonly record struct WordToShapeIndex
 
 
 
-    public readonly int wordCount;
-    public readonly int interlockability;
-    public readonly int shapeCount;
+    public readonly int WordCount;
+    public readonly int Interlockability;
+    public readonly int ShapeCount;
 
-    public List<int> findMatchUsingIndex(
+    public List<int> FindMatchUsingIndex(
         in ShapeModel sourceShape,
         int searchMin,
         int searchMax)
     {
         
         var matches = new List<int>();
-        for (int wordPos=0; wordPos<sourceShape.placements.Count; wordPos++)
+        for (int wordPos=0; wordPos<sourceShape.Placements.Count; wordPos++)
         {
-            int w = sourceShape.placements[wordPos].w;
+            int w = sourceShape.Placements[wordPos].W;
 
-            matches.AddRange(index[w]);
+            matches.AddRange(Index[w]);
         }
 
         // Remove items out of score
@@ -75,15 +69,15 @@ public readonly record struct WordToShapeIndex
     /// </summary>
     /// <param name="sourceShape"></param>
     /// <returns></returns>
-    public List<int> findMatches(in ShapeModel sourceShape)
+    public List<int> FindMatches(in ShapeModel sourceShape)
     {
         var matches = new List<int>();
 
-        for (int wordPos = 0; wordPos < sourceShape.placements.Count; wordPos++)
+        for (int wordPos = 0; wordPos < sourceShape.Placements.Count; wordPos++)
         {
-            int w = sourceShape.placements[wordPos].w;
+            int w = sourceShape.Placements[wordPos].W;
 
-            matches.AddRange(index[w]);
+            matches.AddRange(Index[w]);
         }
         matches = matches.Distinct().ToList();
         matches.Sort();
@@ -105,7 +99,7 @@ public readonly record struct WordToShapeIndex
         {
             int w = sourceShapeWords[wordPos];
 
-            matches.AddRange(index[w]);
+            matches.AddRange(Index[w]);
         }
 
         matches.Sort();
@@ -118,11 +112,11 @@ public readonly record struct WordToShapeIndex
     {
         var shapesWithSameWords = new List<int>();
 
-        for (int wordPos = 0; wordPos < sourceShape.placements.Count; wordPos++)
+        for (int wordPos = 0; wordPos < sourceShape.Placements.Count; wordPos++)
         {
-            int w = sourceShape.placements[wordPos].w;
+            int w = sourceShape.Placements[wordPos].W;
 
-            shapesWithSameWords.AddRange(index[w]);
+            shapesWithSameWords.AddRange(Index[w]);
         }
 
         shapesWithSameWords = shapesWithSameWords.Distinct().ToList();
@@ -146,11 +140,11 @@ public readonly record struct WordToShapeIndex
     {
         var shapesWithSameWords = new List<int>();
 
-        for (int wordPos = 0; wordPos < sourceShape.placements.Count; wordPos++)
+        for (int wordPos = 0; wordPos < sourceShape.Placements.Count; wordPos++)
         {
-            int w = sourceShape.placements[wordPos].w;
+            int w = sourceShape.Placements[wordPos].W;
 
-            shapesWithSameWords.AddRange(index[w]);
+            shapesWithSameWords.AddRange(Index[w]);
         }
 
         shapesWithSameWords = shapesWithSameWords.Distinct().ToList();
@@ -173,11 +167,11 @@ public readonly record struct WordToShapeIndex
     {
         var shapesWithSameWords = new List<int>();
 
-        for (int wordPos = 0; wordPos < this.wordsForShapes[sourceShapePosition].Count; wordPos++)
+        for (int wordPos = 0; wordPos < this.WordsForShapes[sourceShapePosition].Count; wordPos++)
         {
-            int w = this.wordsForShapes[sourceShapePosition][wordPos];
+            int w = this.WordsForShapes[sourceShapePosition][wordPos];
 
-            shapesWithSameWords.AddRange(index[w]);
+            shapesWithSameWords.AddRange(Index[w]);
         }
 
         shapesWithSameWords = shapesWithSameWords.Distinct().ToList();
@@ -224,7 +218,7 @@ public readonly record struct WordToShapeIndex
     {
         var result = new List<MatchingShapesModel>();
 
-        for (int shapeId = 0; shapeId < this.wordsForShapes.Count; shapeId++)
+        for (int shapeId = 0; shapeId < this.WordsForShapes.Count; shapeId++)
         {
             List<int> shapesWithSameWords = FindMatchesAbove(shapeId);
 
@@ -254,9 +248,9 @@ public readonly record struct WordToShapeIndex
             var wordIds = new List<int>();
 
 
-            for (int placementId = 0; placementId < shapes[shapeId].placements.Count; placementId++)
+            for (int placementId = 0; placementId < shapes[shapeId].Placements.Count; placementId++)
             {
-                int w = (int)(shapes[shapeId].placements[placementId].w);
+                int w = (int)(shapes[shapeId].Placements[placementId].W);
                 indexTemp[w].Add(shapeId);
 
                 wordIds.Add(w);
@@ -271,24 +265,24 @@ public readonly record struct WordToShapeIndex
             interlockabilityTemp += indexTemp[wordId].Count;
         }
 
-        this.wordCount = wordCount;
-        this.index = indexTemp;
-        this.interlockability = interlockabilityTemp;
-        this.shapeCount = shapes.Count;
-        this.wordsForShapes = wordsForShapesTemp;
+        this.WordCount = wordCount;
+        this.Index = indexTemp;
+        this.Interlockability = interlockabilityTemp;
+        this.ShapeCount = shapes.Count;
+        this.WordsForShapes = wordsForShapesTemp;
     }
 
 
     public string WordToShapeCountStatisticsCsv()
     {
         string result = "";
-        for (int wordId = 0; wordId < this.index.Count; wordId++)
+        for (int wordId = 0; wordId < this.Index.Count; wordId++)
         {
             if (result != "")
             {
                 result += ",";
             }
-            result += this.index[wordId].Count;
+            result += this.Index[wordId].Count;
         }
         return result;
     }
@@ -297,7 +291,7 @@ public readonly record struct WordToShapeIndex
     public string StatisticsToJson()
     {
         string statisticsText = WordToShapeCountStatisticsCsv();
-        var result = "{" + $"\"wordCount\": {this.wordCount}, \"shapeCount\": {this.shapeCount}, \"wordToShapeSum\": {this.interlockability}, \"wordToShapeCount\": \"{statisticsText}\"" + "}";
+        var result = "{" + $"\"wordCount\": {this.WordCount}, \"shapeCount\": {this.ShapeCount}, \"wordToShapeSum\": {this.Interlockability}, \"wordToShapeCount\": \"{statisticsText}\"" + "}";
 
         return result;
     }

@@ -23,12 +23,12 @@ public class OuterCalculator
 
         foreach (var game in games)
         {
-            var shapesFromWinningWords = Execute(game.winningWords, scoreMin, game.widthMax, game.heightMax);
-            var shapesFromWords = Execute(game.words, scoreMin, game.widthMax, game.heightMax);
+            var shapesFromWinningWords = Execute(game.WinningWords, scoreMin, game.WidthMax, game.HeightMax);
+            var shapesFromWords = Execute(game.Words, scoreMin, game.WidthMax, game.HeightMax);
 
             if (includeBreakdown)
             {
-                Console.WriteLine($"{game.gameId}, {shapesFromWinningWords.Count}, {shapesFromWords.Count}");
+                Console.WriteLine($"{game.GameId}, {shapesFromWinningWords.Count}, {shapesFromWords.Count}");
             }
 
             shapesFromWordsCount += shapesFromWords.Count;

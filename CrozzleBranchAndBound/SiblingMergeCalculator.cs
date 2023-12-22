@@ -78,7 +78,7 @@ namespace CrozzleBranchAndBound
 
             foreach (ShapeModel newShape in newShapes)
             {
-                if (bestShape.score < newShape.score)
+                if (bestShape.Score < newShape.Score)
                 {
                     bestShape = newShape;
                 }

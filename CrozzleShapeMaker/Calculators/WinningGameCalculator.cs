@@ -16,6 +16,10 @@ public class WinningGameCalculator
             var shape = GridList.ToShape(grid, words);
             result.Add(shape);
         }
+
+        // Now we sort them by score descending
+        result = result.OrderByDescending(e => e.Score).ToList();
+
         return result;
     }
 

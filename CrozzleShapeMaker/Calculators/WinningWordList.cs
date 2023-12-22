@@ -3,7 +3,6 @@
 public class WinningWordList
 {
 
-
     public static int findHighScore(int gameId)
     {
         switch(gameId)

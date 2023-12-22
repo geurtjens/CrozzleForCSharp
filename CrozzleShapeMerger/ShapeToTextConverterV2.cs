@@ -1,7 +1,6 @@
 ﻿using System;
 using CrozzleInterfaces;
-using static System.Formats.Asn1.AsnWriter;
-using System.Diagnostics.Metrics;
+
 using System.Text;
 
 namespace CrozzleShapeMerger;
@@ -20,7 +19,7 @@ public class ShapeToTextConverterV2
         int height,
         in List<string> words)
     {
-        var (score, grid) = getScoreAndText(placements: placements, width: width, height: height, words: words);
+        var (score, grid) = GetScoreAndText(placements: placements, width: width, height: height, words: words);
 
 
         if (score == 0)
@@ -32,7 +31,7 @@ public class ShapeToTextConverterV2
         //
         //        if textIsVerified {
 
-        var wordCount = getWordCount(grid: grid, width: width, height: height);
+        var wordCount = GetWordCount(grid: grid, width: width, height: height);
 
 
         if (wordCount != placements.Count)
@@ -43,7 +42,7 @@ public class ShapeToTextConverterV2
         var newShape = new ShapeModel(score: score, width: (byte)(width), height: (byte)(height), placements: placements);
 
         // our shapes must have first word as horizontal to help with removing duplicates
-        if (newShape.placements[0].z == false)
+        if (newShape.Placements[0].Z == false)
         {
             var flipped = newShape.Flip();
             return flipped;
@@ -59,7 +58,7 @@ public class ShapeToTextConverterV2
 
     // Why not make the grid bytes
 
-    public static Tuple<ushort, List<char>> getScoreAndText(
+    public static Tuple<ushort, List<char>> GetScoreAndText(
         in List<PlacementModel> placements,
         int width,
         int height,
@@ -100,7 +99,7 @@ public class ShapeToTextConverterV2
         {
 
             // the word must include the blocking characters at either end of the shape
-            var word = DOT + words[(int)(placement.w)] + DOT;
+            var word = DOT + words[(int)(placement.W)] + DOT;
 
 
             var gridPos = 0;
@@ -110,13 +109,13 @@ public class ShapeToTextConverterV2
                 char letter = word[i];
 
 
-                if (placement.z)
+                if (placement.Z)
                 {
-                    gridPos = placement.x + i + (placement.y * widthEOL + 1);
+                    gridPos = placement.X + i + (placement.Y * widthEOL + 1);
                 }
                 else
                 {
-                    gridPos = placement.x + 1 + (placement.y + i) * widthEOL;
+                    gridPos = placement.X + 1 + (placement.Y + i) * widthEOL;
                 }
 
                 if (grid[gridPos] != SPACE && grid[gridPos] != letter)
@@ -130,7 +129,7 @@ public class ShapeToTextConverterV2
                 }
                 else if (grid[gridPos] == letter)
                 {
-                    score += ScoreCalculator.score(letter);
+                    score += ScoreCalculator.Score(letter);
                 }
             }
         }
@@ -258,7 +257,7 @@ public class ShapeToTextConverterV2
     }
 
 
-    public static int getWordCount(in List<char> grid, int width, int height)
+    public static int GetWordCount(in List<char> grid, int width, int height)
     {
 
         // If we have 2 or more alpha in a row then this is a word

@@ -16,9 +16,9 @@ public class WordToShapeIndexWithPositions : List<List<WordPositionModel>>
 
 		for (int shapeId=0; shapeId< shapes.Count; shapeId++)
 		{
-			for (int wordPos = 0; wordPos < shapes[shapeId].placements.Count; wordPos++)
+			for (int wordPos = 0; wordPos < shapes[shapeId].Placements.Count; wordPos++)
 			{
-				int wordId = shapes[shapeId].placements[wordPos].w;
+				int wordId = shapes[shapeId].Placements[wordPos].W;
 
 				result[wordId].Add(new WordPositionModel(shapeId, wordPos));
 			}
@@ -68,7 +68,4 @@ public class WordToShapeIndexWithPositions : List<List<WordPositionModel>>
         return x;
     }
 
-
-
 }
-

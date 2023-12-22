@@ -1,7 +1,6 @@
 ﻿using System;
 using CrozzleInterfaces;
 
-
 namespace CrozzleShapeMerger;
 
 public class StartingTreeNodeCalculator
@@ -33,7 +32,7 @@ public class StartingTreeNodeCalculator
                 widthMax: widthMax,
                 heightMax: heightMax);
 
-            childShapes = ShapeList.RemoveDuplicates(childShapes).OrderByDescending(e=> e.score).ToList();
+            childShapes = ShapeList.RemoveDuplicates(childShapes).OrderByDescending(e=> e.Score).ToList();
             
             var treeNode = new TreeNodeModel(
                 parentShape: startingShapes[startingShapeId],

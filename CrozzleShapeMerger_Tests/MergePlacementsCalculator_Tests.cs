@@ -47,38 +47,38 @@ public class MergePlacementsCalculator_Tests
 
         ShapeModel sourceShape = GridList.ToShape(a, words);
 
-        Assert.Equal(7, sourceShape.width);
-        Assert.Equal(8, sourceShape.height);
+        Assert.Equal(7, sourceShape.Width);
+        Assert.Equal(8, sourceShape.Height);
 
 
         ShapeModel searchShape = GridList.ToShape(b, words);
 
-        Assert.Equal(8, searchShape.width);
-        Assert.Equal(6, searchShape.height);
+        Assert.Equal(8, searchShape.Width);
+        Assert.Equal(6, searchShape.Height);
 
         
         int sourceId = 3;
         int searchId = 3;
 
-        Assert.Equal(sourceShape.placements[sourceId].w, searchShape.placements[searchId].w);
+        Assert.Equal(sourceShape.Placements[sourceId].W, searchShape.Placements[searchId].W);
 
 
 
-        bool flip = (sourceShape.placements[sourceId].z != searchShape.placements[searchId].z);
+        bool flip = (sourceShape.Placements[sourceId].Z != searchShape.Placements[searchId].Z);
 
         Assert.True(flip);
 
-        PlacementModel sourcePlacement = sourceShape.placements[sourceId];
-        PlacementModel searchPlacement = searchShape.placements[searchId];
+        PlacementModel sourcePlacement = sourceShape.Placements[sourceId];
+        PlacementModel searchPlacement = searchShape.Placements[searchId];
 
 
 
         // The first thing we need to do is calculate the offset of the common word placement for both sides
         var (sourceOffsetX, sourceOffsetY, searchOffsetX, searchOffsetY) = MergePlacementsCalculator.CalculateOffsets(
-            sourcePlacement.x,
-            sourcePlacement.y,
-            searchPlacement.x,
-            searchPlacement.y,
+            sourcePlacement.X,
+            sourcePlacement.Y,
+            searchPlacement.X,
+            searchPlacement.Y,
             flip);
 
         Assert.Equal(0, sourceOffsetX);
@@ -90,14 +90,14 @@ public class MergePlacementsCalculator_Tests
 
 
         List<PlacementModel> mergedPlacements = MergePlacementsCalculator.Execute(
-            sourceShape.placements,
-            searchShape.placements,
+            sourceShape.Placements,
+            searchShape.Placements,
             sourceId,
             searchId,
             flip);
 
-        Assert.Equal(4, sourceShape.placements.Count);
-        Assert.Equal(4, searchShape.placements.Count);
+        Assert.Equal(4, sourceShape.Placements.Count);
+        Assert.Equal(4, searchShape.Placements.Count);
         Assert.Equal(7, mergedPlacements.Count);
 
         var resultPlacements = new List<PlacementModel> {
@@ -148,7 +148,7 @@ public class MergePlacementsCalculator_Tests
 
         
 
-        ShapeModel mergedShape = new ShapeModel(width: PlacementList.width(mergedPlacements), height: PlacementList.height(mergedPlacements), score: 0, placements: mergedPlacements);
+        ShapeModel mergedShape = new ShapeModel(width: PlacementList.GetWidth(mergedPlacements), height: PlacementList.GetHeight(mergedPlacements), score: 0, placements: mergedPlacements);
 
         string actualText = mergedShape.ToTextDebug(words);
         Assert.Equal(expectedText, actualText);
@@ -159,17 +159,17 @@ public class MergePlacementsCalculator_Tests
 
 
         ShapeModel searchShape2 = GridList.ToShape(c, words);
-        Assert.Equal(4, searchShape2.placements.Count);
+        Assert.Equal(4, searchShape2.Placements.Count);
 
 
         List<PlacementModel> mergedPlacementsWithoutFlip = MergePlacementsCalculator.Execute(
-            sourceShape.placements,
-            searchShape2.placements);
+            sourceShape.Placements,
+            searchShape2.Placements);
 
        
 
 
-        ShapeModel mergedShapeWithoutFlip = new ShapeModel(width: PlacementList.width(mergedPlacementsWithoutFlip), height: PlacementList.height(mergedPlacementsWithoutFlip), score: 0, placements: mergedPlacementsWithoutFlip);
+        ShapeModel mergedShapeWithoutFlip = new ShapeModel(width: PlacementList.GetWidth(mergedPlacementsWithoutFlip), height: PlacementList.GetHeight(mergedPlacementsWithoutFlip), score: 0, placements: mergedPlacementsWithoutFlip);
 
         string actualTextWithoutFlip = mergedShapeWithoutFlip.ToTextDebug(words);
         Assert.Equal(expectedText, actualTextWithoutFlip);

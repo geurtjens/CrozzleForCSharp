@@ -10,5 +10,6 @@
   <ItemGroup>
     <ProjectReference Include="..\CrozzleInterfaces\CrozzleInterfaces.csproj" />
     <ProjectReference Include="..\CrozzleShapeMaker\CrozzleShapeMaker.csproj" />
+    <ProjectReference Include="..\CrozzleBranchAndBound\CrozzleBranchAndBound.csproj" />
   </ItemGroup>
 </Project>
