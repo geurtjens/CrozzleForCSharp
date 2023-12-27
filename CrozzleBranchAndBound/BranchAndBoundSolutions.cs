@@ -12,7 +12,7 @@ namespace CrozzleBranchAndBound
             int rootWidth,
             bool useGuidedScores)
         {
-            return BranchAndBoundV3.ExecuteGamesWinningWords(gameIds, lookaheadDepth, beamWidth, maxDepth, rootWidth, useGuidedScores);
+            return BranchAndBoundRunner.ExecuteGamesWinningWords(gameIds, lookaheadDepth, beamWidth, maxDepth, rootWidth, useGuidedScores);
         }
 
 
@@ -24,7 +24,7 @@ namespace CrozzleBranchAndBound
             int rootWidth,
             bool useGuidedScores)
         {
-            return BranchAndBoundV3.ExecuteGamesAllWords(gameIds, lookaheadDepth, beamWidth, maxDepth, rootWidth, useGuidedScores);
+            return BranchAndBoundRunner.ExecuteGamesAllWords(gameIds, lookaheadDepth, beamWidth, maxDepth, rootWidth, useGuidedScores);
         }
 
 

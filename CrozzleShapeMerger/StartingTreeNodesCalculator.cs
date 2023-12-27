@@ -32,7 +32,7 @@ public class StartingTreeNodeCalculator
                 widthMax: widthMax,
                 heightMax: heightMax);
 
-            childShapes = ShapeList.RemoveDuplicates(childShapes).OrderByDescending(e=> e.Score).ToList();
+            childShapes = ShapeList.RemoveDuplicates(childShapes);
             
             var treeNode = new TreeNodeModel(
                 parentShape: startingShapes[startingShapeId],

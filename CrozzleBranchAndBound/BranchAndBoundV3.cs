@@ -7,175 +7,7 @@ namespace CrozzleBranchAndBound;
 public class BranchAndBoundV3
 {
 
-    public static Tuple<int, List<ShapeModel>, WordIndexModelV2, List<TreeNodeModel>, List<int>, int, int>
-        GetStartingData(int gameId, List<string> words, int rootWidth, bool useGuidedScores)
-    {
-        GameModel game = GameList.FindGame(gameId);
-        int widthMax = game.WidthMax;
-        int heightMax = game.HeightMax;
-        int winningScore = game.WinningScore;
-
-        StartingDataModel startingDataModel = StartingDataCalculator.Execute(gameId, words, rootWidth, useGuidedScores);
-
-        WordIndexModelV2 searchWordIndex = new WordIndexModelV2(shapes: startingDataModel.searchShapes, wordCount: startingDataModel.words.Count);
-
-        List<TreeNodeModel> startingTreeNodes = StartingTreeNodeCalculator.Execute(
-            startingDataModel.startingShapes,
-            startingDataModel.searchShapes,
-            startingDataModel.words,
-            startingDataModel.scoresMin,
-            startingDataModel.maxWidth,
-            startingDataModel.maxHeight,
-            searchWordIndex);
-
-        WordIndexModelV2 wordIndex = new WordIndexModelV2(startingDataModel.searchShapes, words.Count);
-
-        return new Tuple<int, List<ShapeModel>, WordIndexModelV2, List<TreeNodeModel>, List<int>, int, int>(
-            winningScore, startingDataModel.searchShapes, wordIndex, startingTreeNodes, startingDataModel.scoresMin, widthMax, heightMax);
-    }
-
-
-
-
-    public static List<int> ExecuteGamesAllWords(
-        in List<int> gameIds,
-        int lookaheadDepth,
-        int beamWidth,
-        int maxDepth,
-        int rootWidth,
-        bool useGuidedScores)
-    {
-        DateTime startTime = DateTime.Now;
-
-
-
-        List<int> successfulGames = new List<int>();
-        Console.WriteLine($"\"lookaheadDepth\": {lookaheadDepth}, \"beamWidth\": {beamWidth}, \"rootWidth\": {rootWidth}, \"maxDepth\": {maxDepth}, \"games\": {gameIds.Count}");
-        Console.WriteLine(string.Join(", ", gameIds));
-        foreach (int gameId in gameIds)
-        {
-            GameModel game = GameList.FindGame(gameId);
-
-            ShapeModel bestShape = ExecuteGame(
-                game.GameId,
-                game.Words,
-                lookaheadDepth,
-                beamWidth,
-                maxDepth,
-                rootWidth,
-                game.WinningScore,
-                useGuidedScores);
-
-            if (bestShape.Score >= game.WinningScore)
-            {
-                successfulGames.Add(game.GameId);
-            }
-
-        }
-
-        Console.WriteLine($"\"lookaheadDepth\": {lookaheadDepth}, \"beamWidth\": {beamWidth}, \"successes\": {successfulGames.Count}, \"time\": \"{DateTimeCalculator.Duration(startTime)}\"");
-        if (successfulGames.Count == gameIds.Count)
-        {
-            Console.WriteLine("ALL GAMES SUCCEEDED");
-            Console.WriteLine("FOUND " + string.Join(", ", successfulGames));
-        }
-        else
-        {
-            var missingStuff = new HashSet<int>(gameIds).Except(new HashSet<int>(successfulGames)).OrderBy(x => x).ToList();
-            List<int> missing = (List<int>)missingStuff;
-            Console.WriteLine("MISSING " + string.Join(", ", missing));
-            Console.WriteLine("FOUND " + string.Join(", ", successfulGames));
-        }
-
-        return successfulGames;
-    }
-
-    public static List<int> ExecuteGamesWinningWords(
-        List<int> gameIds,
-        int lookaheadDepth,
-        int beamWidth,
-        int maxDepth,
-        int rootWidth,
-        bool useGuidedScores)
-    {
-        DateTime startTime = DateTime.Now;
-
-        List<int> successfulGames = new List<int>();
-
-        Console.Write("[");
-        
-
-        foreach (int gameId in gameIds)
-        {
-            GameModel game = GameList.FindGame(gameId);
-
-            ShapeModel bestShape = ExecuteGame(
-                game.GameId, game.WinningWords, lookaheadDepth, beamWidth,
-                maxDepth, rootWidth, game.WinningScore, useGuidedScores);
-
-            if (bestShape.Score >= game.WinningScore)
-            {
-                successfulGames.Add(game.GameId);
-            }
-
-        }
-
-        Console.WriteLine($"\"lookaheadDepth\": {lookaheadDepth}, \"beamWidth\": {beamWidth}, \"successes\": {successfulGames.Count}, \"time\": \"{DateTimeCalculator.Duration(startTime)}\"");
-        if (successfulGames.Count == gameIds.Count)
-        {
-            Console.WriteLine("ALL GAMES SUCCEEDED");
-            Console.WriteLine("FOUND " + string.Join(", ", successfulGames));
-        }
-        else
-        {
-            var missing = gameIds.Except(successfulGames).OrderBy(x => x).ToList();
-            Console.WriteLine("MISSING " + string.Join(", ", missing));
-            Console.WriteLine("FOUND " + string.Join(", ", successfulGames));
-        }
-
-        return successfulGames;
-    }
-
-
-    // We are adapting this one to improve it
-    public static bool ExecuteGameImproved(
-        int gameId,
-        List<string> words,
-        int lookaheadDepth,
-        int beamWidth,
-        int maxDepth,
-        int rootWidth,
-        bool useGuidedScores)
-    {
-        DateTime startTime = DateTime.Now;
-
-
-        GameModel game = GameList.FindGame(gameId);
-
-        int winningScore = game.WinningScore;
-
-        ShapeModel bestShape = ExecuteGame(
-            gameId,
-            words,
-            lookaheadDepth,
-            beamWidth,
-            maxDepth,
-            rootWidth,
-            winningScore,
-            useGuidedScores);
-
-        if (bestShape.Score >= game.WinningScore)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-
-
-    public static ShapeModel ExecuteGame(
+    public static ShapeModel Execute(
         int gameId,
         in List<string> words,
         int lookaheadDepth,
@@ -185,19 +17,30 @@ public class BranchAndBoundV3
         int winningScore,
         bool useGuidedScores)
     {
-        var (winningScoreValue, searchShapes, wordIndex, rootTreeNodes, scoresMin, widthMax, heightMax) =
-            GetStartingData(gameId, words, rootWidth, useGuidedScores);
+        var (_, searchShapes, wordIndex, rootTreeNodes, scoresMin, widthMax, heightMax) =
+            GetStartingData.Execute(gameId, words, rootWidth, useGuidedScores);
 
         Console.WriteLine($"{{\"game\": {gameId}, \"wordCount\": {words.Count}, \"searchShapes\": {searchShapes.Count}, " +
             $"\"lookaheadDepth\": {lookaheadDepth}, \"beamWidth\": {beamWidth}, \"rootWidth\": {rootWidth}, " +
             $"\"maxDepth\": {maxDepth}, \"cycles\": [");
 
-        var bestShapes = ExecuteLeaf(gameId, words, lookaheadDepth, beamWidth, maxDepth, rootWidth,
-            winningScore, useGuidedScores, searchShapes, wordIndex, widthMax, heightMax, scoresMin, rootTreeNodes);
+        var bestShapes = ExecuteCycles(
+            gameId,
+            words,
+            lookaheadDepth,
+            beamWidth,
+            maxDepth,
+            winningScore,
+            searchShapes,
+            wordIndex,
+            widthMax,
+            heightMax,
+            scoresMin,
+            rootTreeNodes);
 
         var bestShape = bestShapes[0];
 
-        if (bestShapes[0].Score == winningScoreValue)
+        if (bestShapes[0].Score == winningScore)
         {
             return bestShapes[0];
         }
@@ -207,7 +50,6 @@ public class BranchAndBoundV3
             var shapes = SiblingMergeCalculator.GetAllMatchingShapes(
                 wordIndex,
                 bestShapes[i],
-                0,
                 searchShapes,
                 words,
                 scoresMin,
@@ -223,7 +65,7 @@ public class BranchAndBoundV3
             }
         }
 
-        if (bestShape.Score >= winningScoreValue)
+        if (bestShape.Score >= winningScore)
         {
             Console.WriteLine($"HUMAN SCORE {gameId} Calculated at end");
         }
@@ -231,15 +73,13 @@ public class BranchAndBoundV3
         return bestShape;
     }
 
-    public static List<ShapeModel> ExecuteLeaf(
+    public static List<ShapeModel> ExecuteCycles(
         int gameId,
         in List<string> words,
         int lookaheadDepth,
         int beamWidth,
         int maxDepth,
-        int rootWidth,
         int winningScore,
-        bool useGuidedScores,
         in List<ShapeModel> searchShapes,
         in WordIndexModelV2 wordIndex,
         int widthMax,
@@ -259,8 +99,7 @@ public class BranchAndBoundV3
 
         for (var cycleId = 0; cycleId < maxDepth; cycleId++)
         {
-            shapesCreatedCount = 0;
-            treeNodes = ExecuteAll(treeNodes, searchShapes, words, widthMax, heightMax,
+            treeNodes = ExecuteTreeNodes(treeNodes, searchShapes, words, widthMax, heightMax,
                 wordIndex, scoresMin);
 
             shapesCreatedCount = treeNodes.Count;
@@ -269,7 +108,7 @@ public class BranchAndBoundV3
                 shapesCreatedCount += treeNode.ChildShapes.Count;
             }
 
-            (treeNodes, shapesCreated) = ExecuteLookaheadAndBeamAsync(
+            (treeNodes, shapesCreated) = ExecuteLookaheadAndBeam(
                 lookaheadDepth, beamWidth, treeNodes, searchShapes, words, widthMax, heightMax,
                 wordIndex, scoresMin);
 
@@ -309,30 +148,38 @@ public class BranchAndBoundV3
                 {
                     bestShape = bestShapes[0];
                 }
-
-                Console.WriteLine($"score:{bestShape.Score}");
-                Console.WriteLine(bestShape.ToTextDebug(words));
+                
+                Console.WriteLine($" bestGame: {bestShape.ToTextArray(words)}");
+                
 
                 var siblingMerges = TreeNodeList.IdentifySiblingMerges(treeNodes, 1, 2);
 
-                Console.WriteLine($"{{\"cycle\": {cycleId}, \"shapesCreated\": {shapesCreatedCount}, " +
+                // but this is the winning game, why cant it recognise it
+                Console.WriteLine($"{{\"cycle\": {cycleId + 1}, \"shapesCreated\": {shapesCreatedCount}, " +
                     $"\"bestScores\": [{string.Join(",", bestScores)}],\n");
 
                 if (bestShape.Score >= winningScore)
                 {
+                    Console.WriteLine($" bestGame: {bestShape.ToTextArray(words)}");
                     Console.WriteLine($"HUMAN SCORE {gameId}");
                     Console.WriteLine(DateTimeCalculator.Duration(start: startTime));
                     return bestShapes;
                 }
                 else
                 {
+                    Console.WriteLine($" bestGame: {bestShape.ToTextArray(words)}");
+                    Console.WriteLine($" expected: {winningScore}");
                     Console.WriteLine($"FAILED {gameId}");
                     Console.WriteLine(DateTimeCalculator.Duration(start: startTime));
                     return bestShapes;
                 }
             }
-
-            Console.WriteLine($"\"bestGame\": {bestShape.ToTextArray(words)}");
+            if (cycleId == 0)
+            {
+                Console.Write($"{{\"cycle\": 0, \"shapesCreated\": 1, " +
+                $"\"bestScores\": [{bestShape.Score}], ");
+            }
+            Console.WriteLine($" \"bestGame\": {bestShape.ToTextArray(words)}");
 
             if (treeNodes.Count > 0)
             {
@@ -353,7 +200,7 @@ public class BranchAndBoundV3
 
                 var siblingMerges = new List<(int, int, List<int>)>();
 
-                Console.Write($"{{\"cycle\": {cycleId}, \"shapesCreated\": {shapesCreatedCount}, " +
+                Console.Write($"{{\"cycle\": {cycleId + 1}, \"shapesCreated\": {shapesCreatedCount}, " +
                     $"\"bestScores\": [{string.Join(",", bestScores)}],");
                 
             }
@@ -362,40 +209,32 @@ public class BranchAndBoundV3
         return new List<ShapeModel>();
     }
 
-    public static Tuple<List<TreeNodeModel>, int> ExecuteLookaheadAndBeamAsync(
-        int lookaheadDepth,
-        int beamWidth,
-        in List<TreeNodeModel> treeNodes,
-        in List<ShapeModel> searchShapes,
-        in List<string> words,
-        int widthMax,
-        int heightMax,
-        in WordIndexModelV2 wordIndex,
-        in List<int> scoresMin)
+
+    public static List<TreeNodeModel> ExecuteTreeNodes(
+    in List<TreeNodeModel> treeNodes,
+    in List<ShapeModel> searchShapes,
+    in List<string> words,
+    int widthMax,
+    int heightMax,
+    in WordIndexModelV2 wordIndex,
+    in List<int> scoresMin)
     {
-        var shapesCreatedCount = 0;
+        var result = new List<TreeNodeModel>();
 
-        for (var treeNodeId = 0; treeNodeId < treeNodes.Count; treeNodeId++)
+        foreach (var treeNode in treeNodes)
         {
-            var treeNode = treeNodes[treeNodeId];
+            var values = ExecuteTreeNode(
+                treeNode, searchShapes, words, widthMax, heightMax, wordIndex, scoresMin);
 
-            var (bestShape, shapesCreated) = GetMaxScoreOfTreeNodeAsync(
-                lookaheadDepth, treeNode, searchShapes, words, widthMax, heightMax, wordIndex, scoresMin);
-
-
-            treeNodes[treeNodeId].SetBestDescendant((ShapeModel)bestShape);
-
-
-            shapesCreatedCount += shapesCreated;
+            result.AddRange(values);
         }
+        result = TreeNodeList.SortByBestDescendant(result);
 
-        List<TreeNodeModel> treeNodesSorted = TreeNodeList.SortByBestDescendant(treeNodes);
 
-
-        var result = TreeNodeList.ApplyBeamWidth(treeNodesSorted, beamWidth);
-
-        return new Tuple<List<TreeNodeModel>, int>(result, shapesCreatedCount);
+        return result;
     }
+
+
 
     public static List<TreeNodeModel> ExecuteTreeNode(
         in TreeNodeModel treeNode,
@@ -407,7 +246,7 @@ public class BranchAndBoundV3
         in List<int> scoresMin)
     {
         var result = new List<TreeNodeModel>();
-
+        // the swift version has 31 entries but we have 35.  Its because we have different child shapes found
         var leafShapesAddedToBecomeSiblings = ShapeList.GetLastMergeHistoryShapeId(treeNode.ChildShapes);
         var wordDifferenceBetweenParentAndSibling = ShapeList.GetWordDifferences(treeNode.ChildShapes, treeNode.ParentShape);
 
@@ -432,7 +271,7 @@ public class BranchAndBoundV3
                 var subsetB = wordsInMatchingSibling.IsSubsetOf(siblingWords);
 
                 if (matchingSiblingId != siblingId &&
-                    subsetA && subsetB &&
+                    subsetA == false && subsetB == false &&
                     !processedQueue.Contains(searchForDuplicates))
                 {
                     processedQueue.Add($"{sourceShapeId},{searchShapeId}");
@@ -447,12 +286,13 @@ public class BranchAndBoundV3
                 }
             }
 
+            // swift gave us 8 shapes but c# got no shapes at all for game 8808 (the second game we are processing)
             var siblingWordsAsListInt = new List<int>(siblingWords);
 
-            
+
             var siblingCount = resultForShape.Count;
 
-            var extraShapes = GetLeafShapes(
+            var extraShapes = GetLeafShapesForLastWordsAddedToCurrentShape(
                 wordIndex,
                 siblingWordsAsListInt,
                 leafShapesAddedToBecomeSiblings,
@@ -488,7 +328,8 @@ public class BranchAndBoundV3
         return result;
     }
 
-    public static List<ShapeModel> GetLeafShapes(
+
+    public static List<ShapeModel> GetLeafShapesForLastWordsAddedToCurrentShape(
 
         in WordIndexModelV2 wordIndex,
         in List<int> siblingWords,
@@ -508,6 +349,115 @@ public class BranchAndBoundV3
 
         return leafShapes;
     }
+
+
+
+    public static Tuple<List<TreeNodeModel>, int> ExecuteLookaheadAndBeam(
+        int lookaheadDepth,
+        int beamWidth,
+        in List<TreeNodeModel> treeNodes,
+        in List<ShapeModel> searchShapes,
+        in List<string> words,
+        int widthMax,
+        int heightMax,
+        in WordIndexModelV2 wordIndex,
+        in List<int> scoresMin)
+    {
+        var shapesCreatedCount = 0;
+
+        for (var treeNodeId = 0; treeNodeId < treeNodes.Count; treeNodeId++)
+        {
+            var treeNode = treeNodes[treeNodeId];
+
+            var (bestShape, shapesCreated) = GetNodesAccordingToLookaheadDepth(
+                lookaheadDepth, treeNode, searchShapes, words, widthMax, heightMax, wordIndex, scoresMin);
+
+
+            treeNodes[treeNodeId].SetBestDescendant((ShapeModel)bestShape);
+
+
+            shapesCreatedCount += shapesCreated;
+        }
+
+        List<TreeNodeModel> treeNodesSorted = TreeNodeList.SortByBestDescendant(treeNodes);
+
+
+        var result = TreeNodeList.ApplyBeamWidth(treeNodesSorted, beamWidth);
+
+        return new Tuple<List<TreeNodeModel>, int>(result, shapesCreatedCount);
+    }
+
+
+    public static Tuple<ShapeModel, int> GetNodesAccordingToLookaheadDepth(
+        int lookaheadDepth,
+        in TreeNodeModel treeNode,
+        in List<ShapeModel> searchShapes,
+        in List<string> words,
+        int widthMax,
+        int heightMax,
+        in WordIndexModelV2 wordIndex,
+        in List<int> scoresMin)
+    {
+        var treeNodes = new List<TreeNodeModel> { treeNode };
+        var bestShape = treeNode.ParentShape;
+        var shapesCreated = 0;
+
+        for (var i = 1; i < lookaheadDepth; i++)
+        {
+            treeNodes = ExecuteLevelInParallel(
+                treeNodes,
+                searchShapes,
+                words,
+                widthMax,
+                heightMax,
+                wordIndex,
+                scoresMin);
+
+
+            var currentBestShapeNullable = TreeNodeList.GetBestShape(treeNodes);
+            if (currentBestShapeNullable is not null)
+            {
+                var currentBestShape = (ShapeModel)currentBestShapeNullable;
+                if (currentBestShape.Score > bestShape.Score)
+
+                    bestShape = currentBestShape;
+            }
+        }
+
+        // How big is this max scoring shape?  Do it later
+        return new Tuple<ShapeModel, int>(bestShape, shapesCreated);
+    }
+
+
+    public static List<TreeNodeModel> ExecuteLevelInParallel(
+        in List<TreeNodeModel> treeNodes,
+        in List<ShapeModel> searchShapes,
+        in List<string> words,
+        int widthMax,
+        int heightMax,
+        in WordIndexModelV2 wordIndex,
+        in List<int> scoresMin)
+    {
+
+
+        var a0 = ExecuteAsync(0, treeNodes, searchShapes, words, widthMax, heightMax, wordIndex, scoresMin);
+        var a1 = ExecuteAsync(1, treeNodes, searchShapes, words, widthMax, heightMax, wordIndex, scoresMin);
+        var a2 = ExecuteAsync(2, treeNodes, searchShapes, words, widthMax, heightMax, wordIndex, scoresMin);
+        var a3 = ExecuteAsync(3, treeNodes, searchShapes, words, widthMax, heightMax, wordIndex, scoresMin);
+        var a4 = ExecuteAsync(4, treeNodes, searchShapes, words, widthMax, heightMax, wordIndex, scoresMin);
+        var a5 = ExecuteAsync(5, treeNodes, searchShapes, words, widthMax, heightMax, wordIndex, scoresMin);
+        var a6 = ExecuteAsync(6, treeNodes, searchShapes, words, widthMax, heightMax, wordIndex, scoresMin);
+        var a7 = ExecuteAsync(7, treeNodes, searchShapes, words, widthMax, heightMax, wordIndex, scoresMin);
+        var a8 = ExecuteAsync(8, treeNodes, searchShapes, words, widthMax, heightMax, wordIndex, scoresMin);
+        var a9 = ExecuteAsync(9, treeNodes, searchShapes, words, widthMax, heightMax, wordIndex, scoresMin);
+
+        var collection = new List<List<TreeNodeModel>> { a0, a1, a2, a3, a4, a5, a6, a7, a8, a9 };
+
+        var result = collection.SelectMany(e => e).ToList();
+
+        return result;
+    }
+
 
     public static List<TreeNodeModel> ExecuteAsync(
         int zeroToNine,
@@ -538,96 +488,48 @@ public class BranchAndBoundV3
         return result;
     }
 
-    public static List<TreeNodeModel> ExecuteLevelInParallelAsync(
-        in List<TreeNodeModel> treeNodes,
-        in List<ShapeModel> searchShapes,
-        in List<string> words,
-        int widthMax,
-        int heightMax,
-        in WordIndexModelV2 wordIndex,
-        in List<int> scoresMin)
-    {
+    
+
+    
+
+    
+
+    //// We are adapting this one to improve it
+    //public static bool ExecuteGameImproved(
+    //    int gameId,
+    //    List<string> words,
+    //    int lookaheadDepth,
+    //    int beamWidth,
+    //    int maxDepth,
+    //    int rootWidth,
+    //    bool useGuidedScores)
+    //{
+    //    DateTime startTime = DateTime.Now;
 
 
-        var a0 = ExecuteAsync(0, treeNodes, searchShapes, words, widthMax, heightMax, wordIndex, scoresMin);
-        var a1 = ExecuteAsync(1, treeNodes, searchShapes, words, widthMax, heightMax, wordIndex, scoresMin);
-        var a2 = ExecuteAsync(2, treeNodes, searchShapes, words, widthMax, heightMax, wordIndex, scoresMin);
-        var a3 = ExecuteAsync(3, treeNodes, searchShapes, words, widthMax, heightMax, wordIndex, scoresMin);
-        var a4 = ExecuteAsync(4, treeNodes, searchShapes, words, widthMax, heightMax, wordIndex, scoresMin);
-        var a5 = ExecuteAsync(5, treeNodes, searchShapes, words, widthMax, heightMax, wordIndex, scoresMin);
-        var a6 = ExecuteAsync(6, treeNodes, searchShapes, words, widthMax, heightMax, wordIndex, scoresMin);
-        var a7 = ExecuteAsync(7, treeNodes, searchShapes, words, widthMax, heightMax, wordIndex, scoresMin);
-        var a8 = ExecuteAsync(8, treeNodes, searchShapes, words, widthMax, heightMax, wordIndex, scoresMin);
-        var a9 = ExecuteAsync(9, treeNodes, searchShapes, words, widthMax, heightMax, wordIndex, scoresMin);
+    //    GameModel game = GameList.FindGame(gameId);
 
-        var collection = new List<List<TreeNodeModel>> { a0, a1, a2, a3, a4, a5, a6, a7, a8, a9 };
+    //    int winningScore = game.WinningScore;
 
-        var result = collection.SelectMany(e => e).ToList();
+    //    ShapeModel bestShape = Execute(
+    //        gameId,
+    //        words,
+    //        lookaheadDepth,
+    //        beamWidth,
+    //        maxDepth,
+    //        rootWidth,
+    //        winningScore,
+    //        useGuidedScores);
 
-        return result;
-    }
-
-    public static Tuple<ShapeModel, int> GetMaxScoreOfTreeNodeAsync(
-        int lookaheadDepth,
-        in TreeNodeModel treeNode,
-        in List<ShapeModel> searchShapes,
-        in List<string> words,
-        int widthMax,
-        int heightMax,
-        in WordIndexModelV2 wordIndex,
-        in List<int> scoresMin)
-    {
-        var treeNodes = new List<TreeNodeModel> { treeNode };
-        var bestShape = treeNode.ParentShape;
-        var shapesCreated = 0;
-
-        for (var i = 1; i < lookaheadDepth; i++)
-        {
-            treeNodes = ExecuteLevelInParallelAsync(
-                treeNodes,
-                searchShapes,
-                words,
-                widthMax,
-                heightMax,
-                wordIndex,
-                scoresMin);
+    //    if (bestShape.Score >= game.WinningScore)
+    //    {
+    //        return true;
+    //    }
+    //    else
+    //    {
+    //        return false;
+    //    }
+    //}
 
 
-            var currentBestShapeNullable = TreeNodeList.GetBestShape(treeNodes);
-            if (currentBestShapeNullable is not null)
-            {
-                var currentBestShape = (ShapeModel)currentBestShapeNullable;
-                if (currentBestShape.Score > bestShape.Score)
-
-                    bestShape = currentBestShape;
-            }
-        }
-
-        // How big is this max scoring shape?  Do it later
-        return new Tuple<ShapeModel, int>(bestShape, shapesCreated);
-    }
-
-    public static List<TreeNodeModel> ExecuteAll(
-    in List<TreeNodeModel> treeNodes,
-    in List<ShapeModel> searchShapes,
-    in List<string> words,
-    int widthMax,
-    int heightMax,
-    in WordIndexModelV2 wordIndex,
-    in List<int> scoresMin)
-    {
-        var result = new List<TreeNodeModel>();
-
-        foreach (var treeNode in treeNodes)
-        {
-            var values = ExecuteTreeNode(
-                treeNode, searchShapes, words, widthMax, heightMax, wordIndex, scoresMin);
-
-            result.AddRange(values);
-        }
-        result = TreeNodeList.SortByBestDescendant(result);
-
-
-        return result;
-    }
 }

@@ -70,9 +70,9 @@ public class ShapeList
         }
     }
 
-    public static List<ShapeModel> RemoveDuplicates(in List<ShapeModel> shapes)
+    public static List<ShapeModel> RemoveDuplicates(List<ShapeModel> shapes)
     {
-        var sorted = SortToFindDuplicates(shapes);
+        List<ShapeModel> sorted = shapes.OrderBy(e => e.WordSequence).ToList();
         int previous = 0;
         for (int current = 1; current < sorted.Count; current++)
         {
@@ -81,11 +81,12 @@ public class ShapeList
                 sorted[current].WordSequence == sorted[previous].WordSequence &&
                 sorted[current].Width * sorted[current].Height == sorted[previous].Width * sorted[previous].Height)
             {
-                sorted[current].SetToInvalid();
+                sorted[current].IsValid = false;
             }
         }
 
-        return sorted.Where(e => e.IsValid == true).ToList();
+        sorted = sorted.Where(e => e.IsValid == true).OrderByDescending(e => e.Score).ToList();
+        return sorted;
     }
 
 

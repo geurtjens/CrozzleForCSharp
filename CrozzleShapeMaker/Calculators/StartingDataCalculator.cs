@@ -70,7 +70,7 @@ public class StartingDataCalculator
         }
 
         
-
+        // the starting data is different
         StartingDataModel result = new StartingDataModel(gameId, searchShapes, winningShapes, startingShapes, words, scoresMin, widthMax, heightMax, winningScore);
 
 

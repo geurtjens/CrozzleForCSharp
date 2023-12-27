@@ -1,6 +1,6 @@
 ﻿namespace CrozzleInterfaces;
 
-public record struct ShapeModel
+public class ShapeModel
 {
 	public readonly byte Width;
 	public readonly byte Height;
@@ -11,12 +11,11 @@ public record struct ShapeModel
     public List<int> History;
     public bool IsValid;
 
-		public ShapeModel(ushort score, byte width, byte height, in List<PlacementModel> placements)
-		{
+	public ShapeModel(ushort score, byte width, byte height, in List<PlacementModel> placements)
+	{
         this.IsValid = true;
         this.Score = score;
         this.History = new List<int>();
-
 
         var sortedPlacements = PlacementList.SortByWord(placements);
 
@@ -36,13 +35,9 @@ public record struct ShapeModel
             this.Placements = sortedPlacements;
             this.WordSequence = PlacementList.GetWordSequence(sortedPlacements);
         }            
-		}
+	}
 
-    public void SetToInvalid()
-    {
-        IsValid = false;
-    }
-
+    
     public static List<int> CreateMergeHistory(
         in List<int> sourceShapeHistory,
         in List<int> searchShapeHistory)

@@ -57,7 +57,6 @@ namespace CrozzleBranchAndBound
         public static List<ShapeModel> GetAllMatchingShapes(
             WordIndexModelV2 wordIndex,
             in ShapeModel sourceShape,
-            int sourceShapeId,
             in List<ShapeModel> searchShapes,
             in List<string> words,
             in List<int> scoresMin,

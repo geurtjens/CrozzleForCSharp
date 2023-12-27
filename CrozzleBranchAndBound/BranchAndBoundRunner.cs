@@ -39,7 +39,7 @@ public class BranchAndBoundRunner
 
         foreach (var instruction in instructions)
         {
-            solved.AddRange(BranchAndBoundV3.ExecuteGamesWinningWords(
+            solved.AddRange(BranchAndBoundRunner.ExecuteGamesWinningWords(
                 gameIds: instruction.Games,
                 lookaheadDepth: instruction.LookaheadDepth,
                 beamWidth: instruction.BeamWidth,
@@ -51,6 +51,52 @@ public class BranchAndBoundRunner
         PrintResults(overallStart, solved);
     }
 
+
+    public static List<int> ExecuteGamesWinningWords(
+        List<int> gameIds,
+        int lookaheadDepth,
+        int beamWidth,
+        int maxDepth,
+        int rootWidth,
+        bool useGuidedScores)
+    {
+        DateTime startTime = DateTime.Now;
+
+        List<int> successfulGames = new List<int>();
+
+        Console.Write("[");
+
+
+        foreach (int gameId in gameIds)
+        {
+            GameModel game = GameList.FindGame(gameId);
+
+            ShapeModel bestShape = BranchAndBoundV3.Execute(
+                game.GameId, game.WinningWords, lookaheadDepth, beamWidth,
+                maxDepth, rootWidth, game.WinningScore, useGuidedScores);
+
+            if (bestShape.Score >= game.WinningScore)
+            {
+                successfulGames.Add(game.GameId);
+            }
+
+        }
+
+        Console.WriteLine($"\"lookaheadDepth\": {lookaheadDepth}, \"beamWidth\": {beamWidth}, \"successes\": {successfulGames.Count}, \"time\": \"{DateTimeCalculator.Duration(startTime)}\"");
+        if (successfulGames.Count == gameIds.Count)
+        {
+            Console.WriteLine("ALL GAMES SUCCEEDED");
+            Console.WriteLine("FOUND " + string.Join(", ", successfulGames));
+        }
+        else
+        {
+            var missing = gameIds.Except(successfulGames).OrderBy(x => x).ToList();
+            Console.WriteLine("MISSING " + string.Join(", ", missing));
+            Console.WriteLine("FOUND " + string.Join(", ", successfulGames));
+        }
+
+        return successfulGames;
+    }
     public static void UseAllWords(List<BranchAndBoundInstruction> instructions)
     {
         DateTime overallStart = DateTimeCalculator.Now();
@@ -59,7 +105,7 @@ public class BranchAndBoundRunner
 
         foreach (var instruction in instructions)
         {
-            solved.AddRange(BranchAndBoundV3.ExecuteGamesAllWords(
+            solved.AddRange(ExecuteGamesAllWords(
                 gameIds: instruction.Games,
                 lookaheadDepth: instruction.LookaheadDepth,
                 beamWidth: instruction.BeamWidth,
@@ -70,7 +116,58 @@ public class BranchAndBoundRunner
 
         PrintResults(overallStart, solved);
     }
+    public static List<int> ExecuteGamesAllWords(
+        in List<int> gameIds,
+        int lookaheadDepth,
+        int beamWidth,
+        int maxDepth,
+        int rootWidth,
+        bool useGuidedScores)
+    {
+        DateTime startTime = DateTime.Now;
 
+
+
+        List<int> successfulGames = new List<int>();
+        Console.WriteLine($"\"lookaheadDepth\": {lookaheadDepth}, \"beamWidth\": {beamWidth}, \"rootWidth\": {rootWidth}, \"maxDepth\": {maxDepth}, \"games\": {gameIds.Count}");
+        Console.WriteLine(string.Join(", ", gameIds));
+        foreach (int gameId in gameIds)
+        {
+            GameModel game = GameList.FindGame(gameId);
+
+            ShapeModel bestShape = BranchAndBoundV3.Execute(
+                game.GameId,
+                game.Words,
+                lookaheadDepth,
+                beamWidth,
+                maxDepth,
+                rootWidth,
+                game.WinningScore,
+                useGuidedScores);
+
+            if (bestShape.Score >= game.WinningScore)
+            {
+                successfulGames.Add(game.GameId);
+            }
+
+        }
+
+        Console.WriteLine($"\"lookaheadDepth\": {lookaheadDepth}, \"beamWidth\": {beamWidth}, \"successes\": {successfulGames.Count}, \"time\": \"{DateTimeCalculator.Duration(startTime)}\"");
+        if (successfulGames.Count == gameIds.Count)
+        {
+            Console.WriteLine("ALL GAMES SUCCEEDED");
+            Console.WriteLine("FOUND " + string.Join(", ", successfulGames));
+        }
+        else
+        {
+            var missingStuff = new HashSet<int>(gameIds).Except(new HashSet<int>(successfulGames)).OrderBy(x => x).ToList();
+            List<int> missing = (List<int>)missingStuff;
+            Console.WriteLine("MISSING " + string.Join(", ", missing));
+            Console.WriteLine("FOUND " + string.Join(", ", successfulGames));
+        }
+
+        return successfulGames;
+    }
 
     public static void PrintResults(DateTime overallStart, List<int> solved)
     {

@@ -17,7 +17,7 @@ public class BranchAndBoundV3_Tests
 
 
 
-        var result = BranchAndBoundV3.ExecuteGame(
+        var result = BranchAndBoundV3.Execute(
             gameId: gameId,
             words: words,
             lookaheadDepth: 1,
@@ -61,7 +61,7 @@ public class BranchAndBoundV3_Tests
 
 
 
-        var result = BranchAndBoundV3.ExecuteGame(
+        var result = BranchAndBoundV3.Execute(
             gameId: gameId,
             words: words,
             lookaheadDepth: 3,

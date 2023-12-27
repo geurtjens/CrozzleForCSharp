@@ -37,7 +37,7 @@ namespace CrozzleBranchAndBound
                     1,
                     beamWidth,
                     startingWord * -1,
-                    false);
+                    useGuidedScores);
 
                 beamWidthResults.Add(beamWidthResult);
             }
@@ -60,7 +60,7 @@ namespace CrozzleBranchAndBound
             int lowerWidth = minimumBeamWidth;
             int upperWidth = maximumBeamWidth;
 
-            List<int> lowerWidthShouldFail = BranchAndBoundV3.ExecuteGamesAllWords(
+            List<int> lowerWidthShouldFail = BranchAndBoundRunner.ExecuteGamesAllWords(
                 new List<int> { gameId },
                 lookaheadDepth, lowerWidth, maxDepth, rootWidth, useGuidedScores);
 
@@ -71,7 +71,7 @@ namespace CrozzleBranchAndBound
             }
             else
             {
-                List<int> upperWidthShouldSucceed = BranchAndBoundV3.ExecuteGamesAllWords(
+                List<int> upperWidthShouldSucceed = BranchAndBoundRunner.ExecuteGamesAllWords(
                     new List<int> { gameId },
                     lookaheadDepth, upperWidth, maxDepth, rootWidth, useGuidedScores);
 
@@ -87,7 +87,7 @@ namespace CrozzleBranchAndBound
                         currentWidth = (int)((double)(lowerWidth + upperWidth + 0.5) / 2.0);
                         Console.WriteLine($"Game: {gameId}, Lower: {lowerWidth}, Upper: {upperWidth}, Current Width: {currentWidth}");
 
-                        List<int> winnersForCurrent = BranchAndBoundV3.ExecuteGamesAllWords(
+                        List<int> winnersForCurrent = BranchAndBoundRunner.ExecuteGamesAllWords(
                             new List<int> { gameId },
                             lookaheadDepth, currentWidth, maxDepth, rootWidth, useGuidedScores);
 
@@ -136,7 +136,7 @@ namespace CrozzleBranchAndBound
                 gameId :gameId,
                 words: words,
                 rootWidth: 0, // Meaning give us all of them
-                useGuidedScores: false);
+                useGuidedScores: useGuidedScores);
 
             List<ShapeModel> winningShapes = startingDataModel.startingShapes;
 
@@ -144,7 +144,7 @@ namespace CrozzleBranchAndBound
             {
                 int startingShape = i * -1;
 
-                List<int> winning = BranchAndBoundV3.ExecuteGamesWinningWords(
+                List<int> winning = BranchAndBoundRunner.ExecuteGamesWinningWords(
                     new List<int> { gameId },
                     lookaheadDepth,
                     beamWidth,
@@ -182,7 +182,7 @@ namespace CrozzleBranchAndBound
                 lowerWidth = minimumBeamWidth;
                 upperWidth = maximumBeamWidth;
 
-                List<int> lowerWidthShouldFail = BranchAndBoundV3.ExecuteGamesWinningWords(
+                List<int> lowerWidthShouldFail = BranchAndBoundRunner.ExecuteGamesWinningWords(
                     new List<int> { gameId },
                     lookaheadDepth, lowerWidth, maxDepth, rootWidth, useGuidedScores);
 
@@ -193,7 +193,7 @@ namespace CrozzleBranchAndBound
                 }
                 else
                 {
-                    List<int> upperWidthShouldSucceed = BranchAndBoundV3.ExecuteGamesWinningWords(
+                    List<int> upperWidthShouldSucceed = BranchAndBoundRunner.ExecuteGamesWinningWords(
                         new List<int> { gameId },
                         lookaheadDepth, upperWidth, maxDepth, rootWidth, useGuidedScores);
 
@@ -209,7 +209,7 @@ namespace CrozzleBranchAndBound
                             currentWidth = (int)((double)(lowerWidth + upperWidth + 0.5) / 2.0);
                             Console.WriteLine($"Game: {gameId}, Lower: {lowerWidth}, Upper: {upperWidth}, Current Width: {currentWidth}");
 
-                            List<int> winnersForCurrent = BranchAndBoundV3.ExecuteGamesWinningWords(
+                            List<int> winnersForCurrent = BranchAndBoundRunner.ExecuteGamesWinningWords(
                                 new List<int> { gameId },
                                 lookaheadDepth, currentWidth, maxDepth, rootWidth, useGuidedScores);
 
@@ -267,7 +267,7 @@ namespace CrozzleBranchAndBound
             int lowerWidth = minimumBeamWidth;
             int upperWidth = maximumBeamWidth;
 
-            List<int> lowerWidthShouldFail = BranchAndBoundV3.ExecuteGamesWinningWords(
+            List<int> lowerWidthShouldFail = BranchAndBoundRunner.ExecuteGamesWinningWords(
                 new List<int> { gameId },
                 lookaheadDepth, lowerWidth, maxDepth, rootWidth, useGuidedScores);
 
@@ -278,7 +278,7 @@ namespace CrozzleBranchAndBound
             }
             else
             {
-                List<int> upperWidthShouldSucceed = BranchAndBoundV3.ExecuteGamesWinningWords(
+                List<int> upperWidthShouldSucceed = BranchAndBoundRunner.ExecuteGamesWinningWords(
                     new List<int> { gameId },
                     lookaheadDepth,
                     upperWidth,
@@ -298,7 +298,7 @@ namespace CrozzleBranchAndBound
                         currentWidth = (int)((double)(lowerWidth + upperWidth + 0.5) / 2.0);
                         Console.WriteLine($"Game: {gameId}, Lower: {lowerWidth}, Upper: {upperWidth}, Current Width: {currentWidth}");
 
-                        List<int> winnersForCurrent = BranchAndBoundV3.ExecuteGamesWinningWords(
+                        List<int> winnersForCurrent = BranchAndBoundRunner.ExecuteGamesWinningWords(
                             new List<int> { gameId },
                             lookaheadDepth, lowerWidth, maxDepth, rootWidth, useGuidedScores);
 
