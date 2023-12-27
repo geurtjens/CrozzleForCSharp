@@ -7,6 +7,36 @@ namespace CrozzleInterfaces;
 /// </summary>
 public class ShapeList
 {
+    public static List<int> CreateMergeHistory(
+        List<int> sourceShapeHistory,
+        in List<int> searchShapeHistory)
+    {
+        if (sourceShapeHistory.Count == 1 && searchShapeHistory.Count == 1)
+        {
+            var source = sourceShapeHistory[0];
+            var search = searchShapeHistory[0];
+            if (source < search)
+            {
+                return new List<int> { source, search };
+            }
+            else
+            {
+                return new List<int> { search, source };
+            }
+        }
+
+        var history = new List<int>();
+        history.AddRange(sourceShapeHistory);
+        history.AddRange(searchShapeHistory);
+
+        if (history.Count > 5)
+        {
+            Console.WriteLine($"sourceShapeHistory.Count = {sourceShapeHistory.Count}");
+        }
+
+        return history;
+    }
+
 
     /// <summary>
     /// Gets the word differences between a list of child shapes and the parent shape
@@ -56,7 +86,7 @@ public class ShapeList
 
         for (int shapeId = 0; shapeId < shapes.Count; shapeId++)
         {
-            var referenceShapeId = GetShapeBySequence(shapes: shapes, sequence: shapes[shapeId].WordSequence);
+            var referenceShapeId = GetShapeBySequence(shapes: referenceShapes, sequence: shapes[shapeId].WordSequence);
 
 
             if (referenceShapeId == -1)

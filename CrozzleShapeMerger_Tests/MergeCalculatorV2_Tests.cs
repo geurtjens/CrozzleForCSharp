@@ -41,7 +41,8 @@ public class MergeCalculatorV2_Tests
         Assert.Equal(5, shapeB.Placements.Count);
 
         List<int> scoresMin = MinScoreList.Execute(0);
-		ShapeModel? shapeOrNull = MergeCalculatorV2.MergeTwoShapes(shapeA, shapeB, words, 17, 12, scoresMin);
+		List<int> sourceHistory = shapeA.History;
+		ShapeModel? shapeOrNull = MergeCalculatorV2.MergeTwoShapes(shapeA, sourceHistory, shapeB, words, 17, 12, scoresMin);
 
 		Assert.NotNull(shapeOrNull);
 

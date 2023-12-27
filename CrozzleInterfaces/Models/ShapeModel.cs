@@ -38,36 +38,25 @@ public class ShapeModel
 	}
 
     
-    public static List<int> CreateMergeHistory(
-        in List<int> sourceShapeHistory,
-        in List<int> searchShapeHistory)
+    
+
+    public string ToJson(in List<string> words)
     {
-        if (sourceShapeHistory.Count == 1 && searchShapeHistory.Count == 1)
+        
+        var result = "";
+        foreach (int historyItem in History)
         {
-            var source = sourceShapeHistory[0];
-            var search = searchShapeHistory[0];
-            if (source < search)
+            if (result != "")
             {
-                return new List<int> { source, search };
+                result += ",";
             }
-            else
-            {
-                return new List<int> { search, source };
-            }
+            result += $"{historyItem}";
+
         }
-        // I think we should add to the source shape history rather than adding the larger one to the smaller one.  See if this makes a difference.
-        sourceShapeHistory.AddRange(searchShapeHistory);
-        return sourceShapeHistory;
-        //else if (sourceShapeHistory.Count > searchShapeHistory.Count)
-        //{
-        //    sourceShapeHistory.AddRange(searchShapeHistory);
-        //    return sourceShapeHistory;
-        //}
-        //else
-        //{
-        //    searchShapeHistory.AddRange(sourceShapeHistory);
-        //    return searchShapeHistory;
-        //}
+        result = $"{{\"Score\": {Score}, \"Width\": {Width}, \"Height\": {Height}, \"History\": [{result}], \"Grid\": [\n";
+
+        result += ToTextArray(words: words) + "}\n";
+        return result;
     }
 
     public string ToCSharpCode()

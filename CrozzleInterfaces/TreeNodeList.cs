@@ -97,7 +97,7 @@ public static class TreeNodeList
             if (sorted[current].ParentShape.Score == sorted[previous].ParentShape.Score &&
                 sorted[current].ParentShape.WordSequence == sorted[previous].ParentShape.WordSequence)
             {
-                sorted[current].SetToInvalid();
+                sorted[current].IsValid = false;
             }
         }
 
@@ -137,7 +137,7 @@ public static class TreeNodeList
                 var searchHistory = new HashSet<int>(treeNodes[searchId].ParentShape.History);
 
 
-                var commonShapes = (List<int>)new List<int>(sourceHistory.Intersect(searchHistory));
+                var commonShapes = new List<int>(sourceHistory.Intersect(searchHistory));
                 commonShapes.Sort();
                 int commonShapeCount = commonShapes.Count;
                 if (commonShapeCount >= minCommonShapes &&

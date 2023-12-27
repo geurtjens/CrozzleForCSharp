@@ -1,7 +1,7 @@
 ﻿using System;
 namespace CrozzleInterfaces;
 
-public record struct TreeNodeModel
+public class TreeNodeModel
 {
     public readonly ShapeModel ParentShape;
 
@@ -27,13 +27,7 @@ public record struct TreeNodeModel
         IsValid = true;
     }
 
-    public void SetToInvalid()
-    {
-        this.IsValid = false;
-    }
-    public void SetBestDescendant(ShapeModel bestShape)
-    {
-        this.BestDescendant = bestShape;
-    }
+    
+    
 }
 

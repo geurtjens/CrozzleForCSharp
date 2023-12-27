@@ -620,8 +620,8 @@ public class MergeCalculatorV2
                             var scoreMin = scoresMin[wordCount];
                             if (validShape.Score >= scoreMin)
                             {
-
-                                validShape.History = ShapeModel.CreateMergeHistory(sourceShapeHistory: sourceShape.History, searchShapeHistory: searchShape.History);
+                                //GetShapesFromInstructions
+                                validShape.History = ShapeList.CreateMergeHistory(sourceShapeHistory: sourceShape.History, searchShapeHistory: searchShape.History);
                                 shapes.Add(validShape);
                             }
                         }
@@ -738,8 +738,8 @@ public class MergeCalculatorV2
                         var scoreMin = scoresMin[shape.Placements.Count];
                         if (shape.Score >= scoreMin)
                         {
-
-                            shape.History = ShapeModel.CreateMergeHistory(sourceShapeHistory: sourceShape.History, searchShapeHistory: searchShape.History);
+                            // When you set the shape.History then suddenly sourceHistory also changes
+                            shape.History = ShapeList.CreateMergeHistory(sourceShapeHistory: sourceShape.History, searchShapeHistory: searchShape.History);
                             return shape;
                         }
                     }
