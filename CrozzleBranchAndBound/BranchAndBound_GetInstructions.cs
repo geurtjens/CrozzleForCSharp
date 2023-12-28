@@ -128,15 +128,18 @@ public class BranchAndBound_GetInstructions
     public static List<BranchAndBoundInstruction> WinningWords_UseGuidedScores()
     {
         List<BranchAndBoundInstruction> result = new List<BranchAndBoundInstruction>();
-
         result.Add(new BranchAndBoundInstruction(lookaheadDepth: 1, beamWidth: 1, games: new List<int> {
-            //8802, this one works perfectly so lets concentrate on the next one
-            8808, 9104, 9212, 9306, 9406 }, rootWidth: 1, useGuidedScores: true, maxDepth: 30));
+            // this one works perfectly so lets concentrate on the next one
+            9212 }, rootWidth: 1, useGuidedScores: true, maxDepth: 30));
+        result.Add(new BranchAndBoundInstruction(lookaheadDepth: 1, beamWidth: 1, games: new List<int> {
+            8802, 8808, 9104, 9306, 9406 }, rootWidth: 1, useGuidedScores: true, maxDepth: 30));
         result.Add(new BranchAndBoundInstruction(lookaheadDepth: 1, beamWidth: 2, games: new List<int> { 8710, 9311 }, rootWidth: 1, useGuidedScores: true, maxDepth: 30));
         result.Add(new BranchAndBoundInstruction(lookaheadDepth: 1, beamWidth: 3, games: new List<int> { 9412 }, rootWidth: 1, useGuidedScores: true, maxDepth: 30));
         result.Add(new BranchAndBoundInstruction(lookaheadDepth: 1, beamWidth: 5, games: new List<int> { 8711 }, rootWidth: 1, useGuidedScores: true, maxDepth: 30));
         result.Add(new BranchAndBoundInstruction(lookaheadDepth: 1, beamWidth: 8, games: new List<int> { 9108 }, rootWidth: 1, useGuidedScores: true, maxDepth: 30));
         result.Add(new BranchAndBoundInstruction(lookaheadDepth: 1, beamWidth: 17, games: new List<int> { 9510 }, rootWidth: 1, useGuidedScores: true, maxDepth: 30));
+
+        // This one doesnt work
         result.Add(new BranchAndBoundInstruction(lookaheadDepth: 1, beamWidth: 27, games: new List<int> { 9503 }, rootWidth: 1, useGuidedScores: true, maxDepth: 30));
 
         result.Add(new BranchAndBoundInstruction(lookaheadDepth: 2, beamWidth: 1, games: new List<int> { 8612, 8809, 9002, 9109, 9201, 9211, 9303, 9310, 9312 }, rootWidth: 1, useGuidedScores: true, maxDepth: 30));

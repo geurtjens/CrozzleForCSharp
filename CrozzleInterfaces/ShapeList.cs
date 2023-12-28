@@ -29,11 +29,6 @@ public class ShapeList
         history.AddRange(sourceShapeHistory);
         history.AddRange(searchShapeHistory);
 
-        if (history.Count > 5)
-        {
-            Console.WriteLine($"sourceShapeHistory.Count = {sourceShapeHistory.Count}");
-        }
-
         return history;
     }
 
@@ -100,6 +95,16 @@ public class ShapeList
         }
     }
 
+
+    /// <summary>
+    /// We want a deterministic way such that it always returns the same duplicate.
+    /// To do this we need a special way of sorting that is always the same result.
+    /// If it has the same wordSequence then score will always be same as will the area.
+    /// Really we dont have to sort on those to remove duplicates.
+    /// But what duplicate do we remove?
+    /// </summary>
+    /// <param name="shapes"></param>
+    /// <returns></returns>
     public static List<ShapeModel> RemoveDuplicates(List<ShapeModel> shapes)
     {
         List<ShapeModel> sorted = shapes.OrderBy(e => e.WordSequence).ToList();
@@ -107,15 +112,13 @@ public class ShapeList
         for (int current = 1; current < sorted.Count; current++)
         {
             previous = current - 1;
-            if (sorted[current].Score == sorted[previous].Score &&
-                sorted[current].WordSequence == sorted[previous].WordSequence &&
-                sorted[current].Width * sorted[current].Height == sorted[previous].Width * sorted[previous].Height)
+            if (sorted[current].WordSequence == sorted[previous].WordSequence)
             {
                 sorted[current].IsValid = false;
             }
         }
 
-        sorted = sorted.Where(e => e.IsValid == true).OrderByDescending(e => e.Score).ToList();
+        sorted = sorted.Where(e => e.IsValid == true).OrderByDescending(e => e.Score).ThenBy(e => e.Width * e.Height).ThenBy(e => e.WordSequence).ToList();
         return sorted;
     }
 
@@ -128,7 +131,10 @@ public class ShapeList
 
     public static List<ShapeModel> SortAndSetHistory(in List<ShapeModel> shapes)
     {
-        var result = shapes.OrderByDescending(e => e.Score).ThenBy(e => e.Placements.Count).ThenBy(e => e.Width * e.Height).ThenBy(e => e.WordSequence).ToList();
+        //var result = shapes.OrderByDescending(e => e.Score).ThenBy(e => e.Placements.Count).ThenBy(e => e.Width * e.Height).ToList();
+
+        var result = shapes.OrderByDescending(e => e.Score).ThenBy(e => e.WordSequence).ToList();
+
 
         for (int i = 0; i < (int)shapes.Count; i++)
         {

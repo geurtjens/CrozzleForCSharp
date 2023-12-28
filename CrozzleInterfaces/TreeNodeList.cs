@@ -8,7 +8,7 @@ public static class TreeNodeList
 
     public static List<TreeNodeModel> SortByBestDescendant(in List<TreeNodeModel> treeNodes)
     {
-        return treeNodes.OrderByDescending(e => e.BestDescendant.Score).ThenBy(e => e.BestDescendant.Placements.Count).ThenBy(e => e.BestDescendant.Width * e.BestDescendant.Height).ToList();
+        return treeNodes.OrderByDescending(e => e.BestDescendant.Score).ThenBy(e => e.BestDescendant.Width * e.BestDescendant.Height).ToList();
     }
 
     public static List<TreeNodeModel> ApplyBeamWidth(in List<TreeNodeModel> treeNodes, int beamWidth)

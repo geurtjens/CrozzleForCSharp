@@ -17,10 +17,12 @@ public class BranchAndBoundV3
         int winningScore,
         bool useGuidedScores)
     {
+        var startTime = DateTimeCalculator.Now();
+
         var (_, searchShapes, wordIndex, rootTreeNodes, scoresMin, widthMax, heightMax) =
             GetStartingData.Execute(gameId, words, rootWidth, useGuidedScores);
 
-        Console.WriteLine($"{{\"game\": {gameId}, \"wordCount\": {words.Count}, \"searchShapes\": {searchShapes.Count}, " +
+        Console.WriteLine($"{{\"game\": {gameId}, \"targetScore\": {winningScore}, \"wordCount\": {words.Count}, \"searchShapes\": {searchShapes.Count}, " +
             $"\"lookaheadDepth\": {lookaheadDepth}, \"beamWidth\": {beamWidth}, \"rootWidth\": {rootWidth}, " +
             $"\"maxDepth\": {maxDepth}, \"cycles\": [");
 
@@ -40,8 +42,13 @@ public class BranchAndBoundV3
 
         var bestShape = bestShapes[0];
 
-        if (bestShapes[0].Score == winningScore)
+        if (bestShapes[0].Score >= winningScore)
         {
+
+            Console.WriteLine($" bestGame: {bestShape.ToTextArray(words)}");
+            Console.WriteLine($"HUMAN SCORE {gameId}");
+            Console.WriteLine(DateTimeCalculator.Duration(start: startTime));
+
             return bestShapes[0];
         }
 
@@ -67,8 +74,22 @@ public class BranchAndBoundV3
 
         if (bestShape.Score >= winningScore)
         {
-            Console.WriteLine($"HUMAN SCORE {gameId} Calculated at end");
+            Console.WriteLine($" bestGame: {bestShape.ToTextArray(words)}");
+            Console.WriteLine($"HUMAN SCORE {gameId}");
+            Console.WriteLine(DateTimeCalculator.Duration(start: startTime));
+            //return bestShape;
         }
+        else
+        {
+            Console.WriteLine($" bestGame: {bestShape.ToTextArray(words)}");
+            Console.WriteLine($" expected: {winningScore}");
+            Console.WriteLine($"FAILED {gameId}");
+            Console.WriteLine(DateTimeCalculator.Duration(start: startTime));
+            //return bestShape;
+        }
+
+
+        
 
         return bestShape;
     }
@@ -99,18 +120,16 @@ public class BranchAndBoundV3
 
         for (var cycleId = 1; cycleId < maxDepth; cycleId++)
         {
-            if (cycleId == 2)
-            {
-                Console.WriteLine("Break here");
-            }
-
+            //if (cycleId == 5)
+            //{
+            //    Console.WriteLine("\n\nCHILD SHAPES FOR CYCLE 5");
+            //    foreach(var childShape in previousNodes[0].ChildShapes) {
+            //        Console.WriteLine(childShape.ToJson(words: words));
+            //    }
+            //    Console.WriteLine("HAULT HERE");
+            //}
             treeNodes = ExecuteTreeNodes(treeNodes, searchShapes, words, widthMax, heightMax,
                 wordIndex, scoresMin);
-
-            //if (cycleId == 4)
-            //{
-            //    Console.WriteLine("Break here");
-            //}
 
             shapesCreatedCount = treeNodes.Count;
             foreach (var treeNode in treeNodes)
@@ -122,28 +141,10 @@ public class BranchAndBoundV3
                 lookaheadDepth, beamWidth, treeNodes, searchShapes, words, widthMax, heightMax,
                 wordIndex, scoresMin);
 
-
-            
-
-
             shapesCreatedCount += shapesCreated;
 
             if (treeNodes.Count > 0)
             {
-
-                // debug code
-                if (cycleId == 2)
-                {
-                    //    foreach (var shape in treeNodes[0].ChildShapes)
-                    //    {
-                    //        Console.WriteLine($"score: {shape.Score}, width: {shape.Width}, height: {shape.Height}");
-                    //        Console.WriteLine(shape.ToTextArray(words: words));
-                    //    }
-                    //Console.WriteLine();
-                }
-                // debug code
-
-
                 previousNodes = treeNodes;
             }
             else
@@ -182,21 +183,23 @@ public class BranchAndBoundV3
                 Console.WriteLine($"{{\"cycle\": {cycleId}, \"shapesCreated\": {shapesCreatedCount}, " +
                     $"\"bestScores\": [{string.Join(",", bestScores)}],\n");
 
-                if (bestShape.Score >= winningScore)
-                {
-                    Console.WriteLine($" bestGame: {bestShape.ToTextArray(words)}");
-                    Console.WriteLine($"HUMAN SCORE {gameId}");
-                    Console.WriteLine(DateTimeCalculator.Duration(start: startTime));
-                    return bestShapes;
-                }
-                else
-                {
-                    Console.WriteLine($" bestGame: {bestShape.ToTextArray(words)}");
-                    Console.WriteLine($" expected: {winningScore}");
-                    Console.WriteLine($"FAILED {gameId}");
-                    Console.WriteLine(DateTimeCalculator.Duration(start: startTime));
-                    return bestShapes;
-                }
+                return bestShapes;
+
+                //if (bestShape.Score >= winningScore)
+                //{
+                //    Console.WriteLine($" bestGame: {bestShape.ToTextArray(words)}");
+                //    Console.WriteLine($"HUMAN SCORE {gameId}");
+                //    Console.WriteLine(DateTimeCalculator.Duration(start: startTime));
+                //    return bestShapes;
+                //}
+                //else
+                //{
+                //    Console.WriteLine($" bestGame: {bestShape.ToTextArray(words)}");
+                //    Console.WriteLine($" expected: {winningScore}");
+                //    Console.WriteLine($"FAILED {gameId}");
+                //    Console.WriteLine(DateTimeCalculator.Duration(start: startTime));
+                //    return bestShapes;
+                //}
             }
 
             if (cycleId == 0)
@@ -284,7 +287,7 @@ public class BranchAndBoundV3
             var sourceShapeId = leafShapesAddedToBecomeSiblings[siblingId];
             var sourceShape = treeNode.ChildShapes[siblingId];
             
-            Console.WriteLine(sourceShape.ToJson(words: words));
+            //Console.WriteLine(sourceShape.ToJson(words: words));
 
             var siblingWords = wordDifferenceBetweenParentAndSibling[siblingId];
 
@@ -309,7 +312,7 @@ public class BranchAndBoundV3
 
                     if (mergedShape is not null)
                     {
-                        Console.WriteLine(mergedShape.ToJson(words: words));
+                        //Console.WriteLine(mergedShape.ToJson(words: words));
                         resultForShape.Add((ShapeModel)mergedShape);
                     }
                 }

@@ -36,19 +36,25 @@ public class BranchAndBoundRunner
         DateTime overallStart = DateTimeCalculator.Now();
 
         List<int> solved = new List<int>();
+        List<int> failed = new List<int>();
 
         foreach (var instruction in instructions)
         {
-            solved.AddRange(BranchAndBoundRunner.ExecuteGamesWinningWords(
+            var solvedToAdd = BranchAndBoundRunner.ExecuteGamesWinningWords(
                 gameIds: instruction.Games,
                 lookaheadDepth: instruction.LookaheadDepth,
                 beamWidth: instruction.BeamWidth,
                 maxDepth: instruction.MaxDepth,
                 rootWidth: instruction.RootWidth,
-                useGuidedScores: instruction.UseGuidedScores));
+                useGuidedScores: instruction.UseGuidedScores);
+
+            solved.AddRange(solvedToAdd);
+
+            var missing = instruction.Games.Except(solvedToAdd).OrderBy(x => x).ToList();
+            failed.AddRange(missing);
         }
 
-        PrintResults(overallStart, solved);
+        PrintResults(overallStart, solved, failed);
     }
 
 
@@ -63,6 +69,7 @@ public class BranchAndBoundRunner
         DateTime startTime = DateTime.Now;
 
         List<int> successfulGames = new List<int>();
+        List<int> failedGames = new List<int>();
 
         Console.Write("[");
 
@@ -78,6 +85,9 @@ public class BranchAndBoundRunner
             if (bestShape.Score >= game.WinningScore)
             {
                 successfulGames.Add(game.GameId);
+            } else
+            {
+                failedGames.Add(game.GameId);
             }
 
         }
@@ -102,20 +112,29 @@ public class BranchAndBoundRunner
         DateTime overallStart = DateTimeCalculator.Now();
 
         List<int> solved = new List<int>();
+        List<int> failed = new List<int>();
 
         foreach (var instruction in instructions)
         {
-            solved.AddRange(ExecuteGamesAllWords(
+            var solvedToAdd = ExecuteGamesAllWords(
                 gameIds: instruction.Games,
                 lookaheadDepth: instruction.LookaheadDepth,
                 beamWidth: instruction.BeamWidth,
                 maxDepth: instruction.MaxDepth,
                 rootWidth: instruction.RootWidth,
-                useGuidedScores: instruction.UseGuidedScores));
+                useGuidedScores: instruction.UseGuidedScores);
+
+            solved.AddRange(solvedToAdd);
+
+            var missing = instruction.Games.Except(solvedToAdd).OrderBy(x => x).ToList();
+            failed.AddRange(missing);
         }
 
-        PrintResults(overallStart, solved);
+        PrintResults(overallStart, solved, failed);
+
     }
+
+      
     public static List<int> ExecuteGamesAllWords(
         in List<int> gameIds,
         int lookaheadDepth,
@@ -169,21 +188,8 @@ public class BranchAndBoundRunner
         return successfulGames;
     }
 
-    public static void PrintResults(DateTime overallStart, List<int> solved)
+    public static void PrintResults(DateTime overallStart, List<int> solved, List<int> missing)
     {
-        var gameList = new GameList();
-        var missing = new List<int>();
-        var games = GameList.Games();
-
-        foreach (int gameId in games)
-        {
-            GameModel game = GameList.FindGame(gameId: gameId);
-            if (!solved.Contains(game.GameId))
-            {
-                missing.Add(game.GameId);
-            }
-        }
-
         solved.Sort();
         missing.Sort();
 
