@@ -39,6 +39,17 @@ public class PlacementList
         return (placements[0].Z == false);
     }
 
+    public static char ConvertWordId(int wordId)
+    {
+        char result = Convert.ToChar(wordId+32);
+        return result;
+    }
+
+    public static char ConvertNumber(int wordId)
+    {
+        char result = Convert.ToChar(wordId + 48);
+        return result;
+    }
 
     public static string GetWordSequence(in List<PlacementModel> placements)
     {
@@ -47,18 +58,18 @@ public class PlacementList
         var result = "";
         for (int i = 0; i < wordCount; i++)
         {
-            result += $"{placements[i].W},";
+            result += ConvertWordId(placements[i].W);
         }
 
         for (int i = 0; i < wordCount; i++)
         {
-            result += $"{placements[i].X},";
+            result += ConvertNumber(placements[i].X);
         }
 
         for (int i = 0; i < wordCount; i++)
         {
 
-            result += $"{placements[i].Y},";
+            result += ConvertNumber(placements[i].Y);
         }
 
         for (int i = 0; i < wordCount; i++)

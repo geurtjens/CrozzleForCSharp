@@ -4,7 +4,7 @@ using CrozzleShapeMaker;
 using CrozzleBranchAndBound;
 
 BranchAndBoundRunner.WinningWords_UseGuidedScores();
-
+//BranchAndBoundRunner.WinningWords_NoGuidedScores();
 
 //var watch = System.Diagnostics.Stopwatch.StartNew();
 
