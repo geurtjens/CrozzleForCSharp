@@ -18,7 +18,7 @@ public class WinningGameCalculator
         }
 
         // Now we sort them by score descending
-        result = result.OrderByDescending(e => e.Score).ToList();
+        result = result.OrderByDescending(e => e.Score).ThenBy(e => e.Area).ThenBy(e => e.WordSequence).ToList();
 
         return result;
     }

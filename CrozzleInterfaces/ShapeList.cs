@@ -32,6 +32,19 @@ public class ShapeList
         return history;
     }
 
+    public static ushort FindAverageScore(List<ShapeModel> shapes)
+    {
+        int sum = 0;
+
+        foreach (ShapeModel shape in shapes)
+        {
+            sum += (int)shape.Score;
+        }
+
+        int average = sum / shapes.Count;
+        return Convert.ToUInt16(average);
+    }
+
 
     /// <summary>
     /// Gets the word differences between a list of child shapes and the parent shape
@@ -107,40 +120,42 @@ public class ShapeList
     /// <returns></returns>
     public static List<ShapeModel> RemoveDuplicates(List<ShapeModel> shapes)
     {
-        List<ShapeModel> sorted = shapes.OrderBy(e => e.WordSequence).ToList();
+        shapes.Sort();
+        
         int previous = 0;
-        for (int current = 1; current < sorted.Count; current++)
+        for (int current = 1; current < shapes.Count; current++)
         {
             previous = current - 1;
-            if (sorted[current].WordSequence == sorted[previous].WordSequence)
+            if (shapes[current].WordSequence == shapes[previous].WordSequence)
             {
-                sorted[current].IsValid = false;
+                shapes[current].IsValid = false;
             }
         }
 
-        sorted = sorted.Where(e => e.IsValid == true).OrderByDescending(e => e.Score).ThenBy(e => e.Width * e.Height).ThenBy(e => e.WordSequence).ToList();
+        var sorted = shapes.Where(e => e.IsValid == true).ToList();
         return sorted;
     }
 
 
     public static List<ShapeModel> SortToFindDuplicates(in List<ShapeModel> shapes)
     {
-        return (shapes.OrderBy(e => e.WordSequence).ToList());
+        shapes.Sort();
+        return shapes;
     }
 
 
     public static List<ShapeModel> SortAndSetHistory(in List<ShapeModel> shapes)
     {
-        //var result = shapes.OrderByDescending(e => e.Score).ThenBy(e => e.Placements.Count).ThenBy(e => e.Width * e.Height).ToList();
-
-        var result = shapes.OrderByDescending(e => e.Score).ThenBy(e => e.WordSequence).ToList();
+        //var result = shapes.OrderByDescending(e => e.Score).ThenBy(e => e.Placements.Count).ThenBy(e => e.Area).ToList();
+        shapes.Sort();
+        //var result = shapes.OrderByDescending(e => e.Score).ThenBy(e => e.Area).ThenBy(e => e.WordSequence).ToList();
 
 
         for (int i = 0; i < (int)shapes.Count; i++)
         {
-            result[i].History.Add(i);
+            shapes[i].History.Add(i);
         }
-        return result;
+        return shapes;
     }
 
 

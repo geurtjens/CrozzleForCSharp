@@ -55,7 +55,7 @@ public class MatchCalculator_Tests
 
 
         // WHEN we calculate GetMatches with sourceShape and searchShape
-        MatchesModel result = MatchCalculator.GetMatches(sourceShape, searchShape);
+        MatchesModel result = ValidateMergeCalculator.GetMatches(sourceShape, searchShape);
 
         // THEN we find only 1 matching word
         Assert.Equal(1, result.MatchingWordCount);
@@ -110,7 +110,7 @@ public class MatchCalculator_Tests
 
 
 
-        MergeInstructionModel? resultOrNull = MatchCalculator.ProcessMatches(
+        MergeInstructionModel? resultOrNull = ValidateMergeCalculator.Execute(
             matchCount: 1,
             sourceShape: sourceShape,
             sourceShapeId: 0,
@@ -175,7 +175,7 @@ public class MatchCalculator_Tests
 
 
 
-        MergeInstructionModel? resultOrNull = MatchCalculator.SingleWordMatch(
+        MergeInstructionModel? resultOrNull = ValidateMergeCalculator.SingleWordMatch(
             sourceShape: sourceShape,
             sourceShapeId: 0,
             searchShape: searchShape,
@@ -228,10 +228,10 @@ public class MatchCalculator_Tests
         ShapeModel searchShape = GridList.ToShape(searchGrid, words);
 
         // AND MATCH on all four words remembering that MERRY is not in this shape but the others are
-        int a0 = MatchCalculator.MatchingPlacementPosition(searchShape: searchShape, wordId: 0);
-        int a1 = MatchCalculator.MatchingPlacementPosition(searchShape: searchShape, wordId: 1);
-        int a2 = MatchCalculator.MatchingPlacementPosition(searchShape: searchShape, wordId: 2);
-        int a3 = MatchCalculator.MatchingPlacementPosition(searchShape: searchShape, wordId: 3);
+        int a0 = ValidateMergeCalculator.MatchingPlacementPosition(searchShape: searchShape, wordId: 0);
+        int a1 = ValidateMergeCalculator.MatchingPlacementPosition(searchShape: searchShape, wordId: 1);
+        int a2 = ValidateMergeCalculator.MatchingPlacementPosition(searchShape: searchShape, wordId: 2);
+        int a3 = ValidateMergeCalculator.MatchingPlacementPosition(searchShape: searchShape, wordId: 3);
 
 
         // THEN wordId 0 is not found and it returns -1
@@ -273,7 +273,7 @@ public class MatchCalculator_Tests
         ShapeModel sourceShape = GridList.ToShape(sourceGrid, words);
         ShapeModel searchShape = GridList.ToShape(searchGrid, words);
 
-        var result = MatchCalculator.MultiWordMatch(sourceShape: sourceShape, sourceShapeId: 0, searchShape: searchShape, searchShapeId: 1, matchingWordCount: 2);
+        var result = ValidateMergeCalculator.MultiWordMatch(sourceShape: sourceShape, sourceShapeId: 0, searchShape: searchShape, searchShapeId: 1, matchingWordCount: 2);
 
         Assert.NotNull(result);
         Assert.Equal(1, result.FirstSourcePos);
@@ -318,11 +318,11 @@ public class MatchCalculator_Tests
         ShapeModel sourceShape = GridList.ToShape(sourceGrid, words);
         ShapeModel searchShape = GridList.ToShape(searchGrid, words);
 
-        var matches = MatchCalculator.GetMatches(sourceShape: sourceShape, searchShape: searchShape);
+        var matches = ValidateMergeCalculator.GetMatches(sourceShape: sourceShape, searchShape: searchShape);
 
         var firstIsFlipped = (sourceShape.Placements[matches.FirstSourcePos].Z != searchShape.Placements[matches.FirstSearchPos].Z);
 
-        bool sameDirectionIsOk = MatchCalculator.IsSameDistance(
+        bool sameDirectionIsOk = ValidateMergeCalculator.IsSameDistance(
             firstSourcePos: matches.FirstSourcePos,
             firstSearchPos: matches.FirstSearchPos,
             matches: matches.Matches,
@@ -362,11 +362,11 @@ public class MatchCalculator_Tests
         ShapeModel sourceShape = GridList.ToShape(sourceGrid, words);
         ShapeModel searchShape = GridList.ToShape(searchGrid, words);
 
-        var matches = MatchCalculator.GetMatches(sourceShape: sourceShape, searchShape: searchShape);
+        var matches = ValidateMergeCalculator.GetMatches(sourceShape: sourceShape, searchShape: searchShape);
 
         var firstIsFlipped = (sourceShape.Placements[matches.FirstSourcePos].Z != searchShape.Placements[matches.FirstSearchPos].Z);
 
-        bool sameDirectionIsOk = MatchCalculator.IsSameDirection(
+        bool sameDirectionIsOk = ValidateMergeCalculator.IsSameDirection(
             firstSourcePos: matches.FirstSourcePos,
             matches: matches.Matches,
             firstIsFlipped: firstIsFlipped,

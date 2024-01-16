@@ -3,41 +3,10 @@ using CrozzleInterfaces;
 
 namespace CrozzleShapeMerger;
 
-public class MatchCalculator
+public class ValidateMergeCalculator
 {
 
-    public static MatchesModel GetMatches(
-        in ShapeModel sourceShape,
-        in ShapeModel searchShape)
-    {
-
-        var firstSourcePos = -1;
-        var firstSearchPos = -1;
-        var matches = new List<int>();
-        int matchingWordCount = 0;
-        for (int sourcePos = 0; sourcePos < sourceShape.Placements.Count; sourcePos++)
-        {
-
-            /// Tells us the location of the word matching with the current word or else -1
-            var searchPos = MatchingPlacementPosition(searchShape: searchShape,
-                                                      wordId: (int)(sourceShape.Placements[sourcePos].W));
-            matches.Add(searchPos);
-
-            if (searchPos != -1)
-            {
-                if (firstSourcePos == -1)
-                {
-                    firstSourcePos = sourcePos;
-                    firstSearchPos = searchPos;
-                }
-                matchingWordCount += 1;
-            }
-        }
-        return new MatchesModel(matches, firstSourcePos, firstSearchPos, matchingWordCount);
-    }
-
-
-    public static MergeInstructionModel? ProcessMatches(
+    public static MergeInstructionModel? Execute(
         int matchCount,
         in ShapeModel sourceShape,
         int sourceShapeId,
@@ -89,26 +58,25 @@ public class MatchCalculator
         {
 
             /// Tells us the location of the word matching with the current word or else -1
-            var searchPos = MatchingPlacementPosition(searchShape: searchShape,
-                                                      wordId: (int)(sourceShape.Placements[sourcePos].W));
+            var searchPos = MatchingPlacementPosition(
+                searchShape: searchShape,
+                wordId: (int)(sourceShape.Placements[sourcePos].W));
 
             if (searchPos != -1)
             {
                 var flipped = sourceShape.Placements[sourcePos].Z != searchShape.Placements[searchPos].Z;
 
-                return new MergeInstructionModel(sourceShapeId: sourceShapeId,
-                                             searchShapeId: searchShapeId,
-                                             matchingWordCount: 1,
-                                             firstSourcePos: sourcePos,
-                                             firstSearchPos: searchPos,
-                                             flipped: flipped);
+                return new MergeInstructionModel(
+                    sourceShapeId: sourceShapeId,
+                    searchShapeId: searchShapeId,
+                    matchingWordCount: 1,
+                    firstSourcePos: sourcePos,
+                    firstSearchPos: searchPos,
+                    flipped: flipped);
             }
         }
         return null;
     }
-
-
-    
 
 
     public static MergeInstructionModel? MultiWordMatch(
@@ -119,15 +87,17 @@ public class MatchCalculator
         int matchingWordCount)
     {
 
-        // If we have the smaller and larger the wrong way around then call again but this time making smaller actually smaller
-
-        if (matchingWordCount == sourceShape.Placements.Count || matchingWordCount == searchShape.Placements.Count)
+        if (IsSubset(
+            matchingWordCount: matchingWordCount,
+            sourceShape: sourceShape,
+            searchShape: searchShape))
         {
-            // We have found some shape to be a subset of another shape
             return null;
         }
 
-        var matchesModel = GetMatches(sourceShape: sourceShape, searchShape: searchShape);
+        var matchesModel = GetMatches(
+            sourceShape: sourceShape,
+            searchShape: searchShape);
 
         var firstIsFlipped = (sourceShape.Placements[matchesModel.FirstSourcePos].Z != searchShape.Placements[matchesModel.FirstSearchPos].Z);
 
@@ -145,14 +115,13 @@ public class MatchCalculator
         }
 
 
-        var isMatchingDistance = IsSameDistance(firstSourcePos: matchesModel.FirstSourcePos,
-                                                  firstSearchPos: matchesModel.FirstSearchPos,
-                                                  matches: matchesModel.Matches,
-                                                  isFlipped: firstIsFlipped,
-                                                  sourceShape: sourceShape,
-                                                  searchShape: searchShape);
-
-
+        var isMatchingDistance = IsSameDistance(
+            firstSourcePos: matchesModel.FirstSourcePos,
+            firstSearchPos: matchesModel.FirstSearchPos,
+            matches: matchesModel.Matches,
+            isFlipped: firstIsFlipped,
+            sourceShape: sourceShape,
+            searchShape: searchShape);
 
         if (isMatchingDistance == false)
         {
@@ -161,14 +130,87 @@ public class MatchCalculator
         else
         {
 
-            return new MergeInstructionModel(sourceShapeId: sourceShapeId,
-                                         searchShapeId: searchShapeId,
-                                         matchingWordCount: (matchingWordCount),
-                                         firstSourcePos: matchesModel.FirstSourcePos,
-                                         firstSearchPos: matchesModel.FirstSearchPos,
-                                         flipped: firstIsFlipped);
+            return new MergeInstructionModel(
+                sourceShapeId: sourceShapeId,
+                searchShapeId: searchShapeId,
+                matchingWordCount: (matchingWordCount),
+                firstSourcePos: matchesModel.FirstSourcePos,
+                firstSearchPos: matchesModel.FirstSearchPos,
+                flipped: firstIsFlipped);
         }
     }
+
+
+    public static MatchesModel GetMatches(
+        in ShapeModel sourceShape,
+        in ShapeModel searchShape)
+    {
+
+        var firstSourcePos = -1;
+        var firstSearchPos = -1;
+        var matches = new List<int>();
+        int matchingWordCount = 0;
+        for (int sourcePos = 0; sourcePos < sourceShape.Placements.Count; sourcePos++)
+        {
+
+            /// Tells us the location of the word matching with the current word or else -1
+            var searchPos = MatchingPlacementPosition(
+                searchShape: searchShape,
+                wordId: (int)(sourceShape.Placements[sourcePos].W));
+
+            matches.Add(searchPos);
+
+            if (searchPos != -1)
+            {
+                if (firstSourcePos == -1)
+                {
+                    firstSourcePos = sourcePos;
+                    firstSearchPos = searchPos;
+                }
+                matchingWordCount += 1;
+            }
+        }
+        return new MatchesModel(matches, firstSourcePos, firstSearchPos, matchingWordCount);
+    }
+
+
+    /// WHEN there a word in `searchShape` that is same as the word we are looking for then return its position
+    /// OTHERWISE return -1
+    public static int MatchingPlacementPosition(
+        in ShapeModel searchShape,
+        int wordId)
+    {
+        for (int placementId = 0; placementId < searchShape.Placements.Count; placementId++)
+        {
+            if (searchShape.Placements[placementId].W == wordId)
+            {
+                return placementId;
+            }
+        }
+        return -1;
+    }
+
+
+    public static bool IsSubset(
+        int matchingWordCount,
+        ShapeModel sourceShape,
+        ShapeModel searchShape)
+    {
+        // If we have the smaller and larger the wrong way around then call again but this time making smaller actually smaller
+
+        if (matchingWordCount == sourceShape.Placements.Count || matchingWordCount == searchShape.Placements.Count)
+        {
+            // We have found some shape to be a subset of another shape
+            return true;
+        } else
+        { 
+            return false;
+        }
+
+    }
+
+
+    
 
 
     // While we are here lets see if they are the same orientation
@@ -248,23 +290,4 @@ public class MatchCalculator
         // We have passed all the distance checks
         return true;
     }
-
-
-    /// WHEN there a word in `searchShape` that is same as the word we are looking for then return its position
-    /// OTHERWISE return -1
-    public static int MatchingPlacementPosition(
-        in ShapeModel searchShape,
-        int wordId)
-    {
-        for (int placementId = 0; placementId < searchShape.Placements.Count; placementId++)
-        {
-            if (searchShape.Placements[placementId].W == wordId)
-            {
-                return placementId;
-            }
-        }
-        return -1;
-    }
-
 }
-

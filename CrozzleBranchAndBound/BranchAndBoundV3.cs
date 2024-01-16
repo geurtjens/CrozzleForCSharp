@@ -1,5 +1,4 @@
 ﻿using CrozzleInterfaces;
-using CrozzleShapeMaker;
 using CrozzleShapeMerger;
 
 namespace CrozzleBranchAndBound;
@@ -13,6 +12,7 @@ public class BranchAndBoundV3
         int lookaheadDepth,
         int beamWidth,
         int maxDepth,
+        int rootShape,
         int rootWidth,
         int winningScore,
         bool useGuidedScores)
@@ -20,10 +20,10 @@ public class BranchAndBoundV3
         var startTime = DateTimeCalculator.Now();
 
         var (_, searchShapes, wordIndex, rootTreeNodes, scoresMin, widthMax, heightMax) =
-            GetStartingData.Execute(gameId, words, rootWidth, useGuidedScores);
+            GetStartingData.Execute(gameId, words, rootShape, rootWidth, useGuidedScores);
 
         Console.WriteLine($"{{\"game\": {gameId}, \"targetScore\": {winningScore}, \"wordCount\": {words.Count}, \"searchShapes\": {searchShapes.Count}, " +
-            $"\"lookaheadDepth\": {lookaheadDepth}, \"beamWidth\": {beamWidth}, \"rootWidth\": {rootWidth}, " +
+            $"\"lookaheadDepth\": {lookaheadDepth}, \"beamWidth\": {beamWidth}, \"rootShape\": {rootShape}, \"rootWidth\": {rootWidth}, " +
             $"\"maxDepth\": {maxDepth}, \"cycles\": [");
 
         var bestShapes = ExecuteCycles(
@@ -81,15 +81,15 @@ public class BranchAndBoundV3
         }
         else
         {
-            Console.WriteLine($" bestGame: {bestShape.ToTextArray(words)}");
-            Console.WriteLine($" expected: {winningScore}");
-            Console.WriteLine($"FAILED {gameId}");
-            Console.WriteLine(DateTimeCalculator.Duration(start: startTime));
+            Console.WriteLine($"bestGame: {bestShape.ToTextArray(words)}");
+            Console.WriteLine($"game: {gameId}, expected: {winningScore}, actual: {bestShape.Score}, FAILED in {DateTimeCalculator.Duration(start: startTime)}");
+            Console.WriteLine();
             //return bestShape;
         }
 
 
-        
+
+
 
         return bestShape;
     }
@@ -308,7 +308,12 @@ public class BranchAndBoundV3
                     processedQueue.Add($"{sourceShapeId},{searchShapeId}");
 
                     var mergedShape = MergeCalculatorV2.MergeTwoShapes(
-                        sourceShape, searchShapes[searchShapeId], words, widthMax, heightMax, scoresMin);
+                        sourceShape,
+                        searchShapes[searchShapeId],
+                        words,
+                        widthMax,
+                        heightMax,
+                        scoresMin);
 
                     if (mergedShape is not null)
                     {

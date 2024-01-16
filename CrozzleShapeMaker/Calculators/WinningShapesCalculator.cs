@@ -12,7 +12,7 @@ public class WinningShapesCalculator
         return ShapeList.SortAndSetHistory(unsorted);
     }
 
-    private static List<ShapeModel> execute2(int gameId, in List<string> words)
+    public static List<ShapeModel> execute2(int gameId, in List<string> words)
     {
         var end = WordList.Reversed(words);
         var len = WordList.Lengths(words);

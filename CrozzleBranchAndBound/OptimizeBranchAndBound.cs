@@ -1,332 +1,190 @@
 ﻿using CrozzleInterfaces;
 using CrozzleShapeMaker;
 
-namespace CrozzleBranchAndBound
-{
-    public class OptimizeBranchAndBound
-    {
+namespace CrozzleBranchAndBound;
 
-        public static Tuple<List<int>, List<int>> OptimizeWithStartingWords(
-        int gameId,
-        in List<string> words,
-        int lookaheadDepth,
-        int beamWidth,
+public class OptimizeBranchAndBound
+{
+
+    public static void ExecuteFailuresUsingGuidedScores()
+    {
+        // cannot do 8803
+        List<int> games = new List<int> { 8805 };
+        ExecuteWinningGames(games, maxLookaheadDepth: 4, maxBeamWidth: 150, maxDepth: 30, useGuidedScores: true);
+    }
+
+
+    public static void ExecuteFailuresNoGuidedScores()
+    {
+        List<int> games = new List<int> { //8803,
+            8804, 8805, 8807, 8811, 8902, 8904, 8904, 8905, 8911,
+9001, 9003, 9106, 9207, 9210, 9212, 9303, 9305, 9307, 9404,
+9410, 9501, 9502, 9504, 9506, 9507, 9508, 9509, 9602, 9604 };
+
+        ExecuteWinningGames(games, maxLookaheadDepth: 4, maxBeamWidth: 100, maxDepth: 30, useGuidedScores: false);
+    }
+
+
+    public static void ExecuteWinningGames(
+        List<int> games,
+        int maxLookaheadDepth,
+        int maxBeamWidth,
         int maxDepth,
         bool useGuidedScores)
+    {
+        List<string> result = new List<string>();
+
+        foreach (int gameId in games)
         {
-            List<int> beamWidthResults = new List<int>();
-
-            List<int> startingWords = FindValidStartingWords(
-                gameId,
-                words,
-                lookaheadDepth,
-                beamWidth,
-                
-                maxDepth,
-                useGuidedScores);
-
-
-            for (int i = 0; i < startingWords.Count; i++)
-            {
-                int startingWord = startingWords[i];
-
-                int beamWidthResult = OptimizeBeamWidth(
-                    gameId,
-                    lookaheadDepth,
-                    maxDepth,
-                    1,
-                    beamWidth,
-                    startingWord * -1,
-                    useGuidedScores);
-
-                beamWidthResults.Add(beamWidthResult);
-            }
-
-            for (int i = 0; i < beamWidthResults.Count; i++)
-            {
-                Console.WriteLine($"Starting word {startingWords[i]} has beam width of {beamWidthResults[i]}");
-            }
-
-            return new Tuple<List<int>, List<int>>(startingWords, beamWidthResults);
+            List<string> results = ExecuteWinningGame(gameId, 1, maxLookaheadDepth, 1, maxBeamWidth, maxDepth, useGuidedScores);
+            result.AddRange(results);
         }
 
-
-        public static int OptimizeBeamWidthAllWordsAsync(
-        int gameId, int lookaheadDepth, int maxDepth,
-        int minimumBeamWidth, int maximumBeamWidth, int rootWidth, bool useGuidedScores)
+        foreach (string item in result)
         {
-            int currentWidth= 0;
+            Console.WriteLine(item);
+        }
+    }
 
-            int lowerWidth = minimumBeamWidth;
-            int upperWidth = maximumBeamWidth;
 
-            List<int> lowerWidthShouldFail = BranchAndBoundRunner.ExecuteGamesAllWords(
-                new List<int> { gameId },
-                lookaheadDepth, lowerWidth, maxDepth, rootWidth, useGuidedScores);
+    
 
-            if (lowerWidthShouldFail.Count > 0)
+    public static List<int> GetWinningShapesToTest(int gameId)
+    {
+        GameModel game = GameList.FindGame(gameId);
+        List<ShapeModel> winningShapes = WinningGameCalculator.execute(gameId, game.WinningWords);
+        
+
+
+        // Let's work out the average scores among the winning games and only use the ones that have a score higher than average
+        double averageScore = ShapeList.FindAverageScore(winningShapes);
+
+        List<int> result = new List<int>();
+
+        for (int i = 0; i < winningShapes.Count; i++)
+        {
+            if (winningShapes[i].Score > averageScore)
             {
-                Console.WriteLine($"Game {gameId}: Lower width of {minimumBeamWidth} should not produce a winning game. Skipping this game.");
+                result.Add(i);
+            }
+        }
+        return result;
+    }
+
+    public static List<string> ExecuteWinningGame(
+        int gameId,
+        int minLookaheadDepth,
+        int maxLookaheadDepth,
+        int minBeamWidth,
+        int maxBeamWidth,
+        int maxDepth,
+        bool useGuidedScores)
+    {
+        List<string> result = new List<string>();
+
+        // First, we find out how many starting shapes are going to be considered
+        List<int> startingShapesToTest = GetWinningShapesToTest(gameId);
+
+        Console.WriteLine($"game: {gameId}, numberOfStartingShapesToTest: {startingShapesToTest.Count}");
+
+        for (int lookaheadDepth = minLookaheadDepth; lookaheadDepth <= maxLookaheadDepth; lookaheadDepth++)
+        {
+            for (int rootShapeId = 0; rootShapeId < startingShapesToTest.Count; rootShapeId++)
+            {
+                int rootShape = startingShapesToTest[rootShapeId];
+
+                DateTime overallStart = DateTime.Now;
+
+                int winningWidth = OptimizeBeamWidth(gameId, lookaheadDepth, maxDepth, minBeamWidth, maxBeamWidth, rootShape, rootWidth: 1, useGuidedScores);
+
+                if (winningWidth != -1)
+                {
+                    result.Add($"game: {gameId}, rootShape: {rootShape}, lookaheadDepth: {lookaheadDepth}, beamWidth: {winningWidth}, timeToProcess: {DateTime.Now - overallStart}");
+                }
+            }
+        }
+
+        foreach (string item in result)
+        {
+            Console.WriteLine(item);
+        }
+
+        return result;
+    }
+
+
+    public static int OptimizeBeamWidth(
+        int gameId,
+        int lookaheadDepth,
+        int maxDepth,
+        int minimumBeamWidth,
+        int maximumBeamWidth,
+        int rootShape,
+        int rootWidth,
+        bool useGuidedScores)
+    {
+        string timeToProcessOneConfiguration = "";
+        int lowerWidth = minimumBeamWidth;
+        int upperWidth = maximumBeamWidth;
+        int currentWidth = 0;
+
+        DateTime overallStart = DateTime.Now;
+
+        List<int> lowerWidthShouldFail = BranchAndBoundRunner.ExecuteGamesWinningWords(new List<int> { gameId }, lookaheadDepth, lowerWidth, maxDepth, rootShape, rootWidth, useGuidedScores);
+
+        if (lowerWidthShouldFail.Count > 0)
+        {
+            Console.WriteLine($"game {gameId} lower width of {minimumBeamWidth} should not produce a winning game. Skipping this game.");
+            return lowerWidth;
+        }
+        else
+        {
+            List<int> upperWidthShouldSucceed = BranchAndBoundRunner.ExecuteGamesWinningWords(new List<int> { gameId }, lookaheadDepth, upperWidth, maxDepth, rootShape, rootWidth, useGuidedScores);
+
+            if (upperWidthShouldSucceed.Count == 0)
+            {
+                Console.WriteLine($"game {gameId} upper width of {maximumBeamWidth} should produce a winning game. Skipping this game.");
                 return -1;
             }
             else
             {
-                List<int> upperWidthShouldSucceed = BranchAndBoundRunner.ExecuteGamesAllWords(
-                    new List<int> { gameId },
-                    lookaheadDepth, upperWidth, maxDepth, rootWidth, useGuidedScores);
+                while (lowerWidth != upperWidth)
+                {
+                    currentWidth = (int)Math.Round((double)(lowerWidth + upperWidth) / 2.0);
+                    Console.WriteLine($"Game: {gameId}, RootShape: {rootShape}, lower: {lowerWidth}, upper: {upperWidth}, currentWidth: {currentWidth}");
 
-                if (upperWidthShouldSucceed.Count == 0)
-                {
-                    Console.WriteLine($"Game {gameId}: Upper width of {maximumBeamWidth} should produce a winning game. Skipping this game.");
-                    return -1;
-                }
-                else
-                {
-                    while (lowerWidth != upperWidth)
+                    DateTime testOneConfigurationStart = DateTime.Now;
+
+                    List<int> winnersForCurrent = BranchAndBoundRunner.ExecuteGamesWinningWords(new List<int> { gameId }, lookaheadDepth, currentWidth, maxDepth, rootShape, rootWidth, useGuidedScores);
+                    timeToProcessOneConfiguration = (DateTime.Now - testOneConfigurationStart).ToString();
+
+                    if (winnersForCurrent.Count == 0)
                     {
-                        currentWidth = (int)((double)(lowerWidth + upperWidth + 0.5) / 2.0);
-                        Console.WriteLine($"Game: {gameId}, Lower: {lowerWidth}, Upper: {upperWidth}, Current Width: {currentWidth}");
-
-                        List<int> winnersForCurrent = BranchAndBoundRunner.ExecuteGamesAllWords(
-                            new List<int> { gameId },
-                            lookaheadDepth, currentWidth, maxDepth, rootWidth, useGuidedScores);
-
-                        if (winnersForCurrent.Count == 0)
+                        if (lowerWidth == currentWidth)
                         {
-                            if (lowerWidth == currentWidth)
-                            {
-                                lowerWidth += 1;
-                                currentWidth = lowerWidth;
-                            }
-                            else
-                            {
-                                lowerWidth = currentWidth;
-                            }
+                            lowerWidth += 1;
+                            currentWidth = lowerWidth;
                         }
                         else
                         {
-                            upperWidth = currentWidth;
+                            lowerWidth = currentWidth;
                         }
-                    }
-                    Console.WriteLine($"Final size for Game {gameId} is {currentWidth}");
-                    return currentWidth;
-                }
-            }
-        }
-
-        /// <summary>
-        /// We are trying different starting words to see if we can get the human score
-        /// </summary>
-        /// <param name="gameId"></param>
-        /// <param name="lookaheadDepth"></param>
-        /// <param name="beamWidth"></param>
-        /// <param name="maxDepth"></param>
-        /// <returns></returns>
-        public static List<int> FindValidStartingWords(
-            int gameId,
-            List<string> words,
-            int lookaheadDepth,
-            int beamWidth,
-            int maxDepth,
-            bool useGuidedScores)
-        {
-            List<int> result = new List<int>();
-
-            StartingDataModel startingDataModel = StartingDataCalculator.Execute(
-                gameId :gameId,
-                words: words,
-                rootWidth: 0, // Meaning give us all of them
-                useGuidedScores: useGuidedScores);
-
-            List<ShapeModel> winningShapes = startingDataModel.startingShapes;
-
-            for (int i = 0; i < winningShapes.Count; i++)
-            {
-                int startingShape = i * -1;
-
-                List<int> winning = BranchAndBoundRunner.ExecuteGamesWinningWords(
-                    new List<int> { gameId },
-                    lookaheadDepth,
-                    beamWidth,
-                    maxDepth,
-                    startingShape,
-                    false);
-
-                if (winning.Count == 1)
-                {
-                    result.Add(startingShape);
-                }
-            }
-
-            return result;
-        }
-
-        public static List<List<int>> OptimizeBeamWidthAsync(
-                List<int> games, int lookaheadDepth, int maxDepth,
-                int minimumBeamWidth, int maximumBeamWidth, int rootWidth, bool useGuidedScores)
-        {
-            int lowerWidth = 0;
-            int upperWidth = 0;
-            int currentWidth= 0;
-
-            List<List<int>> result = new List<List<int>>();
-            for (int i = 0; i < maximumBeamWidth + 1; i++)
-            {
-                result.Add(new List<int>());
-            }
-
-            List<int> failures = new List<int>();
-
-            foreach (int gameId in games)
-            {
-                lowerWidth = minimumBeamWidth;
-                upperWidth = maximumBeamWidth;
-
-                List<int> lowerWidthShouldFail = BranchAndBoundRunner.ExecuteGamesWinningWords(
-                    new List<int> { gameId },
-                    lookaheadDepth, lowerWidth, maxDepth, rootWidth, useGuidedScores);
-
-                if (lowerWidthShouldFail.Count > 0)
-                {
-                    failures.Add(gameId);
-                    Console.WriteLine($"Game {gameId}: Lower width of {minimumBeamWidth} should not produce a winning game. Skipping this game.");
-                }
-                else
-                {
-                    List<int> upperWidthShouldSucceed = BranchAndBoundRunner.ExecuteGamesWinningWords(
-                        new List<int> { gameId },
-                        lookaheadDepth, upperWidth, maxDepth, rootWidth, useGuidedScores);
-
-                    if (upperWidthShouldSucceed.Count == 0)
-                    {
-                        failures.Add(gameId);
-                        Console.WriteLine($"Game {gameId}: Upper width of {maximumBeamWidth} should produce a winning game. Skipping this game.");
                     }
                     else
                     {
-                        while (lowerWidth != upperWidth)
+                        upperWidth = currentWidth;
+                        if (upperWidth == (lowerWidth + 1))
                         {
-                            currentWidth = (int)((double)(lowerWidth + upperWidth + 0.5) / 2.0);
-                            Console.WriteLine($"Game: {gameId}, Lower: {lowerWidth}, Upper: {upperWidth}, Current Width: {currentWidth}");
-
-                            List<int> winnersForCurrent = BranchAndBoundRunner.ExecuteGamesWinningWords(
-                                new List<int> { gameId },
-                                lookaheadDepth, currentWidth, maxDepth, rootWidth, useGuidedScores);
-
-                            if (winnersForCurrent.Count == 0)
-                            {
-                                if (lowerWidth == currentWidth)
-                                {
-                                    lowerWidth += 1;
-                                    currentWidth = lowerWidth;
-                                }
-                                else
-                                {
-                                    lowerWidth = currentWidth;
-                                }
-                            }
-                            else
-                            {
-                                upperWidth = currentWidth;
-                            }
+                            // We know the lower width does not work and the upper width does work so if its one place away then we have our solution
+                            lowerWidth = upperWidth;
                         }
-                        Console.WriteLine($"Final size for Game {gameId} is {currentWidth}");
-                        result[currentWidth].Add(gameId);
                     }
                 }
-            }
 
-            if (failures.Count > 0)
-            {
-                Console.WriteLine($"Failures because they started out of range: {string.Join(", ", failures)}");
-            }
-
-            for (int beamWidth = 0; beamWidth < maximumBeamWidth + 1; beamWidth++)
-            {
-                if (result[beamWidth].Count > 0)
-                {
-                    Console.WriteLine($"depth{lookaheadDepth}_width{beamWidth} = {string.Join(", ", result[beamWidth])}");
-                }
-            }
-
-            return result;
-        }
-
-
-        public static int OptimizeBeamWidth(
-            int gameId,
-            int lookaheadDepth,
-            int maxDepth,
-            int minimumBeamWidth,
-            int maximumBeamWidth,
-            int rootWidth,
-            bool useGuidedScores)
-        {
-            
-            int currentWidth = 0;
-            int lowerWidth = minimumBeamWidth;
-            int upperWidth = maximumBeamWidth;
-
-            List<int> lowerWidthShouldFail = BranchAndBoundRunner.ExecuteGamesWinningWords(
-                new List<int> { gameId },
-                lookaheadDepth, lowerWidth, maxDepth, rootWidth, useGuidedScores);
-
-            if (lowerWidthShouldFail.Count > 0)
-            {
-                Console.WriteLine($"Game {gameId}: Lower width of {minimumBeamWidth} should not produce a winning game. Skipping this game.");
-                return -1;
-            }
-            else
-            {
-                List<int> upperWidthShouldSucceed = BranchAndBoundRunner.ExecuteGamesWinningWords(
-                    new List<int> { gameId },
-                    lookaheadDepth,
-                    upperWidth,
-                    maxDepth,
-                    rootWidth,
-                    useGuidedScores);
-
-                if (upperWidthShouldSucceed.Count == 0)
-                {
-                    Console.WriteLine($"Game {gameId}: Upper width of {maximumBeamWidth} should produce a winning game. Skipping this game.");
-                    return -1;
-                }
-                else
-                {
-                    while (lowerWidth != upperWidth)
-                    {
-                        currentWidth = (int)((double)(lowerWidth + upperWidth + 0.5) / 2.0);
-                        Console.WriteLine($"Game: {gameId}, Lower: {lowerWidth}, Upper: {upperWidth}, Current Width: {currentWidth}");
-
-                        List<int> winnersForCurrent = BranchAndBoundRunner.ExecuteGamesWinningWords(
-                            new List<int> { gameId },
-                            lookaheadDepth, lowerWidth, maxDepth, rootWidth, useGuidedScores);
-
-                        if (winnersForCurrent.Count == 0)
-                        {
-                            if (lowerWidth == currentWidth)
-                            {
-                                lowerWidth += 1;
-                                currentWidth = lowerWidth;
-                            }
-                            else
-                            {
-                                lowerWidth = currentWidth;
-                            }
-                        }
-                        else
-                        {
-                            upperWidth = currentWidth;
-                        }
-                        
-                    }
-
-                    Console.WriteLine($"Final size for Game {gameId} is {currentWidth}");
-                    return currentWidth;
-                }
+                Console.WriteLine($"FINAL SIZE\nGame: {gameId}, RootShape: {rootWidth}, lookaheadDepth: {lookaheadDepth}, beamWidth: {currentWidth}, time: {timeToProcessOneConfiguration}, overallProcessTime: {(DateTime.Now - overallStart)}");
+                return currentWidth;
             }
         }
-
     }
-}
 
+}

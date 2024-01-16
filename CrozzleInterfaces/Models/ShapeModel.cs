@@ -1,9 +1,10 @@
 ﻿namespace CrozzleInterfaces;
 
-public class ShapeModel
+public class ShapeModel : IComparable
 {
 	public readonly byte Width;
 	public readonly byte Height;
+    public readonly ushort Area;
 	public readonly ushort Score;
 	public readonly List<PlacementModel> Placements;
     public readonly string WordSequence;
@@ -15,6 +16,7 @@ public class ShapeModel
 	{
         this.IsValid = true;
         this.Score = score;
+        this.Area = (ushort)((width - 2) * (height - 2));
         this.History = new List<int>();
 
         var sortedPlacements = PlacementList.SortByWord(placements);
@@ -247,5 +249,45 @@ public class ShapeModel
     {
         return new HashSet<int>(PlacementList.GetWords(this.Placements));
     }
+
+    public int CompareTo(Object? obj)
+    {
+
+        if (obj == null) return 1;
+
+        ShapeModel? shapeNullable = obj as ShapeModel;
+        if (shapeNullable == null)
+        {
+            return 1;
+        }
+        ShapeModel shape = (ShapeModel)shapeNullable;
+
+
+        if (this.Score > shape.Score)
+        {
+            return -1;
+        }
+        else if (this.Score < shape.Score)
+        {
+            return 1;
+        }
+        else
+        {
+            if (this.Area < shape.Area)
+            {
+                return -1;
+            }
+            else if (this.Area > shape.Area)
+            {
+                return 1;
+            }
+            else
+            {
+                return String.Compare(this.WordSequence, shape.WordSequence);
+            }
+        }
+    }
+
+    
 }
 

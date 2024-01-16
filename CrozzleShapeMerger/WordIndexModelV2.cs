@@ -4,6 +4,8 @@ namespace CrozzleShapeMerger;
 
 public class WordIndexModelV2
 {
+    public readonly List<List<int>> Index;
+
 
     public List<MergeInstructionModel> CheckMatchesForLeafs(
         in List<int> matches,
@@ -16,14 +18,20 @@ public class WordIndexModelV2
         foreach (var searchShapeId in matches)
         {
 
-            var matchCount = FindMatchCount(sourceShape: sourceShape, searchShape: searchShapes[searchShapeId]);
+            var matchCount = FindMatchCount(
+                sourceShape: sourceShape,
+                searchShape: searchShapes[searchShapeId]);
 
 
             if (matchCount != sourceShape.Placements.Count && matchCount != searchShapes[searchShapeId].Placements.Count)
             {
 
-                var item = MatchCalculator.ProcessMatches(matchCount: matchCount, sourceShape: sourceShape, sourceShapeId: sourceShapeId, searchShape: searchShapes[searchShapeId], searchShapeId: searchShapeId);
-
+                var item = ValidateMergeCalculator.Execute(
+                    matchCount: matchCount,
+                    sourceShape: sourceShape,
+                    sourceShapeId: sourceShapeId,
+                    searchShape: searchShapes[searchShapeId],
+                    searchShapeId: searchShapeId);
 
                 if (item is not null)
                 {
@@ -45,7 +53,7 @@ public class WordIndexModelV2
 
 
 
-    public readonly List<List<int>> Index;
+    
 
     /// `WordIndexModelV2` is used to `findMatches`between a `sourceShape` and a collection of `searchShapes` to returns  `[MergeInstructionModel]`.
     ///  These instructions contain a potential merge between the `sourceShape` and `searchShape`.
@@ -174,7 +182,7 @@ public class WordIndexModelV2
             }
             else
             {
-                var item1 = MatchCalculator.ProcessMatches(matchCount: matchCount, sourceShape: sourceShape, sourceShapeId: sourceShapeId, searchShape: searchShapes[previous], searchShapeId: previous);
+                var item1 = ValidateMergeCalculator.Execute(matchCount: matchCount, sourceShape: sourceShape, sourceShapeId: sourceShapeId, searchShape: searchShapes[previous], searchShapeId: previous);
                 if (item1 is not null)
                 {
                     result.Add(item1!);
@@ -190,7 +198,7 @@ public class WordIndexModelV2
             Console.WriteLine("What should we do here then with previous and searchShapeId being different");
         }
         // Process last one, should this be previous or should it be searchShapeId?
-        var item2 = MatchCalculator.ProcessMatches(matchCount: matchCount, sourceShape: sourceShape, sourceShapeId: sourceShapeId, searchShape: searchShapes[searchShapeId], searchShapeId: searchShapeId);
+        var item2 = ValidateMergeCalculator.Execute(matchCount: matchCount, sourceShape: sourceShape, sourceShapeId: sourceShapeId, searchShape: searchShapes[searchShapeId], searchShapeId: searchShapeId);
         if (item2 is not null)
         {
             result.Add(item2!);
@@ -241,7 +249,7 @@ public class WordIndexModelV2
             }
             else
             {
-                var item1 = MatchCalculator.ProcessMatches(matchCount: matchCount, sourceShape: sourceShape, sourceShapeId: sourceShapeId, searchShape: searchShapes[previous], searchShapeId: previous);
+                var item1 = ValidateMergeCalculator.Execute(matchCount: matchCount, sourceShape: sourceShape, sourceShapeId: sourceShapeId, searchShape: searchShapes[previous], searchShapeId: previous);
                 if (item1 is not null)
                 {
                     result.Add(item1!);
@@ -257,7 +265,7 @@ public class WordIndexModelV2
             Console.WriteLine("What should we do here then with previous and searchShapeId being different");
         }
         // Process last one, should this be previous or should it be searchShapeId?
-        var item2 = MatchCalculator.ProcessMatches(matchCount: matchCount, sourceShape: sourceShape, sourceShapeId: sourceShapeId, searchShape: searchShapes[searchShapeId], searchShapeId: searchShapeId);
+        var item2 = ValidateMergeCalculator.Execute(matchCount: matchCount, sourceShape: sourceShape, sourceShapeId: sourceShapeId, searchShape: searchShapes[searchShapeId], searchShapeId: searchShapeId);
         if (item2 is not null)
         {
             result.Add(item2!);
@@ -327,42 +335,42 @@ public class WordIndexModelV2
     }
 
 
-    // Finds all matches in the source shape and search shape and includes word count.  Maybe we dont need the word count?
-    List<PotentialMatchModel> FindMatches(
-        in List<ShapeModel> sourceShapes,
-        int sourceShapeId,
-        int searchMin,
-        int searchMax,
-        in List<ShapeModel> searchShapes)
-    {
+    //// Finds all matches in the source shape and search shape and includes word count.  Maybe we dont need the word count?
+    //List<PotentialMatchModel> FindMatches(
+    //    in List<ShapeModel> sourceShapes,
+    //    int sourceShapeId,
+    //    int searchMin,
+    //    int searchMax,
+    //    in List<ShapeModel> searchShapes)
+    //{
 
-        var result = new List<PotentialMatchModel>();
-
-
-        for (int shapeId = 0; shapeId < sourceShapes.Count; shapeId++)
-        {
-            // Find potential matches by using the index against all words in shape
-            var matches = FindMatchUsingIndex(sourceShape: sourceShapes[shapeId], searchMin: searchMin, searchMax: searchMax);
+    //    var result = new List<PotentialMatchModel>();
 
 
-            int searchShapeId = matches[0];
-            int previous = matches[0];
-            var matchCount = 1;
+    //    for (int shapeId = 0; shapeId < sourceShapes.Count; shapeId++)
+    //    {
+    //        // Find potential matches by using the index against all words in shape
+    //        var matches = FindMatchUsingIndex(sourceShape: sourceShapes[shapeId], searchMin: searchMin, searchMax: searchMax);
 
 
-            for (int i = 1; i < matches.Count; i++)
-            {
-                searchShapeId = matches[i];
-                if (previous == searchShapeId)
-                {
-                    matchCount += 1;
-                }
-                else
-                {
-                    result.Add(new PotentialMatchModel(sourceShapeId: sourceShapeId, searchShapeId: searchShapeId, matchingWordCount: matchCount));
-                }
-            }
-        }
-        return result;
-    }
+    //        int searchShapeId = matches[0];
+    //        int previous = matches[0];
+    //        var matchCount = 1;
+
+
+    //        for (int i = 1; i < matches.Count; i++)
+    //        {
+    //            searchShapeId = matches[i];
+    //            if (previous == searchShapeId)
+    //            {
+    //                matchCount += 1;
+    //            }
+    //            else
+    //            {
+    //                result.Add(new PotentialMatchModel(sourceShapeId: sourceShapeId, searchShapeId: searchShapeId, matchingWordCount: matchCount));
+    //            }
+    //        }
+    //    }
+    //    return result;
+    //}
 }

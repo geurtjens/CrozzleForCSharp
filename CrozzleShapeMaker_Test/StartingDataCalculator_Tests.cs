@@ -17,6 +17,7 @@ public class StartingDataCalculator_Tests
         StartingDataModel result = StartingDataCalculator.Execute(
             gameId: gameId,
             words: words,
+            rootShape: 0,
             rootWidth: 1,
             useGuidedScores: false);
 
@@ -67,7 +68,8 @@ public class StartingDataCalculator_Tests
         StartingDataModel result = StartingDataCalculator.Execute(
             gameId:gameId,
             words: words,
-            rootWidth:1,
+            rootShape: 0,
+            rootWidth: 1,
             useGuidedScores: false);
 
         // THEN game 8612 has a maxWidth of 17, maxHeight of 12 and winning score of 694

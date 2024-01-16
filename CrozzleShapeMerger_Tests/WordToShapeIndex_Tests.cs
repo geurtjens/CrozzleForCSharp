@@ -19,6 +19,7 @@ public class WordToShapeIndex_Tests
         StartingDataModel result = StartingDataCalculator.Execute(
             gameId: gameId,
             words: words,
+            rootShape: 0,
             rootWidth: 1,
             useGuidedScores: false);
 
@@ -76,6 +77,7 @@ public class WordToShapeIndex_Tests
         StartingDataModel result = StartingDataCalculator.Execute(
             gameId: gameId,
             words: words,
+            rootShape: 0,
             rootWidth: 1,
             useGuidedScores: false);
 

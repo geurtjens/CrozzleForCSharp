@@ -523,13 +523,10 @@ public class MergeCalculatorV2
     {
         List<ShapeModel> shapes = new List<ShapeModel>();
 
-
         foreach (var instruction in instructions)
         {
 
             var searchShape = searchShapes[instruction.SearchShapeId];
-
-
 
             // We have matches of 2 but instruction says its a match of 1
             var (isValidSize, calcWidth, calcHeight, flipped) = MergeSizeValidation.Execute(
@@ -645,9 +642,9 @@ public class MergeCalculatorV2
         int heightMax,
         in List<int> scoresMin)
     {
-        var matchesModel = MatchCalculator.GetMatches(sourceShape: sourceShape, searchShape: searchShape);
+        var matchesModel = ValidateMergeCalculator.GetMatches(sourceShape: sourceShape, searchShape: searchShape);
 
-        var instruction1 = MatchCalculator.ProcessMatches(matchCount: matchesModel.MatchingWordCount, sourceShape: sourceShape, sourceShapeId: 0, searchShape: searchShape, searchShapeId: 0);
+        var instruction1 = ValidateMergeCalculator.Execute(matchCount: matchesModel.MatchingWordCount, sourceShape: sourceShape, sourceShapeId: 0, searchShape: searchShape, searchShapeId: 0);
         if (instruction1 is null)
         {
             return null;

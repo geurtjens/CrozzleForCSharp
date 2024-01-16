@@ -23,6 +23,7 @@ public class BranchAndBoundV3_Tests
             lookaheadDepth: 1,
             beamWidth: 1,
             maxDepth: 30,
+            rootShape: 0,
             rootWidth: 1,
             winningScore: winningScore,
             useGuidedScores: true);
@@ -67,6 +68,7 @@ public class BranchAndBoundV3_Tests
             lookaheadDepth: 3,
             beamWidth: 10,
             maxDepth: 30,
+            rootShape: 0,
             rootWidth: 1,
             winningScore: winningScore,
             useGuidedScores: true);

@@ -19,6 +19,7 @@ public class GetStartingData_Tests
         var (_, searchShapes, wordIndex, rootTreeNodes, scoresMin, widthMax, heightMax) = GetStartingData.Execute(
             gameId: gameId,
             words: words,
+            rootShape: 0,
             rootWidth: rootWidth,
             useGuidedScores: useGuidedScores);
 

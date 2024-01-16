@@ -40,11 +40,12 @@ public class BranchAndBoundRunner
 
         foreach (var instruction in instructions)
         {
-            var solvedToAdd = BranchAndBoundRunner.ExecuteGamesWinningWords(
+            var solvedToAdd = ExecuteGamesWinningWords(
                 gameIds: instruction.Games,
                 lookaheadDepth: instruction.LookaheadDepth,
                 beamWidth: instruction.BeamWidth,
                 maxDepth: instruction.MaxDepth,
+                rootShape: instruction.RootShape,
                 rootWidth: instruction.RootWidth,
                 useGuidedScores: instruction.UseGuidedScores);
 
@@ -63,6 +64,7 @@ public class BranchAndBoundRunner
         int lookaheadDepth,
         int beamWidth,
         int maxDepth,
+        int rootShape,
         int rootWidth,
         bool useGuidedScores)
     {
@@ -79,8 +81,15 @@ public class BranchAndBoundRunner
             GameModel game = GameList.FindGame(gameId);
 
             ShapeModel bestShape = BranchAndBoundV3.Execute(
-                game.GameId, game.WinningWords, lookaheadDepth, beamWidth,
-                maxDepth, rootWidth, game.WinningScore, useGuidedScores);
+                game.GameId,
+                game.WinningWords,
+                lookaheadDepth,
+                beamWidth,
+                maxDepth,
+                rootShape,
+                rootWidth,
+                game.WinningScore,
+                useGuidedScores);
 
             if (bestShape.Score >= game.WinningScore)
             {
@@ -101,12 +110,20 @@ public class BranchAndBoundRunner
         else
         {
             var missing = gameIds.Except(successfulGames).OrderBy(x => x).ToList();
-            Console.WriteLine("MISSING " + string.Join(", ", missing));
-            Console.WriteLine("FOUND " + string.Join(", ", successfulGames));
+            if (missing.Count > 0)
+            {
+                Console.WriteLine("MISSING " + string.Join(", ", missing));
+            }
+            if (successfulGames.Count > 0)
+            {
+                Console.WriteLine("FOUND " + string.Join(", ", successfulGames));
+            }
         }
 
         return successfulGames;
     }
+
+
     public static void UseAllWords(List<BranchAndBoundInstruction> instructions)
     {
         DateTime overallStart = DateTimeCalculator.Now();
@@ -121,6 +138,7 @@ public class BranchAndBoundRunner
                 lookaheadDepth: instruction.LookaheadDepth,
                 beamWidth: instruction.BeamWidth,
                 maxDepth: instruction.MaxDepth,
+                rootShape: instruction.RootShape,
                 rootWidth: instruction.RootWidth,
                 useGuidedScores: instruction.UseGuidedScores);
 
@@ -140,6 +158,7 @@ public class BranchAndBoundRunner
         int lookaheadDepth,
         int beamWidth,
         int maxDepth,
+        int rootShape,
         int rootWidth,
         bool useGuidedScores)
     {
@@ -160,6 +179,7 @@ public class BranchAndBoundRunner
                 lookaheadDepth,
                 beamWidth,
                 maxDepth,
+                rootShape,
                 rootWidth,
                 game.WinningScore,
                 useGuidedScores);

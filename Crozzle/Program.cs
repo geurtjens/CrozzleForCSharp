@@ -3,7 +3,8 @@ using CrozzleInterfaces;
 using CrozzleShapeMaker;
 using CrozzleBranchAndBound;
 
-BranchAndBoundRunner.WinningWords_UseGuidedScores();
+OptimizeBranchAndBound.ExecuteFailuresNoGuidedScores();
+//BranchAndBoundRunner.WinningWords_UseGuidedScores();
 //BranchAndBoundRunner.WinningWords_NoGuidedScores();
 
 //var watch = System.Diagnostics.Stopwatch.StartNew();

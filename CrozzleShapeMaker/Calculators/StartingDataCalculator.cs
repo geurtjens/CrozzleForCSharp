@@ -14,6 +14,7 @@ public class StartingDataCalculator
     public static StartingDataModel Execute(
         int gameId,
         in List<string> words,
+        int rootShape,
         int rootWidth,
         bool useGuidedScores) //async -> (Int,[[Int]],[ShapeModel], WordIndexModelV2, [TreeNodeModel], [Int], Int, Int)
     {
@@ -35,30 +36,21 @@ public class StartingDataCalculator
 
         var startingShapes = new List<ShapeModel>();
     
-        if (rootWidth > 0)
+        if (rootWidth == 1)
         {
+            startingShapes.Add(winningShapes[rootShape]);
             for (int i=0; i<rootWidth; i++) {
                 if (i<winningShapes.Count) {
                     startingShapes.Add(winningShapes[i]);
                 }
             }
         }
-        else if (rootWidth < 0) {
-            int startingShapeIndex = rootWidth * -1;
-            startingShapes.Add(winningShapes[startingShapeIndex]);
-        }
-        else {
-            // If the root width is 0 then lets get all of the starting shapes
-            // this is another improvement we are making when converting to c#
-
-
-
-            
-            // and we want to print all starting shapes so we can get the appropriate index
+        else if (rootWidth > 1) {
             for (int i=0; i< winningShapes.Count; i++) {
-                startingShapes.Add(winningShapes[i]);
-                Console.WriteLine(i);
-                Console.WriteLine(winningShapes[i].ToTextDebug(words));
+                if (i < rootWidth)
+                {
+                    startingShapes.Add(winningShapes[i]);
+                }
             }
         }
 
